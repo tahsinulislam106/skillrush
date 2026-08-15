@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="google-site-verification" content="tz8WVCvZ2yzTXWJD4mLnJr5KFIUO6tePXOf5D66yVdc">
+
+  <meta name="description" content="SkillRush - Math calculation speed and English learning">
+  <title>SkillRush — Math Speed & English Learning</title>
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #070b16;
+      color: white;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 25px;
+    }
+    .card {
+      background: #101628;
+      border: 1px solid #29324a;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+    h1 { font-size: 42px; }
+    .purple {
+      background: #7657ff;
+      color: white;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .question {
+      font-size: 45px;
+      text-align: center;
+      padding: 30px;
+      font-weight: bold;
+    }
+    .answers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .answers button {
+      background: #1a2238;
+      color: white;
+      border: 0;
+      border-radius: 12px;
+      padding: 18px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .answers button:hover {
+      background: #7657ff;
+    }
+    .stat {
+      display: inline-block;
+      background: #171f34;
+      padding: 12px 18px;
+      border-radius: 12px;
+      margin: 5px;
+    }
+    .muted { color: #9ca7c0; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="card">
+      <h1>⚡ Skill<span style="color:#7657ff">Rush</span></h1>
+      <p>Improve your Math calculation speed and English skills.</p>
+
+      <div class="stat">
+        ⭐ XP: <b id="xp">0</b>
+      </div>
+
+      <div class="stat">
+        🏆 Best: <b id="best">0</b>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🧠 Math Speed Challenge</h2>
+
+      <div class="question" id="question">Ready?</div>
+
+      <div class="answers" id="answers">
+        <button class="purple" onclick="startGame()">START</button>
+      </div>
+
+      <p id="feedback" class="muted"></p>
+    </div>
+
+    <div class="card">
+      <h2>🌎 English Learning</h2>
+      <p>Choose the correct answer:</p>
+
+      <div class="question" style="font-size:30px">
+        I ___ happy.
+      </div>
+
+      <div class="answers">
+        <button onclick="english(true)">am</button>
+        <button onclick="english(false)">is</button>
+        <button onclick="english(false)">are</button>
+        <button onclick="english(false)">be</button>
+      </div>
+
+      <p id="englishFeedback" class="muted"></p>
+    </div>
+
+  </div>
+
+<script>
+let xp = Number(localStorage.getItem("xp") || 0);
+let best = Number(localStorage.getItem("best") || 0);
+
+let currentQuestion = 0;
+let score = 0;
+let correctAnswer = 0;
+
+document.getElementById("xp").textContent = xp;
+document.getElementById("best").textContent = best;
+
+function startGame() {
+  currentQuestion = 0;
+  score = 0;
+  nextQuestion();
+}
+
+function nextQuestion() {
+  currentQuestion++;
+
+  if (currentQuestion > 5) {
+    if (score > best) {
+      best = score;
+      localStorage.setItem("best", best);
+    }
+
+    document.getElementById("question").textContent =
+      "Complete! Score: " + score + "/5";
+
+    document.getElementById("answers").innerHTML =
+      '<button class="purple" onclick="startGame()">PLAY AGAIN</button>';
+
+    document.getElementById("best").textContent = best;
+    return;
+  }
+
+  let a = Math.floor(Math.random() * 30) + 1;
+  let b = Math.floor(Math.random() * 30) + 1;
+
+  correctAnswer = a + b;
+
+  let options = [
+    correctAnswer,
+    correctAnswer + 1,
+    correctAnswer - 1,
+    correctAnswer + 5
+  ];
+
+  options.sort(() => Math.random() - 0.5);
+
+  document.getElementById("question").textContent =
+    a + " + " + b + " = ?";
+
+  document.getElementById("answers").innerHTML =
+    options.map(function(option) {
+      return '<button onclick="answer(' + option + ')">' +
+             option +
+             '</button>';
+    }).join("");
+
+  document.getElementById("feedback").textContent = "";
+}
+
+function answer(value) {
+  if (value === correctAnswer) {
+    score++;
+    xp += 100;
+
+    document.getElementById("feedback").textContent =
+      "✓ Correct! +100 XP";
+
+    localStorage.setItem("xp", xp);
+    document.getElementById("xp").textContent = xp;
+  } else {
+    document.getElementById("feedback").textContent =
+      "✕ Incorrect";
+  }
+
+  setTimeout(nextQuestion, 400);
+}
+
+function english(correct) {
+  if (correct) {
+    xp += 100;
+
+    localStorage.setItem("xp", xp);
+    document.getElementById("xp").textContent = xp;
+
+    document.getElementById("englishFeedback").textContent =
+      "✓ Correct! +100 XP";
+  } else {
+    document.getElementById("englishFeedback").textContent =
+      "✕ Try again";
+  }
+}
+</script>
+
+</body>
+</html>
