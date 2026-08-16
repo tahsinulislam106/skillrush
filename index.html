@@ -1,306 +1,197 @@
 <meta name="google-site-verification" content="tz8WVCvZ2yzTXWJD4mLnJr5KFIUO6tePXOf5D66yVdc">
+<meta name="description" content="Skill Rush — Learn English, Arabic and Mathematics, battle other learners and rise through the global leaderboard.">
+<meta name="keywords" content="Skill Rush, English learning, Arabic learning, mathematics, MCQ, math quiz, language quiz, leaderboard">
+<meta name="author" content="Skill Rush">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#6948ff">
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="google-site-verification"
-content="tz8WVCvZ2yzTXWJD4mLnJr5KFIUO6tePXOf5D66yVdc">
-
-<title>Skill — Learn. Master. Compete.</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Skill Rush</title>
 
 <style>
 *{box-sizing:border-box}
-
 body{
  margin:0;
- font-family:Arial,Helvetica,sans-serif;
- background:#f7f8fc;
+ font-family:Arial, sans-serif;
+ background:#f5f7ff;
  color:#172033;
+ transition:.3s;
 }
+body.dark{background:#0d1220;color:#fff}
 
-.sidebar{
- position:fixed;
- left:0;
- top:0;
- bottom:0;
- width:245px;
+header{
+ height:70px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 5%;
  background:white;
- border-right:1px solid #e7eaf1;
- padding:22px 14px;
+ box-shadow:0 2px 15px #0001;
+ position:sticky;
+ top:0;
+ z-index:10;
 }
+.dark header{background:#151c2d}
 
 .logo{
- font-size:32px;
+ font-size:27px;
  font-weight:900;
- padding:5px 12px 25px;
+ color:#6948ff;
 }
+.logo span{color:#111}
+.dark .logo span{color:white}
 
-.logo span{color:#6d4aff}
-
-.user{
- display:flex;
- gap:10px;
- align-items:center;
- padding:12px;
- background:#fafaff;
- border:1px solid #e7eaf1;
- border-radius:16px;
- margin-bottom:18px;
-}
-
-.avatar{
- width:42px;
- height:42px;
- border-radius:14px;
- background:#eee9ff;
- display:grid;
- place-items:center;
- font-size:22px;
-}
-
-.nav button{
- width:100%;
+nav button{
  border:0;
- background:transparent;
- padding:13px;
- text-align:left;
- border-radius:13px;
- margin:3px 0;
+ background:none;
+ padding:10px;
+ margin:3px;
  font-weight:bold;
- color:#69738a;
  cursor:pointer;
+ color:inherit;
 }
 
-.nav button:hover,
-.nav button.active{
- background:#eee9ff;
- color:#5c40e4;
-}
-
-.main{
- margin-left:245px;
- padding:25px 30px;
- max-width:1400px;
-}
-
-.top{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin-bottom:22px;
-}
-
-.top h1{
- margin:0;
- font-size:28px;
-}
-
-.chips{
- display:flex;
- gap:8px;
- flex-wrap:wrap;
-}
-
-.chip{
- background:white;
- border:1px solid #e7eaf1;
- border-radius:12px;
- padding:9px 13px;
- font-weight:bold;
-}
-
-.page{
- display:none;
- max-width:1100px;
- margin:auto;
-}
-
-.page.active{
- display:block;
+.container{
+ width:92%;
+ max-width:1200px;
+ margin:30px auto;
 }
 
 .hero{
- background:linear-gradient(135deg,#6d4aff,#8e70ff);
+ background:linear-gradient(135deg,#6745ff,#9175ff);
  color:white;
- border-radius:25px;
- padding:34px;
- box-shadow:0 18px 45px #6d4a4a33;
+ padding:45px;
+ border-radius:28px;
+ box-shadow:0 15px 40px #6948ff33;
 }
 
-.hero h2{
- font-size:40px;
- line-height:1.05;
- margin:12px 0;
- max-width:700px;
+.hero h1{
+ font-size:45px;
+ margin:10px 0;
 }
 
 .hero p{
- color:#eee9ff;
- max-width:700px;
+ max-width:650px;
  line-height:1.6;
 }
 
-.badge{
- display:inline-block;
- background:#eee9ff;
- color:#5c40e4;
- padding:6px 10px;
- border-radius:10px;
- font-size:12px;
- font-weight:900;
-}
-
-.hero .badge{
- background:#ffffff25;
- color:white;
+button{
+ cursor:pointer;
 }
 
 .btn{
  border:0;
- padding:12px 17px;
+ padding:13px 20px;
  border-radius:13px;
- font-weight:900;
- cursor:pointer;
- margin:4px;
+ font-weight:800;
+ margin:5px;
 }
 
-.primary{
- background:white;
- color:#5c40e4;
-}
+.primary{background:white;color:#6344e8}
+.secondary{background:#252b3b;color:white}
 
-.dark{
- background:#1c2335;
- color:white;
-}
-
-.grid{
+.cards{
  display:grid;
  grid-template-columns:repeat(3,1fr);
- gap:15px;
- margin-top:16px;
+ gap:18px;
+ margin-top:20px;
 }
 
 .card{
  background:white;
- border:1px solid #e7eaf1;
- border-radius:19px;
- padding:20px;
- box-shadow:0 12px 35px #1f263c10;
+ border:1px solid #e5e8f0;
+ border-radius:20px;
+ padding:25px;
+ box-shadow:0 10px 30px #0000000b;
 }
+.dark .card{background:#151c2d;border-color:#293247}
 
-.stat{
- font-size:29px;
- font-weight:900;
- margin-top:5px;
-}
-
-.muted{
- color:#788197;
- line-height:1.55;
-}
-
-.section{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin:25px 0 12px;
-}
-
-.features{
+.worlds{
  display:grid;
  grid-template-columns:1fr 1fr;
- gap:14px;
+ gap:20px;
 }
 
-.feature{
+.world{
+ padding:30px;
+ border-radius:23px;
+ border:1px solid #ddd;
  background:white;
- border:1px solid #e7eaf1;
- border-radius:17px;
- padding:19px;
-}
-
-.tabs{
- display:flex;
- gap:8px;
- margin-bottom:16px;
-}
-
-.tabs button{
- border:1px solid #e7eaf1;
- background:white;
- padding:10px 15px;
- border-radius:12px;
- font-weight:bold;
  cursor:pointer;
+ transition:.2s;
+}
+.world:hover{
+ transform:translateY(-5px);
+ box-shadow:0 15px 35px #0002;
+}
+.dark .world{background:#151c2d;border-color:#293247}
+
+.emoji{
+ font-size:50px;
 }
 
-.tabs button.active{
- background:#6d4aff;
- color:white;
-}
-
-.road{
+.roadmap{
  display:grid;
  gap:12px;
+ margin-top:20px;
 }
 
 .lesson{
+ background:white;
+ padding:18px;
+ border-radius:18px;
+ border:1px solid #e5e8ef;
  display:flex;
  align-items:center;
- gap:14px;
- padding:15px;
- background:white;
- border:1px solid #e7eaf1;
- border-radius:18px;
- box-shadow:0 8px 25px #1f263c09;
+ gap:15px;
  cursor:pointer;
 }
+.dark .lesson{background:#151c2d;border-color:#293247}
 
 .lesson.locked{
- opacity:.5;
+ opacity:.45;
  cursor:not-allowed;
 }
 
 .node{
- width:54px;
- height:54px;
- border-radius:17px;
- background:#eee9ff;
- color:#5d40e4;
+ width:50px;
+ height:50px;
+ border-radius:16px;
+ background:#eeeaff;
+ color:#6546e9;
  display:grid;
  place-items:center;
- font-weight:900;
- font-size:21px;
- flex-shrink:0;
+ font-size:20px;
+ font-weight:bold;
 }
 
-.lesson.done .node{
- background:#e7faf2;
- color:#16875f;
+.stats{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
 }
 
-.lesson-info{
- flex:1;
+.stat{
+ background:white;
+ border:1px solid #ddd;
+ border-radius:14px;
+ padding:10px 15px;
+ font-weight:bold;
 }
-
-.meta{
- color:#788197;
- font-size:12px;
- text-align:right;
-}
+.dark .stat{background:#151c2d;border-color:#293247}
 
 .quiz{
- max-width:760px;
+ max-width:800px;
  margin:auto;
 }
 
 .question{
- font-size:29px;
+ font-size:27px;
  font-weight:900;
- margin:30px 0 18px;
+ margin:30px 0 20px;
 }
 
 .answers{
@@ -311,298 +202,188 @@ body{
 
 .answer{
  padding:17px;
- border:2px solid #e7eaf1;
- background:white;
+ border:2px solid #e1e4ec;
  border-radius:15px;
+ background:white;
  text-align:left;
  font-weight:bold;
- cursor:pointer;
+}
+.dark .answer{
+ background:#151c2d;
+ color:white;
+ border-color:#30394f;
 }
 
 .answer:hover{
- border-color:#8068ff;
- background:#faf9ff;
+ border-color:#6948ff;
 }
 
 .timer{
  height:8px;
- background:#eceef4;
+ background:#ddd;
  border-radius:10px;
  overflow:hidden;
- margin-top:15px;
 }
 
-.timer i{
- display:block;
+.timer div{
  height:100%;
  width:100%;
- background:#6d4aff;
+ background:#6948ff;
 }
 
 table{
  width:100%;
  border-collapse:collapse;
+ background:white;
+ border-radius:18px;
+ overflow:hidden;
 }
+.dark table{background:#151c2d}
 
 th,td{
- padding:14px 9px;
- border-bottom:1px solid #e7eaf1;
+ padding:15px;
+ border-bottom:1px solid #ddd;
  text-align:left;
 }
+.dark th,.dark td{border-color:#30394f}
 
-th{
- color:#788197;
- font-size:12px;
-}
-
-.flag{
- font-size:23px;
-}
-
-.input{
- width:100%;
- padding:13px;
- border:1px solid #e7eaf1;
- border-radius:12px;
- margin:6px 0 14px;
-}
-
-.profile{
+.avatarGrid{
  display:grid;
- grid-template-columns:1fr 2fr;
- gap:15px;
+ grid-template-columns:repeat(6,1fr);
+ gap:10px;
 }
 
-.mobile{
- display:none;
-}
-
-@media(max-width:850px){
-
-.sidebar{
- display:none;
-}
-
-.main{
- margin-left:0;
- padding:18px 14px 80px;
-}
-
-.grid{
- grid-template-columns:1fr;
-}
-
-.features,
-.profile{
- grid-template-columns:1fr;
-}
-
-.answers{
- grid-template-columns:1fr;
-}
-
-.hero h2{
- font-size:32px;
-}
-
-.mobile{
- display:flex;
- position:fixed;
- left:0;
- right:0;
- bottom:0;
+.avatar{
+ font-size:28px;
+ padding:12px;
+ border:2px solid #ddd;
+ border-radius:15px;
  background:white;
- border-top:1px solid #e7eaf1;
- z-index:10;
- justify-content:space-around;
- padding:8px;
+}
+.dark .avatar{background:#151c2d;color:white}
+
+.avatar.selected{
+ border-color:#6948ff;
+ background:#eeeaff;
 }
 
-.mobile button{
- border:0;
- background:transparent;
- font-size:11px;
- font-weight:bold;
- color:#697389;
+input,select{
+ width:100%;
+ padding:14px;
+ border-radius:12px;
+ border:1px solid #ddd;
+ margin:7px 0 15px;
+ background:white;
+}
+.dark input,.dark select{
+ background:#151c2d;
+ color:white;
+ border-color:#30394f;
 }
 
-.mobile button.active{
- color:#6d4aff;
-}
+.page{display:none}
+.page.active{display:block}
 
+@media(max-width:750px){
+ header{height:auto;padding:15px;flex-wrap:wrap}
+ .cards,.worlds{grid-template-columns:1fr}
+ .answers{grid-template-columns:1fr}
+ .hero h1{font-size:32px}
+ .hero{padding:28px}
+ .avatarGrid{grid-template-columns:repeat(4,1fr)}
 }
 </style>
 </head>
 
 <body>
 
-<aside class="sidebar">
+<header>
+<div class="logo">skill<span>rush</span></div>
 
-<div class="logo">
-sk<span>i</span>ll
-</div>
-
-<div class="user">
-<div class="avatar" id="sideFlag">🇧🇩</div>
-
-<div>
-<b id="sideName">Guest</b>
-<br>
-<small id="sideLevel">Level 1</small>
-</div>
-</div>
-
-<nav class="nav">
-
-<button class="active" data-page="home">🏠 Home</button>
-
-<button data-page="learn">📚 Learn</button>
-
-<button data-page="math">🧠 Math Roadmap</button>
-
-<button data-page="english">🌎 English</button>
-
-<button data-page="battle">⚔️ Battle</button>
-
-<button data-page="rank">🏆 World Leaderboard</button>
-
-<button data-page="profile">👤 Profile</button>
-
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('world')">Worlds</button>
+<button onclick="show('learn')">Learn</button>
+<button onclick="show('battle')">Battle</button>
+<button onclick="show('rank')">🏆 Rank</button>
+<button onclick="show('profile')">Profile</button>
+<button onclick="toggleDark()">🌙</button>
 </nav>
+</header>
 
-</aside>
-
-
-<main class="main">
-
-<div class="top">
-
-<h1 id="pageTitle">Home</h1>
-
-<div class="chips">
-
-<div class="chip">⭐ <span id="xp">0</span> XP</div>
-
-<div class="chip">🔥 <span id="streak">1</span></div>
-
-<div class="chip">❤️ <span id="lives">3</span></div>
-
-</div>
-
-</div>
-
+<div class="container">
 
 <!-- HOME -->
 
-<section class="page active" id="home">
+<section id="home" class="page active">
 
 <div class="hero">
-
-<span class="badge">
-SMART LEARNING ARENA
-</span>
-
-<h2>
-Learn every day. Master your level. Climb the world.
-</h2>
+<small>SKILL RUSH</small>
+<h1>Learn. Battle. Rise.</h1>
 
 <p>
-Skill is a modern competitive learning platform for English,
-advanced mathematics, practice sessions, battles, XP,
-streaks and worldwide rankings.
+Master English, Arabic and advanced mathematics through
+smart MCQ sessions, progressive levels, battles and global rankings.
 </p>
 
-<button class="btn primary" onclick="go('learn')">
-Continue Learning →
+<button class="btn primary" onclick="show('world')">
+Choose World →
 </button>
 
-<button class="btn dark" onclick="go('rank')">
-World Rank
+<button class="btn secondary" onclick="show('rank')">
+Leaderboard
 </button>
-
 </div>
 
+<div class="stats" style="margin-top:20px">
+<div class="stat">⭐ XP: <span id="xp">0</span></div>
+<div class="stat">🔥 Streak: <span id="streak">1</span></div>
+<div class="stat">❤️ Lives: <span id="lives">3</span></div>
+<div class="stat">🏅 Rank: <span id="rank">Bronze</span></div>
+</div>
 
-<div class="grid">
+<div class="cards">
 
 <div class="card">
-
-<small>CURRENT LEVEL</small>
-
-<div class="stat" id="currentLevel">
-1
+<h2>🌎 Two Worlds</h2>
+<p>English World and Arabic World have separate learning paths.</p>
 </div>
-
-<p class="muted">
-Complete lessons to unlock the next level.
-</p>
-
-</div>
-
 
 <div class="card">
-
-<small>DAILY GOAL</small>
-
-<div class="stat">
-<span id="dailyXP">0</span>/100 XP
+<h2>🧠 Smart Math</h2>
+<p>Algebra, functions, trigonometry, calculus, probability and statistics.</p>
 </div>
-
-</div>
-
 
 <div class="card">
-
-<small>CURRENT RANK</small>
-
-<div class="stat" id="currentRank">
-Bronze
+<h2>⚔️ Player Battle</h2>
+<p>Battle other players from your own language world.</p>
 </div>
 
 </div>
 
+</section>
+
+
+<!-- WORLDS -->
+
+<section id="world" class="page">
+
+<h1>Choose Your World</h1>
+
+<div class="worlds">
+
+<div class="world" onclick="selectWorld('english')">
+<div class="emoji">🇬🇧</div>
+<h2>English World</h2>
+<p>English vocabulary, grammar, reading and A-Level Mathematics.</p>
+<button class="btn primary">Enter English</button>
 </div>
 
-
-<div class="section">
-
-<h2>Today's Missions</h2>
-
-<span class="badge">
-3 Rewards
-</span>
-
-</div>
-
-
-<div class="features">
-
-<div class="feature">
-<b>🧠 Finish a Math Lesson</b>
-<p class="muted">
-Advance your A-Level Math roadmap.
-</p>
-</div>
-
-<div class="feature">
-<b>🌎 Complete English</b>
-<p class="muted">
-Improve grammar, vocabulary and reading.
-</p>
-</div>
-
-<div class="feature">
-<b>🔥 Protect Your Streak</b>
-<p class="muted">
-Keep your daily learning momentum.
-</p>
-</div>
-
-<div class="feature">
-<b>🏆 Check World Rank</b>
-<p class="muted">
-Compare yourself with players worldwide.
-</p>
+<div class="world" onclick="selectWorld('arabic')">
+<div class="emoji">🌙</div>
+<h2>Arabic World</h2>
+<p dir="rtl">العربية، المفردات، القواعد، القراءة والرياضيات.</p>
+<button class="btn primary">دخول العالم العربي</button>
 </div>
 
 </div>
@@ -612,110 +393,50 @@ Compare yourself with players worldwide.
 
 <!-- LEARN -->
 
-<section class="page" id="learn">
+<section id="learn" class="page">
 
 <div class="card">
 
-<div class="section">
+<h1 id="worldTitle">English Roadmap</h1>
 
-<h2>Learning Roadmap</h2>
+<div>
+<button class="btn primary" onclick="selectSubject('language')">
+Language
+</button>
 
-<span class="badge">
-Locked Progression
-</span>
-
-</div>
-
-
-<div class="tabs">
-
-<button class="active" onclick="showRoadmap('math',this)">
+<button class="btn primary" onclick="selectSubject('math')">
 🧠 Math
 </button>
-
-<button onclick="showRoadmap('english',this)">
-🌎 English
-</button>
-
 </div>
 
-
-<div id="roadmap" class="road"></div>
+<div id="roadmap" class="roadmap"></div>
 
 </div>
 
 </section>
 
 
-<!-- MATH -->
+<!-- QUIZ -->
 
-<section class="page" id="math">
-
-<div class="card quiz">
-
-<span class="badge">
-A-LEVEL MATH • 10 MCQ
-</span>
-
-<h2 id="mathTitle">
-Math Session
-</h2>
-
-<div class="timer">
-<i id="mathTimer"></i>
-</div>
-
-<div class="question" id="mathQuestion">
-Start your unlocked lesson.
-</div>
-
-<div class="answers" id="mathAnswers"></div>
-
-<button
-class="btn dark"
-id="mathStart"
-onclick="startMath()">
-Start Session
-</button>
-
-<p class="muted" id="mathMessage"></p>
-
-</div>
-
-</section>
-
-
-<!-- ENGLISH -->
-
-<section class="page" id="english">
+<section id="quiz" class="page">
 
 <div class="card quiz">
 
-<span class="badge">
-ENGLISH • 10 MCQ
-</span>
-
-<h2>
-English Session
-</h2>
+<h2 id="quizTitle">Session</h2>
 
 <div class="timer">
-<i id="englishTimer"></i>
+<div id="timer"></div>
 </div>
 
-<div class="question" id="englishQuestion">
-Start your unlocked lesson.
-</div>
+<div class="question" id="question"></div>
 
-<div class="answers" id="englishAnswers"></div>
+<div class="answers" id="answers"></div>
 
-<button
-class="btn dark"
-onclick="startEnglish()">
+<button id="start" class="btn primary" onclick="startQuiz()">
 Start Session
 </button>
 
-<p class="muted" id="englishMessage"></p>
+<p id="result"></p>
 
 </div>
 
@@ -724,104 +445,54 @@ Start Session
 
 <!-- BATTLE -->
 
-<section class="page" id="battle">
+<section id="battle" class="page">
 
 <div class="hero">
 
-<span class="badge">
-NO-LIFE BATTLE
-</span>
-
-<h2>
-Challenge the World.
-</h2>
+<h1>⚔️ Battle Arena</h1>
 
 <p>
-Battle mode is separate from learning lives.
-Players can compete against each other without losing lives.
+Fight players from your own world.
+Battle does not consume learning lives.
 </p>
 
 <button class="btn primary" onclick="battle()">
 Find Opponent
 </button>
 
-<p id="battleMessage"></p>
-
-</div>
-
-
-<div class="grid">
-
-<div class="card">
-<small>RATING</small>
-<div class="stat" id="rating">1000</div>
-</div>
-
-<div class="card">
-<small>WINS</small>
-<div class="stat" id="wins">0</div>
-</div>
-
-<div class="card">
-<small>WIN XP</small>
-<div class="stat">+150</div>
-</div>
+<h2 id="battleResult"></h2>
 
 </div>
 
 </section>
 
 
-<!-- LEADERBOARD -->
+<!-- RANK -->
 
-<section class="page" id="rank">
+<section id="rank" class="page">
 
-<div class="hero">
+<div class="card">
 
-<span class="badge">
-🌎 WORLD LEADERBOARD
-</span>
+<h1>🏆 World Leaderboard</h1>
 
-<h2>
-One World. One Ranking.
-</h2>
+<button class="btn primary" onclick="rankWorld='english';renderRank()">
+🇬🇧 English
+</button>
 
-<p>
-Players are shown with their country flag, level,
-rank, XP and wins.
-</p>
-
-</div>
-
-
-<div class="card" style="margin-top:16px">
-
-<div class="section">
-
-<h2>Global Players</h2>
-
-<span class="badge">
-All Countries
-</span>
-
-</div>
-
-<div style="overflow:auto">
+<button class="btn primary" onclick="rankWorld='arabic';renderRank()">
+🌙 Arabic
+</button>
 
 <table>
 
 <thead>
-
 <tr>
 <th>#</th>
 <th>Player</th>
 <th>Country</th>
 <th>Rank</th>
-<th>Level</th>
 <th>XP</th>
-<th>Wins</th>
 </tr>
-
 </thead>
 
 <tbody id="leaderboard"></tbody>
@@ -830,818 +501,571 @@ All Countries
 
 </div>
 
-</div>
-
 </section>
 
 
 <!-- PROFILE -->
 
-<section class="page" id="profile">
-
-<div class="profile">
+<section id="profile" class="page">
 
 <div class="card">
 
-<div
-class="avatar"
-style="width:70px;height:70px;font-size:32px"
-id="profileFlag">
-🇧🇩
-</div>
-
-<h2 id="profileName">
-Guest
-</h2>
-
-<p class="muted" id="profileCountry">
-Bangladesh
-</p>
-
-<span class="badge" id="profileRank">
-Bronze
-</span>
-
-</div>
-
-
-<div class="card">
-
-<h2>Player Profile</h2>
+<h1>👤 Profile</h1>
 
 <label>Username</label>
-
-<input
-class="input"
-id="username"
-placeholder="Your username"
-maxlength="24"
->
-
+<input id="username" maxlength="20">
 
 <label>Country</label>
 
-<select class="input" id="country">
-
-<option value="BD">🇧🇩 Bangladesh</option>
-<option value="IN">🇮🇳 India</option>
-<option value="PK">🇵🇰 Pakistan</option>
-<option value="US">🇺🇸 United States</option>
-<option value="GB">🇬🇧 United Kingdom</option>
-<option value="AE">🇦🇪 UAE</option>
-<option value="SA">🇸🇦 Saudi Arabia</option>
-<option value="EG">🇪🇬 Egypt</option>
-<option value="TR">🇹🇷 Türkiye</option>
-<option value="MY">🇲🇾 Malaysia</option>
-<option value="ID">🇮🇩 Indonesia</option>
-<option value="JP">🇯🇵 Japan</option>
-<option value="OTHER">🌎 Other</option>
-
+<select id="country">
+<option>🇧🇩 Bangladesh</option>
+<option>🇮🇳 India</option>
+<option>🇵🇰 Pakistan</option>
+<option>🇬🇧 United Kingdom</option>
+<option>🇺🇸 United States</option>
+<option>🇸🇦 Saudi Arabia</option>
+<option>🇦🇪 UAE</option>
+<option>🇪🇬 Egypt</option>
+<option>🇲🇾 Malaysia</option>
+<option>🌎 Other</option>
 </select>
 
-<button class="btn dark" onclick="saveProfile()">
+<h3>Choose Avatar</h3>
+
+<div class="avatarGrid" id="avatars"></div>
+
+<button class="btn primary" onclick="saveProfile()">
 Save Profile
 </button>
 
-<p class="muted" id="saveMessage"></p>
-
-</div>
+<p id="saved"></p>
 
 </div>
 
 </section>
-
-
-<footer style="
-text-align:center;
-color:#8b94a7;
-padding:35px 0;
-">
-Skill © 2026 • Learn • Master • Compete
-</footer>
-
-</main>
-
-
-<div class="mobile">
-
-<button data-page="home">
-🏠<br>Home
-</button>
-
-<button data-page="learn">
-📚<br>Learn
-</button>
-
-<button data-page="math">
-🧠<br>Math
-</button>
-
-<button data-page="rank">
-🏆<br>Rank
-</button>
-
-<button data-page="profile">
-👤<br>Me
-</button>
 
 </div>
 
 
 <script>
 
-const STORAGE_KEY="skill_profile";
-
-const flags={
-BD:"🇧🇩",
-IN:"🇮🇳",
-PK:"🇵🇰",
-US:"🇺🇸",
-GB:"🇬🇧",
-AE:"🇦🇪",
-SA:"🇸🇦",
-EG:"🇪🇬",
-TR:"🇹🇷",
-MY:"🇲🇾",
-ID:"🇮🇩",
-JP:"🇯🇵",
-OTHER:"🌎"
-};
-
-
-let player=
-JSON.parse(localStorage.getItem(STORAGE_KEY))
-||
-{
+let data=JSON.parse(localStorage.getItem("skillrush"))||{
 name:"Guest",
-country:"BD",
+country:"🇧🇩 Bangladesh",
+avatar:"🙂",
 xp:0,
 lives:3,
-wins:0,
-rating:1000,
 streak:1,
-mathCompleted:0,
-englishCompleted:0
+english:{language:0,math:0},
+arabic:{language:0,math:0}
 };
 
+let world="english";
+let subject="language";
+let rankWorld="english";
+let qIndex=0;
+let score=0;
+let interval;
 
-const mathLevels=[
-
-["Algebra Foundations","Equations and algebraic manipulation"],
-
-["Functions & Graphs","Functions, domain, range and transformations"],
-
-["Coordinate Geometry","Lines, circles and loci"],
-
-["Sequences & Series","Sequences and sigma notation"],
-
-["Trigonometry","Identities, equations and radians"],
-
-["Exponentials & Logarithms","Exponential and logarithmic models"],
-
-["Differentiation","Derivatives and stationary points"],
-
-["Integration","Definite integrals and area"],
-
-["Vectors","Vectors and geometry"],
-
-["Probability","Probability and expectation"],
-
-["Statistics","Data and statistical reasoning"],
-
-["Advanced Pure","Advanced mixed pure mathematics"],
-
-["A-Level Mastery","Hard exam-style mixed MCQ"],
-
-["Diamond Challenge","Elite final mastery gate"]
-
+const avatars=[
+"🙂","👨‍🎓","👩‍🎓","🧑‍🚀",
+"🦊","🐼","🦁","🐯",
+"🐨","🐸","🦄","🤖",
+"🧙","🥷","🦉","🐺",
+"🐲","🐵"
 ];
 
+const English=[
+["Choose the correct sentence",
+["She has finished.","She have finished.","She finish.","She finishing."],
+"She has finished."],
 
-const englishLevels=[
+["Closest meaning of rapid",
+["Slow","Fast","Weak","Careful"],
+"Fast"],
 
-["Foundations","Everyday words and sentence patterns"],
+["Which is a noun?",
+["Beautiful","Decision","Quickly","Decide"],
+"Decision"],
 
-["Core Grammar","Tenses, articles and agreement"],
+["If I ___ earlier, I would have called.",
+["know","knew","had known","have known"],
+"had known"],
 
-["Vocabulary Builder","Context, synonyms and collocations"],
+["Passive form: They built the bridge.",
+["The bridge was built by them.","The bridge built them.","They were built.","Bridge built."],
+"The bridge was built by them."],
 
-["Everyday English","Practical communication"],
+["Most formal sentence",
+["Kids gotta study.","Children are required to study.","Kids needa study.","Kids study."],
+"Children are required to study."],
 
-["Reading Skills","Inference and detail"],
+["Synonym of intelligent",
+["Smart","Weak","Slow","Small"],
+"Smart"],
 
-["Grammar Mastery","Complex grammar"],
+["Antonym of ancient",
+["Old","Modern","Historic","Past"],
+"Modern"],
 
-["Academic English","Formal English"],
+["Choose the correct word: She ___ to school.",
+["go","goes","going","gone"],
+"goes"],
 
-["Fluency Lab","Natural English"],
-
-["Advanced Reading","Critical reading"],
-
-["C1 Challenge","High-level English"],
-
-["C2 Mastery","Near-native mastery"]
-
+["Meaning of ambiguous",
+["Clear","Having more than one possible meaning","Easy","Short"],
+"Having more than one possible meaning"]
 ];
 
+const Arabic=[
+["اختر الجملة الصحيحة",
+["أنا أذهب إلى المدرسة","أنا يذهب مدرسة","أنا ذهب المدرسة","أنا الذهاب"],
+"أنا أذهب إلى المدرسة"],
 
-const mathQuestions=[
+["جمع كلمة كتاب",
+["كاتب","كتب","مكتب","كتابة"],
+"كتب"],
 
-["If f(x)=2x²−3x+1, f(2) = ?",["1","3","4","7"],"3"],
+["المضاد لكلمة كبير",
+["طويل","صغير","قوي","سريع"],
+"صغير"],
 
-["For y=3x−5, the gradient is:",["−5","3","5","1/3"],"3"],
+["أي كلمة فعل؟",
+["كتاب","يكتب","مدرسة","جميل"],
+"يكتب"],
 
-["Common ratio of 3,6,12,24:",["2","3","4","6"],"2"],
+["المفرد من طلاب",
+["طالب","طلب","طالبة","طلاب"],
+"طالب"],
 
-["If sinθ=3/5 and θ is acute, cosθ =",["3/5","4/5","5/3","1/5"],"4/5"],
+["معنى كلمة سريع",
+["بطيء","سريع","قديم","صغير"],
+"سريع"],
 
-["Solve ln(x)=0.",["0","1","e","−1"],"1"],
+["اختر الاسم",
+["جميل","يكتب","كتاب","بسرعة"],
+"كتاب"],
 
-["Derivative of x³:",["x²","2x²","3x²","3x"],"3x²"],
+["أكمل: الطالب ___ الدرس.",
+["يقرأ","قراءة","قارئ","مقروء"],
+"يقرأ"],
 
-["∫2x dx =",["x²+C","2x²+C","x+C","x²"],"x²+C"],
+["معنى جميل",
+["قبيح","حسن","قديم","بعيد"],
+"حسن"],
 
-["For a=(2,1), b=(1,3), a·b =",["3","4","5","6"],"5"],
-
-["Fair coin twice: P(two heads) =",["1/2","1/3","1/4","3/4"],"1/4"],
-
-["If log₂x=5, x =",["10","16","25","32"],"32"]
-
+["اختر الجملة الأكثر فصاحة",
+["أنا أريد أن أتعلم.","أنا أبغى أتعلم.","أنا عايز أتعلم.","أنا أتعلم بس."],
+"أنا أريد أن أتعلم."]
 ];
 
+const Math=[
+["If f(x)=2x²−3x+1, f(2)=?",
+["1","3","4","7"],
+"3"],
 
-const englishQuestions=[
+["Gradient of y=3x−5",
+["−5","3","5","1/3"],
+"3"],
 
-["Correct sentence:",["She have finished.","She has finished.","She having finished.","She finish."],"She has finished."],
+["Common ratio: 3,6,12,24",
+["2","3","4","6"],
+"2"],
 
-["Closest meaning of rapid:",["slow","careful","fast","weak"],"fast"],
+["If sinθ=3/5, cosθ for acute θ is",
+["3/5","4/5","5/3","1/5"],
+"4/5"],
 
-["If I ___ earlier, I would have called.",["know","knew","had known","have known"],"had known"],
+["Solve ln(x)=0",
+["0","1","e","−1"],
+"1"],
 
-["Which is a noun?",["beautiful","decide","decision","quickly"],"decision"],
+["Derivative of x³",
+["x²","2x²","3x²","3x"],
+"3x²"],
 
-["The report was ___ than expected.",["more detailed","most detail","detail","more detail"],"more detailed"],
+["∫2x dx",
+["x²+C","2x²+C","x+C","2x+C"],
+"x²+C"],
 
-["Despite is closest to:",["because","although","therefore","unless"],"although"],
+["If a=(2,1), b=(1,3), a·b",
+["3","4","5","6"],
+"5"],
 
-["Natural phrase:",["make a decision","do a decision","decisioning","create decision"],"make a decision"],
+["Probability of two heads with a fair coin twice",
+["1/2","1/3","1/4","3/4"],
+"1/4"],
 
-["Passive: They built the bridge.",["The bridge built them.","The bridge was built by them.","The bridge is build.","They were built."],"The bridge was built by them."],
-
-["Ambiguous means:",["clear","more than one possible meaning","very short","incorrect"],"more than one possible meaning"],
-
-["Most formal:",["Kids gotta study.","Children are required to study.","Kids needa study.","Children gotta learn."],"Children are required to study."]
-
+["If log₂x=5, x=",
+["10","16","25","32"],
+"32"]
 ];
 
+function save(){
+ localStorage.setItem("skillrush",JSON.stringify(data));
+ refresh();
+}
+
+function refresh(){
+
+document.getElementById("xp").textContent=data.xp;
+document.getElementById("lives").textContent=data.xp>=12000?"∞":data.lives;
+document.getElementById("rank").textContent=getRank(data.xp);
+
+document.getElementById("username").value=data.name;
+
+document.getElementById("country").value=data.country;
+
+}
 
 function getRank(xp){
 
 if(xp>=12000)return"Diamond";
-
 if(xp>=7000)return"Platinum";
-
 if(xp>=3500)return"Gold";
-
 if(xp>=1500)return"Silver";
-
 return"Bronze";
 
 }
 
+function show(id){
 
-function getLevel(xp){
-
-return Math.floor(xp/500)+1;
-
-}
-
-
-function save(){
-
-localStorage.setItem(
-STORAGE_KEY,
-JSON.stringify(player)
-);
-
-refresh();
-
-}
-
-
-function refresh(){
-
-const rank=getRank(player.xp);
-
-const level=getLevel(player.xp);
-
-document.getElementById("sideName").textContent=player.name;
-
-document.getElementById("sideLevel").textContent=
-"Level "+level;
-
-document.getElementById("sideFlag").textContent=
-flags[player.country];
-
-document.getElementById("xp").textContent=
-player.xp;
-
-document.getElementById("streak").textContent=
-player.streak;
-
-document.getElementById("lives").textContent=
-rank==="Diamond"?"∞":player.lives;
-
-document.getElementById("currentLevel").textContent=
-level;
-
-document.getElementById("currentRank").textContent=
-rank;
-
-document.getElementById("dailyXP").textContent=
-Math.min(100,player.xp%200);
-
-document.getElementById("profileName").textContent=
-player.name;
-
-document.getElementById("profileFlag").textContent=
-flags[player.country];
-
-document.getElementById("profileRank").textContent=
-rank;
-
-document.getElementById("username").value=
-player.name;
-
-document.getElementById("country").value=
-player.country;
-
-document.getElementById("rating").textContent=
-player.rating;
-
-document.getElementById("wins").textContent=
-player.wins;
-
-}
-
-
-function openPage(id){
-
-document.querySelectorAll(".page")
-.forEach(p=>p.classList.remove("active"));
-
-document.getElementById(id)
-.classList.add("active");
-
-document.querySelectorAll("[data-page]")
-.forEach(b=>{
-b.classList.toggle(
-"active",
-b.dataset.page===id
-);
+document.querySelectorAll(".page").forEach(x=>{
+x.classList.remove("active");
 });
 
-const titles={
-home:"Home",
-learn:"Learn",
-math:"Math Roadmap",
-english:"English",
-battle:"Battle",
-rank:"World Leaderboard",
-profile:"Profile"
-};
+document.getElementById(id).classList.add("active");
 
-document.getElementById("pageTitle").textContent=
-titles[id];
+if(id==="learn")renderRoad();
+if(id==="rank")renderRank();
 
-if(id==="rank")renderLeaderboard();
-
-if(id==="learn")showRoadmap("math");
+window.scrollTo(0,0);
 
 }
 
+function selectWorld(w){
 
-function go(id){
+world=w;
+subject="language";
 
-openPage(id);
+show("learn");
 
-}
-
-
-document.querySelectorAll("[data-page]")
-.forEach(button=>{
-
-button.onclick=()=>{
-openPage(button.dataset.page);
-};
-
-});
-
-
-function showRoadmap(subject,button){
-
-if(button){
-
-document.querySelectorAll(".tabs button")
-.forEach(x=>x.classList.remove("active"));
-
-button.classList.add("active");
+renderRoad();
 
 }
 
-const levels=
+function selectSubject(s){
+
+subject=s;
+
+renderRoad();
+
+}
+
+function renderRoad(){
+
+let arr=subject==="math"
+?Math
+:(world==="english"?English:Arabic);
+
+let progress=data[world][subject];
+
+document.getElementById("worldTitle").textContent=
 subject==="math"
-?mathLevels
-:englishLevels;
+?"🧠 Mathematics Roadmap":
+world==="english"
+?"🇬🇧 English Roadmap":
+"🌙 Arabic Roadmap";
 
-const completed=
-subject==="math"
-?player.mathCompleted
-:player.englishCompleted;
+document.getElementById("roadmap").innerHTML="";
 
-document.getElementById("roadmap").innerHTML=
+arr.forEach((q,i)=>{
 
-levels.map((level,index)=>{
+let div=document.createElement("div");
 
-const locked=index>completed;
+div.className="lesson "+(i>progress?"locked":"");
 
-const done=index<completed;
-
-return`
-
-<div
-class="lesson ${locked?"locked":""} ${done?"done":""}"
-onclick="${locked?"":`startRoadmap('${subject}',${index})`}"
->
-
+div.innerHTML=`
 <div class="node">
-
-${done?"✓":locked?"🔒":index+1}
-
+${i<progress?"✓":i+1}
 </div>
 
-<div class="lesson-info">
-
-<b>${level[0]}</b>
-
-<div class="muted">
-${level[1]}
-</div>
-
-</div>
-
-<div class="meta">
-
-${done?"Completed":locked?"Locked":"10 MCQ"}
-
+<div>
+<b>Level ${i+1}</b>
 <br>
-
-Level ${index+1}
-
+<span>${i<progress?"Completed":i===progress?"Start Session":"🔒 Locked"}</span>
 </div>
-
-</div>
-
 `;
 
-}).join("");
+if(i===progress){
+
+div.onclick=()=>{
+
+show("quiz");
+startQuiz();
+
+};
 
 }
 
+document.getElementById("roadmap").appendChild(div);
 
-function startRoadmap(subject,index){
-
-if(subject==="math"){
-
-document.getElementById("mathTitle").textContent=
-mathLevels[index][0];
-
-openPage("math");
-
-}else{
-
-document.getElementById("englishTitle").textContent=
-englishLevels[index][0];
-
-openPage("english");
+});
 
 }
 
-}
+function startQuiz(){
 
+qIndex=0;
+score=0;
 
-let timer;
+document.getElementById("start").style.display="none";
 
-let mathIndex=0;
-
-let mathScore=0;
-
-let englishIndex=0;
-
-let englishScore=0;
-
-
-function startTimer(element,callback){
-
-let seconds=5;
-
-clearInterval(timer);
-
-element.style.width="100%";
-
-timer=setInterval(()=>{
-
-seconds-=0.05;
-
-element.style.width=
-Math.max(0,seconds/5*100)+"%";
-
-if(seconds<=0){
-
-clearInterval(timer);
-
-callback(null);
+nextQuestion();
 
 }
 
-},50);
+function nextQuestion(){
 
-}
+let questions=subject==="math"
+?Math
+:(world==="english"?English:Arabic);
 
+if(qIndex>=10){
 
-function startMath(){
-
-mathIndex=0;
-
-mathScore=0;
-
-document.getElementById("mathStart").style.display="none";
-
-nextMath();
-
-}
-
-
-function nextMath(){
-
-if(mathIndex>=10){
-
-player.mathCompleted=
-Math.min(
-mathLevels.length,
-player.mathCompleted+1
-);
-
-player.xp+=mathScore*20;
-
-save();
-
-document.getElementById("mathStart").style.display=
-"inline-block";
-
-document.getElementById("mathMessage").textContent=
-"Session complete: "+
-mathScore+
-"/10 • +"+
-(mathScore*20)+
-" XP";
-
+finishQuiz();
 return;
 
 }
 
-const q=mathQuestions[mathIndex++];
+let q=questions[qIndex];
 
-document.getElementById("mathQuestion")
-.textContent=q[0];
+document.getElementById("question").textContent=q[0];
 
-document.getElementById("mathAnswers")
-.innerHTML=q[1].map(answer=>`
+let html="";
 
-<button
-class="answer"
-onclick='answerMath(${JSON.stringify(answer)},${JSON.stringify(q[2])})'
->
-${answer}
+q[1].forEach(option=>{
+
+html+=`
+<button class="answer"
+onclick="answer('${option.replace(/'/g,"\\'")}','${q[2].replace(/'/g,"\\'")}')">
+${option}
 </button>
+`;
 
-`).join("");
+});
 
-startTimer(
-document.getElementById("mathTimer"),
-()=>answerMath(null,q[2])
-);
+document.getElementById("answers").innerHTML=html;
 
-}
-
-
-function answerMath(answer,correct){
-
-clearInterval(timer);
-
-if(answer===correct)
-mathScore++;
-
-setTimeout(nextMath,100);
+startTimer();
 
 }
 
+function startTimer(){
 
-function startEnglish(){
+clearInterval(interval);
 
-englishIndex=0;
+let time=60;
 
-englishScore=0;
+document.getElementById("timer").style.width="100%";
 
-nextEnglish();
+interval=setInterval(()=>{
 
-}
+time--;
 
+document.getElementById("timer").style.width=(time/60*100)+"%";
 
-function nextEnglish(){
+if(time<=0){
 
-if(englishIndex>=10){
+clearInterval(interval);
 
-player.englishCompleted=
-Math.min(
-englishLevels.length,
-player.englishCompleted+1
-);
-
-player.xp+=englishScore*20;
-
-save();
-
-document.getElementById("englishMessage").textContent=
-"Session complete: "+
-englishScore+
-"/10 • +"+
-(englishScore*20)+
-" XP";
-
-return;
+wrong();
 
 }
-
-const q=englishQuestions[englishIndex++];
-
-document.getElementById("englishQuestion")
-.textContent=q[0];
-
-document.getElementById("englishAnswers")
-.innerHTML=q[1].map(answer=>`
-
-<button
-class="answer"
-onclick='answerEnglish(${JSON.stringify(answer)},${JSON.stringify(q[2])})'
->
-${answer}
-</button>
-
-`).join("");
-
-startTimer(
-document.getElementById("englishTimer"),
-()=>answerEnglish(null,q[2])
-);
-
-}
-
-
-function answerEnglish(answer,correct){
-
-clearInterval(timer);
-
-if(answer===correct)
-englishScore++;
-
-setTimeout(nextEnglish,100);
-
-}
-
-
-function battle(){
-
-document.getElementById("battleMessage")
-.textContent=
-"Searching for opponent…";
-
-const opponents=[
-"Luna 🇬🇧",
-"Omar 🇪🇬",
-"Aiko 🇯🇵",
-"Arjun 🇮🇳",
-"Mia 🇺🇸",
-"Rafi 🇧🇩"
-];
-
-const opponent=
-opponents[
-Math.floor(Math.random()*opponents.length)
-];
-
-setTimeout(()=>{
-
-player.wins++;
-
-player.rating+=25;
-
-player.xp+=150;
-
-save();
-
-document.getElementById("battleMessage")
-.textContent=
-"🏆 You defeated "+
-opponent+
-" in practice battle! +150 XP";
 
 },1000);
 
 }
 
+function answer(a,c){
 
-function renderLeaderboard(){
+clearInterval(interval);
 
-const players=[
+if(a===c){
 
-["Amina","GB",18240,46,322],
+score++;
 
-["Yuki","JP",17420,44,301],
+data.xp+=25;
 
-["Omar","EG",12100,39,242],
+}else{
 
-["Rafi","BD",9100,35,188],
+wrong();
 
-["Arjun","IN",5200,29,121],
+}
 
-["Mia","US",4300,26,103],
+qIndex++;
 
-[player.name,player.country,player.xp,
-getLevel(player.xp),player.wins]
+setTimeout(nextQuestion,200);
 
+}
+
+function wrong(){
+
+if(data.xp<12000){
+
+data.lives=Math.max(0,data.lives-1);
+
+}
+
+}
+
+function finishQuiz(){
+
+clearInterval(interval);
+
+let key=subject;
+
+data[world][key]++;
+
+data.streak++;
+
+save();
+
+document.getElementById("answers").innerHTML="";
+
+document.getElementById("question").textContent=
+"🎉 Session Complete! "+score+"/10";
+
+document.getElementById("result").innerHTML=
+"⭐ You earned "+score*25+
+" XP<br><br>💡 Easy Solution is available after the session.";
+
+document.getElementById("start").style.display="inline-block";
+
+}
+
+function battle(){
+
+let opponents=world==="english"
+?["Luna 🇬🇧","Mia 🇺🇸","Arjun 🇮🇳"]
+:["Omar 🇪🇬","Amina 🇸🇦","Youssef 🇦🇪"];
+
+let opponent=opponents[Math.floor(Math.random()*opponents.length)];
+
+data.xp+=150;
+
+save();
+
+document.getElementById("battleResult").textContent=
+"🏆 You defeated "+opponent+"! +150 XP";
+
+}
+
+function renderRank(){
+
+let players=rankWorld==="english"
+?[
+["Luna","🇬🇧","Diamond",18200],
+["Mia","🇺🇸","Platinum",14100],
+["Arjun","🇮🇳","Gold",9200],
+["Rafi","🇧🇩","Gold",6500]
+]
+:[
+["Omar","🇪🇬","Diamond",17600],
+["Amina","🇸🇦","Platinum",14900],
+["Youssef","🇦🇪","Gold",9000],
+["Sara","🇲🇦","Gold",6100]
 ];
 
-players.sort((a,b)=>b[2]-a[2]);
+players.push([
+data.name,
+data.country.split(" ")[0],
+getRank(data.xp),
+data.xp
+]);
 
-document.getElementById("leaderboard")
-.innerHTML=
+players.sort((a,b)=>b[3]-a[3]);
 
-players.map((p,index)=>`
-
+document.getElementById("leaderboard").innerHTML=
+players.map((p,i)=>`
 <tr>
-
-<td>${index+1}</td>
-
+<td>${i+1}</td>
 <td><b>${p[0]}</b></td>
-
-<td class="flag">
-${flags[p[1]]}
-</td>
-
-<td>
-<b>${getRank(p[2])}</b>
-</td>
-
-<td>${p[3]}</td>
-
-<td>${p[2].toLocaleString()}</td>
-
-<td>${p[4]}</td>
-
+<td>${p[1]}</td>
+<td>${p[2]}</td>
+<td>${p[3].toLocaleString()}</td>
 </tr>
-
 `).join("");
 
 }
 
-
 function saveProfile(){
 
-player.name=
-document.getElementById("username")
-.value.trim()||"Guest";
+data.name=
+document.getElementById("username").value.trim()||"Guest";
 
-player.country=
-document.getElementById("country")
-.value;
+data.country=
+document.getElementById("country").value;
 
 save();
 
-document.getElementById("saveMessage")
-.textContent=
-"✓ Profile saved successfully";
-
-renderLeaderboard();
+document.getElementById("saved").textContent=
+"✓ Profile saved";
 
 }
 
+function toggleDark(){
 
+document.body.classList.toggle("dark");
+
+localStorage.setItem(
+"dark",
+document.body.classList.contains("dark")
+);
+
+}
+
+function createAvatars(){
+
+let box=document.getElementById("avatars");
+
+box.innerHTML="";
+
+avatars.forEach(a=>{
+
+let b=document.createElement("button");
+
+b.className="avatar";
+
+b.textContent=a;
+
+if(a===data.avatar)b.classList.add("selected");
+
+b.onclick=()=>{
+
+data.avatar=a;
+
+document.querySelectorAll(".avatar")
+.forEach(x=>x.classList.remove("selected"));
+
+b.classList.add("selected");
+
+save();
+
+};
+
+box.appendChild(b);
+
+});
+
+}
+
+if(localStorage.getItem("dark")==="true")
+document.body.classList.add("dark");
+
+createAvatars();
 refresh();
-
-showRoadmap("math");
-
-renderLeaderboard();
+renderRank();
 
 </script>
 
