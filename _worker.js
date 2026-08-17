@@ -1,3 +1,26 @@
+<meta name="description" content="Skill Rush — Learn English, Arabic and advanced Mathematics. Practice MCQs, complete levels, battle players and climb the global leaderboard.">
+
+<meta name="keywords" content="Skill Rush, English learning, Arabic learning, A Level Mathematics, Math MCQ, Mathematics practice, global leaderboard">
+
+<meta name="author" content="Skill Rush">
+
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#6948ff">
+
+<meta property="og:title" content="Skill Rush — Learn • Battle • Rise">
+<meta property="og:description" content="Learn English, Arabic and advanced Mathematics with Skill Rush.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://delicate-dawn-0fb6.tahsinulislam106.workers.dev/">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Skill Rush — Learn • Battle • Rise">
+<meta name="twitter:description" content="Learn, practice, battle and rise on the global leaderboard.">
+
+<title>Skill Rush — Learn • Battle • Rise</title>
 export default {
   async fetch(request, env) {
 
