@@ -1,296 +1,519 @@
-<meta name="google-site-verification" content="tz8WVCvZ2yzTXWJD4mLnJr5KFIUO6tePXOf5D66yVdc">
-<meta name="description" content="Skill Rush — Learn English, Arabic and Mathematics, battle other learners and rise through the global leaderboard.">
-<meta name="keywords" content="Skill Rush, English learning, Arabic learning, mathematics, MCQ, math quiz, language quiz, leaderboard">
+<!-- SEO -->
+<meta name="description" content="Skill Rush is a modern learning platform for English, Arabic and advanced Mathematics. Learn, practice, battle and climb the global leaderboard.">
+<meta name="keywords" content="Skill Rush, math practice, A Level mathematics, English learning, Arabic learning, math MCQ, global leaderboard, learning app">
 <meta name="author" content="Skill Rush">
+
+<!-- Search Engine -->
 <meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+
+<!-- Mobile -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#6948ff">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Skill Rush — Learn • Battle • Rise">
+<meta property="og:description" content="Learn English, Arabic and advanced Mathematics. Complete levels, battle players and climb the global leaderboard.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://delicate-dawn-0fb6.tahsinulislam106.workers.dev/">
+
+<!-- Twitter / Social Preview -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Skill Rush — Learn • Battle • Rise">
+<meta name="twitter:description" content="A modern global learning and math challenge platform.">
+
+<!-- Google Search Console verification -->
+<!-- Google থেকে verification code পেলে এখানে বসাবে -->
+<!-- <meta name="google-site-verification" content="YOUR_CODE_HERE"> -->
+
+<title>Skill Rush — Learn • Battle • Rise</title>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Skill Rush</title>
+
+<title>Skill Rush — Learn • Battle • Rise</title>
+
+<meta name="description" content="Skill Rush — modern English, Arabic and advanced Mathematics learning platform. Learn, battle and climb the global leaderboard.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#6c4cff">
 
 <style>
 *{box-sizing:border-box}
+
+:root{
+  --primary:#6948ff;
+  --primary2:#8b6cff;
+  --bg:#f5f6fb;
+  --card:#fff;
+  --text:#171b2d;
+  --muted:#697187;
+  --border:#e5e7ef;
+  --success:#20b26b;
+  --danger:#e34b63;
+}
+
 body{
- margin:0;
- font-family:Arial, sans-serif;
- background:#f5f7ff;
- color:#172033;
- transition:.3s;
-}
-body.dark{background:#0d1220;color:#fff}
-
-header{
- height:70px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- padding:0 5%;
- background:white;
- box-shadow:0 2px 15px #0001;
- position:sticky;
- top:0;
- z-index:10;
-}
-.dark header{background:#151c2d}
-
-.logo{
- font-size:27px;
- font-weight:900;
- color:#6948ff;
-}
-.logo span{color:#111}
-.dark .logo span{color:white}
-
-nav button{
- border:0;
- background:none;
- padding:10px;
- margin:3px;
- font-weight:bold;
- cursor:pointer;
- color:inherit;
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.25s;
 }
 
-.container{
- width:92%;
- max-width:1200px;
- margin:30px auto;
+body.dark{
+  --bg:#090d18;
+  --card:#131a2b;
+  --text:#f7f8ff;
+  --muted:#a9b0c4;
+  --border:#293349;
 }
 
-.hero{
- background:linear-gradient(135deg,#6745ff,#9175ff);
- color:white;
- padding:45px;
- border-radius:28px;
- box-shadow:0 15px 40px #6948ff33;
-}
-
-.hero h1{
- font-size:45px;
- margin:10px 0;
-}
-
-.hero p{
- max-width:650px;
- line-height:1.6;
+button,input,select{
+  font:inherit;
 }
 
 button{
- cursor:pointer;
+  cursor:pointer;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 5px 25px #00000008;
+}
+
+.nav{
+  max-width:1250px;
+  margin:auto;
+  padding:14px 4%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:950;
+  color:var(--primary);
+  letter-spacing:-1px;
+}
+
+.logo span{
+  color:var(--text);
+}
+
+.navlinks{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:5px;
+}
+
+.navlinks button{
+  border:0;
+  background:transparent;
+  color:var(--text);
+  padding:9px 12px;
+  border-radius:11px;
+  font-weight:800;
+}
+
+.navlinks button:hover{
+  background:#eeeaff;
+  color:var(--primary);
+}
+
+.container{
+  width:92%;
+  max-width:1250px;
+  margin:30px auto 70px;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.hero{
+  padding:55px;
+  border-radius:32px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 85% 15%,#ffffff35,transparent 25%),
+    linear-gradient(135deg,#5e40ed,#8d70ff);
+  box-shadow:0 25px 60px #6948ff35;
+}
+
+.hero small{
+  font-weight:900;
+  letter-spacing:2px;
+  opacity:.8;
+}
+
+.hero h1{
+  margin:12px 0;
+  font-size:52px;
+  line-height:1.05;
+}
+
+.hero p{
+  max-width:720px;
+  line-height:1.7;
+  opacity:.92;
 }
 
 .btn{
- border:0;
- padding:13px 20px;
- border-radius:13px;
- font-weight:800;
- margin:5px;
+  border:0;
+  border-radius:13px;
+  padding:13px 20px;
+  margin:5px;
+  font-weight:900;
+  transition:.2s;
 }
 
-.primary{background:white;color:#6344e8}
-.secondary{background:#252b3b;color:white}
-
-.cards{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:18px;
- margin-top:20px;
+.btn:hover{
+  transform:translateY(-2px);
 }
 
-.card{
- background:white;
- border:1px solid #e5e8f0;
- border-radius:20px;
- padding:25px;
- box-shadow:0 10px 30px #0000000b;
-}
-.dark .card{background:#151c2d;border-color:#293247}
-
-.worlds{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:20px;
+.primary{
+  background:var(--primary);
+  color:#fff;
 }
 
-.world{
- padding:30px;
- border-radius:23px;
- border:1px solid #ddd;
- background:white;
- cursor:pointer;
- transition:.2s;
-}
-.world:hover{
- transform:translateY(-5px);
- box-shadow:0 15px 35px #0002;
-}
-.dark .world{background:#151c2d;border-color:#293247}
-
-.emoji{
- font-size:50px;
+.secondary{
+  background:#eeeaff;
+  color:#5d40e8;
 }
 
-.roadmap{
- display:grid;
- gap:12px;
- margin-top:20px;
+.white{
+  background:#fff;
+  color:#5e40ed;
 }
 
-.lesson{
- background:white;
- padding:18px;
- border-radius:18px;
- border:1px solid #e5e8ef;
- display:flex;
- align-items:center;
- gap:15px;
- cursor:pointer;
-}
-.dark .lesson{background:#151c2d;border-color:#293247}
-
-.lesson.locked{
- opacity:.45;
- cursor:not-allowed;
+.darkbtn{
+  background:#20283b;
+  color:#fff;
 }
 
-.node{
- width:50px;
- height:50px;
- border-radius:16px;
- background:#eeeaff;
- color:#6546e9;
- display:grid;
- place-items:center;
- font-size:20px;
- font-weight:bold;
+.danger{
+  background:var(--danger);
+  color:#fff;
 }
 
 .stats{
- display:flex;
- gap:10px;
- flex-wrap:wrap;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:20px 0;
 }
 
 .stat{
- background:white;
- border:1px solid #ddd;
- border-radius:14px;
- padding:10px 15px;
- font-weight:bold;
-}
-.dark .stat{background:#151c2d;border-color:#293247}
-
-.quiz{
- max-width:800px;
- margin:auto;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:19px;
+  padding:18px;
+  box-shadow:0 8px 25px #00000007;
 }
 
-.question{
- font-size:27px;
- font-weight:900;
- margin:30px 0 20px;
+.stat b{
+  display:block;
+  font-size:23px;
+  margin-top:5px;
 }
 
-.answers{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
-.answer{
- padding:17px;
- border:2px solid #e1e4ec;
- border-radius:15px;
- background:white;
- text-align:left;
- font-weight:bold;
-}
-.dark .answer{
- background:#151c2d;
- color:white;
- border-color:#30394f;
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:23px;
+  padding:25px;
+  box-shadow:0 10px 30px #00000008;
 }
 
-.answer:hover{
- border-color:#6948ff;
+.card h2{
+  margin-top:0;
+}
+
+.muted{
+  color:var(--muted);
+  line-height:1.65;
+}
+
+.worlds{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.world{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:27px;
+  padding:32px;
+  transition:.2s;
+}
+
+.world:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 45px #00000012;
+}
+
+.worldicon{
+  font-size:58px;
+}
+
+.world h2{
+  font-size:30px;
+}
+
+.roadmap{
+  display:grid;
+  gap:13px;
+  margin-top:20px;
+}
+
+.lesson{
+  display:flex;
+  align-items:center;
+  gap:17px;
+  padding:17px;
+  border-radius:19px;
+  background:var(--card);
+  border:1px solid var(--border);
+  transition:.2s;
+}
+
+.lesson:hover{
+  transform:translateX(4px);
+  border-color:var(--primary);
+}
+
+.lesson.locked{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.node{
+  width:52px;
+  height:52px;
+  flex:none;
+  border-radius:17px;
+  display:grid;
+  place-items:center;
+  background:#eeeaff;
+  color:#6041e8;
+  font-weight:950;
+  font-size:18px;
+}
+
+.progress{
+  height:9px;
+  background:#e4e6ed;
+  border-radius:20px;
+  overflow:hidden;
+  margin:12px 0 22px;
+}
+
+.progress div{
+  height:100%;
+  background:linear-gradient(90deg,var(--primary),var(--primary2));
+  border-radius:20px;
 }
 
 .timer{
- height:8px;
- background:#ddd;
- border-radius:10px;
- overflow:hidden;
+  height:9px;
+  background:#dddfe7;
+  border-radius:20px;
+  overflow:hidden;
+  margin:15px 0 25px;
 }
 
 .timer div{
- height:100%;
- width:100%;
- background:#6948ff;
+  width:100%;
+  height:100%;
+  background:var(--primary);
+  transition:.2s linear;
 }
 
-table{
- width:100%;
- border-collapse:collapse;
- background:white;
- border-radius:18px;
- overflow:hidden;
-}
-.dark table{background:#151c2d}
-
-th,td{
- padding:15px;
- border-bottom:1px solid #ddd;
- text-align:left;
-}
-.dark th,.dark td{border-color:#30394f}
-
-.avatarGrid{
- display:grid;
- grid-template-columns:repeat(6,1fr);
- gap:10px;
+.answers{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
 }
 
-.avatar{
- font-size:28px;
- padding:12px;
- border:2px solid #ddd;
- border-radius:15px;
- background:white;
+.answer{
+  padding:18px;
+  border:2px solid var(--border);
+  border-radius:16px;
+  background:var(--card);
+  color:var(--text);
+  text-align:left;
+  font-weight:850;
+  transition:.15s;
 }
-.dark .avatar{background:#151c2d;color:white}
 
-.avatar.selected{
- border-color:#6948ff;
- background:#eeeaff;
+.answer:hover{
+  border-color:var(--primary);
+  background:#eeeaff;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 11px;
+  border-radius:10px;
+  background:#eeeaff;
+  color:#6041e8;
+  font-weight:900;
+}
+
+.auth{
+  max-width:480px;
+  margin:auto;
 }
 
 input,select{
- width:100%;
- padding:14px;
- border-radius:12px;
- border:1px solid #ddd;
- margin:7px 0 15px;
- background:white;
-}
-.dark input,.dark select{
- background:#151c2d;
- color:white;
- border-color:#30394f;
+  width:100%;
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:13px;
+  background:var(--card);
+  color:var(--text);
+  margin:6px 0 14px;
+  outline:none;
 }
 
-.page{display:none}
-.page.active{display:block}
+input:focus,select:focus{
+  border-color:var(--primary);
+}
 
-@media(max-width:750px){
- header{height:auto;padding:15px;flex-wrap:wrap}
- .cards,.worlds{grid-template-columns:1fr}
- .answers{grid-template-columns:1fr}
- .hero h1{font-size:32px}
- .hero{padding:28px}
- .avatarGrid{grid-template-columns:repeat(4,1fr)}
+.avatarGrid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:10px;
+  margin:15px 0;
+}
+
+.avatar{
+  border:2px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:15px;
+  padding:12px;
+  font-size:27px;
+}
+
+.avatar.selected{
+  border-color:var(--primary);
+  background:#eeeaff;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:var(--card);
+  border-radius:18px;
+  overflow:hidden;
+}
+
+th,td{
+  padding:15px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+}
+
+th{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.ranktop{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin:20px 0;
+}
+
+.rankbox{
+  text-align:center;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:22px;
+}
+
+.rankbox .emoji{
+  font-size:40px;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.notice{
+  padding:14px;
+  border-radius:13px;
+  background:#eeeaff;
+  color:#5e40e8;
+  margin:15px 0;
+  font-weight:750;
+}
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:25px;
+}
+
+@media(max-width:850px){
+
+  .nav{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .navlinks{
+    justify-content:flex-start;
+  }
+
+  .hero{
+    padding:32px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .grid,
+  .worlds,
+  .ranktop{
+    grid-template-columns:1fr;
+  }
+
+  .answers{
+    grid-template-columns:1fr;
+  }
+
+  .avatarGrid{
+    grid-template-columns:repeat(4,1fr);
+  }
 }
 </style>
 </head>
@@ -298,65 +521,103 @@ input,select{
 <body>
 
 <header>
-<div class="logo">skill<span>rush</span></div>
+<div class="nav">
 
-<nav>
-<button onclick="show('home')">Home</button>
-<button onclick="show('world')">Worlds</button>
-<button onclick="show('learn')">Learn</button>
-<button onclick="show('battle')">Battle</button>
-<button onclick="show('rank')">🏆 Rank</button>
-<button onclick="show('profile')">Profile</button>
+<div class="logo">
+skill<span>rush</span>
+</div>
+
+<div class="navlinks">
+<button onclick="showPage('home')">Home</button>
+<button onclick="showPage('worlds')">Worlds</button>
+<button onclick="showPage('learn')">Learn</button>
+<button onclick="showPage('battle')">⚔️ Battle</button>
+<button onclick="showPage('rank')">🏆 Rank</button>
+<button onclick="showPage('profile')">Profile</button>
+<button onclick="showPage('auth')">Login</button>
 <button onclick="toggleDark()">🌙</button>
-</nav>
+</div>
+
+</div>
 </header>
 
-<div class="container">
+
+<main class="container">
+
 
 <!-- HOME -->
 
 <section id="home" class="page active">
 
 <div class="hero">
-<small>SKILL RUSH</small>
+
+<small>SKILL RUSH 2.0</small>
+
 <h1>Learn. Battle. Rise.</h1>
 
 <p>
-Master English, Arabic and advanced mathematics through
-smart MCQ sessions, progressive levels, battles and global rankings.
+A modern learning universe where you master English,
+Arabic and advanced Mathematics, complete sessions,
+battle other learners and climb the global leaderboard.
 </p>
 
-<button class="btn primary" onclick="show('world')">
-Choose World →
+<button class="btn white" onclick="showPage('worlds')">
+Start Learning →
 </button>
 
-<button class="btn secondary" onclick="show('rank')">
-Leaderboard
+<button class="btn darkbtn" onclick="showPage('rank')">
+🏆 World Ranking
 </button>
+
 </div>
 
-<div class="stats" style="margin-top:20px">
-<div class="stat">⭐ XP: <span id="xp">0</span></div>
-<div class="stat">🔥 Streak: <span id="streak">1</span></div>
-<div class="stat">❤️ Lives: <span id="lives">3</span></div>
-<div class="stat">🏅 Rank: <span id="rank">Bronze</span></div>
+
+<div class="stats">
+
+<div class="stat">
+⭐ XP
+<b id="xp">0</b>
 </div>
 
-<div class="cards">
+<div class="stat">
+❤️ Lives
+<b id="lives">3</b>
+</div>
+
+<div class="stat">
+🔥 Streak
+<b id="streak">1</b>
+</div>
+
+<div class="stat">
+🏅 Rank
+<b id="rank">Bronze</b>
+</div>
+
+</div>
+
+
+<div class="grid">
 
 <div class="card">
 <h2>🌎 Two Worlds</h2>
-<p>English World and Arabic World have separate learning paths.</p>
+<p class="muted">
+English World and Arabic World are separate learning environments.
+</p>
 </div>
 
 <div class="card">
-<h2>🧠 Smart Math</h2>
-<p>Algebra, functions, trigonometry, calculus, probability and statistics.</p>
+<h2>🧠 Advanced Math</h2>
+<p class="muted">
+A-Level style mathematics with MCQ sessions and timed challenges.
+</p>
 </div>
 
 <div class="card">
-<h2>⚔️ Player Battle</h2>
-<p>Battle other players from your own language world.</p>
+<h2>⚔️ Battle Arena</h2>
+<p class="muted">
+Fight other learners without spending your learning lives.
+</p>
 </div>
 
 </div>
@@ -366,24 +627,48 @@ Leaderboard
 
 <!-- WORLDS -->
 
-<section id="world" class="page">
+<section id="worlds" class="page">
 
 <h1>Choose Your World</h1>
 
+<p class="muted">
+Select the world where you want to learn and compete.
+</p>
+
 <div class="worlds">
 
-<div class="world" onclick="selectWorld('english')">
-<div class="emoji">🇬🇧</div>
+<div class="world" onclick="chooseWorld('english')">
+
+<div class="worldicon">🇬🇧</div>
+
 <h2>English World</h2>
-<p>English vocabulary, grammar, reading and A-Level Mathematics.</p>
-<button class="btn primary">Enter English</button>
+
+<p class="muted">
+Duolingo-style English learning for everyone,
+plus advanced mathematics.
+</p>
+
+<button class="btn primary">
+Enter English World
+</button>
+
 </div>
 
-<div class="world" onclick="selectWorld('arabic')">
-<div class="emoji">🌙</div>
+
+<div class="world" onclick="chooseWorld('arabic')">
+
+<div class="worldicon">🌙</div>
+
 <h2>Arabic World</h2>
-<p dir="rtl">العربية، المفردات، القواعد، القراءة والرياضيات.</p>
-<button class="btn primary">دخول العالم العربي</button>
+
+<p class="muted" dir="rtl">
+تعلم اللغة العربية والرياضيات من خلال مستويات وأسئلة تفاعلية.
+</p>
+
+<button class="btn primary">
+دخول العالم العربي
+</button>
+
 </div>
 
 </div>
@@ -397,17 +682,24 @@ Leaderboard
 
 <div class="card">
 
-<h1 id="worldTitle">English Roadmap</h1>
+<h1 id="roadTitle">English Roadmap</h1>
 
-<div>
-<button class="btn primary" onclick="selectSubject('language')">
-Language
+<p class="muted">
+Complete each level to unlock the next one.
+Each session contains 10 questions.
+</p>
+
+<div class="progress">
+<div id="roadProgress"></div>
+</div>
+
+<button class="btn primary" onclick="setSubject('language')">
+📚 Language
 </button>
 
-<button class="btn primary" onclick="selectSubject('math')">
+<button class="btn primary" onclick="setSubject('math')">
 🧠 Math
 </button>
-</div>
 
 <div id="roadmap" class="roadmap"></div>
 
@@ -420,23 +712,21 @@ Language
 
 <section id="quiz" class="page">
 
-<div class="card quiz">
+<div class="card">
 
-<h2 id="quizTitle">Session</h2>
+<h1 id="quizTitle">Session</h1>
+
+<p class="muted" id="quizInfo">
+Question 1 / 10
+</p>
 
 <div class="timer">
-<div id="timer"></div>
+<div id="timerBar"></div>
 </div>
 
-<div class="question" id="question"></div>
+<h2 id="question"></h2>
 
-<div class="answers" id="answers"></div>
-
-<button id="start" class="btn primary" onclick="startQuiz()">
-Start Session
-</button>
-
-<p id="result"></p>
+<div id="answers" class="answers"></div>
 
 </div>
 
@@ -449,18 +739,21 @@ Start Session
 
 <div class="hero">
 
-<h1>⚔️ Battle Arena</h1>
+<small>BATTLE ARENA</small>
+
+<h1>⚔️ Challenge the World</h1>
 
 <p>
-Fight players from your own world.
-Battle does not consume learning lives.
+Battle mode does not consume learning lives.
+English players battle in English World and
+Arabic players battle in Arabic World.
 </p>
 
-<button class="btn primary" onclick="battle()">
+<button class="btn white" onclick="startBattle()">
 Find Opponent
 </button>
 
-<h2 id="battleResult"></h2>
+<h2 id="battleMessage"></h2>
 
 </div>
 
@@ -471,16 +764,43 @@ Find Opponent
 
 <section id="rank" class="page">
 
+<h1>🏆 Global Leaderboard</h1>
+
+<p class="muted">
+Separate rankings for each world.
+</p>
+
+<div class="ranktop">
+
+<div class="rankbox">
+<div class="emoji">🥇</div>
+<h3>Top Player</h3>
+<b id="topPlayer">Luna</b>
+</div>
+
+<div class="rankbox">
+<div class="emoji">🌎</div>
+<h3>World</h3>
+<b id="rankWorld">English</b>
+</div>
+
+<div class="rankbox">
+<div class="emoji">⭐</div>
+<h3>Your XP</h3>
+<b id="rankXP">0</b>
+</div>
+
+</div>
+
+
 <div class="card">
 
-<h1>🏆 World Leaderboard</h1>
-
-<button class="btn primary" onclick="rankWorld='english';renderRank()">
-🇬🇧 English
+<button class="btn primary" onclick="renderLeaderboard('english')">
+🇬🇧 English Ranking
 </button>
 
-<button class="btn primary" onclick="rankWorld='arabic';renderRank()">
-🌙 Arabic
+<button class="btn primary" onclick="renderLeaderboard('arabic')">
+🌙 Arabic Ranking
 </button>
 
 <table>
@@ -508,74 +828,173 @@ Find Opponent
 
 <section id="profile" class="page">
 
-<div class="card">
+<div class="card auth">
 
-<h1>👤 Profile</h1>
+<h1>👤 Your Profile</h1>
 
 <label>Username</label>
-<input id="username" maxlength="20">
+<input id="profileUsername" maxlength="20">
 
 <label>Country</label>
 
-<select id="country">
-<option>🇧🇩 Bangladesh</option>
-<option>🇮🇳 India</option>
-<option>🇵🇰 Pakistan</option>
-<option>🇬🇧 United Kingdom</option>
-<option>🇺🇸 United States</option>
-<option>🇸🇦 Saudi Arabia</option>
-<option>🇦🇪 UAE</option>
-<option>🇪🇬 Egypt</option>
-<option>🇲🇾 Malaysia</option>
-<option>🌎 Other</option>
+<select id="profileCountry">
+<option value="🇧🇩">🇧🇩 Bangladesh</option>
+<option value="🇮🇳">🇮🇳 India</option>
+<option value="🇵🇰">🇵🇰 Pakistan</option>
+<option value="🇬🇧">🇬🇧 United Kingdom</option>
+<option value="🇺🇸">🇺🇸 United States</option>
+<option value="🇸🇦">🇸🇦 Saudi Arabia</option>
+<option value="🇦🇪">🇦🇪 UAE</option>
+<option value="🇪🇬">🇪🇬 Egypt</option>
+<option value="🇲🇦">🇲🇦 Morocco</option>
+<option value="🇲🇾">🇲🇾 Malaysia</option>
 </select>
 
 <h3>Choose Avatar</h3>
 
-<div class="avatarGrid" id="avatars"></div>
+<div id="avatars" class="avatarGrid"></div>
 
 <button class="btn primary" onclick="saveProfile()">
 Save Profile
 </button>
 
-<p id="saved"></p>
+<p id="profileMessage"></p>
 
 </div>
 
 </section>
 
+
+<!-- AUTH -->
+
+<section id="auth" class="page">
+
+<div class="card auth">
+
+<h1>🚀 Join Skill Rush</h1>
+
+<p class="muted">
+Create your Skill Rush profile.
+</p>
+
+<div class="notice">
+🔒 Personal profile photos are not allowed.
+Choose an avatar instead.
 </div>
+
+<label>Username</label>
+
+<input
+id="authUsername"
+placeholder="Choose username"
+maxlength="20"
+>
+
+<label>Password</label>
+
+<input
+id="authPassword"
+type="password"
+placeholder="Password"
+>
+
+<label>Country</label>
+
+<select id="authCountry">
+
+<option value="🇧🇩">🇧🇩 Bangladesh</option>
+<option value="🇮🇳">🇮🇳 India</option>
+<option value="🇵🇰">🇵🇰 Pakistan</option>
+<option value="🇬🇧">🇬🇧 United Kingdom</option>
+<option value="🇺🇸">🇺🇸 United States</option>
+<option value="🇸🇦">🇸🇦 Saudi Arabia</option>
+<option value="🇦🇪">🇦🇪 UAE</option>
+<option value="🇪🇬">🇪🇬 Egypt</option>
+
+</select>
+
+<button class="btn primary" onclick="signup()">
+Create Account
+</button>
+
+<button class="btn secondary" onclick="login()">
+Login
+</button>
+
+<p id="authMessage"></p>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+© 2026 Skill Rush • Learn • Battle • Rise
+</footer>
 
 
 <script>
 
-let data=JSON.parse(localStorage.getItem("skillrush"))||{
-name:"Guest",
-country:"🇧🇩 Bangladesh",
+/* =========================
+   STATE
+========================= */
+
+let state = JSON.parse(
+localStorage.getItem("skillrush")
+) || {
+
+username:"Guest",
+country:"🇧🇩",
 avatar:"🙂",
+
 xp:0,
 lives:3,
 streak:1,
-english:{language:0,math:0},
-arabic:{language:0,math:0}
+
+world:"english",
+subject:"language",
+
+english:{
+language:0,
+math:0
+},
+
+arabic:{
+language:0,
+math:0
+}
+
 };
 
-let world="english";
-let subject="language";
-let rankWorld="english";
-let qIndex=0;
+
+let currentLevel=0;
+let questionIndex=0;
 let score=0;
-let interval;
+let timer=null;
+
+
+/* =========================
+   AVATARS
+========================= */
 
 const avatars=[
 "🙂","👨‍🎓","👩‍🎓","🧑‍🚀",
 "🦊","🐼","🦁","🐯",
 "🐨","🐸","🦄","🤖",
 "🧙","🥷","🦉","🐺",
-"🐲","🐵"
+"🐲","🐵","🧑‍💻","🧠"
 ];
 
-const English=[
+
+/* =========================
+   QUESTIONS
+========================= */
+
+const questionBank={
+
+english:[
 ["Choose the correct sentence",
 ["She has finished.","She have finished.","She finish.","She finishing."],
 "She has finished."],
@@ -592,32 +1011,34 @@ const English=[
 ["know","knew","had known","have known"],
 "had known"],
 
-["Passive form: They built the bridge.",
-["The bridge was built by them.","The bridge built them.","They were built.","Bridge built."],
-"The bridge was built by them."],
-
-["Most formal sentence",
-["Kids gotta study.","Children are required to study.","Kids needa study.","Kids study."],
-"Children are required to study."],
-
-["Synonym of intelligent",
-["Smart","Weak","Slow","Small"],
-"Smart"],
-
 ["Antonym of ancient",
 ["Old","Modern","Historic","Past"],
 "Modern"],
 
-["Choose the correct word: She ___ to school.",
-["go","goes","going","gone"],
-"goes"],
+["Which word is an adjective?",
+["Quickly","Beauty","Beautiful","Run"],
+"Beautiful"],
 
-["Meaning of ambiguous",
-["Clear","Having more than one possible meaning","Easy","Short"],
-"Having more than one possible meaning"]
-];
+["Choose the correct plural",
+["Childs","Childes","Children","Childrens"],
+"Children"],
 
-const Arabic=[
+["Opposite of increase",
+["Grow","Decrease","Rise","Expand"],
+"Decrease"],
+
+["Which is a verb?",
+["Run","Beautiful","Quickly","Blue"],
+"Run"],
+
+["Correct spelling",
+["Necessary","Necesary","Neccessary","Nessessary"],
+"Necessary"]
+],
+
+
+arabic:[
+
 ["اختر الجملة الصحيحة",
 ["أنا أذهب إلى المدرسة","أنا يذهب مدرسة","أنا ذهب المدرسة","أنا الذهاب"],
 "أنا أذهب إلى المدرسة"],
@@ -638,28 +1059,31 @@ const Arabic=[
 ["طالب","طلب","طالبة","طلاب"],
 "طالب"],
 
-["معنى كلمة سريع",
-["بطيء","سريع","قديم","صغير"],
-"سريع"],
+["ما معنى مدرسة؟",
+["School","Book","House","Teacher"],
+"School"],
 
-["اختر الاسم",
-["جميل","يكتب","كتاب","بسرعة"],
+["جمع كلمة قلم",
+["أقلام","قلمون","قلمات","كلام"],
+"أقلام"],
+
+["ما ضد كلمة سريع؟",
+["قوي","بطيء","كبير","جديد"],
+"بطيء"],
+
+["اختر اسمًا",
+["يكتب","كتاب","اكتب","ذهب"],
 "كتاب"],
 
-["أكمل: الطالب ___ الدرس.",
-["يقرأ","قراءة","قارئ","مقروء"],
-"يقرأ"],
+["ما معنى جميل؟",
+["Beautiful","Fast","Small","Old"],
+"Beautiful"]
 
-["معنى جميل",
-["قبيح","حسن","قديم","بعيد"],
-"حسن"],
+],
 
-["اختر الجملة الأكثر فصاحة",
-["أنا أريد أن أتعلم.","أنا أبغى أتعلم.","أنا عايز أتعلم.","أنا أتعلم بس."],
-"أنا أريد أن أتعلم."]
-];
 
-const Math=[
+math:[
+
 ["If f(x)=2x²−3x+1, f(2)=?",
 ["1","3","4","7"],
 "3"],
@@ -676,210 +1100,340 @@ const Math=[
 ["3/5","4/5","5/3","1/5"],
 "4/5"],
 
-["Solve ln(x)=0",
-["0","1","e","−1"],
-"1"],
-
 ["Derivative of x³",
 ["x²","2x²","3x²","3x"],
 "3x²"],
 
-["∫2x dx",
-["x²+C","2x²+C","x+C","2x+C"],
-"x²+C"],
+["Solve: 2x+6=14",
+["2","3","4","5"],
+"4"],
 
-["If a=(2,1), b=(1,3), a·b",
-["3","4","5","6"],
+["Factor x²−9",
+["(x−3)(x+3)","(x−9)(x+1)","(x−3)²","x(x−9)"],
+"(x−3)(x+3)"],
+
+["If a=3 and b=4, √(a²+b²)=?",
+["5","6","7","8"],
 "5"],
 
-["Probability of two heads with a fair coin twice",
-["1/2","1/3","1/4","3/4"],
-"1/4"],
+["Probability of an event with 3 favorable outcomes out of 10",
+["0.1","0.2","0.3","0.5"],
+"0.3"],
 
-["If log₂x=5, x=",
-["10","16","25","32"],
-"32"]
-];
+["Integral of 2x dx",
+["x²+C","2x²+C","x+C","x³+C"],
+"x²+C"]
 
-function save(){
- localStorage.setItem("skillrush",JSON.stringify(data));
- refresh();
+]
+
+};
+
+
+/* =========================
+   SAVE
+========================= */
+
+function saveState(){
+
+localStorage.setItem(
+"skillrush",
+JSON.stringify(state)
+);
+
+updateUI();
+
 }
 
-function refresh(){
 
-document.getElementById("xp").textContent=data.xp;
-document.getElementById("lives").textContent=data.xp>=12000?"∞":data.lives;
-document.getElementById("rank").textContent=getRank(data.xp);
+/* =========================
+   UI
+========================= */
 
-document.getElementById("username").value=data.name;
+function updateUI(){
 
-document.getElementById("country").value=data.country;
+document.getElementById("xp").textContent=
+state.xp.toLocaleString();
+
+document.getElementById("lives").textContent=
+state.xp>=12000 ? "∞" : state.lives;
+
+document.getElementById("streak").textContent=
+state.streak;
+
+document.getElementById("rank").textContent=
+getRank(state.xp);
+
+document.getElementById("profileUsername").value=
+state.username;
+
+document.getElementById("profileCountry").value=
+state.country;
+
+document.getElementById("rankXP").textContent=
+state.xp.toLocaleString();
 
 }
+
 
 function getRank(xp){
 
-if(xp>=12000)return"Diamond";
-if(xp>=7000)return"Platinum";
-if(xp>=3500)return"Gold";
-if(xp>=1500)return"Silver";
-return"Bronze";
+if(xp>=12000)return"💎 Diamond";
+if(xp>=7000)return"💠 Platinum";
+if(xp>=3500)return"🥇 Gold";
+if(xp>=1500)return"🥈 Silver";
+
+return"🥉 Bronze";
 
 }
 
-function show(id){
 
-document.querySelectorAll(".page").forEach(x=>{
-x.classList.remove("active");
+/* =========================
+   PAGE
+========================= */
+
+function showPage(id){
+
+document.querySelectorAll(".page")
+.forEach(p=>p.classList.remove("active"));
+
+document.getElementById(id)
+.classList.add("active");
+
+if(id==="learn")
+renderRoadmap();
+
+if(id==="rank")
+renderLeaderboard("english");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
 });
 
-document.getElementById(id).classList.add("active");
+}
 
-if(id==="learn")renderRoad();
-if(id==="rank")renderRank();
 
-window.scrollTo(0,0);
+/* =========================
+   WORLD
+========================= */
+
+function chooseWorld(world){
+
+state.world=world;
+state.subject="language";
+
+saveState();
+
+showPage("learn");
 
 }
 
-function selectWorld(w){
 
-world=w;
-subject="language";
+/* =========================
+   SUBJECT
+========================= */
 
-show("learn");
+function setSubject(subject){
 
-renderRoad();
+state.subject=subject;
 
-}
+saveState();
 
-function selectSubject(s){
-
-subject=s;
-
-renderRoad();
+renderRoadmap();
 
 }
 
-function renderRoad(){
 
-let arr=subject==="math"
-?Math
-:(world==="english"?English:Arabic);
+/* =========================
+   ROADMAP
+========================= */
 
-let progress=data[world][subject];
+function renderRoadmap(){
 
-document.getElementById("worldTitle").textContent=
+let world=state.world;
+let subject=state.subject;
+
+let title=
 subject==="math"
 ?"🧠 Mathematics Roadmap":
 world==="english"
 ?"🇬🇧 English Roadmap":
 "🌙 Arabic Roadmap";
 
-document.getElementById("roadmap").innerHTML="";
+document.getElementById("roadTitle")
+.textContent=title;
 
-arr.forEach((q,i)=>{
+let progress=
+state[world][subject];
 
-let div=document.createElement("div");
+let percent=
+Math.min(progress/12*100,100);
 
-div.className="lesson "+(i>progress?"locked":"");
+document.getElementById("roadProgress")
+.style.width=percent+"%";
 
-div.innerHTML=`
+
+let html="";
+
+for(let i=0;i<12;i++){
+
+let locked=i>progress;
+
+let status=
+i<progress
+?"✓ Completed":
+i===progress
+?"▶ Start Session":
+"🔒 Locked";
+
+html+=`
+
+<div
+class="lesson ${locked?"locked":""}"
+${locked?"":"onclick='startSession("+i+")'"}
+>
+
 <div class="node">
 ${i<progress?"✓":i+1}
 </div>
 
 <div>
+
 <b>Level ${i+1}</b>
-<br>
-<span>${i<progress?"Completed":i===progress?"Start Session":"🔒 Locked"}</span>
+
+<div class="muted">
+${status}
 </div>
+
+</div>
+
+</div>
+
 `;
 
-if(i===progress){
+}
 
-div.onclick=()=>{
-
-show("quiz");
-startQuiz();
-
-};
+document.getElementById("roadmap")
+.innerHTML=html;
 
 }
 
-document.getElementById("roadmap").appendChild(div);
 
-});
+/* =========================
+   SESSION
+========================= */
 
-}
+function startSession(level){
 
-function startQuiz(){
-
-qIndex=0;
+currentLevel=level;
+questionIndex=0;
 score=0;
 
-document.getElementById("start").style.display="none";
+showPage("quiz");
+
+document.getElementById("quizTitle")
+.textContent=
+(state.subject==="math"
+?"🧠 Math"
+:"📚 Language")
++" • Level "+(level+1);
 
 nextQuestion();
 
 }
 
+
+/* =========================
+   QUESTIONS
+========================= */
+
+function getQuestions(){
+
+if(state.subject==="math")
+return questionBank.math;
+
+if(state.world==="arabic")
+return questionBank.arabic;
+
+return questionBank.english;
+
+}
+
+
 function nextQuestion(){
 
-let questions=subject==="math"
-?Math
-:(world==="english"?English:Arabic);
+clearInterval(timer);
 
-if(qIndex>=10){
+let questions=getQuestions();
 
-finishQuiz();
+if(questionIndex>=questions.length){
+
+finishSession();
+
 return;
 
 }
 
-let q=questions[qIndex];
+let q=questions[questionIndex];
 
-document.getElementById("question").textContent=q[0];
+document.getElementById("question")
+.textContent=q[0];
 
-let html="";
+document.getElementById("quizInfo")
+.textContent=
+"Question "+(questionIndex+1)+" / 10";
 
-q[1].forEach(option=>{
+document.getElementById("answers")
+.innerHTML=
+q[1].map(answer=>`
 
-html+=`
-<button class="answer"
-onclick="answer('${option.replace(/'/g,"\\'")}','${q[2].replace(/'/g,"\\'")}')">
-${option}
+<button
+class="answer"
+onclick='answerQuestion(${JSON.stringify(answer)},${JSON.stringify(q[2])})'
+>
+${answer}
 </button>
-`;
 
-});
-
-document.getElementById("answers").innerHTML=html;
+`).join("");
 
 startTimer();
 
 }
 
+
+/* =========================
+   TIMER
+========================= */
+
 function startTimer(){
 
-clearInterval(interval);
+let seconds=
+state.subject==="math"
+?5
+:60;
 
-let time=60;
+let max=seconds;
 
-document.getElementById("timer").style.width="100%";
+document.getElementById("timerBar")
+.style.width="100%";
 
-interval=setInterval(()=>{
+timer=setInterval(()=>{
 
-time--;
+seconds--;
 
-document.getElementById("timer").style.width=(time/60*100)+"%";
+document.getElementById("timerBar")
+.style.width=
+(seconds/max*100)+"%";
 
-if(time<=0){
+if(seconds<=0){
 
-clearInterval(interval);
+clearInterval(timer);
 
-wrong();
+wrongAnswer();
+
+questionIndex++;
+
+setTimeout(nextQuestion,250);
 
 }
 
@@ -887,185 +1441,384 @@ wrong();
 
 }
 
-function answer(a,c){
 
-clearInterval(interval);
+/* =========================
+   ANSWER
+========================= */
 
-if(a===c){
+function answerQuestion(answer,correct){
+
+clearInterval(timer);
+
+if(answer===correct){
 
 score++;
 
-data.xp+=25;
+state.xp+=
+state.subject==="math"
+?50
+:30;
 
 }else{
 
-wrong();
+wrongAnswer();
 
 }
 
-qIndex++;
+questionIndex++;
 
-setTimeout(nextQuestion,200);
+saveState();
 
-}
-
-function wrong(){
-
-if(data.xp<12000){
-
-data.lives=Math.max(0,data.lives-1);
+setTimeout(nextQuestion,250);
 
 }
 
-}
 
-function finishQuiz(){
+function wrongAnswer(){
 
-clearInterval(interval);
+if(state.xp<12000){
 
-let key=subject;
-
-data[world][key]++;
-
-data.streak++;
-
-save();
-
-document.getElementById("answers").innerHTML="";
-
-document.getElementById("question").textContent=
-"🎉 Session Complete! "+score+"/10";
-
-document.getElementById("result").innerHTML=
-"⭐ You earned "+score*25+
-" XP<br><br>💡 Easy Solution is available after the session.";
-
-document.getElementById("start").style.display="inline-block";
+state.lives=
+Math.max(0,state.lives-1);
 
 }
 
-function battle(){
+}
 
-let opponents=world==="english"
-?["Luna 🇬🇧","Mia 🇺🇸","Arjun 🇮🇳"]
-:["Omar 🇪🇬","Amina 🇸🇦","Youssef 🇦🇪"];
 
-let opponent=opponents[Math.floor(Math.random()*opponents.length)];
+/* =========================
+   FINISH
+========================= */
 
-data.xp+=150;
+function finishSession(){
 
-save();
+clearInterval(timer);
 
-document.getElementById("battleResult").textContent=
-"🏆 You defeated "+opponent+"! +150 XP";
+state[state.world][state.subject]++;
+
+state.streak++;
+
+saveState();
+
+document.getElementById("question")
+.textContent="🎉 Level Complete!";
+
+document.getElementById("answers")
+.innerHTML="";
+
+document.getElementById("quizInfo")
+.innerHTML=`
+
+<b>Score: ${score}/10</b>
+
+<br><br>
+
+⭐ XP earned:
+${score*(state.subject==="math"?50:30)}
+
+<br><br>
+
+💡 Easy Solution
+
+<p class="muted">
+You can review the explanations after completing the level.
+</p>
+
+`;
 
 }
 
-function renderRank(){
 
-let players=rankWorld==="english"
+/* =========================
+   BATTLE
+========================= */
+
+function startBattle(){
+
+let opponents=
+state.world==="english"
 ?[
-["Luna","🇬🇧","Diamond",18200],
-["Mia","🇺🇸","Platinum",14100],
-["Arjun","🇮🇳","Gold",9200],
-["Rafi","🇧🇩","Gold",6500]
+"Luna 🇬🇧",
+"Mia 🇺🇸",
+"Arjun 🇮🇳",
+"Noah 🇨🇦"
 ]
 :[
-["Omar","🇪🇬","Diamond",17600],
-["Amina","🇸🇦","Platinum",14900],
-["Youssef","🇦🇪","Gold",9000],
-["Sara","🇲🇦","Gold",6100]
+"Omar 🇪🇬",
+"Amina 🇸🇦",
+"Youssef 🇦🇪",
+"Sara 🇲🇦"
 ];
 
+let opponent=
+opponents[
+Math.floor(Math.random()*opponents.length)
+];
+
+state.xp+=100;
+
+saveState();
+
+document.getElementById("battleMessage")
+.textContent=
+"🏆 You defeated "+opponent+"! +100 XP";
+
+}
+
+
+/* =========================
+   LEADERBOARD
+========================= */
+
+function renderLeaderboard(world){
+
+let players=
+world==="english"
+
+?[
+["Luna","🇬🇧","💎 Diamond",18200],
+["Mia","🇺🇸","💠 Platinum",14100],
+["Arjun","🇮🇳","🥇 Gold",9200],
+["Rafi","🇧🇩","🥇 Gold",6500]
+]
+
+:[
+["Omar","🇪🇬","💎 Diamond",17600],
+["Amina","🇸🇦","💠 Platinum",14900],
+["Youssef","🇦🇪","🥇 Gold",9000],
+["Sara","🇲🇦","🥇 Gold",6100]
+];
+
+
 players.push([
-data.name,
-data.country.split(" ")[0],
-getRank(data.xp),
-data.xp
+state.username,
+state.country,
+getRank(state.xp),
+state.xp
 ]);
 
 players.sort((a,b)=>b[3]-a[3]);
 
-document.getElementById("leaderboard").innerHTML=
+document.getElementById("rankWorld")
+.textContent=
+world==="english"
+?"English"
+:"Arabic";
+
+document.getElementById("topPlayer")
+.textContent=
+players[0][0];
+
+document.getElementById("leaderboard")
+.innerHTML=
 players.map((p,i)=>`
+
 <tr>
+
 <td>${i+1}</td>
-<td><b>${p[0]}</b></td>
-<td>${p[1]}</td>
-<td>${p[2]}</td>
-<td>${p[3].toLocaleString()}</td>
+
+<td>
+${p[0]}
+</td>
+
+<td>
+${p[1]}
+</td>
+
+<td>
+<span class="badge">${p[2]}</span>
+</td>
+
+<td>
+${p[3].toLocaleString()}
+</td>
+
 </tr>
+
 `).join("");
 
 }
 
-function saveProfile(){
 
-data.name=
-document.getElementById("username").value.trim()||"Guest";
+/* =========================
+   PROFILE
+========================= */
 
-data.country=
-document.getElementById("country").value;
+function createAvatars(){
 
-save();
+document.getElementById("avatars")
+.innerHTML=
+avatars.map(a=>`
 
-document.getElementById("saved").textContent=
-"✓ Profile saved";
+<button
+class="avatar ${a===state.avatar?"selected":""}"
+onclick='selectAvatar(${JSON.stringify(a)})'
+>
+${a}
+</button>
+
+`).join("");
 
 }
+
+
+function selectAvatar(avatar){
+
+state.avatar=avatar;
+
+saveState();
+
+createAvatars();
+
+}
+
+
+function saveProfile(){
+
+let username=
+document.getElementById("profileUsername")
+.value.trim();
+
+if(username.length<3){
+
+document.getElementById("profileMessage")
+.textContent=
+"Username must be at least 3 characters.";
+
+return;
+
+}
+
+state.username=username;
+
+state.country=
+document.getElementById("profileCountry")
+.value;
+
+saveState();
+
+document.getElementById("profileMessage")
+.textContent=
+"✓ Profile saved successfully.";
+
+}
+
+
+/* =========================
+   SIGNUP
+========================= */
+
+function signup(){
+
+let username=
+document.getElementById("authUsername")
+.value.trim();
+
+let password=
+document.getElementById("authPassword")
+.value;
+
+let country=
+document.getElementById("authCountry")
+.value;
+
+if(username.length<3){
+
+document.getElementById("authMessage")
+.textContent=
+"Username must be at least 3 characters.";
+
+return;
+
+}
+
+if(password.length<6){
+
+document.getElementById("authMessage")
+.textContent=
+"Password must be at least 6 characters.";
+
+return;
+
+}
+
+state.username=username;
+state.country=country;
+
+saveState();
+
+document.getElementById("authMessage")
+.textContent=
+"✓ Account created on this device. Real cloud account will be connected next.";
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function login(){
+
+let username=
+document.getElementById("authUsername")
+.value.trim();
+
+if(username.length<3){
+
+document.getElementById("authMessage")
+.textContent=
+"Enter your username.";
+
+return;
+
+}
+
+state.username=username;
+
+saveState();
+
+document.getElementById("authMessage")
+.textContent=
+"✓ Logged in on this device.";
+
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
 
 function toggleDark(){
 
 document.body.classList.toggle("dark");
 
 localStorage.setItem(
-"dark",
+"skillrush-dark",
 document.body.classList.contains("dark")
 );
 
 }
 
-function createAvatars(){
 
-let box=document.getElementById("avatars");
+/* =========================
+   START
+========================= */
 
-box.innerHTML="";
+if(
+localStorage.getItem("skillrush-dark")
+==="true"
+){
 
-avatars.forEach(a=>{
-
-let b=document.createElement("button");
-
-b.className="avatar";
-
-b.textContent=a;
-
-if(a===data.avatar)b.classList.add("selected");
-
-b.onclick=()=>{
-
-data.avatar=a;
-
-document.querySelectorAll(".avatar")
-.forEach(x=>x.classList.remove("selected"));
-
-b.classList.add("selected");
-
-save();
-
-};
-
-box.appendChild(b);
-
-});
+document.body.classList.add("dark");
 
 }
 
-if(localStorage.getItem("dark")==="true")
-document.body.classList.add("dark");
-
 createAvatars();
-refresh();
-renderRank();
+
+updateUI();
+
+renderLeaderboard("english");
 
 </script>
 
