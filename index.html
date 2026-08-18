@@ -1,138 +1,172 @@
-<!-- SEO -->
-<meta name="description" content="Skill Rush is a modern learning platform for English, Arabic and advanced Mathematics. Learn, practice, battle and climb the global leaderboard.">
-<meta name="keywords" content="Skill Rush, math practice, A Level mathematics, English learning, Arabic learning, math MCQ, global leaderboard, learning app">
-<meta name="author" content="Skill Rush">
-
-<!-- Search Engine -->
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow">
-
-<!-- Mobile -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#6948ff">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Skill Rush — Learn • Battle • Rise">
-<meta property="og:description" content="Learn English, Arabic and advanced Mathematics. Complete levels, battle players and climb the global leaderboard.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://delicate-dawn-0fb6.tahsinulislam106.workers.dev/">
-
-<!-- Twitter / Social Preview -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Skill Rush — Learn • Battle • Rise">
-<meta name="twitter:description" content="A modern global learning and math challenge platform.">
-
-<!-- Google Search Console verification -->
-<!-- Google থেকে verification code পেলে এখানে বসাবে -->
-<!-- <meta name="google-site-verification" content="YOUR_CODE_HERE"> -->
-
-<title>Skill Rush — Learn • Battle • Rise</title>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Skill Rush — Learn • Battle • Rise</title>
+<title>SkillRush — Learn • Connect • Compete</title>
 
-<meta name="description" content="Skill Rush — modern English, Arabic and advanced Mathematics learning platform. Learn, battle and climb the global leaderboard.">
-<meta name="robots" content="index,follow">
-<meta name="theme-color" content="#6c4cff">
+<meta name="description"
+content="SkillRush is a global learning, communication and competition universe.">
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 :root{
-  --primary:#6948ff;
-  --primary2:#8b6cff;
-  --bg:#f5f6fb;
-  --card:#fff;
-  --text:#171b2d;
-  --muted:#697187;
-  --border:#e5e7ef;
-  --success:#20b26b;
-  --danger:#e34b63;
+  --bg:#060914;
+  --panel:#0d1424;
+  --panel2:#111b30;
+  --border:#243452;
+  --text:#f5f7ff;
+  --muted:#8f9bb5;
+  --primary:#7447ff;
+  --primary2:#9a6cff;
+  --cyan:#16d9ff;
+  --green:#25d58b;
+  --red:#ff5370;
+  --yellow:#ffc94a;
+}
+
+body.light{
+  --bg:#f3f6fb;
+  --panel:#ffffff;
+  --panel2:#eef2f8;
+  --border:#d7dfed;
+  --text:#111827;
+  --muted:#667085;
 }
 
 body{
-  margin:0;
-  font-family:Inter,Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
-  transition:.25s;
+  font-family:Inter,Arial,sans-serif;
+  min-height:100vh;
 }
 
-body.dark{
-  --bg:#090d18;
-  --card:#131a2b;
-  --text:#f7f8ff;
-  --muted:#a9b0c4;
-  --border:#293349;
-}
-
-button,input,select{
+button,input{
   font:inherit;
 }
 
 button{
   cursor:pointer;
+  border:0;
 }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:var(--card);
-  border-bottom:1px solid var(--border);
-  box-shadow:0 5px 25px #00000008;
-}
-
-.nav{
-  max-width:1250px;
-  margin:auto;
-  padding:14px 4%;
+.app{
   display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+  min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:230px;
+  background:var(--panel);
+  border-right:1px solid var(--border);
+  padding:18px 12px;
+  position:fixed;
+  top:0;
+  bottom:0;
+  overflow:auto;
 }
 
 .logo{
-  font-size:27px;
-  font-weight:950;
-  color:var(--primary);
-  letter-spacing:-1px;
+  font-size:25px;
+  font-weight:900;
+  margin-bottom:25px;
+  padding:8px;
 }
 
 .logo span{
-  color:var(--text);
+  color:var(--primary2);
 }
 
-.navlinks{
+.nav{
   display:flex;
-  flex-wrap:wrap;
-  justify-content:flex-end;
+  flex-direction:column;
   gap:5px;
 }
 
-.navlinks button{
-  border:0;
+.nav button{
+  text-align:left;
+  padding:12px;
+  border-radius:12px;
   background:transparent;
+  color:var(--muted);
+}
+
+.nav button:hover,
+.nav button.active{
+  background:linear-gradient(90deg,#6840ff22,#7447ff55);
+  color:white;
+}
+
+.nav-icon{
+  width:25px;
+  display:inline-block;
+}
+
+/* MAIN */
+
+.main{
+  margin-left:230px;
+  width:calc(100% - 230px);
+}
+
+/* TOPBAR */
+
+.topbar{
+  height:68px;
+  background:var(--panel);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:10px 22px;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.search{
+  flex:1;
+  max-width:650px;
+}
+
+.search input{
+  width:100%;
+  background:var(--panel2);
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:12px 18px;
   color:var(--text);
-  padding:9px 12px;
-  border-radius:11px;
-  font-weight:800;
+  outline:none;
 }
 
-.navlinks button:hover{
-  background:#eeeaff;
-  color:var(--primary);
+.top-actions{
+  margin-left:auto;
+  display:flex;
+  gap:10px;
 }
 
-.container{
-  width:92%;
-  max-width:1250px;
-  margin:30px auto 70px;
+.icon-btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--panel2);
+  color:var(--text);
+}
+
+/* CONTENT */
+
+.content{
+  padding:22px;
+  max-width:1600px;
+  margin:auto;
 }
 
 .page{
@@ -143,376 +177,385 @@ header{
   display:block;
 }
 
-.hero{
-  padding:55px;
-  border-radius:32px;
-  color:#fff;
-  background:
-    radial-gradient(circle at 85% 15%,#ffffff35,transparent 25%),
-    linear-gradient(135deg,#5e40ed,#8d70ff);
-  box-shadow:0 25px 60px #6948ff35;
-}
+/* HERO */
 
-.hero small{
-  font-weight:900;
-  letter-spacing:2px;
-  opacity:.8;
+.hero{
+  min-height:270px;
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:30px;
+  background:
+    radial-gradient(circle at 80% 20%,#7347ff77,transparent 30%),
+    radial-gradient(circle at 20% 80%,#00cfff44,transparent 30%),
+    var(--panel);
+  position:relative;
+  overflow:hidden;
 }
 
 .hero h1{
-  margin:12px 0;
-  font-size:52px;
-  line-height:1.05;
+  font-size:46px;
+  margin-bottom:12px;
+}
+
+.hero h1 span{
+  color:var(--primary2);
 }
 
 .hero p{
-  max-width:720px;
+  color:var(--muted);
+  max-width:650px;
   line-height:1.7;
-  opacity:.92;
 }
 
-.btn{
-  border:0;
-  border-radius:13px;
-  padding:13px 20px;
-  margin:5px;
-  font-weight:900;
-  transition:.2s;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-}
-
-.primary{
-  background:var(--primary);
-  color:#fff;
-}
-
-.secondary{
-  background:#eeeaff;
-  color:#5d40e8;
-}
-
-.white{
-  background:#fff;
-  color:#5e40ed;
-}
-
-.darkbtn{
-  background:#20283b;
-  color:#fff;
-}
-
-.danger{
-  background:var(--danger);
-  color:#fff;
+.robot{
+  position:absolute;
+  right:60px;
+  bottom:-15px;
+  font-size:130px;
+  filter:drop-shadow(0 0 30px #7047ff);
 }
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin:20px 0;
+  display:flex;
+  gap:12px;
+  margin-top:25px;
+  flex-wrap:wrap;
 }
 
 .stat{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:19px;
-  padding:18px;
-  box-shadow:0 8px 25px #00000007;
+  background:#ffffff0b;
+  border:1px solid #ffffff14;
+  padding:12px 18px;
+  border-radius:15px;
 }
 
 .stat b{
   display:block;
-  font-size:23px;
-  margin-top:5px;
+  font-size:20px;
 }
 
-.grid{
+/* WORLD */
+
+.world-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:23px;
-  padding:25px;
-  box-shadow:0 10px 30px #00000008;
-}
-
-.card h2{
-  margin-top:0;
-}
-
-.muted{
-  color:var(--muted);
-  line-height:1.65;
-}
-
-.worlds{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:14px;
+  margin:20px 0;
 }
 
 .world{
-  background:var(--card);
+  min-height:125px;
+  border-radius:18px;
   border:1px solid var(--border);
-  border-radius:27px;
-  padding:32px;
+  padding:18px;
+  cursor:pointer;
   transition:.2s;
 }
 
 .world:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 45px #00000012;
-}
-
-.worldicon{
-  font-size:58px;
-}
-
-.world h2{
-  font-size:30px;
-}
-
-.roadmap{
-  display:grid;
-  gap:13px;
-  margin-top:20px;
-}
-
-.lesson{
-  display:flex;
-  align-items:center;
-  gap:17px;
-  padding:17px;
-  border-radius:19px;
-  background:var(--card);
-  border:1px solid var(--border);
-  transition:.2s;
-}
-
-.lesson:hover{
-  transform:translateX(4px);
+  transform:translateY(-4px);
   border-color:var(--primary);
 }
 
-.lesson.locked{
-  opacity:.45;
-  cursor:not-allowed;
+.world .wicon{
+  font-size:38px;
+  margin-bottom:12px;
 }
 
-.node{
-  width:52px;
-  height:52px;
-  flex:none;
-  border-radius:17px;
+/* GRID */
+
+.grid{
   display:grid;
-  place-items:center;
-  background:#eeeaff;
-  color:#6041e8;
-  font-weight:950;
-  font-size:18px;
+  grid-template-columns:2fr 1fr;
+  gap:18px;
 }
 
-.progress{
-  height:9px;
-  background:#e4e6ed;
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
   border-radius:20px;
-  overflow:hidden;
-  margin:12px 0 22px;
-}
-
-.progress div{
-  height:100%;
-  background:linear-gradient(90deg,var(--primary),var(--primary2));
-  border-radius:20px;
-}
-
-.timer{
-  height:9px;
-  background:#dddfe7;
-  border-radius:20px;
-  overflow:hidden;
-  margin:15px 0 25px;
-}
-
-.timer div{
-  width:100%;
-  height:100%;
-  background:var(--primary);
-  transition:.2s linear;
-}
-
-.answers{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:13px;
-}
-
-.answer{
   padding:18px;
-  border:2px solid var(--border);
-  border-radius:16px;
-  background:var(--card);
-  color:var(--text);
-  text-align:left;
-  font-weight:850;
-  transition:.15s;
 }
 
-.answer:hover{
-  border-color:var(--primary);
-  background:#eeeaff;
+.card h2{
+  margin-bottom:15px;
 }
 
-.badge{
-  display:inline-block;
-  padding:7px 11px;
-  border-radius:10px;
-  background:#eeeaff;
-  color:#6041e8;
-  font-weight:900;
+/* CHAT */
+
+.chat{
+  height:430px;
+  display:flex;
+  flex-direction:column;
 }
 
-.auth{
-  max-width:480px;
-  margin:auto;
-}
-
-input,select{
-  width:100%;
-  padding:14px;
-  border:1px solid var(--border);
-  border-radius:13px;
-  background:var(--card);
-  color:var(--text);
-  margin:6px 0 14px;
-  outline:none;
-}
-
-input:focus,select:focus{
-  border-color:var(--primary);
-}
-
-.avatarGrid{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
+.messages{
+  flex:1;
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
   gap:10px;
-  margin:15px 0;
+}
+
+.msg{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
 }
 
 .avatar{
-  border:2px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  border-radius:15px;
-  padding:12px;
-  font-size:27px;
-}
-
-.avatar.selected{
-  border-color:var(--primary);
-  background:#eeeaff;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  background:var(--card);
-  border-radius:18px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#303d5d,#0d1322);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--border);
   overflow:hidden;
 }
 
-th,td{
+.msg-body{
+  background:var(--panel2);
+  padding:9px 12px;
+  border-radius:13px;
+  max-width:75%;
+}
+
+.msg-body small{
+  color:var(--muted);
+}
+
+.chat-input{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.chat-input input{
+  flex:1;
+  background:var(--panel2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:11px;
+  color:var(--text);
+}
+
+/* BUTTON */
+
+.btn{
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  color:white;
+  padding:11px 17px;
+  border-radius:12px;
+  font-weight:700;
+}
+
+.btn.secondary{
+  background:var(--panel2);
+  border:1px solid var(--border);
+}
+
+.btn.green{
+  background:var(--green);
+  color:#06130e;
+}
+
+/* FRIENDS */
+
+.people{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+}
+
+.person{
+  background:var(--panel2);
   padding:15px;
-  text-align:left;
+  border-radius:15px;
+  text-align:center;
+}
+
+.person .avatar{
+  margin:auto auto 8px;
+  width:55px;
+  height:55px;
+}
+
+/* LEADERBOARD */
+
+.rank-row{
+  display:grid;
+  grid-template-columns:50px 1fr 100px 90px;
+  gap:10px;
+  align-items:center;
+  padding:13px;
   border-bottom:1px solid var(--border);
 }
 
-th{
-  color:var(--muted);
-  font-size:13px;
+.rank{
+  font-weight:900;
+  color:var(--yellow);
 }
 
-.ranktop{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
+/* ROADMAP */
+
+.roadmap{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.level{
+  display:flex;
+  align-items:center;
   gap:15px;
-  margin:20px 0;
-}
-
-.rankbox{
-  text-align:center;
-  background:var(--card);
+  background:var(--panel);
   border:1px solid var(--border);
-  border-radius:20px;
-  padding:22px;
+  border-radius:18px;
+  padding:18px;
 }
 
-.rankbox .emoji{
-  font-size:40px;
+.level.locked{
+  opacity:.45;
 }
 
-.hidden{
-  display:none!important;
+.level-number{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--cyan));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
 }
 
-.notice{
-  padding:14px;
-  border-radius:13px;
-  background:#eeeaff;
-  color:#5e40e8;
-  margin:15px 0;
-  font-weight:750;
+/* PROFILE */
+
+.profile{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:20px;
 }
 
-footer{
+.profile-avatar{
   text-align:center;
-  color:var(--muted);
+}
+
+.big-avatar{
+  width:170px;
+  height:170px;
+  margin:auto;
+  border-radius:50%;
+  background:linear-gradient(135deg,#293450,#10182a);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:90px;
+  border:4px solid var(--primary);
+}
+
+/* AI */
+
+.ai-box{
+  background:
+    linear-gradient(135deg,#7447ff22,#00d9ff14),
+    var(--panel);
+  border:1px solid var(--primary);
+}
+
+.ai-message{
+  padding:15px;
+  background:var(--panel2);
+  border-radius:15px;
+  margin-bottom:10px;
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:#000b;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(500px,92%);
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:22px;
   padding:25px;
 }
 
-@media(max-width:850px){
+.form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
 
-  .nav{
-    flex-direction:column;
-    align-items:flex-start;
+.form input,
+.form select{
+  background:var(--panel2);
+  color:var(--text);
+  border:1px solid var(--border);
+  padding:12px;
+  border-radius:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .sidebar{
+    width:70px;
   }
 
-  .navlinks{
-    justify-content:flex-start;
+  .logo{
+    font-size:0;
   }
 
-  .hero{
-    padding:32px;
+  .logo:first-letter{
+    font-size:25px;
+  }
+
+  .nav button{
+    text-align:center;
+    font-size:0;
+  }
+
+  .nav-icon{
+    font-size:20px;
+  }
+
+  .main{
+    margin-left:70px;
+    width:calc(100% - 70px);
+  }
+
+  .grid{
+    grid-template-columns:1fr;
   }
 
   .hero h1{
-    font-size:38px;
+    font-size:32px;
   }
 
-  .stats{
-    grid-template-columns:1fr 1fr;
+  .robot{
+    opacity:.25;
+    right:15px;
   }
 
-  .grid,
-  .worlds,
-  .ranktop{
+  .profile{
     grid-template-columns:1fr;
-  }
-
-  .answers{
-    grid-template-columns:1fr;
-  }
-
-  .avatarGrid{
-    grid-template-columns:repeat(4,1fr);
   }
 }
 </style>
@@ -520,30 +563,106 @@ footer{
 
 <body>
 
-<header>
-<div class="nav">
+<div class="app">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
 
 <div class="logo">
-skill<span>rush</span>
+⚡ Skill<span>Rush</span>
 </div>
 
-<div class="navlinks">
-<button onclick="showPage('home')">Home</button>
-<button onclick="showPage('worlds')">Worlds</button>
-<button onclick="showPage('learn')">Learn</button>
-<button onclick="showPage('battle')">⚔️ Battle</button>
-<button onclick="showPage('rank')">🏆 Rank</button>
-<button onclick="showPage('profile')">Profile</button>
-<button onclick="showPage('auth')">Login</button>
-<button onclick="toggleDark()">🌙</button>
-</div>
+<div class="nav">
+
+<button class="active" onclick="page('home')">
+<span class="nav-icon">🏠</span> Home
+</button>
+
+<button onclick="page('profile')">
+<span class="nav-icon">👤</span> My Profile
+</button>
+
+<button onclick="page('learn')">
+<span class="nav-icon">📚</span> Learn
+</button>
+
+<button onclick="page('worlds')">
+<span class="nav-icon">🌍</span> Worlds
+</button>
+
+<button onclick="page('roadmap')">
+<span class="nav-icon">🗺️</span> Roadmap
+</button>
+
+<button onclick="page('practice')">
+<span class="nav-icon">🧠</span> Practice
+</button>
+
+<button onclick="page('battle')">
+<span class="nav-icon">⚔️</span> Battles
+</button>
+
+<button onclick="page('leaderboard')">
+<span class="nav-icon">🏆</span> Leaderboard
+</button>
+
+<button onclick="page('community')">
+<span class="nav-icon">👥</span> Community
+</button>
+
+<button onclick="page('friends')">
+<span class="nav-icon">🤝</span> Friends
+</button>
+
+<button onclick="page('messages')">
+<span class="nav-icon">💬</span> Messenger
+</button>
+
+<button onclick="page('groups')">
+<span class="nav-icon">👨‍👩‍👧</span> Groups
+</button>
+
+<button onclick="page('events')">
+<span class="nav-icon">📅</span> Events
+</button>
+
+<button onclick="page('achievements')">
+<span class="nav-icon">🏅</span> Achievements
+</button>
+
+<button onclick="page('settings')">
+<span class="nav-icon">⚙️</span> Settings
+</button>
 
 </div>
+
+</aside>
+
+<!-- MAIN -->
+
+<main class="main">
+
+<header class="topbar">
+
+<div class="search">
+<input
+id="search"
+placeholder="Search users, groups, lessons, worlds..."
+oninput="globalSearch()">
+</div>
+
+<div class="top-actions">
+
+<button class="icon-btn" onclick="page('worlds')">🌍</button>
+<button class="icon-btn" onclick="page('messages')">💬</button>
+<button class="icon-btn" onclick="notifications()">🔔</button>
+
+</div>
+
 </header>
 
-
-<main class="container">
-
+<div class="content">
 
 <!-- HOME -->
 
@@ -551,73 +670,246 @@ skill<span>rush</span>
 
 <div class="hero">
 
-<small>SKILL RUSH 2.0</small>
-
-<h1>Learn. Battle. Rise.</h1>
+<h1>
+Welcome to <span>SkillRush</span>
+</h1>
 
 <p>
-A modern learning universe where you master English,
-Arabic and advanced Mathematics, complete sessions,
-battle other learners and climb the global leaderboard.
+Learn • Connect • Compete • Grow.
+SkillRush is being built as a global learning and communication universe.
 </p>
-
-<button class="btn white" onclick="showPage('worlds')">
-Start Learning →
-</button>
-
-<button class="btn darkbtn" onclick="showPage('rank')">
-🏆 World Ranking
-</button>
-
-</div>
-
 
 <div class="stats">
 
 <div class="stat">
-⭐ XP
-<b id="xp">0</b>
+<b id="userCount">31.8M+</b>
+Users
 </div>
 
 <div class="stat">
-❤️ Lives
-<b id="lives">3</b>
+<b>195+</b>
+Countries
 </div>
 
 <div class="stat">
-🔥 Streak
-<b id="streak">1</b>
+<b>12</b>
+Worlds
 </div>
 
 <div class="stat">
-🏅 Rank
-<b id="rank">Bronze</b>
+<b>∞</b>
+Possibilities
 </div>
 
 </div>
 
+<div class="robot">
+🤖
+</div>
+
+</div>
+
+<div class="world-grid">
+
+<div class="world" onclick="openWorld('Math')">
+<div class="wicon">📐</div>
+<h3>Math World</h3>
+<p>A-Level Mathematics</p>
+</div>
+
+<div class="world" onclick="openWorld('English')">
+<div class="wicon">📖</div>
+<h3>English World</h3>
+<p>Learn English</p>
+</div>
+
+<div class="world" onclick="openWorld('Arabic')">
+<div class="wicon">ع</div>
+<h3>Arabic World</h3>
+<p>Learn Arabic</p>
+</div>
+
+<div class="world">
+<div class="wicon">🔬</div>
+<h3>Science World</h3>
+<p>Coming soon</p>
+</div>
+
+<div class="world">
+<div class="wicon">💻</div>
+<h3>Coding World</h3>
+<p>Coming soon</p>
+</div>
+
+<div class="world">
+<div class="wicon">🌱</div>
+<h3>Life Skills</h3>
+<p>Coming soon</p>
+</div>
+
+</div>
 
 <div class="grid">
 
-<div class="card">
-<h2>🌎 Two Worlds</h2>
-<p class="muted">
-English World and Arabic World are separate learning environments.
-</p>
+<div class="card chat">
+
+<h2>🌎 Global Communication</h2>
+
+<div class="messages" id="globalMessages">
+
+<div class="msg">
+<div class="avatar">🤖</div>
+<div class="msg-body">
+<b>Alex 🇺🇸</b>
+<br>
+Hello everyone! 👋
+<small>2 min ago</small>
+</div>
+</div>
+
+<div class="msg">
+<div class="avatar">🤖</div>
+<div class="msg-body">
+<b>Amina 🇪🇬</b>
+<br>
+السلام عليكم
+<small>1 min ago</small>
+</div>
+</div>
+
+<div class="msg">
+<div class="avatar">🤖</div>
+<div class="msg-body">
+<b>Rahman 🇧🇩</b>
+<br>
+SkillRush is amazing ❤️
+<small>just now</small>
+</div>
+</div>
+
+</div>
+
+<div class="chat-input">
+
+<input
+id="globalInput"
+placeholder="Write a message..."
+onkeydown="if(event.key==='Enter')sendGlobalMessage()">
+
+<button class="btn" onclick="sendGlobalMessage()">
+➤
+</button>
+
+</div>
+
 </div>
 
 <div class="card">
-<h2>🧠 Advanced Math</h2>
-<p class="muted">
-A-Level style mathematics with MCQ sessions and timed challenges.
-</p>
+
+<h2>🏆 World Leaderboard</h2>
+
+<div id="miniLeaderboard"></div>
+
+<button class="btn" onclick="page('leaderboard')">
+View Full Ranking
+</button>
+
 </div>
 
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="page">
+
+<div class="profile">
+
+<div class="card profile-avatar">
+
+<div class="big-avatar">
+🤖
+</div>
+
+<h2 style="margin-top:15px">
+Tahsin
+</h2>
+
+<p>🇧🇩 Bangladesh</p>
+
+<br>
+
+<button class="btn" onclick="avatarCreator()">
+Edit Avatar
+</button>
+
+</div>
+
+<div>
+
 <div class="card">
-<h2>⚔️ Battle Arena</h2>
-<p class="muted">
-Fight other learners without spending your learning lives.
+
+<h1>Tahsin</h1>
+
+<p style="color:var(--muted)">
+Level 42 • Diamond II
 </p>
+
+<br>
+
+<div class="stats">
+
+<div class="stat">
+<b>12,430</b>
+XP
+</div>
+
+<div class="stat">
+<b>127</b>
+Day Streak
+</div>
+
+<div class="stat">
+<b>379</b>
+Battles
+</div>
+
+<div class="stat">
+<b>1.2K</b>
+Friends
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>Progress</h2>
+
+<p>Next Level</p>
+
+<div style="
+height:10px;
+background:var(--panel2);
+border-radius:20px;
+overflow:hidden;
+margin-top:10px">
+
+<div style="
+width:78%;
+height:100%;
+background:linear-gradient(90deg,var(--primary),var(--cyan))">
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -629,49 +921,60 @@ Fight other learners without spending your learning lives.
 
 <section id="worlds" class="page">
 
-<h1>Choose Your World</h1>
+<h1>🌍 SkillRush Worlds</h1>
 
-<p class="muted">
-Select the world where you want to learn and compete.
+<p style="color:var(--muted);margin:10px 0 20px">
+Choose your world.
 </p>
 
-<div class="worlds">
+<div class="world-grid">
 
-<div class="world" onclick="chooseWorld('english')">
-
-<div class="worldicon">🇬🇧</div>
-
-<h2>English World</h2>
-
-<p class="muted">
-Duolingo-style English learning for everyone,
-plus advanced mathematics.
-</p>
-
-<button class="btn primary">
-Enter English World
-</button>
-
+<div class="world" onclick="openWorld('Math')">
+📐<h2>Math World</h2>
+<p>A-Level Mathematics</p>
 </div>
 
+<div class="world" onclick="openWorld('English')">
+📚<h2>English World</h2>
+<p>For everyone</p>
+</div>
 
-<div class="world" onclick="chooseWorld('arabic')">
+<div class="world" onclick="openWorld('Arabic')">
+ع<h2>Arabic World</h2>
+<p>Learn Arabic</p>
+</div>
 
-<div class="worldicon">🌙</div>
+<div class="world">
+🔬<h2>Science</h2>
+<p>Future world</p>
+</div>
 
-<h2>Arabic World</h2>
+<div class="world">
+💻<h2>Coding</h2>
+<p>Future world</p>
+</div>
 
-<p class="muted" dir="rtl">
-تعلم اللغة العربية والرياضيات من خلال مستويات وأسئلة تفاعلية.
-</p>
-
-<button class="btn primary">
-دخول العالم العربي
-</button>
-
+<div class="world">
+🌱<h2>Life Skills</h2>
+<p>Future world</p>
 </div>
 
 </div>
+
+</section>
+
+
+<!-- ROADMAP -->
+
+<section id="roadmap" class="page">
+
+<h1>🗺️ Mathematics Roadmap</h1>
+
+<p style="color:var(--muted);margin:10px 0 20px">
+Complete each level to unlock the next one.
+</p>
+
+<div class="roadmap" id="mathRoadmap"></div>
 
 </section>
 
@@ -680,53 +983,89 @@ Enter English World
 
 <section id="learn" class="page">
 
-<div class="card">
+<h1>📚 Learning Hub</h1>
 
-<h1 id="roadTitle">English Roadmap</h1>
+<div class="world-grid">
 
-<p class="muted">
-Complete each level to unlock the next one.
-Each session contains 10 questions.
-</p>
-
-<div class="progress">
-<div id="roadProgress"></div>
+<div class="world" onclick="openWorld('Math')">
+📐
+<h2>Mathematics</h2>
+<p>Foundation → A-Level</p>
 </div>
 
-<button class="btn primary" onclick="setSubject('language')">
-📚 Language
+<div class="world" onclick="openWorld('English')">
+📖
+<h2>English</h2>
+<p>Beginner → Advanced</p>
+</div>
+
+<div class="world" onclick="openWorld('Arabic')">
+ع
+<h2>Arabic</h2>
+<p>Beginner → Advanced</p>
+</div>
+
+</div>
+
+<div class="card ai-box">
+
+<h2>🤖 SkillRush AI Tutor</h2>
+
+<div class="ai-message" id="aiMessage">
+Hello! I'm your SkillRush AI tutor.
+Ask me about a lesson, mistake or concept.
+</div>
+
+<div class="chat-input">
+
+<input
+id="aiInput"
+placeholder="Ask SkillRush AI...">
+
+<button class="btn" onclick="askAI()">
+Ask AI
 </button>
 
-<button class="btn primary" onclick="setSubject('math')">
-🧠 Math
-</button>
-
-<div id="roadmap" class="roadmap"></div>
+</div>
 
 </div>
 
 </section>
 
 
-<!-- QUIZ -->
+<!-- PRACTICE -->
 
-<section id="quiz" class="page">
+<section id="practice" class="page">
+
+<h1>🧠 Practice</h1>
 
 <div class="card">
 
-<h1 id="quizTitle">Session</h1>
+<h2 id="question">
+What is the value of x if 2x + 6 = 14?
+</h2>
 
-<p class="muted" id="quizInfo">
-Question 1 / 10
-</p>
+<div class="world-grid">
 
-<div class="timer">
-<div id="timerBar"></div>
+<button class="btn secondary" onclick="answer(4)">
+A) 4
+</button>
+
+<button class="btn secondary" onclick="answer(5)">
+B) 5
+</button>
+
+<button class="btn secondary" onclick="answer(6)">
+C) 6
+</button>
+
+<button class="btn secondary" onclick="answer(8)">
+D) 8
+</button>
+
 </div>
 
-<h2 id="question"></h2>
-
-<div id="answers" class="answers"></div>
+<p id="answerResult"></p>
 
 </div>
 
@@ -737,1088 +1076,824 @@ Question 1 / 10
 
 <section id="battle" class="page">
 
-<div class="hero">
+<h1>⚔️ Battle Arena</h1>
 
-<small>BATTLE ARENA</small>
+<div class="world-grid">
 
-<h1>⚔️ Challenge the World</h1>
+<div class="world">
 
-<p>
-Battle mode does not consume learning lives.
-English players battle in English World and
-Arabic players battle in Arabic World.
-</p>
+⚡
+<h2>Quick Battle</h2>
+<p>1 vs 1 challenge</p>
 
-<button class="btn white" onclick="startBattle()">
+<button class="btn" onclick="startBattle()">
 Find Opponent
 </button>
 
-<h2 id="battleMessage"></h2>
+</div>
+
+<div class="world">
+
+🏆
+<h2>Ranked Battle</h2>
+<p>Increase your rating</p>
+
+<button class="btn">
+Ranked Match
+</button>
 
 </div>
 
-</section>
+<div class="world">
 
+🌎
+<h2>World Tournament</h2>
+<p>Global competition</p>
 
-<!-- RANK -->
-
-<section id="rank" class="page">
-
-<h1>🏆 Global Leaderboard</h1>
-
-<p class="muted">
-Separate rankings for each world.
-</p>
-
-<div class="ranktop">
-
-<div class="rankbox">
-<div class="emoji">🥇</div>
-<h3>Top Player</h3>
-<b id="topPlayer">Luna</b>
-</div>
-
-<div class="rankbox">
-<div class="emoji">🌎</div>
-<h3>World</h3>
-<b id="rankWorld">English</b>
-</div>
-
-<div class="rankbox">
-<div class="emoji">⭐</div>
-<h3>Your XP</h3>
-<b id="rankXP">0</b>
-</div>
+<button class="btn">
+Coming Soon
+</button>
 
 </div>
 
+</div>
 
 <div class="card">
 
-<button class="btn primary" onclick="renderLeaderboard('english')">
-🇬🇧 English Ranking
-</button>
-
-<button class="btn primary" onclick="renderLeaderboard('arabic')">
-🌙 Arabic Ranking
-</button>
-
-<table>
-
-<thead>
-<tr>
-<th>#</th>
-<th>Player</th>
-<th>Country</th>
-<th>Rank</th>
-<th>XP</th>
-</tr>
-</thead>
-
-<tbody id="leaderboard"></tbody>
-
-</table>
+<h2 id="battleStatus">
+Choose a battle.
+</h2>
 
 </div>
 
 </section>
 
 
-<!-- PROFILE -->
+<!-- LEADERBOARD -->
 
-<section id="profile" class="page">
+<section id="leaderboard" class="page">
 
-<div class="card auth">
+<h1>🏆 World Leaderboard</h1>
 
-<h1>👤 Your Profile</h1>
+<div class="world-grid">
 
-<label>Username</label>
-<input id="profileUsername" maxlength="20">
-
-<label>Country</label>
-
-<select id="profileCountry">
-<option value="🇧🇩">🇧🇩 Bangladesh</option>
-<option value="🇮🇳">🇮🇳 India</option>
-<option value="🇵🇰">🇵🇰 Pakistan</option>
-<option value="🇬🇧">🇬🇧 United Kingdom</option>
-<option value="🇺🇸">🇺🇸 United States</option>
-<option value="🇸🇦">🇸🇦 Saudi Arabia</option>
-<option value="🇦🇪">🇦🇪 UAE</option>
-<option value="🇪🇬">🇪🇬 Egypt</option>
-<option value="🇲🇦">🇲🇦 Morocco</option>
-<option value="🇲🇾">🇲🇾 Malaysia</option>
-</select>
-
-<h3>Choose Avatar</h3>
-
-<div id="avatars" class="avatarGrid"></div>
-
-<button class="btn primary" onclick="saveProfile()">
-Save Profile
+<button class="btn" onclick="loadLeaderboard('Math')">
+Math
 </button>
 
-<p id="profileMessage"></p>
+<button class="btn" onclick="loadLeaderboard('English')">
+English
+</button>
+
+<button class="btn" onclick="loadLeaderboard('Arabic')">
+Arabic
+</button>
+
+<button class="btn" onclick="loadLeaderboard('All')">
+All Worlds
+</button>
+
+</div>
+
+<div class="card">
+
+<div id="leaderboard"></div>
 
 </div>
 
 </section>
 
 
-<!-- AUTH -->
+<!-- COMMUNITY -->
 
-<section id="auth" class="page">
+<section id="community" class="page">
 
-<div class="card auth">
+<h1>👥 Global Community</h1>
 
-<h1>🚀 Join Skill Rush</h1>
+<div class="grid">
 
-<p class="muted">
-Create your Skill Rush profile.
+<div class="card">
+
+<h2>🌎 All World</h2>
+
+<p style="color:var(--muted)">
+Talk with learners from every country and every world.
 </p>
 
-<div class="notice">
-🔒 Personal profile photos are not allowed.
-Choose an avatar instead.
+<br>
+
+<button class="btn">
+Global Chat
+</button>
+
+<button class="btn secondary">
+Country Chat
+</button>
+
 </div>
 
-<label>Username</label>
+<div class="card">
 
-<input
-id="authUsername"
-placeholder="Choose username"
-maxlength="20"
->
+<h2>📢 Community</h2>
 
-<label>Password</label>
+<p>
+Create posts, discuss lessons, share achievements and challenge friends.
+</p>
 
-<input
-id="authPassword"
-type="password"
-placeholder="Password"
->
-
-<label>Country</label>
-
-<select id="authCountry">
-
-<option value="🇧🇩">🇧🇩 Bangladesh</option>
-<option value="🇮🇳">🇮🇳 India</option>
-<option value="🇵🇰">🇵🇰 Pakistan</option>
-<option value="🇬🇧">🇬🇧 United Kingdom</option>
-<option value="🇺🇸">🇺🇸 United States</option>
-<option value="🇸🇦">🇸🇦 Saudi Arabia</option>
-<option value="🇦🇪">🇦🇪 UAE</option>
-<option value="🇪🇬">🇪🇬 Egypt</option>
-
-</select>
-
-<button class="btn primary" onclick="signup()">
-Create Account
-</button>
-
-<button class="btn secondary" onclick="login()">
-Login
-</button>
-
-<p id="authMessage"></p>
+</div>
 
 </div>
 
 </section>
+
+
+<!-- FRIENDS -->
+
+<section id="friends" class="page">
+
+<h1>🤝 Friends</h1>
+
+<div class="people" id="friendsList"></div>
+
+</section>
+
+
+<!-- MESSAGES -->
+
+<section id="messages" class="page">
+
+<h1>💬 Messenger</h1>
+
+<div class="grid">
+
+<div class="card">
+
+<h2>Conversations</h2>
+
+<div class="people">
+
+<div class="person">
+<div class="avatar">🤖</div>
+Aisha 🇧🇩
+</div>
+
+<div class="person">
+<div class="avatar">🤖</div>
+David 🇺🇸
+</div>
+
+<div class="person">
+<div class="avatar">🤖</div>
+Omar 🇪🇬
+</div>
+
+</div>
+
+</div>
+
+<div class="card chat">
+
+<h2>Aisha 🇧🇩</h2>
+
+<div class="messages">
+
+<div class="msg">
+<div class="avatar">🤖</div>
+<div class="msg-body">
+Hey Tahsin 👋
+</div>
+</div>
+
+<div class="msg">
+<div class="avatar">🤖</div>
+<div class="msg-body">
+Wanna do an English challenge?
+</div>
+</div>
+
+</div>
+
+<div class="chat-input">
+
+<input
+placeholder="Write a message...">
+
+<button class="btn">
+➤
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GROUPS -->
+
+<section id="groups" class="page">
+
+<h1>👨‍👩‍👧 Groups</h1>
+
+<div class="world-grid">
+
+<div class="world">
+📐
+<h2>Math Masters</h2>
+<p>12.4K members</p>
+<button class="btn">Join</button>
+</div>
+
+<div class="world">
+📖
+<h2>English Learners</h2>
+<p>48.7K members</p>
+<button class="btn">Join</button>
+</div>
+
+<div class="world">
+ع
+<h2>Arabic Scholars</h2>
+<p>21.1K members</p>
+<button class="btn">Join</button>
+</div>
+
+<div class="world">
+🔒
+<h2>Private Group</h2>
+<p>Invite only</p>
+<button class="btn secondary">Create</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EVENTS -->
+
+<section id="events" class="page">
+
+<h1>📅 Events</h1>
+
+<div class="world-grid">
+
+<div class="world">
+🏆
+<h2>Weekly Math Challenge</h2>
+<p>Starts Friday</p>
+</div>
+
+<div class="world">
+🌎
+<h2>Global English Event</h2>
+<p>Coming soon</p>
+</div>
+
+<div class="world">
+⚔️
+<h2>World Battle</h2>
+<p>Coming soon</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ACHIEVEMENTS -->
+
+<section id="achievements" class="page">
+
+<h1>🏅 Achievements</h1>
+
+<div class="world-grid">
+
+<div class="world">🔥<h2>100 Day Streak</h2></div>
+<div class="world">🏆<h2>Top 100</h2></div>
+<div class="world">📐<h2>Math Master</h2></div>
+<div class="world">📚<h2>English Explorer</h2></div>
+<div class="world">🌎<h2>Global Learner</h2></div>
+<div class="world">⚔️<h2>Battle Champion</h2></div>
+
+</div>
+
+</section>
+
+
+<!-- SETTINGS -->
+
+<section id="settings" class="page">
+
+<h1>⚙️ Settings</h1>
+
+<div class="card">
+
+<h2>Appearance</h2>
+
+<button class="btn" onclick="toggleTheme()">
+🌗 Dark / Light
+</button>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>Privacy</h2>
+
+<p style="color:var(--muted)">
+SkillRush profiles use avatars instead of personal profile photos.
+</p>
+
+<br>
+
+<button class="btn secondary">
+Privacy Settings
+</button>
+
+</div>
+
+</section>
+
+</div>
 
 </main>
 
+</div>
 
-<footer>
-© 2026 Skill Rush • Learn • Battle • Rise
-</footer>
 
+<!-- JAVASCRIPT -->
 
 <script>
 
-/* =========================
-   STATE
-========================= */
+const state = {
 
-let state = JSON.parse(
-localStorage.getItem("skillrush")
-) || {
+  username:"Tahsin",
+  country:"🇧🇩",
+  xp:12430,
+  lives:3,
+  streak:127,
 
-username:"Guest",
-country:"🇧🇩",
-avatar:"🙂",
+  friends:[
+    ["Aisha","🇧🇩"],
+    ["David","🇺🇸"],
+    ["Omar","🇪🇬"],
+    ["Kimiko","🇯🇵"],
+    ["Liam","🇬🇧"],
+    ["Sara","🇩🇪"]
+  ],
 
-xp:0,
-lives:3,
-streak:1,
-
-world:"english",
-subject:"language",
-
-english:{
-language:0,
-math:0
-},
-
-arabic:{
-language:0,
-math:0
-}
+  leaderboard:[
+    ["Yuki","🇯🇵",587421],
+    ["Alex","🇺🇸",562130],
+    ["Aisha","🇧🇩",548790],
+    ["Omar","🇪🇬",531442],
+    ["Tahsin","🇧🇩",512430],
+    ["Sofia","🇪🇸",503221]
+  ]
 
 };
 
 
-let currentLevel=0;
-let questionIndex=0;
-let score=0;
-let timer=null;
+/* PAGE SYSTEM */
+
+function page(id){
+
+  document.querySelectorAll(".page")
+  .forEach(p=>p.classList.remove("active"));
+
+  const target=document.getElementById(id);
+
+  if(target) target.classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
 
 
-/* =========================
-   AVATARS
-========================= */
+/* WORLD */
 
-const avatars=[
-"🙂","👨‍🎓","👩‍🎓","🧑‍🚀",
-"🦊","🐼","🦁","🐯",
-"🐨","🐸","🦄","🤖",
-"🧙","🥷","🦉","🐺",
-"🐲","🐵","🧑‍💻","🧠"
-];
+function openWorld(world){
 
+  alert(
+    world+
+    " World selected!\n\n"+
+    "Roadmap → Levels → Sessions → XP → Ranking"
+  );
 
-/* =========================
-   QUESTIONS
-========================= */
-
-const questionBank={
-
-english:[
-["Choose the correct sentence",
-["She has finished.","She have finished.","She finish.","She finishing."],
-"She has finished."],
-
-["Closest meaning of rapid",
-["Slow","Fast","Weak","Careful"],
-"Fast"],
-
-["Which is a noun?",
-["Beautiful","Decision","Quickly","Decide"],
-"Decision"],
-
-["If I ___ earlier, I would have called.",
-["know","knew","had known","have known"],
-"had known"],
-
-["Antonym of ancient",
-["Old","Modern","Historic","Past"],
-"Modern"],
-
-["Which word is an adjective?",
-["Quickly","Beauty","Beautiful","Run"],
-"Beautiful"],
-
-["Choose the correct plural",
-["Childs","Childes","Children","Childrens"],
-"Children"],
-
-["Opposite of increase",
-["Grow","Decrease","Rise","Expand"],
-"Decrease"],
-
-["Which is a verb?",
-["Run","Beautiful","Quickly","Blue"],
-"Run"],
-
-["Correct spelling",
-["Necessary","Necesary","Neccessary","Nessessary"],
-"Necessary"]
-],
+  page("roadmap");
+}
 
 
-arabic:[
+/* GLOBAL CHAT */
 
-["اختر الجملة الصحيحة",
-["أنا أذهب إلى المدرسة","أنا يذهب مدرسة","أنا ذهب المدرسة","أنا الذهاب"],
-"أنا أذهب إلى المدرسة"],
+function sendGlobalMessage(){
 
-["جمع كلمة كتاب",
-["كاتب","كتب","مكتب","كتابة"],
-"كتب"],
+  const input=document.getElementById("globalInput");
 
-["المضاد لكلمة كبير",
-["طويل","صغير","قوي","سريع"],
-"صغير"],
+  const text=input.value.trim();
 
-["أي كلمة فعل؟",
-["كتاب","يكتب","مدرسة","جميل"],
-"يكتب"],
+  if(!text) return;
 
-["المفرد من طلاب",
-["طالب","طلب","طالبة","طلاب"],
-"طالب"],
+  const container=document.getElementById("globalMessages");
 
-["ما معنى مدرسة؟",
-["School","Book","House","Teacher"],
-"School"],
+  const msg=document.createElement("div");
 
-["جمع كلمة قلم",
-["أقلام","قلمون","قلمات","كلام"],
-"أقلام"],
+  msg.className="msg";
 
-["ما ضد كلمة سريع؟",
-["قوي","بطيء","كبير","جديد"],
-"بطيء"],
+  msg.innerHTML=`
 
-["اختر اسمًا",
-["يكتب","كتاب","اكتب","ذهب"],
-"كتاب"],
+    <div class="avatar">🤖</div>
 
-["ما معنى جميل؟",
-["Beautiful","Fast","Small","Old"],
-"Beautiful"]
+    <div class="msg-body">
 
-],
+      <b>${escapeHTML(state.username)} 🇧🇩</b>
+
+      <br>
+
+      ${escapeHTML(text)}
+
+      <small>just now</small>
+
+    </div>
+
+  `;
+
+  container.appendChild(msg);
+
+  input.value="";
+
+  container.scrollTop=container.scrollHeight;
+}
 
 
-math:[
+/* AI */
 
-["If f(x)=2x²−3x+1, f(2)=?",
-["1","3","4","7"],
-"3"],
+function askAI(){
 
-["Gradient of y=3x−5",
-["−5","3","5","1/3"],
-"3"],
+  const input=document.getElementById("aiInput");
 
-["Common ratio: 3,6,12,24",
-["2","3","4","6"],
-"2"],
+  const text=input.value.trim();
 
-["If sinθ=3/5, cosθ for acute θ is",
-["3/5","4/5","5/3","1/5"],
-"4/5"],
+  if(!text) return;
 
-["Derivative of x³",
-["x²","2x²","3x²","3x"],
-"3x²"],
+  const ai=document.getElementById("aiMessage");
 
-["Solve: 2x+6=14",
-["2","3","4","5"],
-"4"],
+  ai.innerHTML=`
 
-["Factor x²−9",
-["(x−3)(x+3)","(x−9)(x+1)","(x−3)²","x(x−9)"],
-"(x−3)(x+3)"],
+  <b>🤖 SkillRush AI</b>
 
-["If a=3 and b=4, √(a²+b²)=?",
-["5","6","7","8"],
-"5"],
+  <br><br>
 
-["Probability of an event with 3 favorable outcomes out of 10",
-["0.1","0.2","0.3","0.5"],
-"0.3"],
+  I understand your question:
 
-["Integral of 2x dx",
-["x²+C","2x²+C","x+C","x³+C"],
-"x²+C"]
+  <br>
 
-]
+  <i>${escapeHTML(text)}</i>
 
-};
+  <br><br>
+
+  I'm your learning assistant. In the full AI backend,
+  I'll generate personalised explanations, practice questions,
+  hints and revision based on your level.
+
+  `;
+
+  input.value="";
+}
 
 
-/* =========================
-   SAVE
-========================= */
+/* ANSWER */
 
-function saveState(){
+function answer(value){
 
-localStorage.setItem(
-"skillrush",
-JSON.stringify(state)
-);
+  const result=document.getElementById("answerResult");
 
-updateUI();
+  if(value===4){
+
+    result.innerHTML=
+      "✅ Correct! +10 XP";
+
+    state.xp+=10;
+
+  }else{
+
+    state.lives--;
+
+    result.innerHTML=
+      "❌ Incorrect. You lost 1 life.";
+
+  }
 
 }
 
 
-/* =========================
-   UI
-========================= */
-
-function updateUI(){
-
-document.getElementById("xp").textContent=
-state.xp.toLocaleString();
-
-document.getElementById("lives").textContent=
-state.xp>=12000 ? "∞" : state.lives;
-
-document.getElementById("streak").textContent=
-state.streak;
-
-document.getElementById("rank").textContent=
-getRank(state.xp);
-
-document.getElementById("profileUsername").value=
-state.username;
-
-document.getElementById("profileCountry").value=
-state.country;
-
-document.getElementById("rankXP").textContent=
-state.xp.toLocaleString();
-
-}
-
-
-function getRank(xp){
-
-if(xp>=12000)return"💎 Diamond";
-if(xp>=7000)return"💠 Platinum";
-if(xp>=3500)return"🥇 Gold";
-if(xp>=1500)return"🥈 Silver";
-
-return"🥉 Bronze";
-
-}
-
-
-/* =========================
-   PAGE
-========================= */
-
-function showPage(id){
-
-document.querySelectorAll(".page")
-.forEach(p=>p.classList.remove("active"));
-
-document.getElementById(id)
-.classList.add("active");
-
-if(id==="learn")
-renderRoadmap();
-
-if(id==="rank")
-renderLeaderboard("english");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-/* =========================
-   WORLD
-========================= */
-
-function chooseWorld(world){
-
-state.world=world;
-state.subject="language";
-
-saveState();
-
-showPage("learn");
-
-}
-
-
-/* =========================
-   SUBJECT
-========================= */
-
-function setSubject(subject){
-
-state.subject=subject;
-
-saveState();
-
-renderRoadmap();
-
-}
-
-
-/* =========================
-   ROADMAP
-========================= */
-
-function renderRoadmap(){
-
-let world=state.world;
-let subject=state.subject;
-
-let title=
-subject==="math"
-?"🧠 Mathematics Roadmap":
-world==="english"
-?"🇬🇧 English Roadmap":
-"🌙 Arabic Roadmap";
-
-document.getElementById("roadTitle")
-.textContent=title;
-
-let progress=
-state[world][subject];
-
-let percent=
-Math.min(progress/12*100,100);
-
-document.getElementById("roadProgress")
-.style.width=percent+"%";
-
-
-let html="";
-
-for(let i=0;i<12;i++){
-
-let locked=i>progress;
-
-let status=
-i<progress
-?"✓ Completed":
-i===progress
-?"▶ Start Session":
-"🔒 Locked";
-
-html+=`
-
-<div
-class="lesson ${locked?"locked":""}"
-${locked?"":"onclick='startSession("+i+")'"}
->
-
-<div class="node">
-${i<progress?"✓":i+1}
-</div>
-
-<div>
-
-<b>Level ${i+1}</b>
-
-<div class="muted">
-${status}
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-document.getElementById("roadmap")
-.innerHTML=html;
-
-}
-
-
-/* =========================
-   SESSION
-========================= */
-
-function startSession(level){
-
-currentLevel=level;
-questionIndex=0;
-score=0;
-
-showPage("quiz");
-
-document.getElementById("quizTitle")
-.textContent=
-(state.subject==="math"
-?"🧠 Math"
-:"📚 Language")
-+" • Level "+(level+1);
-
-nextQuestion();
-
-}
-
-
-/* =========================
-   QUESTIONS
-========================= */
-
-function getQuestions(){
-
-if(state.subject==="math")
-return questionBank.math;
-
-if(state.world==="arabic")
-return questionBank.arabic;
-
-return questionBank.english;
-
-}
-
-
-function nextQuestion(){
-
-clearInterval(timer);
-
-let questions=getQuestions();
-
-if(questionIndex>=questions.length){
-
-finishSession();
-
-return;
-
-}
-
-let q=questions[questionIndex];
-
-document.getElementById("question")
-.textContent=q[0];
-
-document.getElementById("quizInfo")
-.textContent=
-"Question "+(questionIndex+1)+" / 10";
-
-document.getElementById("answers")
-.innerHTML=
-q[1].map(answer=>`
-
-<button
-class="answer"
-onclick='answerQuestion(${JSON.stringify(answer)},${JSON.stringify(q[2])})'
->
-${answer}
-</button>
-
-`).join("");
-
-startTimer();
-
-}
-
-
-/* =========================
-   TIMER
-========================= */
-
-function startTimer(){
-
-let seconds=
-state.subject==="math"
-?5
-:60;
-
-let max=seconds;
-
-document.getElementById("timerBar")
-.style.width="100%";
-
-timer=setInterval(()=>{
-
-seconds--;
-
-document.getElementById("timerBar")
-.style.width=
-(seconds/max*100)+"%";
-
-if(seconds<=0){
-
-clearInterval(timer);
-
-wrongAnswer();
-
-questionIndex++;
-
-setTimeout(nextQuestion,250);
-
-}
-
-},1000);
-
-}
-
-
-/* =========================
-   ANSWER
-========================= */
-
-function answerQuestion(answer,correct){
-
-clearInterval(timer);
-
-if(answer===correct){
-
-score++;
-
-state.xp+=
-state.subject==="math"
-?50
-:30;
-
-}else{
-
-wrongAnswer();
-
-}
-
-questionIndex++;
-
-saveState();
-
-setTimeout(nextQuestion,250);
-
-}
-
-
-function wrongAnswer(){
-
-if(state.xp<12000){
-
-state.lives=
-Math.max(0,state.lives-1);
-
-}
-
-}
-
-
-/* =========================
-   FINISH
-========================= */
-
-function finishSession(){
-
-clearInterval(timer);
-
-state[state.world][state.subject]++;
-
-state.streak++;
-
-saveState();
-
-document.getElementById("question")
-.textContent="🎉 Level Complete!";
-
-document.getElementById("answers")
-.innerHTML="";
-
-document.getElementById("quizInfo")
-.innerHTML=`
-
-<b>Score: ${score}/10</b>
-
-<br><br>
-
-⭐ XP earned:
-${score*(state.subject==="math"?50:30)}
-
-<br><br>
-
-💡 Easy Solution
-
-<p class="muted">
-You can review the explanations after completing the level.
-</p>
-
-`;
-
-}
-
-
-/* =========================
-   BATTLE
-========================= */
+/* BATTLE */
 
 function startBattle(){
 
-let opponents=
-state.world==="english"
-?[
-"Luna 🇬🇧",
-"Mia 🇺🇸",
-"Arjun 🇮🇳",
-"Noah 🇨🇦"
-]
-:[
-"Omar 🇪🇬",
-"Amina 🇸🇦",
-"Youssef 🇦🇪",
-"Sara 🇲🇦"
-];
+  const status=document.getElementById("battleStatus");
 
-let opponent=
-opponents[
-Math.floor(Math.random()*opponents.length)
-];
+  status.innerHTML=
+    "🔎 Searching for an opponent...";
 
-state.xp+=100;
+  setTimeout(()=>{
 
-saveState();
+    status.innerHTML=
+      "⚔️ Opponent found! Battle ready.";
 
-document.getElementById("battleMessage")
-.textContent=
-"🏆 You defeated "+opponent+"! +100 XP";
+  },1500);
 
 }
 
 
-/* =========================
-   LEADERBOARD
-========================= */
+/* LEADERBOARD */
 
-function renderLeaderboard(world){
+function loadLeaderboard(world){
 
-let players=
-world==="english"
+  page("leaderboard");
 
-?[
-["Luna","🇬🇧","💎 Diamond",18200],
-["Mia","🇺🇸","💠 Platinum",14100],
-["Arjun","🇮🇳","🥇 Gold",9200],
-["Rafi","🇧🇩","🥇 Gold",6500]
-]
+  const box=document.getElementById("leaderboard");
 
-:[
-["Omar","🇪🇬","💎 Diamond",17600],
-["Amina","🇸🇦","💠 Platinum",14900],
-["Youssef","🇦🇪","🥇 Gold",9000],
-["Sara","🇲🇦","🥇 Gold",6100]
-];
+  box.innerHTML="";
 
+  state.leaderboard.forEach((u,index)=>{
 
-players.push([
-state.username,
-state.country,
-getRank(state.xp),
-state.xp
-]);
+    const row=document.createElement("div");
 
-players.sort((a,b)=>b[3]-a[3]);
+    row.className="rank-row";
 
-document.getElementById("rankWorld")
-.textContent=
-world==="english"
-?"English"
-:"Arabic";
+    row.innerHTML=`
 
-document.getElementById("topPlayer")
-.textContent=
-players[0][0];
+      <div class="rank">
+        #${index+1}
+      </div>
 
-document.getElementById("leaderboard")
-.innerHTML=
-players.map((p,i)=>`
+      <div>
+        <b>${u[0]}</b>
+        ${u[1]}
+      </div>
 
-<tr>
+      <div>
+        ${u[2].toLocaleString()} XP
+      </div>
 
-<td>${i+1}</td>
+      <div>
+        ${world}
+      </div>
 
-<td>
-${p[0]}
-</td>
+    `;
 
-<td>
-${p[1]}
-</td>
+    box.appendChild(row);
 
-<td>
-<span class="badge">${p[2]}</span>
-</td>
-
-<td>
-${p[3].toLocaleString()}
-</td>
-
-</tr>
-
-`).join("");
+  });
 
 }
 
 
-/* =========================
-   PROFILE
-========================= */
+/* ROADMAP */
 
-function createAvatars(){
+function createRoadmap(){
 
-document.getElementById("avatars")
-.innerHTML=
-avatars.map(a=>`
+  const box=document.getElementById("mathRoadmap");
 
-<button
-class="avatar ${a===state.avatar?"selected":""}"
-onclick='selectAvatar(${JSON.stringify(a)})'
->
-${a}
-</button>
+  const levels=[
 
-`).join("");
+    "Foundation Mathematics",
+    "Number & Algebra",
+    "Geometry",
+    "Advanced Algebra",
+    "Functions",
+    "Coordinate Geometry",
+    "Trigonometry",
+    "Probability",
+    "Statistics",
+    "Pure Mathematics",
+    "Mechanics",
+    "Calculus",
+    "A-Level Mathematics",
+    "Advanced A-Level Challenge"
 
-}
+  ];
 
+  levels.forEach((name,index)=>{
 
-function selectAvatar(avatar){
+    const level=document.createElement("div");
 
-state.avatar=avatar;
+    level.className=
+      "level "+
+      (index>3 ? "locked":"");
 
-saveState();
+    level.innerHTML=`
 
-createAvatars();
+      <div class="level-number">
+        ${index+1}
+      </div>
 
-}
+      <div style="flex:1">
 
+        <h3>
+          ${name}
+        </h3>
 
-function saveProfile(){
+        <p style="color:var(--muted)">
+          ${index>3
+          ?"🔒 Complete previous levels"
+          :"10-question session • MCQ • XP"}
+        </p>
 
-let username=
-document.getElementById("profileUsername")
-.value.trim();
+      </div>
 
-if(username.length<3){
+      <button
+        class="btn"
+        onclick="startLesson(${index})">
 
-document.getElementById("profileMessage")
-.textContent=
-"Username must be at least 3 characters.";
+        ${index>3?"Locked":"Start"}
 
-return;
+      </button>
 
-}
+    `;
 
-state.username=username;
+    box.appendChild(level);
 
-state.country=
-document.getElementById("profileCountry")
-.value;
-
-saveState();
-
-document.getElementById("profileMessage")
-.textContent=
-"✓ Profile saved successfully.";
-
-}
-
-
-/* =========================
-   SIGNUP
-========================= */
-
-function signup(){
-
-let username=
-document.getElementById("authUsername")
-.value.trim();
-
-let password=
-document.getElementById("authPassword")
-.value;
-
-let country=
-document.getElementById("authCountry")
-.value;
-
-if(username.length<3){
-
-document.getElementById("authMessage")
-.textContent=
-"Username must be at least 3 characters.";
-
-return;
-
-}
-
-if(password.length<6){
-
-document.getElementById("authMessage")
-.textContent=
-"Password must be at least 6 characters.";
-
-return;
-
-}
-
-state.username=username;
-state.country=country;
-
-saveState();
-
-document.getElementById("authMessage")
-.textContent=
-"✓ Account created on this device. Real cloud account will be connected next.";
+  });
 
 }
 
 
-/* =========================
-   LOGIN
-========================= */
+/* LESSON */
 
-function login(){
+function startLesson(level){
 
-let username=
-document.getElementById("authUsername")
-.value.trim();
+  if(level>3){
 
-if(username.length<3){
+    alert(
+      "🔒 Complete the previous level first."
+    );
 
-document.getElementById("authMessage")
-.textContent=
-"Enter your username.";
+    return;
 
-return;
+  }
 
-}
-
-state.username=username;
-
-saveState();
-
-document.getElementById("authMessage")
-.textContent=
-"✓ Logged in on this device.";
+  page("practice");
 
 }
 
 
-/* =========================
-   DARK MODE
-========================= */
+/* FRIENDS */
 
-function toggleDark(){
+function createFriends(){
 
-document.body.classList.toggle("dark");
+  const box=document.getElementById("friendsList");
 
-localStorage.setItem(
-"skillrush-dark",
-document.body.classList.contains("dark")
-);
+  state.friends.forEach(friend=>{
+
+    const div=document.createElement("div");
+
+    div.className="person";
+
+    div.innerHTML=`
+
+      <div class="avatar">🤖</div>
+
+      <b>${friend[0]}</b>
+
+      <p>${friend[1]} Online</p>
+
+      <br>
+
+      <button
+        class="btn secondary"
+        onclick="messageFriend('${friend[0]}')">
+
+        Message
+
+      </button>
+
+    `;
+
+    box.appendChild(div);
+
+  });
 
 }
 
 
-/* =========================
-   START
-========================= */
+/* MESSAGE FRIEND */
 
-if(
-localStorage.getItem("skillrush-dark")
-==="true"
-){
+function messageFriend(name){
 
-document.body.classList.add("dark");
+  page("messages");
+
+  alert(
+    "Opening private conversation with "+name
+  );
 
 }
 
-createAvatars();
 
-updateUI();
+/* AVATAR */
 
-renderLeaderboard("english");
+function avatarCreator(){
+
+  alert(
+    "🤖 SkillRush Avatar Creator\n\n"+
+    "Choose robot body, face, clothes, color, effects and accessories."
+  );
+
+}
+
+
+/* NOTIFICATIONS */
+
+function notifications(){
+
+  alert(
+    "🔔 Notifications\n\n"+
+    "• Aisha sent you a friend request\n"+
+    "• You earned 10 XP\n"+
+    "• New Math challenge available"
+  );
+
+}
+
+
+/* THEME */
+
+function toggleTheme(){
+
+  document.body.classList.toggle("light");
+
+  localStorage.setItem(
+    "skillrush_theme",
+    document.body.classList.contains("light")
+    ?"light"
+    :"dark"
+  );
+
+}
+
+
+/* SEARCH */
+
+function globalSearch(){
+
+  const q=document
+    .getElementById("search")
+    .value
+    .toLowerCase();
+
+  if(!q) return;
+
+  console.log(
+    "SkillRush search:",
+    q
+  );
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(value){
+
+  return String(value)
+
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* INIT */
+
+function init(){
+
+  createRoadmap();
+
+  createFriends();
+
+  loadLeaderboard("All");
+
+  const theme=
+    localStorage.getItem("skillrush_theme");
+
+  if(theme==="light"){
+    document.body.classList.add("light");
+  }
+
+}
+
+init();
 
 </script>
 
