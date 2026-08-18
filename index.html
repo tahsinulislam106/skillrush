@@ -1,891 +1,4364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#09090b">
-<title>SkillRush — One World. Every Skill.</title>
+  <meta charset="UTF-8">
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
- --bg:#09090b;
- --panel:#111114;
- --panel2:#17171c;
- --border:#27272f;
- --text:#f5f5f5;
- --muted:#92929d;
- --primary:#7c5cff;
- --primary2:#5b8cff;
- --green:#35d07f;
- --red:#ff5d73;
- --yellow:#ffc857;
- --radius:18px;
-}
-body{
- font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
- background:
- radial-gradient(circle at 20% -10%,rgba(124,92,255,.18),transparent 35%),
- radial-gradient(circle at 90% 10%,rgba(91,140,255,.12),transparent 30%),
- var(--bg);
- color:var(--text);
- min-height:100vh;
-}
-button,input{font:inherit}
-button{cursor:pointer}
-.app{display:flex;min-height:100vh}
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-/* SIDEBAR */
-.sidebar{
- width:250px;
- border-right:1px solid var(--border);
- background:rgba(9,9,11,.88);
- backdrop-filter:blur(20px);
- padding:22px 15px;
- position:fixed;
- left:0;top:0;bottom:0;
- z-index:20;
-}
-.logo{
- display:flex;
- align-items:center;
- gap:10px;
- font-size:22px;
- font-weight:900;
- padding:5px 12px 28px;
-}
-.logo-icon{
- width:38px;height:38px;
- display:grid;place-items:center;
- border-radius:12px;
- background:linear-gradient(135deg,var(--primary),var(--primary2));
- box-shadow:0 8px 30px rgba(124,92,255,.3);
-}
-.nav{display:flex;flex-direction:column;gap:5px}
-.nav button{
- width:100%;
- border:0;
- background:transparent;
- color:#aaa;
- padding:12px 14px;
- border-radius:13px;
- text-align:left;
- display:flex;
- gap:13px;
- align-items:center;
- font-weight:650;
- transition:.2s;
-}
-.nav button:hover,.nav button.active{
- background:var(--panel2);
- color:white;
-}
-.nav button.active{box-shadow:inset 3px 0 var(--primary)}
-.icon{font-size:19px;width:22px;text-align:center}
+  <meta
+    name="theme-color"
+    content="#070a13"
+  >
 
-.side-bottom{
- position:absolute;
- bottom:20px;
- left:15px;right:15px;
-}
-.profile-mini{
- display:flex;align-items:center;gap:10px;
- padding:12px;
- background:var(--panel);
- border:1px solid var(--border);
- border-radius:15px;
-}
-.avatar{
- width:38px;height:38px;
- border-radius:50%;
- display:grid;place-items:center;
- background:linear-gradient(135deg,#ff9f43,#ff5d73);
- font-weight:900;
-}
+  <meta
+    name="description"
+    content="SkillRush — Learn, Connect, Compete and Grow in a global learning universe."
+  >
 
-/* MAIN */
-.main{
- margin-left:250px;
- width:calc(100% - 250px);
-}
-.topbar{
- height:70px;
- position:sticky;top:0;
- z-index:15;
- display:flex;
- align-items:center;
- justify-content:space-between;
- padding:0 30px;
- border-bottom:1px solid var(--border);
- background:rgba(9,9,11,.78);
- backdrop-filter:blur(20px);
-}
-.search{
- width:min(430px,45vw);
- background:var(--panel);
- border:1px solid var(--border);
- border-radius:12px;
- display:flex;align-items:center;
- padding:0 13px;
-}
-.search input{
- width:100%;
- border:0;outline:0;
- color:white;
- background:transparent;
- padding:11px;
-}
-.top-actions{display:flex;gap:9px}
-.circle{
- width:39px;height:39px;
- border:1px solid var(--border);
- background:var(--panel);
- color:white;
- border-radius:50%;
-}
-.container{
- max-width:1250px;
- margin:auto;
- padding:30px;
-}
+  <meta
+    name="keywords"
+    content="SkillRush, learning, mathematics, English, Arabic, education, competition, leaderboard"
+  >
 
-/* HERO */
-.hero{
- border:1px solid var(--border);
- background:
- linear-gradient(120deg,rgba(124,92,255,.18),rgba(91,140,255,.06)),
- var(--panel);
- border-radius:25px;
- padding:34px;
- position:relative;
- overflow:hidden;
-}
-.hero:after{
- content:"";
- width:300px;height:300px;
- border-radius:50%;
- background:rgba(124,92,255,.13);
- filter:blur(60px);
- position:absolute;
- right:-80px;top:-120px;
-}
-.hero-content{position:relative;z-index:2}
-.badge{
- display:inline-flex;
- padding:7px 11px;
- border-radius:100px;
- background:rgba(124,92,255,.13);
- color:#b9aaff;
- border:1px solid rgba(124,92,255,.3);
- font-size:12px;
- font-weight:800;
-}
-.hero h1{
- font-size:clamp(30px,5vw,56px);
- line-height:1.02;
- margin:17px 0 12px;
- max-width:720px;
- letter-spacing:-2px;
-}
-.gradient{
- background:linear-gradient(90deg,#fff,#a99aff,#79a9ff);
- -webkit-background-clip:text;
- color:transparent;
-}
-.hero p{
- color:var(--muted);
- max-width:650px;
- line-height:1.6;
-}
-.hero-buttons{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
-.btn{
- border:0;
- padding:12px 18px;
- border-radius:12px;
- font-weight:800;
- transition:.2s;
-}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{
- color:white;
- background:linear-gradient(135deg,var(--primary),var(--primary2));
-}
-.btn-secondary{
- color:white;
- background:var(--panel2);
- border:1px solid var(--border);
-}
+  <meta
+    name="author"
+    content="SkillRush"
+  >
 
-/* GRID */
-.section-title{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin:30px 0 14px;
-}
-.section-title h2{font-size:19px}
-.section-title span{color:var(--muted);font-size:13px}
+  <title>
+    SkillRush — Learn • Connect • Compete
+  </title>
 
-.grid{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:14px;
-}
-.card{
- background:var(--panel);
- border:1px solid var(--border);
- border-radius:var(--radius);
- padding:19px;
- transition:.2s;
-}
-.card:hover{
- transform:translateY(-3px);
- border-color:#3a3945;
-}
-.world-icon{
- width:48px;height:48px;
- display:grid;place-items:center;
- border-radius:15px;
- font-size:24px;
- margin-bottom:15px;
- background:var(--panel2);
-}
-.card h3{font-size:16px;margin-bottom:6px}
-.card p{color:var(--muted);font-size:13px;line-height:1.5}
-.progress{
- height:6px;
- background:#24242b;
- border-radius:20px;
- overflow:hidden;
- margin:14px 0 8px;
-}
-.progress span{
- display:block;height:100%;
- background:linear-gradient(90deg,var(--primary),var(--primary2));
- border-radius:20px;
-}
-.meta{
- display:flex;
- justify-content:space-between;
- color:var(--muted);
- font-size:12px;
-}
+  <link
+    rel="stylesheet"
+    href="css/main.css"
+  >
 
-/* TWO COLUMNS */
-.two{
- display:grid;
- grid-template-columns:1.45fr .8fr;
- gap:15px;
-}
-.feed-card{
- background:var(--panel);
- border:1px solid var(--border);
- border-radius:var(--radius);
- overflow:hidden;
-}
-.post-head{
- display:flex;
- align-items:center;
- gap:10px;
- padding:17px;
-}
-.post-head small{display:block;color:var(--muted)}
-.post-body{padding:0 17px 17px;line-height:1.6;color:#ddd}
-.post-actions{
- border-top:1px solid var(--border);
- display:flex;
- gap:8px;
- padding:10px 13px;
-}
-.post-actions button{
- flex:1;
- background:transparent;
- border:0;
- color:var(--muted);
- padding:8px;
- border-radius:10px;
-}
-.post-actions button:hover{background:var(--panel2);color:white}
+  <link
+    rel="stylesheet"
+    href="css/components.css"
+  >
 
-/* LEADERBOARD */
-.rank{
- display:flex;
- align-items:center;
- gap:12px;
- padding:13px 0;
- border-bottom:1px solid var(--border);
-}
-.rank:last-child{border-bottom:0}
-.rank-num{width:25px;text-align:center;color:var(--muted);font-weight:800}
-.rank-info{flex:1}
-.rank-info strong{display:block}
-.rank-info small{color:var(--muted)}
-.xp{font-size:12px;color:#b5a8ff}
+  <link
+    rel="stylesheet"
+    href="css/responsive.css"
+  >
 
-/* AI */
-.ai{
- background:
- linear-gradient(135deg,rgba(124,92,255,.15),rgba(91,140,255,.08)),
- var(--panel);
-}
-.ai-input{
- display:flex;
- margin-top:15px;
- background:var(--bg);
- border:1px solid var(--border);
- border-radius:13px;
- padding:5px;
-}
-.ai-input input{
- flex:1;
- background:transparent;
- color:white;
- border:0;
- outline:0;
- padding:10px;
-}
-.ai-input button{
- border:0;
- background:var(--primary);
- color:white;
- padding:9px 14px;
- border-radius:9px;
- font-weight:800;
-}
-
-/* MODAL */
-.modal{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.7);
- backdrop-filter:blur(8px);
- display:none;
- align-items:center;
- justify-content:center;
- z-index:100;
- padding:20px;
-}
-.modal.show{display:flex}
-.modal-box{
- width:min(520px,100%);
- background:#121216;
- border:1px solid var(--border);
- border-radius:22px;
- padding:24px;
- box-shadow:0 30px 100px rgba(0,0,0,.5);
-}
-.modal-top{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin-bottom:20px;
-}
-.close{
- width:34px;height:34px;
- border:0;border-radius:50%;
- background:var(--panel2);
- color:white;
-}
-.question{
- font-size:30px;
- text-align:center;
- padding:25px;
- font-weight:900;
-}
-.answers{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:10px;
-}
-.answer{
- border:1px solid var(--border);
- background:var(--panel);
- color:white;
- padding:15px;
- border-radius:12px;
- font-weight:800;
-}
-.answer:hover{
- border-color:var(--primary);
- background:rgba(124,92,255,.1);
-}
-
-/* MOBILE */
-.mobile-nav{
- display:none;
-}
-@media(max-width:1000px){
- .grid{grid-template-columns:repeat(2,1fr)}
- .two{grid-template-columns:1fr}
-}
-@media(max-width:720px){
- .sidebar{display:none}
- .main{margin-left:0;width:100%}
- .topbar{padding:0 15px}
- .search{width:55%}
- .container{padding:17px 14px 90px}
- .hero{padding:24px}
- .grid{grid-template-columns:1fr 1fr;gap:10px}
- .card{padding:15px}
- .hero h1{font-size:34px}
- .mobile-nav{
-  position:fixed;
-  bottom:0;left:0;right:0;
-  z-index:50;
-  display:flex;
-  justify-content:space-around;
-  padding:9px 5px;
-  background:rgba(12,12,15,.94);
-  backdrop-filter:blur(20px);
-  border-top:1px solid var(--border);
- }
- .mobile-nav button{
-  background:transparent;border:0;color:#888;
-  font-size:11px;
- }
- .mobile-nav button b{display:block;font-size:20px;margin-bottom:2px}
-}
-</style>
 </head>
 
 <body>
 
-<div class="app">
+  <!--
+    ==========================================================
+    SKILLRUSH APPLICATION ROOT
+    ==========================================================
+  -->
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
- <div class="logo">
-  <div class="logo-icon">⚡</div>
-  SkillRush
- </div>
+  <div id="app">
 
- <nav class="nav">
-  <button class="active" onclick="go('home')"><span class="icon">⌂</span> Home</button>
-  <button onclick="go('explore')"><span class="icon">⌕</span> Explore</button>
-  <button onclick="go('learn')"><span class="icon">🧠</span> Learn</button>
-  <button onclick="openBattle()"><span class="icon">⚔</span> Battle</button>
-  <button onclick="go('messages')"><span class="icon">◌</span> Messages</button>
-  <button onclick="go('community')"><span class="icon">♟</span> Communities</button>
-  <button onclick="go('ranking')"><span class="icon">🏆</span> Ranking</button>
-  <button onclick="openAI()"><span class="icon">✦</span> AI Assistant</button>
- </nav>
+    <!-- Application loading screen -->
+    <div
+      id="loadingScreen"
+      class="loading-screen"
+    >
 
- <div class="side-bottom">
-  <div class="profile-mini">
-   <div class="avatar">T</div>
-   <div>
-    <strong>Tahsin</strong>
-    <small style="color:#888">Level 12 • 2,840 XP</small>
-   </div>
-  </div>
- </div>
-</aside>
+      <div class="loading-logo">
+        ⚡
+        <span>SkillRush</span>
+      </div>
 
-<!-- MAIN -->
-<main class="main">
+      <div class="loading-spinner"></div>
 
-<header class="topbar">
- <div class="search">
-  🔎
-  <input id="searchInput" placeholder="Search people, skills, communities...">
- </div>
+      <p>
+        Preparing your learning universe...
+      </p>
 
- <div class="top-actions">
-  <button class="circle" onclick="toggleTheme()">☼</button>
-  <button class="circle" onclick="showToast('No new notifications')">♢</button>
-  <button class="circle" onclick="openProfile()">T</button>
- </div>
-</header>
+    </div>
 
-<div class="container" id="content">
-
-<!-- HERO -->
-<section class="hero">
- <div class="hero-content">
-  <span class="badge">🌍 ONE WORLD • EVERY SKILL</span>
-
-  <h1>
-   Learn. Connect.<br>
-   <span class="gradient">Compete with the World.</span>
-  </h1>
-
-  <p>
-   One modern platform for learning, communication, communities,
-   competitions and AI-powered personal growth.
-  </p>
-
-  <div class="hero-buttons">
-   <button class="btn btn-primary" onclick="go('learn')">
-    Start Learning →
-   </button>
-   <button class="btn btn-secondary" onclick="openBattle()">
-    ⚔ Enter Battle
-   </button>
-  </div>
- </div>
-</section>
-
-<!-- WORLDS -->
-<div class="section-title">
- <h2>Your Worlds</h2>
- <span>Continue your journey</span>
-</div>
-
-<section class="grid">
-
- <div class="card" onclick="startMath()">
-  <div class="world-icon">➗</div>
-  <h3>Math World</h3>
-  <p>Speed calculation & competitive challenges.</p>
-  <div class="progress"><span style="width:72%"></span></div>
-  <div class="meta"><span>Level 12</span><span>72%</span></div>
- </div>
-
- <div class="card" onclick="startEnglish()">
-  <div class="world-icon">🇬🇧</div>
-  <h3>English World</h3>
-  <p>Build vocabulary, grammar and conversation skills.</p>
-  <div class="progress"><span style="width:54%"></span></div>
-  <div class="meta"><span>Level 8</span><span>54%</span></div>
- </div>
-
- <div class="card">
-  <div class="world-icon">ع</div>
-  <h3>Arabic World</h3>
-  <p>Learn Arabic with interactive lessons.</p>
-  <div class="progress"><span style="width:31%"></span></div>
-  <div class="meta"><span>Level 4</span><span>31%</span></div>
- </div>
-
- <div class="card" onclick="showToast('More worlds are coming soon!')">
-  <div class="world-icon">＋</div>
-  <h3>Discover Worlds</h3>
-  <p>Explore new subjects, skills and communities.</p>
- </div>
-
-</section>
-
-<!-- FEED + RANKING -->
-<div class="section-title">
- <h2>Global Community</h2>
- <span>What's happening now</span>
-</div>
-
-<section class="two">
-
- <div class="feed-card">
-
-  <div class="post-head">
-   <div class="avatar">A</div>
-   <div>
-    <strong>Aryan Khan</strong>
-    <small>🇧🇩 • 12 min ago</small>
-   </div>
   </div>
 
-  <div class="post-body">
-   Just reached <strong>Diamond</strong> in Math World! ⚡
-   Anyone ready for a 1v1 battle?
+
+  <!--
+    ==========================================================
+    GLOBAL MODAL
+    ==========================================================
+  -->
+
+  <div
+    id="globalModal"
+    class="modal hidden"
+    aria-hidden="true"
+  >
+
+    <div
+      class="modal-overlay"
+      data-modal-close
+    ></div>
+
+    <div
+      class="modal-container"
+      role="dialog"
+      aria-modal="true"
+    >
+
+      <div class="modal-header">
+
+        <h2 id="modalTitle">
+          SkillRush
+        </h2>
+
+        <button
+          id="modalClose"
+          class="icon-button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div
+        id="modalContent"
+        class="modal-content"
+      ></div>
+
+    </div>
+
   </div>
 
-  <div class="post-actions">
-   <button onclick="like(this)">♡ 1.2K</button>
-   <button onclick="showToast('Comments opened')">◯ 238</button>
-   <button onclick="showToast('Post shared')">↗ Share</button>
-  </div>
 
- </div>
+  <!--
+    ==========================================================
+    TOAST NOTIFICATION
+    ==========================================================
+  -->
 
- <div class="card">
-  <div class="section-title" style="margin:0 0 5px">
-   <h2>🏆 World Ranking</h2>
-   <span>Today</span>
-  </div>
+  <div
+    id="toastContainer"
+    class="toast-container"
+    aria-live="polite"
+  ></div>
 
-  <div class="rank">
-   <div class="rank-num">1</div>
-   <div class="avatar">M</div>
-   <div class="rank-info">
-    <strong>Maria Chen</strong>
-    <small>🇸🇬 Diamond</small>
-   </div>
-   <div class="xp">98,420 XP</div>
-  </div>
 
-  <div class="rank">
-   <div class="rank-num">2</div>
-   <div class="avatar">A</div>
-   <div class="rank-info">
-    <strong>Alex Kim</strong>
-    <small>🇰🇷 Diamond</small>
-   </div>
-   <div class="xp">96,210 XP</div>
-  </div>
+  <!--
+    ==========================================================
+    JAVASCRIPT APPLICATION
+    ==========================================================
+  -->
 
-  <div class="rank">
-   <div class="rank-num">3</div>
-   <div class="avatar">R</div>
-   <div class="rank-info">
-    <strong>Rayan</strong>
-    <small>🇮🇳 Diamond</small>
-   </div>
-   <div class="xp">94,870 XP</div>
-  </div>
-
-  <div class="rank">
-   <div class="rank-num">47</div>
-   <div class="avatar">T</div>
-   <div class="rank-info">
-    <strong>You</strong>
-    <small>🇧🇩 Level 12</small>
-   </div>
-   <div class="xp">2,840 XP</div>
-  </div>
-
- </div>
-
-</section>
-
-<!-- AI -->
-<div class="section-title">
- <h2>AI Learning Partner</h2>
- <span>Always available</span>
-</div>
-
-<section class="card ai">
- <div style="display:flex;gap:12px;align-items:center">
-  <div class="world-icon" style="margin:0">✦</div>
-  <div>
-   <h3>Ask SkillRush AI</h3>
-   <p>Explain a topic, practice English, generate questions or build a study plan.</p>
-  </div>
- </div>
-
- <div class="ai-input">
-  <input id="aiInput" placeholder="Ask anything about learning...">
-  <button onclick="askAI()">Ask AI</button>
- </div>
-</section>
-
-</div>
-</main>
-</div>
-
-<!-- MOBILE NAV -->
-<nav class="mobile-nav">
- <button onclick="go('home')"><b>⌂</b>Home</button>
- <button onclick="go('explore')"><b>⌕</b>Explore</button>
- <button onclick="go('learn')"><b>🧠</b>Learn</button>
- <button onclick="openBattle()"><b>⚔</b>Battle</button>
- <button onclick="openAI()"><b>✦</b>AI</button>
-</nav>
-
-<!-- BATTLE MODAL -->
-<div class="modal" id="battleModal">
- <div class="modal-box">
-  <div class="modal-top">
-   <h2>⚔ Math Battle</h2>
-   <button class="close" onclick="closeModal('battleModal')">×</button>
-  </div>
-
-  <p style="color:#999">You have 5 seconds to answer.</p>
-
-  <div class="question" id="question">12 × 8 = ?</div>
-
-  <div class="answers">
-   <button class="answer" onclick="answer(96)">96</button>
-   <button class="answer" onclick="answer(86)">86</button>
-   <button class="answer" onclick="answer(108)">108</button>
-   <button class="answer" onclick="answer(92)">92</button>
-  </div>
-
-  <div style="display:flex;justify-content:space-between;margin-top:20px;color:#999">
-   <span>❤️❤️❤️</span>
-   <span id="timer">5.0s</span>
-   <span>1 / 10</span>
-  </div>
- </div>
-</div>
-
-<!-- AI MODAL -->
-<div class="modal" id="aiModal">
- <div class="modal-box">
-  <div class="modal-top">
-   <h2>✦ SkillRush AI</h2>
-   <button class="close" onclick="closeModal('aiModal')">×</button>
-  </div>
-
-  <div id="aiResponse"
-       style="background:#0b0b0e;border:1px solid #27272f;border-radius:14px;padding:18px;line-height:1.6;color:#ccc">
-   Hello! I'm your SkillRush AI assistant.
-   Ask me something and I'll help you learn.
-  </div>
-
-  <div class="ai-input">
-   <input id="modalAI" placeholder="Ask something...">
-   <button onclick="modalAskAI()">Send</button>
-  </div>
- </div>
-</div>
-
-<!-- TOAST -->
-<div id="toast"
- style="
- position:fixed;
- bottom:25px;
- left:50%;
- transform:translateX(-50%) translateY(100px);
- background:#18181d;
- border:1px solid #33333b;
- color:white;
- padding:12px 18px;
- border-radius:12px;
- z-index:200;
- opacity:0;
- transition:.3s;
- ">
-</div>
-
-<script>
-
-let dark=true;
-let timerInterval;
-let time=5;
-
-function showToast(message){
- const toast=document.getElementById("toast");
- toast.textContent=message;
- toast.style.opacity="1";
- toast.style.transform="translateX(-50%) translateY(0)";
- setTimeout(()=>{
-  toast.style.opacity="0";
-  toast.style.transform="translateX(-50%) translateY(100px)";
- },2200);
-}
-
-function go(page){
- if(page==="learn"){
-  document.getElementById("content").scrollTo?.(0,0);
-  document.querySelector(".hero").scrollIntoView({behavior:"smooth"});
-  showToast("Learning center opened");
- }
- else if(page==="explore"){
-  document.querySelector(".feed-card").scrollIntoView({behavior:"smooth"});
-  showToast("Explore opened");
- }
- else if(page==="ranking"){
-  document.querySelector(".two").scrollIntoView({behavior:"smooth"});
- }
- else{
-  showToast(page.charAt(0).toUpperCase()+page.slice(1)+" is opening...");
- }
-}
-
-function openBattle(){
- document.getElementById("battleModal").classList.add("show");
- startTimer();
-}
-
-function startTimer(){
- clearInterval(timerInterval);
- time=5;
- document.getElementById("timer").textContent=time.toFixed(1)+"s";
-
- timerInterval=setInterval(()=>{
-  time-=.1;
-
-  if(time<=0){
-   clearInterval(timerInterval);
-   document.getElementById("timer").textContent="TIME!";
-   showToast("Time's up!");
-  }else{
-   document.getElementById("timer").textContent=time.toFixed(1)+"s";
-  }
- },100);
-}
-
-function answer(value){
- clearInterval(timerInterval);
-
- if(value===96){
-  showToast("✓ Correct! +25 XP");
- }else{
-  showToast("✕ Wrong answer — life lost");
- }
-
- setTimeout(startTimer,1000);
-}
-
-function startMath(){
- openBattle();
-}
-
-function startEnglish(){
- showToast("English lesson started");
-}
-
-function closeModal(id){
- document.getElementById(id).classList.remove("show");
- clearInterval(timerInterval);
-}
-
-function openAI(){
- document.getElementById("aiModal").classList.add("show");
-}
-
-function askAI(){
- const input=document.getElementById("aiInput");
- if(!input.value.trim()){
-  showToast("Type your question first");
-  return;
- }
-
- document.getElementById("aiResponse").textContent=
- "AI is ready to answer: "+input.value;
-
- showToast("AI request prepared");
- input.value="";
-}
-
-function modalAskAI(){
- const input=document.getElementById("modalAI");
- if(!input.value.trim()) return;
-
- document.getElementById("aiResponse").innerHTML=
- "🤖 <strong>AI:</strong><br><br>"+
- "Great question! In the production version, this area will connect to the SkillRush AI backend and provide a personalized answer.";
-
- input.value="";
-}
-
-function like(button){
- button.textContent="♥ 1.3K";
- button.style.color="#ff5d73";
-}
-
-function openProfile(){
- showToast("Profile opened");
-}
-
-function toggleTheme(){
- showToast("Theme settings ready");
-}
-
-document.getElementById("searchInput").addEventListener("keydown",e=>{
- if(e.key==="Enter"){
-  const q=e.target.value.trim();
-  if(q) showToast("Searching for: "+q);
- }
-});
-
-document.addEventListener("keydown",e=>{
- if(e.key==="Escape"){
-  document.querySelectorAll(".modal").forEach(m=>m.classList.remove("show"));
-  clearInterval(timerInterval);
- }
-});
-
-</script>
+  <script
+    type="module"
+    src="js/app.js"
+  ></script>
 
 </body>
 </html>
+/* ============================================================
+   SKILLRUSH — MAIN DESIGN SYSTEM
+   Version: 3.0
+   ============================================================ */
+
+:root {
+  --bg: #070a13;
+  --bg-soft: #0b101c;
+
+  --surface: #101624;
+  --surface-2: #151d2d;
+  --surface-3: #1b263a;
+
+  --border: #26334c;
+  --border-soft: #1d2940;
+
+  --text: #f7f9ff;
+  --text-soft: #d6dbea;
+  --muted: #8f9bb3;
+
+  --primary: #7652ff;
+  --primary-light: #9b7cff;
+  --primary-dark: #5735d8;
+
+  --cyan: #18d9ff;
+  --green: #2bdc91;
+  --yellow: #ffd15c;
+  --red: #ff5c76;
+  --orange: #ff9e52;
+
+  --radius-xs: 8px;
+  --radius-sm: 11px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --radius-xl: 27px;
+
+  --shadow-sm: 0 5px 20px rgba(0, 0, 0, .18);
+  --shadow-md: 0 15px 40px rgba(0, 0, 0, .25);
+  --shadow-lg: 0 25px 80px rgba(0, 0, 0, .35);
+
+  --sidebar-width: 250px;
+  --topbar-height: 70px;
+
+  --transition-fast: .15s ease;
+  --transition: .25s ease;
+  --transition-slow: .4s ease;
+}
+
+/* ============================================================
+   LIGHT THEME
+   ============================================================ */
+
+body.light {
+  --bg: #f3f6fb;
+  --bg-soft: #edf1f7;
+
+  --surface: #ffffff;
+  --surface-2: #f1f4f9;
+  --surface-3: #e8edf5;
+
+  --border: #d6deeb;
+  --border-soft: #e4e9f1;
+
+  --text: #111827;
+  --text-soft: #344054;
+  --muted: #667085;
+
+  --shadow-sm: 0 5px 20px rgba(20, 30, 50, .08);
+  --shadow-md: 0 15px 40px rgba(20, 30, 50, .10);
+  --shadow-lg: 0 25px 80px rgba(20, 30, 50, .13);
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 10% -10%,
+      rgba(118, 82, 255, .15),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(24, 217, 255, .08),
+      transparent 28%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  line-height: 1.5;
+
+  overflow-x: hidden;
+
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-3);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border);
+}
+
+/* ============================================================
+   APPLICATION
+   ============================================================ */
+
+#app {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(118, 82, 255, .16),
+      transparent 38%
+    ),
+    var(--bg);
+
+  z-index: 9999;
+}
+
+.loading-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 34px;
+  font-weight: 950;
+
+  letter-spacing: -1px;
+
+  margin-bottom: 25px;
+}
+
+.loading-logo span {
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      var(--primary-light),
+      var(--cyan)
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.loading-spinner {
+  width: 38px;
+  height: 38px;
+
+  border: 3px solid var(--surface-3);
+  border-top-color: var(--primary);
+
+  border-radius: 50%;
+
+  animation:
+    skillrush-spin .8s linear infinite;
+}
+
+.loading-screen p {
+  color: var(--muted);
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+@keyframes skillrush-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.sidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: var(--sidebar-width);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(16, 22, 36, .98),
+      rgba(9, 13, 23, .98)
+    );
+
+  border-right: 1px solid var(--border);
+
+  padding: 18px 12px;
+
+  overflow-y: auto;
+
+  z-index: 100;
+
+  backdrop-filter: blur(20px);
+}
+
+body.light .sidebar {
+  background: rgba(255, 255, 255, .94);
+}
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding:
+    8px
+    10px
+    24px;
+
+  font-size: 24px;
+  font-weight: 950;
+
+  letter-spacing: -1px;
+}
+
+.brand-icon {
+  font-size: 26px;
+}
+
+.brand-name span {
+  color: var(--primary-light);
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+.sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.nav-section {
+  padding: 18px 10px 7px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+.nav-item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 11px 12px;
+
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+
+  color: var(--muted);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.nav-item:hover {
+  color: var(--text);
+
+  background:
+    rgba(118, 82, 255, .10);
+
+  transform: translateX(2px);
+}
+
+.nav-item.active {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(118, 82, 255, .26),
+      rgba(118, 82, 255, .07)
+    );
+
+  box-shadow:
+    inset 3px 0 0 var(--primary);
+}
+
+.nav-icon {
+  width: 25px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+}
+
+.nav-label {
+  flex: 1;
+
+  text-align: left;
+}
+
+.nav-badge {
+  min-width: 20px;
+  height: 20px;
+
+  padding: 0 6px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+
+  background: var(--red);
+
+  color: #fff;
+
+  font-size: 10px;
+  font-weight: 900;
+}
+
+/* ============================================================
+   MAIN AREA
+   ============================================================ */
+
+.main-area {
+  width: calc(100% - var(--sidebar-width));
+
+  margin-left: var(--sidebar-width);
+
+  min-height: 100vh;
+}
+
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+
+.topbar {
+  height: var(--topbar-height);
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 80;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding:
+    10px
+    22px;
+
+  background:
+    rgba(8, 11, 20, .84);
+
+  border-bottom:
+    1px solid var(--border);
+
+  backdrop-filter: blur(20px);
+}
+
+body.light .topbar {
+  background: rgba(255, 255, 255, .84);
+}
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+
+.global-search {
+  flex: 1;
+
+  max-width: 700px;
+
+  position: relative;
+}
+
+.global-search-input {
+  width: 100%;
+
+  height: 44px;
+
+  padding:
+    0
+    45px
+    0
+    17px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 999px;
+
+  background:
+    var(--surface-2);
+
+  color:
+    var(--text);
+
+  outline: none;
+
+  transition:
+    border var(--transition),
+    box-shadow var(--transition);
+}
+
+.global-search-input::placeholder {
+  color: var(--muted);
+}
+
+.global-search-input:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(118, 82, 255, .12);
+}
+
+.search-icon {
+  position: absolute;
+
+  right: 16px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: var(--muted);
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   TOPBAR ACTIONS
+   ============================================================ */
+
+.topbar-actions {
+  margin-left: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 50%;
+
+  background:
+    var(--surface-2);
+
+  color:
+    var(--text);
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast),
+    border var(--transition-fast);
+}
+
+.icon-button:hover {
+  border-color: var(--primary);
+
+  background:
+    var(--surface-3);
+
+  transform:
+    translateY(-1px);
+}
+
+.notification-button {
+  position: relative;
+}
+
+.notification-dot {
+  position: absolute;
+
+  top: 5px;
+  right: 5px;
+
+  width: 8px;
+  height: 8px;
+
+  background: var(--red);
+
+  border: 2px solid var(--surface-2);
+
+  border-radius: 50%;
+}
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.content-area {
+  width: 100%;
+
+  max-width: 1600px;
+
+  margin:
+    0
+    auto;
+
+  padding:
+    24px;
+}
+
+.page {
+  display: none;
+
+  animation:
+    page-enter .25s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   HEADINGS
+   ============================================================ */
+
+.page-title {
+  font-size: clamp(28px, 4vw, 42px);
+
+  line-height: 1.1;
+
+  letter-spacing: -1.4px;
+
+  font-weight: 900;
+}
+
+.page-subtitle {
+  margin-top: 8px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+.section-title {
+  font-size: 20px;
+
+  font-weight: 850;
+
+  letter-spacing: -.3px;
+}
+
+.section-heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-bottom: 14px;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 300px;
+
+  padding: 38px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-xl);
+
+  background:
+    radial-gradient(
+      circle at 82% 15%,
+      rgba(118, 82, 255, .45),
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 18% 90%,
+      rgba(24, 217, 255, .20),
+      transparent 30%
+    ),
+    var(--surface);
+
+  box-shadow:
+    var(--shadow-md);
+}
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  right: -100px;
+  bottom: -150px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(118, 82, 255, .16);
+
+  filter: blur(10px);
+}
+
+.hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 760px;
+}
+
+.hero-title {
+  font-size:
+    clamp(
+      38px,
+      6vw,
+      62px
+    );
+
+  line-height: 1;
+
+  letter-spacing:
+    -2.5px;
+
+  font-weight: 950;
+}
+
+.gradient-text {
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      var(--primary-light),
+      var(--cyan)
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+.hero-description {
+  max-width: 700px;
+
+  margin-top: 17px;
+
+  color: var(--muted);
+
+  line-height: 1.75;
+
+  font-size: 15px;
+}
+
+.hero-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  flex-wrap: wrap;
+
+  margin-top: 25px;
+}
+
+.hero-orbit {
+  position: absolute;
+
+  right: 7%;
+  bottom: 15px;
+
+  width: 190px;
+  height: 190px;
+
+  border:
+    1px solid rgba(118, 82, 255, .30);
+
+  border-radius: 50%;
+
+  opacity: .6;
+}
+
+.hero-orbit::before,
+.hero-orbit::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 25px;
+
+  border:
+    1px solid rgba(24, 217, 255, .28);
+
+  border-radius: 50%;
+}
+
+.hero-orbit::after {
+  inset: 55px;
+
+  border-color:
+    rgba(255, 255, 255, .15);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.btn {
+  min-height: 42px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding:
+    10px
+    17px;
+
+  border: 0;
+
+  border-radius:
+    var(--radius-sm);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary-light)
+    );
+
+  color: #fff;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 22px rgba(118, 82, 255, .20);
+
+  transition:
+    transform var(--transition-fast),
+    filter var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn:hover {
+  filter: brightness(1.08);
+
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 10px 28px rgba(118, 82, 255, .27);
+}
+
+.btn:active {
+  transform:
+    translateY(0)
+    scale(.98);
+}
+
+.btn.secondary {
+  background:
+    var(--surface-2);
+
+  border:
+    1px solid var(--border);
+
+  color:
+    var(--text);
+
+  box-shadow:
+    none;
+}
+
+.btn.secondary:hover {
+  border-color:
+    var(--primary);
+}
+
+.btn.green {
+  background:
+    var(--green);
+
+  color:
+    #04130c;
+
+  box-shadow:
+    0 7px 22px rgba(43, 220, 145, .15);
+}
+
+.btn.danger {
+  background:
+    var(--red);
+
+  color:
+    #fff;
+}
+
+.btn.small {
+  min-height: 34px;
+
+  padding:
+    7px
+    11px;
+
+  font-size: 12px;
+}
+
+.btn.full {
+  width: 100%;
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+
+.card {
+  background:
+    var(--surface);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-lg);
+
+  padding:
+    18px;
+
+  box-shadow:
+    var(--shadow-sm);
+
+  transition:
+    border var(--transition),
+    transform var(--transition);
+}
+
+.card.hoverable:hover {
+  border-color:
+    #3c4e70;
+
+  transform:
+    translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 14px;
+}
+
+.card-title {
+  font-size: 18px;
+
+  font-weight: 850;
+}
+
+.card-description {
+  color:
+    var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.65;
+}
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+}
+
+.grid-2 {
+  grid-template-columns:
+    1.5fr
+    1fr;
+}
+
+.grid-3 {
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+}
+
+.grid-6 {
+  grid-template-columns:
+    repeat(
+      6,
+      minmax(0, 1fr)
+    );
+}
+
+.section {
+  margin-top: 25px;
+}
+
+/* ============================================================
+   WORLD CARD
+   ============================================================ */
+
+.world-card {
+  position: relative;
+
+  min-height: 190px;
+
+  cursor: pointer;
+
+  overflow: hidden;
+}
+
+.world-card::after {
+  content: "";
+
+  position: absolute;
+
+  right: -30px;
+  bottom: -50px;
+
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(118, 82, 255, .08);
+
+  transition:
+    transform var(--transition);
+}
+
+.world-card:hover::after {
+  transform:
+    scale(1.35);
+}
+
+.world-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 14px;
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    var(--surface-2);
+
+  border:
+    1px solid var(--border);
+
+  font-size: 25px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.world-name {
+  font-size: 18px;
+
+  font-weight: 850;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.world-description {
+  margin-top: 5px;
+
+  color:
+    var(--muted);
+
+  font-size: 13px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+/* ============================================================
+   PROGRESS
+   ============================================================ */
+
+.progress-wrapper {
+  margin-top: 15px;
+}
+
+.progress-track {
+  width: 100%;
+
+  height: 7px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background:
+    var(--surface-3);
+}
+
+.progress-value {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--primary),
+      var(--cyan)
+    );
+
+  transition:
+    width .5s ease;
+}
+
+.progress-meta {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 7px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+
+.stats-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap: 11px;
+
+  margin-top: 20px;
+}
+
+.stat-card {
+  padding: 14px;
+
+  background:
+    rgba(255,255,255,.025);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-md);
+}
+
+.stat-label {
+  color:
+    var(--muted);
+
+  font-size: 11px;
+}
+
+.stat-value {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 21px;
+
+  font-weight: 900;
+}
+
+/* ============================================================
+   AVATAR
+   ============================================================ */
+
+.avatar {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 auto;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #354566,
+      #141c2e
+    );
+
+  border:
+    1px solid var(--border);
+
+  overflow: hidden;
+
+  user-select: none;
+}
+
+.avatar.large {
+  width: 115px;
+  height: 115px;
+
+  font-size: 55px;
+
+  border:
+    3px solid var(--primary);
+}
+
+.avatar.small {
+  width: 34px;
+  height: 34px;
+
+  font-size: 15px;
+}
+
+/* ============================================================
+   RANKING
+   ============================================================ */
+
+.ranking-list {
+  display: grid;
+
+  gap: 0;
+}
+
+.rank-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    12px
+    0;
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+.rank-row:last-child {
+  border-bottom: 0;
+}
+
+.rank-number {
+  width: 28px;
+
+  color:
+    var(--yellow);
+
+  font-weight: 950;
+
+  text-align: center;
+}
+
+.rank-user {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.rank-name {
+  display: block;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  font-weight: 750;
+}
+
+.rank-meta {
+  color:
+    var(--muted);
+
+  font-size: 11px;
+}
+
+.rank-xp {
+  color:
+    var(--primary-light);
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+/* ============================================================
+   CHAT
+   ============================================================ */
+
+.chat-card {
+  height: 500px;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.messages {
+  flex: 1;
+
+  min-height: 0;
+
+  overflow-y: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  padding-right: 3px;
+}
+
+.message {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 9px;
+}
+
+.message-body {
+  max-width: 78%;
+
+  padding:
+    9px
+    12px;
+
+  border-radius:
+    13px;
+
+  background:
+    var(--surface-2);
+
+  font-size: 13px;
+}
+
+.message-name {
+  font-weight: 800;
+}
+
+.message-time {
+  display: block;
+
+  margin-top: 3px;
+
+  color:
+    var(--muted);
+
+  font-size: 10px;
+}
+
+.chat-input {
+  display: flex;
+
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+.chat-input input {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 43px;
+
+  padding:
+    0
+    13px;
+
+  background:
+    var(--surface-2);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-sm);
+
+  color:
+    var(--text);
+
+  outline: none;
+}
+
+.chat-input input:focus {
+  border-color:
+    var(--primary);
+}
+
+/* ============================================================
+   FEED
+   ============================================================ */
+
+.feed {
+  display: grid;
+
+  gap: 12px;
+}
+
+.post {
+  padding:
+    16px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    var(--surface);
+}
+
+.post-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.post-author {
+  font-weight: 800;
+}
+
+.post-time {
+  display: block;
+
+  color:
+    var(--muted);
+
+  font-size: 10px;
+}
+
+.post-content {
+  margin:
+    13px
+    0;
+
+  color:
+    var(--text-soft);
+
+  line-height: 1.7;
+
+  font-size: 14px;
+}
+
+.post-actions {
+  display: flex;
+
+  gap: 7px;
+}
+
+.post-action {
+  flex: 1;
+
+  padding:
+    9px;
+
+  border:
+    0;
+
+  border-radius:
+    9px;
+
+  background:
+    var(--surface-2);
+
+  color:
+    var(--muted);
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.post-action:hover {
+  color:
+    var(--text);
+
+  background:
+    var(--surface-3);
+}
+
+/* ============================================================
+   ROADMAP
+   ============================================================ */
+
+.roadmap {
+  display: grid;
+
+  gap: 12px;
+}
+
+.roadmap-level {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding:
+    15px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-lg);
+
+  background:
+    var(--surface);
+}
+
+.roadmap-level.locked {
+  opacity: .48;
+}
+
+.level-number {
+  width: 50px;
+  height: 50px;
+
+  flex: 0 0 auto;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--cyan)
+    );
+
+  color: #fff;
+
+  font-weight: 950;
+}
+
+.level-info {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.level-title {
+  font-weight: 850;
+}
+
+.level-description {
+  margin-top: 3px;
+
+  color:
+    var(--muted);
+
+  font-size: 12px;
+}
+
+/* ============================================================
+   PRACTICE
+   ============================================================ */
+
+.practice-card {
+  max-width: 850px;
+
+  margin:
+    25px
+    auto;
+}
+
+.practice-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  color:
+    var(--muted);
+
+  font-size: 12px;
+}
+
+.practice-timer {
+  font-size: 18px;
+
+  color:
+    var(--cyan);
+
+  font-weight: 900;
+}
+
+.question-container {
+  padding:
+    35px
+    15px;
+
+  text-align: center;
+}
+
+.question-text {
+  font-size:
+    clamp(
+      25px,
+      5vw,
+      40px
+    );
+
+  font-weight: 950;
+
+  letter-spacing: -.8px;
+}
+
+.answer-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 11px;
+}
+
+.answer-button {
+  min-height: 65px;
+
+  padding:
+    13px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    var(--surface-2);
+
+  color:
+    var(--text);
+
+  cursor: pointer;
+
+  font-weight: 850;
+
+  transition:
+    border var(--transition-fast),
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.answer-button:hover {
+  border-color:
+    var(--primary);
+
+  background:
+    rgba(118,82,255,.12);
+
+  transform:
+    translateY(-1px);
+}
+
+.answer-button.correct {
+  background:
+    rgba(43,220,145,.15);
+
+  border-color:
+    var(--green);
+
+  color:
+    var(--green);
+}
+
+.answer-button.wrong {
+  background:
+    rgba(255,92,118,.15);
+
+  border-color:
+    var(--red);
+
+  color:
+    var(--red);
+}
+
+/* ============================================================
+   BATTLE
+   ============================================================ */
+
+.battle-card {
+  position: relative;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  min-height: 230px;
+}
+
+.battle-versus {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 30px;
+
+  margin:
+    25px
+    0;
+}
+
+.battle-player {
+  text-align: center;
+}
+
+.battle-player-name {
+  margin-top: 7px;
+
+  font-weight: 850;
+}
+
+.battle-vs {
+  font-size: 25px;
+
+  color:
+    var(--red);
+
+  font-weight: 950;
+}
+
+/* ============================================================
+   PROFILE
+   ============================================================ */
+
+.profile-layout {
+  display: grid;
+
+  grid-template-columns:
+    280px
+    1fr;
+
+  gap: 18px;
+}
+
+.profile-sidebar {
+  text-align: center;
+}
+
+.profile-avatar-wrapper {
+  display: flex;
+
+  justify-content: center;
+
+  margin:
+    5px
+    0
+    17px;
+}
+
+.profile-name {
+  font-size: 23px;
+
+  font-weight: 900;
+}
+
+.profile-country {
+  color:
+    var(--muted);
+
+  margin-top: 4px;
+
+  font-size: 13px;
+}
+
+.profile-main {
+  display: grid;
+
+  gap: 18px;
+}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+
+.form-group {
+  display: grid;
+
+  gap: 6px;
+}
+
+.form-label {
+  color:
+    var(--muted);
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+
+  padding:
+    11px
+    13px;
+
+  background:
+    var(--surface-2);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-sm);
+
+  color:
+    var(--text);
+
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color:
+    var(--primary);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(118,82,255,.10);
+}
+
+.form-textarea {
+  min-height: 120px;
+
+  resize:
+    vertical;
+}
+
+/* ============================================================
+   AI PANEL
+   ============================================================ */
+
+.ai-panel {
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(118,82,255,.20),
+      transparent 35%
+    ),
+    var(--surface);
+
+  border:
+    1px solid
+    rgba(118,82,255,.45);
+}
+
+.ai-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 14px;
+}
+
+.ai-icon {
+  width: 45px;
+  height: 45px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius:
+    14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--cyan)
+    );
+
+  font-size: 23px;
+}
+
+.ai-response {
+  margin-top: 13px;
+
+  padding:
+    14px;
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    var(--surface-2);
+
+  color:
+    var(--text-soft);
+
+  line-height: 1.7;
+
+  font-size: 13px;
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+
+.empty-state {
+  padding:
+    45px
+    20px;
+
+  text-align: center;
+
+  color:
+    var(--muted);
+}
+
+.empty-icon {
+  font-size: 45px;
+
+  margin-bottom: 10px;
+}
+
+.empty-title {
+  color:
+    var(--text);
+
+  font-weight: 850;
+
+  margin-bottom: 5px;
+}
+
+/* ============================================================
+   TABS
+   ============================================================ */
+
+.tabs {
+  display: flex;
+
+  gap: 7px;
+
+  flex-wrap: wrap;
+
+  margin:
+    18px
+    0;
+}
+
+.tab {
+  padding:
+    9px
+    14px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    999px;
+
+  background:
+    var(--surface-2);
+
+  color:
+    var(--muted);
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+  font-weight: 750;
+}
+
+.tab.active {
+  background:
+    rgba(118,82,255,.18);
+
+  border-color:
+    var(--primary);
+
+  color:
+    var(--text);
+}
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    5px
+    9px;
+
+  border-radius:
+    999px;
+
+  font-size: 10px;
+
+  font-weight: 850;
+}
+
+.badge.primary {
+  color:
+    var(--primary-light);
+
+  background:
+    rgba(118,82,255,.12);
+}
+
+.badge.green {
+  color:
+    var(--green);
+
+  background:
+    rgba(43,220,145,.12);
+}
+
+.badge.red {
+  color:
+    var(--red);
+
+  background:
+    rgba(255,92,118,.12);
+}
+
+.badge.yellow {
+  color:
+    var(--yellow);
+
+  background:
+    rgba(255,209,92,.12);
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+
+.modal {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  z-index: 500;
+
+  opacity: 1;
+
+  transition:
+    opacity var(--transition);
+}
+
+.modal.hidden {
+  display: none;
+
+  opacity: 0;
+}
+
+.modal-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    rgba(0,0,0,.72);
+
+  backdrop-filter:
+    blur(5px);
+}
+
+.modal-container {
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(
+      600px,
+      100%
+    );
+
+  max-height:
+    calc(100vh - 40px);
+
+  overflow-y: auto;
+
+  background:
+    var(--surface);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-xl);
+
+  box-shadow:
+    var(--shadow-lg);
+
+  animation:
+    modal-enter .22s ease;
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform:
+      translateY(10px)
+      scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding:
+    17px
+    20px;
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+.modal-header h2 {
+  font-size: 18px;
+}
+
+.modal-content {
+  padding:
+    20px;
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+
+.toast-container {
+  position: fixed;
+
+  left: 50%;
+  bottom: 22px;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 1000;
+
+  display: grid;
+
+  gap: 8px;
+
+  pointer-events: none;
+}
+
+.toast {
+  padding:
+    11px
+    16px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius-sm);
+
+  background:
+    #141922;
+
+  color:
+    #fff;
+
+  box-shadow:
+    var(--shadow-md);
+
+  font-size: 13px;
+
+  animation:
+    toast-in .25s ease;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+/* ============================================================
+   ONLINE STATUS
+   ============================================================ */
+
+.online-dot {
+  width: 8px;
+  height: 8px;
+
+  display: inline-block;
+
+  border-radius: 50%;
+
+  background:
+    var(--green);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(43,220,145,.10);
+}
+
+/* ============================================================
+   DIVIDER
+   ============================================================ */
+
+.divider {
+  width: 100%;
+
+  height: 1px;
+
+  margin:
+    15px
+    0;
+
+  background:
+    var(--border);
+}
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.text-primary {
+  color: var(--primary-light);
+}
+
+.text-green {
+  color: var(--green);
+}
+
+.text-red {
+  color: var(--red);
+}
+
+.text-yellow {
+  color: var(--yellow);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.fw-bold {
+  font-weight: 800;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gap-1 {
+  gap: 5px;
+}
+
+.gap-2 {
+  gap: 10px;
+}
+
+.gap-3 {
+  gap: 15px;
+}
+
+.gap-4 {
+  gap: 20px;
+}
+
+.mt-1 {
+  margin-top: 5px;
+}
+
+.mt-2 {
+  margin-top: 10px;
+}
+
+.mt-3 {
+  margin-top: 15px;
+}
+
+.mt-4 {
+  margin-top: 20px;
+}
+
+.mb-1 {
+  margin-bottom: 5px;
+}
+
+.mb-2 {
+  margin-bottom: 10px;
+}
+
+.mb-3 {
+  margin-bottom: 15px;
+}
+
+.mb-4 {
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   END MAIN CSS
+   Next:
+   components.css
+   ============================================================ */
+  /* =========================================================
+   SKILLRUSH CORE ENGINE v2
+   ========================================================= */
+
+const SR = {
+
+  version: "2.0.0",
+
+  user: {
+    id: "sr_user_001",
+    name: "Tahsin",
+    country: "BD",
+    xp: 12430,
+    level: 42,
+    streak: 127,
+    lives: 3,
+    gems: 1250,
+    coins: 9840,
+    rating: 1248
+  },
+
+  settings: {
+    sound: true,
+    notifications: true,
+    language: "en",
+    theme: "dark"
+  },
+
+  session: {
+    world: null,
+    subject: null,
+    question: 0,
+    score: 0,
+    correct: 0,
+    wrong: 0,
+    started: false,
+    startTime: null,
+    timeLimit: 5
+  },
+
+  events: {},
+
+  on(event, callback) {
+    if (!this.events[event]) {
+      this.events[event] = [];
+    }
+
+    this.events[event].push(callback);
+  },
+
+  emit(event, data) {
+    if (!this.events[event]) return;
+
+    this.events[event].forEach(callback => {
+      try {
+        callback(data);
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  },
+
+  save() {
+    localStorage.setItem(
+      "skillrush_state",
+      JSON.stringify({
+        user: this.user,
+        settings: this.settings
+      })
+    );
+  },
+
+  load() {
+    try {
+      const data = JSON.parse(
+        localStorage.getItem("skillrush_state")
+      );
+
+      if (!data) return;
+
+      if (data.user) {
+        this.user = {
+          ...this.user,
+          ...data.user
+        };
+      }
+
+      if (data.settings) {
+        this.settings = {
+          ...this.settings,
+          ...data.settings
+        };
+      }
+
+    } catch (error) {
+      console.warn(
+        "SkillRush state could not be loaded."
+      );
+    }
+  }
+
+};
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+function srToast(message, type = "info") {
+
+  let container =
+    document.getElementById("srToastContainer");
+
+  if (!container) {
+
+    container =
+      document.createElement("div");
+
+    container.id =
+      "srToastContainer";
+
+    container.style.position =
+      "fixed";
+
+    container.style.right =
+      "20px";
+
+    container.style.bottom =
+      "20px";
+
+    container.style.zIndex =
+      "9999";
+
+    container.style.display =
+      "flex";
+
+    container.style.flexDirection =
+      "column";
+
+    container.style.gap =
+      "10px";
+
+    document.body.appendChild(
+      container
+    );
+  }
+
+  const toast =
+    document.createElement("div");
+
+  toast.textContent =
+    message;
+
+  toast.style.padding =
+    "14px 18px";
+
+  toast.style.borderRadius =
+    "14px";
+
+  toast.style.background =
+    "var(--panel2)";
+
+  toast.style.border =
+    "1px solid var(--border)";
+
+  toast.style.color =
+    "var(--text)";
+
+  toast.style.boxShadow =
+    "0 10px 30px #0006";
+
+  toast.style.minWidth =
+    "240px";
+
+  toast.style.transition =
+    ".25s";
+
+  container.appendChild(
+    toast
+  );
+
+  setTimeout(() => {
+
+    toast.style.opacity =
+      "0";
+
+    toast.style.transform =
+      "translateX(20px)";
+
+    setTimeout(() => {
+      toast.remove();
+    }, 250);
+
+  }, 3000);
+
+}
+
+
+/* =========================================================
+   XP SYSTEM
+   ========================================================= */
+
+function addXP(amount, reason = "Activity") {
+
+  amount =
+    Math.max(
+      0,
+      Number(amount) || 0
+    );
+
+  SR.user.xp += amount;
+
+  updateLevel();
+
+  srToast(
+    `+${amount} XP • ${reason}`,
+    "success"
+  );
+
+  SR.emit(
+    "xp",
+    {
+      amount,
+      reason,
+      total: SR.user.xp
+    }
+  );
+
+  SR.save();
+
+  updateUserUI();
+
+  AchievementEngine.check();
+
+}
+
+
+/* =========================================================
+   LEVEL SYSTEM
+   ========================================================= */
+
+function calculateLevel(xp) {
+
+  return Math.max(
+    1,
+    Math.floor(
+      Math.sqrt(xp / 50)
+    ) + 1
+  );
+
+}
+
+
+function updateLevel() {
+
+  const oldLevel =
+    SR.user.level;
+
+  const newLevel =
+    calculateLevel(
+      SR.user.xp
+    );
+
+  SR.user.level =
+    newLevel;
+
+  if (
+    newLevel >
+    oldLevel
+  ) {
+
+    srToast(
+      `🎉 Level ${newLevel} unlocked!`,
+      "success"
+    );
+
+    SR.emit(
+      "levelUp",
+      newLevel
+    );
+  }
+
+}
+
+
+/* =========================================================
+   USER UI
+   ========================================================= */
+
+function updateUserUI() {
+
+  updateLevel();
+
+  document
+    .querySelectorAll(
+      "[data-user-xp]"
+    )
+    .forEach(el => {
+      el.textContent =
+        SR.user.xp.toLocaleString();
+    });
+
+  document
+    .querySelectorAll(
+      "[data-user-level]"
+    )
+    .forEach(el => {
+      el.textContent =
+        SR.user.level;
+    });
+
+  document
+    .querySelectorAll(
+      "[data-user-streak]"
+    )
+    .forEach(el => {
+      el.textContent =
+        SR.user.streak;
+    });
+
+}
+
+
+/* =========================================================
+   SEARCH ENGINE
+   ========================================================= */
+
+const SR_SEARCH_DATA = [
+
+  {
+    type: "world",
+    name: "Math World",
+    keywords: [
+      "math",
+      "mathematics",
+      "algebra",
+      "calculus"
+    ],
+    page: "worlds"
+  },
+
+  {
+    type: "world",
+    name: "English World",
+    keywords: [
+      "english",
+      "grammar",
+      "vocabulary"
+    ],
+    page: "worlds"
+  },
+
+  {
+    type: "world",
+    name: "Arabic World",
+    keywords: [
+      "arabic",
+      "عربي"
+    ],
+    page: "worlds"
+  },
+
+  {
+    type: "feature",
+    name: "Leaderboard",
+    keywords: [
+      "rank",
+      "ranking",
+      "leaderboard"
+    ],
+    page: "leaderboard"
+  },
+
+  {
+    type: "feature",
+    name: "Battles",
+    keywords: [
+      "battle",
+      "competition"
+    ],
+    page: "battle"
+  },
+
+  {
+    type: "feature",
+    name: "Messenger",
+    keywords: [
+      "message",
+      "chat",
+      "messenger"
+    ],
+    page: "messages"
+  },
+
+  {
+    type: "feature",
+    name: "Friends",
+    keywords: [
+      "friend",
+      "friends"
+    ],
+    page: "friends"
+  },
+
+  {
+    type: "feature",
+    name: "Roadmap",
+    keywords: [
+      "roadmap",
+      "level",
+      "course"
+    ],
+    page: "roadmap"
+  }
+
+];
+
+
+function skillRushSearch(query) {
+
+  query =
+    String(query)
+      .trim()
+      .toLowerCase();
+
+  if (!query) {
+    return [];
+  }
+
+  return SR_SEARCH_DATA
+    .filter(item => {
+
+      const text =
+        [
+          item.name,
+          ...item.keywords
+        ]
+        .join(" ")
+        .toLowerCase();
+
+      return text.includes(
+        query
+      );
+
+    })
+    .slice(0, 10);
+
+}
+
+
+/* =========================================================
+   SEARCH UI
+   ========================================================= */
+
+function createSearchResults() {
+
+  const input =
+    document.getElementById(
+      "search"
+    );
+
+  if (!input) return;
+
+  let box =
+    document.getElementById(
+      "srSearchResults"
+    );
+
+  if (!box) {
+
+    box =
+      document.createElement(
+        "div"
+      );
+
+    box.id =
+      "srSearchResults";
+
+    box.style.position =
+      "absolute";
+
+    box.style.top =
+      "58px";
+
+    box.style.left =
+      "0";
+
+    box.style.right =
+      "0";
+
+    box.style.background =
+      "var(--panel)";
+
+    box.style.border =
+      "1px solid var(--border)";
+
+    box.style.borderRadius =
+      "16px";
+
+    box.style.padding =
+      "8px";
+
+    box.style.display =
+      "none";
+
+    box.style.zIndex =
+      "999";
+
+    input.parentElement.style.position =
+      "relative";
+
+    input.parentElement.appendChild(
+      box
+    );
+  }
+
+  input.addEventListener(
+    "input",
+    () => {
+
+      const results =
+        skillRushSearch(
+          input.value
+        );
+
+      box.innerHTML = "";
+
+      if (!input.value.trim()) {
+
+        box.style.display =
+          "none";
+
+        return;
+      }
+
+      if (!results.length) {
+
+        box.innerHTML =
+          `<div style="
+             padding:12px;
+             color:var(--muted)">
+             No results found
+           </div>`;
+
+        box.style.display =
+          "block";
+
+        return;
+      }
+
+      results.forEach(result => {
+
+        const item =
+          document.createElement(
+            "button"
+          );
+
+        item.style.width =
+          "100%";
+
+        item.style.padding =
+          "12px";
+
+        item.style.textAlign =
+          "left";
+
+        item.style.background =
+          "transparent";
+
+        item.style.color =
+          "var(--text)";
+
+        item.style.borderRadius =
+          "10px";
+
+        item.textContent =
+          `${result.type === "world"
+            ? "🌍"
+            : "⚡"} ${result.name}`;
+
+        item.onclick = () => {
+
+          page(
+            result.page
+          );
+
+          box.style.display =
+            "none";
+
+          input.value =
+            "";
+
+        };
+
+        box.appendChild(
+          item
+        );
+
+      });
+
+      box.style.display =
+        "block";
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   DAILY STREAK
+   ========================================================= */
+
+function updateDailyStreak() {
+
+  const today =
+    new Date()
+      .toISOString()
+      .slice(0, 10);
+
+  const last =
+    localStorage.getItem(
+      "skillrush_last_day"
+    );
+
+  if (!last) {
+
+    localStorage.setItem(
+      "skillrush_last_day",
+      today
+    );
+
+    return;
+  }
+
+  if (last === today) {
+    return;
+  }
+
+  const previous =
+    new Date(last);
+
+  const current =
+    new Date(today);
+
+  const difference =
+    Math.floor(
+      (
+        current -
+        previous
+      ) /
+      86400000
+    );
+
+  if (difference === 1) {
+
+    SR.user.streak++;
+
+    srToast(
+      `🔥 ${SR.user.streak} day streak!`,
+      "success"
+    );
+
+  } else {
+
+    SR.user.streak =
+      1;
+
+  }
+
+  localStorage.setItem(
+    "skillrush_last_day",
+    today
+  );
+
+  SR.save();
+
+}
+
+
+/* =========================================================
+   LIVES
+   ========================================================= */
+
+function loseLife() {
+
+  if (
+    SR.user.lives <= 0
+  ) {
+
+    srToast(
+      "❤️ No lives remaining."
+    );
+
+    return false;
+  }
+
+  SR.user.lives--;
+
+  srToast(
+    `❤️ Life lost • ${SR.user.lives} remaining`
+  );
+
+  SR.save();
+
+  return true;
+
+}
+
+
+function restoreLife() {
+
+  if (
+    SR.user.lives >= 3
+  ) {
+
+    srToast(
+      "❤️ Lives are already full."
+    );
+
+    return;
+  }
+
+  SR.user.lives++;
+
+  srToast(
+    "❤️ +1 Life restored!",
+    "success"
+  );
+
+  SR.save();
+
+}
+
+
+/* =========================================================
+   MATH QUESTION ENGINE
+   ========================================================= */
+
+const MathQuestionEngine = {
+
+  generate(level = 1) {
+
+    const operations = [
+      "addition",
+      "subtraction",
+      "multiplication"
+    ];
+
+    const operation =
+      operations[
+        Math.floor(
+          Math.random() *
+          operations.length
+        )
+      ];
+
+    const max =
+      Math.min(
+        20 + level * 5,
+        200
+      );
+
+    let a =
+      Math.floor(
+        Math.random() * max
+      ) + 1;
+
+    let b =
+      Math.floor(
+        Math.random() * max
+      ) + 1;
+
+    let answer;
+    let text;
+
+    if (
+      operation ===
+      "addition"
+    ) {
+
+      answer =
+        a + b;
+
+      text =
+        `${a} + ${b} = ?`;
+
+    }
+
+    if (
+      operation ===
+      "subtraction"
+    ) {
+
+      if (b > a) {
+
+        [
+          a,
+          b
+        ] =
+        [
+          b,
+          a
+        ];
+
+      }
+
+      answer =
+        a - b;
+
+      text =
+        `${a} − ${b} = ?`;
+
+    }
+
+    if (
+      operation ===
+      "multiplication"
+    ) {
+
+      answer =
+        a * b;
+
+      text =
+        `${a} × ${b} = ?`;
+
+    }
+
+    return {
+
+      text,
+
+      answer,
+
+      operation,
+
+      options:
+        this.generateOptions(
+          answer
+        )
+
+    };
+
+  },
+
+
+  generateOptions(answer) {
+
+    const set =
+      new Set([
+        answer
+      ]);
+
+    while (
+      set.size < 4
+    ) {
+
+      const offset =
+        Math.floor(
+          Math.random() * 20
+        ) - 10;
+
+      const option =
+        Math.max(
+          0,
+          answer + offset
+        );
+
+      set.add(
+        option
+      );
+
+    }
+
+    return [
+      ...set
+    ].sort(
+      () =>
+        Math.random() - 0.5
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   MATH SESSION
+   ========================================================= */
+
+function startMathSession(
+  level = SR.user.level
+) {
+
+  if (
+    SR.user.lives <= 0
+  ) {
+
+    srToast(
+      "❤️ You need a life to start."
+    );
+
+    return;
+  }
+
+  SR.session = {
+
+    world:
+      "Math",
+
+    subject:
+      "Mathematics",
+
+    question:
+      0,
+
+    score:
+      0,
+
+    correct:
+      0,
+
+    wrong:
+      0,
+
+    started:
+      true,
+
+    startTime:
+      Date.now(),
+
+    timeLimit:
+      5,
+
+    level
+
+  };
+
+  page(
+    "practice"
+  );
+
+  renderMathQuestion();
+
+}
+
+
+/* =========================================================
+   RENDER QUESTION
+   ========================================================= */
+
+function renderMathQuestion() {
+
+  const question =
+    MathQuestionEngine.generate(
+      SR.session.level
+    );
+
+  SR.session.current =
+    question;
+
+  const title =
+    document.getElementById(
+      "question"
+    );
+
+  if (!title) return;
+
+  title.textContent =
+    question.text;
+
+  const container =
+    title.parentElement
+      .querySelector(
+        ".world-grid"
+      );
+
+  if (!container) return;
+
+  container.innerHTML =
+    "";
+
+  question.options.forEach(
+    (option, index) => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.className =
+        "btn secondary";
+
+      button.textContent =
+        `${String.fromCharCode(
+          65 + index
+        )}) ${option}`;
+
+      button.onclick =
+        () => {
+
+          submitMathAnswer(
+            option
+          );
+
+        };
+
+      container.appendChild(
+        button
+      );
+
+    }
+  );
+
+  const result =
+    document.getElementById(
+      "answerResult"
+    );
+
+  if (result) {
+
+    result.textContent =
+      `Question ${
+        SR.session.question + 1
+      } / 10`;
+
+  }
+
+}
+
+
+/* =========================================================
+   SUBMIT ANSWER
+   ========================================================= */
+
+function submitMathAnswer(
+  value
+) {
+
+  if (
+    !SR.session.started
+  ) return;
+
+  const current =
+    SR.session.current;
+
+  if (!current) return;
+
+  if (
+    Number(value) ===
+    Number(current.answer)
+  ) {
+
+    SR.session.correct++;
+
+    SR.session.score +=
+      10;
+
+    addXP(
+      10,
+      "Correct answer"
+    );
+
+    srToast(
+      "✅ Correct!",
+      "success"
+    );
+
+  } else {
+
+    SR.session.wrong++;
+
+    loseLife();
+
+    srToast(
+      `❌ Correct answer: ${current.answer}`
+    );
+
+  }
+
+  SR.session.question++;
+
+  if (
+    SR.session.question >= 10
+  ) {
+
+    finishMathSession();
+
+  } else {
+
+    setTimeout(
+      renderMathQuestion,
+      500
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   SESSION RESULT
+   ========================================================= */
+
+function finishMathSession() {
+
+  SR.session.started =
+    false;
+
+  const {
+    correct,
+    wrong,
+    score
+  } =
+    SR.session;
+
+  const percentage =
+    Math.round(
+      (
+        correct / 10
+      ) * 100
+    );
+
+  const result =
+    document.getElementById(
+      "answerResult"
+    );
+
+  if (result) {
+
+    result.innerHTML = `
+
+      <div style="
+        padding:20px;
+        background:var(--panel2);
+        border-radius:16px">
+
+        <h2>
+          🏁 Session Complete
+        </h2>
+
+        <p>
+          Correct: ${correct}
+        </p>
+
+        <p>
+          Wrong: ${wrong}
+        </p>
+
+        <p>
+          Score: ${score}
+        </p>
+
+        <p>
+          Accuracy: ${percentage}%
+        </p>
+
+        <br>
+
+        <button
+          class="btn"
+          onclick="startMathSession()">
+
+          Play Again
+
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+  addXP(
+    score,
+    "Session completed"
+  );
+
+  SR.emit(
+    "sessionComplete",
+    SR.session
+  );
+
+  SR.save();
+
+}
+
+
+/* =========================================================
+   NOTIFICATION SYSTEM
+   ========================================================= */
+
+const SRNotifications = {
+
+  items: [],
+
+  add(
+    title,
+    message,
+    type = "info"
+  ) {
+
+    this.items.unshift({
+
+      id:
+        Date.now(),
+
+      title,
+
+      message,
+
+      type,
+
+      read:
+        false,
+
+      time:
+        new Date()
+          .toISOString()
+
+    });
+
+  },
+
+  markAllRead() {
+
+    this.items.forEach(
+      item => {
+        item.read =
+          true;
+      }
+    );
+
+  },
+
+  unreadCount() {
+
+    return this.items.filter(
+      item =>
+        !item.read
+    ).length;
+
+  }
+
+};
+
+
+/* =========================================================
+   FRIEND SYSTEM
+   ========================================================= */
+
+const FriendSystem = {
+
+  friends: [],
+
+  requests: [],
+
+  sendRequest(user) {
+
+    if (!user) return;
+
+    this.requests.push({
+
+      ...user,
+
+      status:
+        "pending"
+
+    });
+
+    srToast(
+      `🤝 Friend request sent to ${user.name}`
+    );
+
+  },
+
+  acceptRequest(index) {
+
+    const request =
+      this.requests[index];
+
+    if (!request) return;
+
+    this.friends.push(
+      request
+    );
+
+    this.requests.splice(
+      index,
+      1
+    );
+
+    srToast(
+      `🎉 ${request.name} is now your friend!`
+    );
+
+  },
+
+  removeFriend(name) {
+
+    this.friends =
+      this.friends.filter(
+        friend =>
+          friend.name !== name
+      );
+
+    srToast(
+      `${name} removed from friends.`
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   ACHIEVEMENTS
+   ========================================================= */
+
+const AchievementEngine = {
+
+  achievements: [
+
+    {
+      id:
+        "first_answer",
+
+      title:
+        "First Step",
+
+      icon:
+        "🎯",
+
+      description:
+        "Answer your first question.",
+
+      condition:
+        () =>
+          SR.user.xp >= 10
+    },
+
+    {
+      id:
+        "xp_1000",
+
+      title:
+        "Rising Star",
+
+      icon:
+        "⭐",
+
+      description:
+        "Reach 1,000 XP.",
+
+      condition:
+        () =>
+          SR.user.xp >= 1000
+    },
+
+    {
+      id:
+        "xp_10000",
+
+      title:
+        "Skill Master",
+
+      icon:
+        "🏆",
+
+      description:
+        "Reach 10,000 XP.",
+
+      condition:
+        () =>
+          SR.user.xp >= 10000
+    },
+
+    {
+      id:
+        "streak_7",
+
+      title:
+        "Week Warrior",
+
+      icon:
+        "🔥",
+
+      description:
+        "Reach a 7-day streak.",
+
+      condition:
+        () =>
+          SR.user.streak >= 7
+    },
+
+    {
+      id:
+        "streak_100",
+
+      title:
+        "Century",
+
+      icon:
+        "💯",
+
+      description:
+        "Reach a 100-day streak.",
+
+      condition:
+        () =>
+          SR.user.streak >= 100
+    }
+
+  ],
+
+  unlocked:
+    new Set(),
+
+  check() {
+
+    this.achievements.forEach(
+      achievement => {
+
+        if (
+          this.unlocked.has(
+            achievement.id
+          )
+        ) return;
+
+        if (
+          achievement.condition()
+        ) {
+
+          this.unlocked.add(
+            achievement.id
+          );
+
+          srToast(
+            `${achievement.icon} ${achievement.title} unlocked!`,
+            "success"
+          );
+
+          SRNotifications.add(
+            "Achievement unlocked",
+            achievement.title,
+            "achievement"
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   WORLD SYSTEM
+   ========================================================= */
+
+const WorldSystem = {
+
+  worlds: [
+
+    {
+      id:
+        "math",
+
+      name:
+        "Math World",
+
+      icon:
+        "📐",
+
+      status:
+        "active"
+    },
+
+    {
+      id:
+        "english",
+
+      name:
+        "English World",
+
+      icon:
+        "📚",
+
+      status:
+        "active"
+    },
+
+    {
+      id:
+        "arabic",
+
+      name:
+        "Arabic World",
+
+      icon:
+        "ع",
+
+      status:
+        "active"
+    },
+
+    {
+      id:
+        "science",
+
+      name:
+        "Science World",
+
+      icon:
+        "🔬",
+
+      status:
+        "coming"
+    },
+
+    {
+      id:
+        "coding",
+
+      name:
+        "Coding World",
+
+      icon:
+        "💻",
+
+      status:
+        "coming"
+    },
+
+    {
+      id:
+        "life",
+
+      name:
+        "Life Skills",
+
+      icon:
+        "🌱",
+
+      status:
+        "coming"
+    }
+
+  ],
+
+  get(id) {
+
+    return this.worlds.find(
+      world =>
+        world.id === id
+    );
+
+  },
+
+  open(id) {
+
+    const world =
+      this.get(id);
+
+    if (!world) {
+
+      srToast(
+        "World not found."
+      );
+
+      return;
+
+    }
+
+    if (
+      world.status ===
+      "coming"
+    ) {
+
+      srToast(
+        `${world.name} is coming soon.`
+      );
+
+      return;
+
+    }
+
+    SR.session.world =
+      world.name;
+
+    srToast(
+      `🌍 ${world.name} opened`
+    );
+
+  }
+
+};
+
+
+/* =========================================================
+   ONLINE STATUS
+   ========================================================= */
+
+function setOnlineStatus(
+  status = "online"
+) {
+
+  document
+    .querySelectorAll(
+      "[data-online-status]"
+    )
+    .forEach(
+      el => {
+
+        el.textContent =
+          status === "online"
+            ? "🟢 Online"
+            : "⚫ Offline";
+
+      }
+    );
+
+}
+
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+   ========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.ctrlKey &&
+      event.key.toLowerCase() ===
+      "k"
+    ) {
+
+      event.preventDefault();
+
+      const search =
+        document.getElementById(
+          "search"
+        );
+
+      if (search) {
+        search.focus();
+      }
+
+    }
+
+    if (
+      event.key ===
+      "Escape"
+    ) {
+
+      document
+        .querySelectorAll(
+          ".modal.show"
+        )
+        .forEach(
+          modal =>
+            modal.classList.remove(
+              "show"
+            )
+        );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   SKILLRUSH BOOT
+   ========================================================= */
+
+function SkillRushBoot() {
+
+  SR.load();
+
+  updateDailyStreak();
+
+  createSearchResults();
+
+  updateUserUI();
+
+  AchievementEngine.check();
+
+  setOnlineStatus(
+    "online"
+  );
+
+  SRNotifications.add(
+    "Welcome back!",
+    `Welcome to SkillRush, ${SR.user.name}.`,
+    "system"
+  );
+
+  console.log(
+    "SkillRush Engine v2 started."
+  );
+
+}
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+SkillRushBoot(); 
