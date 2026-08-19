@@ -2,3818 +2,2770 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <title>SkillRush — Learn, Connect, Compete</title>
 
-  <meta
-    name="theme-color"
-    content="#070a13"
-  >
+  <meta name="description"
+        content="SkillRush is a global learning and communication platform for Math, English, Arabic, AI learning, friends, groups, battles and world rankings.">
 
-  <meta
-    name="description"
-    content="SkillRush — Learn, Connect, Compete and Grow in a global learning universe."
-  >
+  <meta name="keywords"
+        content="SkillRush, math learning, English learning, Arabic learning, AI tutor, world leaderboard, education">
 
-  <meta
-    name="keywords"
-    content="SkillRush, learning, mathematics, English, Arabic, education, competition, leaderboard"
-  >
+  <meta name="author" content="SkillRush">
 
-  <meta
-    name="author"
-    content="SkillRush"
-  >
+  <meta name="robots" content="index, follow">
 
-  <title>
-    SkillRush — Learn • Connect • Compete
-  </title>
+  <meta property="og:title" content="SkillRush — Learn, Connect, Compete">
+  <meta property="og:description"
+        content="A modern global learning and communication universe.">
+  <meta property="og:type" content="website">
 
-  <link
-    rel="stylesheet"
-    href="css/main.css"
-  >
+  <meta name="theme-color" content="#080b16">
 
-  <link
-    rel="stylesheet"
-    href="css/components.css"
-  >
+  <style>
+    :root {
+      --bg: #070914;
+      --bg2: #0b1020;
+      --card: #10172a;
+      --card2: #151e34;
+      --border: #263451;
 
-  <link
-    rel="stylesheet"
-    href="css/responsive.css"
-  >
+      --text: #f7f8ff;
+      --muted: #94a0ba;
 
+      --purple: #7650ff;
+      --purple2: #9b79ff;
+      --blue: #18cfff;
+      --green: #29d995;
+      --yellow: #ffd166;
+      --red: #ff5c7a;
+
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(118,80,255,.12),
+          transparent 30%
+        ),
+        var(--bg);
+
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       APP LAYOUT
+    ========================= */
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 240px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+
+      background: rgba(10,15,29,.97);
+      border-right: 1px solid var(--border);
+
+      padding: 18px 12px;
+
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .logo {
+      padding: 10px 12px 24px;
+
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -.7px;
+    }
+
+    .logo span {
+      color: var(--purple2);
+    }
+
+    .logo small {
+      display: block;
+
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 500;
+
+      margin-top: 4px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: grid;
+      gap: 5px;
+    }
+
+    .nav-button {
+      width: 100%;
+
+      border: 1px solid transparent;
+      background: transparent;
+
+      color: var(--muted);
+
+      padding: 11px 12px;
+      border-radius: 12px;
+
+      text-align: left;
+
+      transition:
+        background .18s,
+        color .18s,
+        border .18s,
+        transform .18s;
+    }
+
+    .nav-button:hover {
+      background: rgba(118,80,255,.10);
+      color: white;
+      border-color: rgba(118,80,255,.25);
+      transform: translateX(2px);
+    }
+
+    .nav-button.active {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(118,80,255,.28),
+          rgba(155,121,255,.08)
+        );
+
+      color: white;
+      border-color: rgba(118,80,255,.45);
+    }
+
+    .nav-icon {
+      display: inline-flex;
+      width: 28px;
+      justify-content: center;
+      margin-right: 3px;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .main {
+      margin-left: 240px;
+      width: calc(100% - 240px);
+      min-height: 100vh;
+    }
+
+    .topbar {
+      height: 70px;
+
+      position: sticky;
+      top: 0;
+
+      z-index: 80;
+
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 10px 20px;
+
+      background: rgba(7,9,20,.88);
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .search-box {
+      flex: 1;
+      max-width: 760px;
+    }
+
+    .search-box input {
+      width: 100%;
+
+      padding: 12px 17px;
+
+      border-radius: 30px;
+
+      border: 1px solid var(--border);
+
+      outline: none;
+
+      color: white;
+      background: var(--card2);
+
+      transition: .18s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(118,80,255,.12);
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .round-button {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border);
+
+      background: var(--card2);
+      color: white;
+
+      transition: .18s;
+    }
+
+    .round-button:hover {
+      border-color: var(--purple);
+      transform: translateY(-2px);
+    }
+
+    .content {
+      max-width: 1700px;
+      margin: auto;
+
+      padding: 22px;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+
+      min-height: 330px;
+
+      padding: 36px;
+
+      overflow: hidden;
+
+      border-radius: 26px;
+
+      border: 1px solid var(--border);
+
+      background:
+        radial-gradient(
+          circle at 80% 15%,
+          rgba(118,80,255,.35),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 10% 90%,
+          rgba(24,207,255,.16),
+          transparent 34%
+        ),
+        var(--card);
+
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.02;
+
+      max-width: 700px;
+
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: var(--purple2);
+    }
+
+    .hero p {
+      max-width: 730px;
+
+      color: var(--muted);
+
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+      margin-top: 24px;
+    }
+
+    .robot {
+      position: absolute;
+
+      right: 60px;
+      bottom: -22px;
+
+      font-size: 160px;
+
+      filter:
+        drop-shadow(0 0 35px rgba(118,80,255,.45));
+
+      user-select: none;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .btn {
+      border: none;
+
+      border-radius: 12px;
+
+      padding: 11px 17px;
+
+      color: white;
+
+      font-weight: 800;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--purple),
+          var(--purple2)
+        );
+
+      box-shadow:
+        0 8px 24px rgba(118,80,255,.18);
+
+      transition: .18s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .btn.secondary {
+      background: var(--card2);
+
+      border: 1px solid var(--border);
+
+      box-shadow: none;
+    }
+
+    .btn.green {
+      background:
+        linear-gradient(
+          135deg,
+          #159c6c,
+          var(--green)
+        );
+    }
+
+    .btn.red {
+      background:
+        linear-gradient(
+          135deg,
+          #c93e5b,
+          var(--red)
+        );
+    }
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 25px;
+    }
+
+    .stat {
+      min-width: 130px;
+
+      padding: 13px 16px;
+
+      border-radius: 15px;
+
+      border: 1px solid rgba(255,255,255,.08);
+
+      background: rgba(255,255,255,.045);
+    }
+
+    .stat strong {
+      display: block;
+
+      font-size: 21px;
+
+      margin-bottom: 3px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* =========================
+       GRID / CARDS
+    ========================= */
+
+    .grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 2fr)
+        minmax(280px, 1fr);
+
+      gap: 18px;
+
+      margin-top: 18px;
+    }
+
+    .card {
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 20px;
+
+      padding: 19px;
+
+      box-shadow: 0 10px 35px rgba(0,0,0,.12);
+    }
+
+    .card h1,
+    .card h2 {
+      margin-bottom: 10px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* =========================
+       WORLDS
+    ========================= */
+
+    .world-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(185px, 1fr)
+        );
+
+      gap: 14px;
+
+      margin-top: 18px;
+    }
+
+    .world-card {
+      min-height: 155px;
+
+      padding: 18px;
+
+      border-radius: 19px;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      transition: .2s;
+    }
+
+    .world-card:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        rgba(155,121,255,.65);
+
+      box-shadow:
+        0 16px 40px rgba(0,0,0,.22);
+    }
+
+    .world-icon {
+      font-size: 40px;
+
+      margin-bottom: 10px;
+    }
+
+    .world-card h3 {
+      margin-bottom: 6px;
+    }
+
+    .world-card p {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.5;
+    }
+
+    /* =========================
+       FEED
+    ========================= */
+
+    .feed {
+      display: grid;
+      gap: 13px;
+
+      margin-top: 14px;
+    }
+
+    .post {
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      padding: 17px;
+    }
+
+    .post-header {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 46px;
+      height: 46px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #293652,
+          #11192b
+        );
+
+      border: 1px solid var(--border);
+
+      font-size: 24px;
+
+      flex-shrink: 0;
+    }
+
+    .post-text {
+      margin: 14px 0;
+
+      line-height: 1.7;
+    }
+
+    .post-actions {
+      display: flex;
+
+      gap: 7px;
+
+      flex-wrap: wrap;
+    }
+
+    /* =========================
+       TABS
+    ========================= */
+
+    .tabs {
+      display: flex;
+
+      gap: 7px;
+
+      overflow-x: auto;
+
+      padding: 4px 0 10px;
+
+      margin-top: 10px;
+    }
+
+    .tab {
+      white-space: nowrap;
+
+      padding: 9px 14px;
+
+      border-radius: 22px;
+
+      color: var(--muted);
+
+      background: var(--card2);
+
+      border: 1px solid var(--border);
+    }
+
+    .tab:hover {
+      color: white;
+
+      border-color:
+        rgba(118,80,255,.55);
+    }
+
+    /* =========================
+       LEADERBOARD
+    ========================= */
+
+    .rank-row {
+      display: grid;
+
+      grid-template-columns:
+        55px
+        1fr
+        130px
+        75px;
+
+      gap: 8px;
+
+      align-items: center;
+
+      padding: 13px 8px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rank-number {
+      color: var(--yellow);
+
+      font-weight: 900;
+    }
+
+    /* =========================
+       PROGRESS
+    ========================= */
+
+    .progress {
+      width: 100%;
+
+      height: 9px;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      background: var(--card2);
+
+      margin-top: 9px;
+    }
+
+    .progress span {
+      display: block;
+
+      height: 100%;
+
+      width: 70%;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--purple),
+          var(--blue)
+        );
+
+      border-radius: inherit;
+    }
+
+    /* =========================
+       LEVEL
+    ========================= */
+
+    .level-row {
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 15px;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 17px;
+    }
+
+    .level-number {
+      width: 56px;
+      height: 56px;
+
+      display: grid;
+      place-items: center;
+
+      flex-shrink: 0;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--purple),
+          var(--blue)
+        );
+
+      font-weight: 900;
+    }
+
+    .level-info {
+      flex: 1;
+    }
+
+    /* =========================
+       PEOPLE
+    ========================= */
+
+    .people-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(155px, 1fr)
+        );
+
+      gap: 12px;
+
+      margin-top: 18px;
+    }
+
+    .person {
+      text-align: center;
+
+      padding: 16px;
+
+      background: var(--card2);
+
+      border: 1px solid var(--border);
+
+      border-radius: 17px;
+    }
+
+    .person .avatar {
+      width: 62px;
+      height: 62px;
+
+      margin: auto auto 9px;
+
+      font-size: 32px;
+    }
+
+    .person-actions {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 6px;
+
+      margin-top: 10px;
+    }
+
+    /* =========================
+       CHAT
+    ========================= */
+
+    .chat-layout {
+      display: grid;
+
+      grid-template-columns:
+        280px
+        1fr;
+
+      gap: 16px;
+    }
+
+    .conversation-list {
+      display: grid;
+
+      gap: 8px;
+    }
+
+    .conversation {
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      padding: 10px;
+
+      background: var(--card2);
+
+      border: 1px solid var(--border);
+
+      border-radius: 13px;
+
+      cursor: pointer;
+    }
+
+    .conversation:hover {
+      border-color:
+        rgba(118,80,255,.6);
+    }
+
+    .chat-window {
+      min-height: 510px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 20px;
+
+      padding: 17px;
+    }
+
+    .messages {
+      flex: 1;
+
+      overflow-y: auto;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 10px;
+
+      padding: 14px 0;
+    }
+
+    .message {
+      max-width: 78%;
+
+      padding: 10px 13px;
+
+      border-radius: 14px;
+
+      background: var(--card2);
+
+      border: 1px solid var(--border);
+
+      line-height: 1.5;
+    }
+
+    .message.mine {
+      margin-left: auto;
+
+      background:
+        rgba(118,80,255,.25);
+
+      border-color:
+        rgba(118,80,255,.45);
+    }
+
+    .compose {
+      display: flex;
+
+      gap: 8px;
+    }
+
+    .compose input {
+      flex: 1;
+
+      border: 1px solid var(--border);
+
+      background: var(--card2);
+
+      color: white;
+
+      outline: none;
+
+      border-radius: 12px;
+
+      padding: 12px;
+    }
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .form {
+      display: grid;
+
+      gap: 11px;
+
+      margin-top: 15px;
+    }
+
+    .input,
+    .textarea,
+    .select {
+      width: 100%;
+
+      padding: 12px;
+
+      border-radius: 12px;
+
+      border: 1px solid var(--border);
+
+      background: var(--card2);
+
+      color: white;
+
+      outline: none;
+    }
+
+    .textarea {
+      min-height: 130px;
+
+      resize: vertical;
+    }
+
+    /* =========================
+       AI
+    ========================= */
+
+    .ai-card {
+      background:
+        radial-gradient(
+          circle at 80% 15%,
+          rgba(118,80,255,.23),
+          transparent 35%
+        ),
+        var(--card);
+
+      border-color:
+        rgba(118,80,255,.4);
+    }
+
+    .ai-message {
+      padding: 13px;
+
+      margin-top: 9px;
+
+      border-radius: 14px;
+
+      background: var(--card2);
+
+      border: 1px solid var(--border);
+
+      line-height: 1.6;
+    }
+
+    /* =========================
+       ROBOT STICKERS
+    ========================= */
+
+    .stickers {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 8px;
+    }
+
+    .sticker {
+      padding: 12px;
+
+      border-radius: 13px;
+
+      background: var(--card2);
+
+      border: 1px solid var(--border);
+
+      color: white;
+
+      font-size: 27px;
+    }
+
+    .sticker:hover {
+      border-color: var(--purple);
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal {
+      position: fixed;
+
+      inset: 0;
+
+      display: none;
+
+      place-items: center;
+
+      background: rgba(0,0,0,.78);
+
+      z-index: 1000;
+
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: grid;
+    }
+
+    .modal-box {
+      width: min(720px, 94vw);
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      padding: 23px;
+
+      border-radius: 22px;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      box-shadow: var(--shadow);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      text-align: center;
+
+      padding: 38px 10px;
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 950px) {
+
+      .sidebar {
+        width: 72px;
+      }
+
+      .logo {
+        font-size: 0;
+        text-align: center;
+      }
+
+      .logo span,
+      .logo small {
+        display: none;
+      }
+
+      .nav-button {
+        font-size: 0;
+        text-align: center;
+      }
+
+      .nav-icon {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .main {
+        margin-left: 72px;
+
+        width:
+          calc(100% - 72px);
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .chat-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .robot {
+        right: 0;
+        opacity: .16;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .content {
+        padding: 12px;
+      }
+
+      .topbar {
+        padding: 9px 12px;
+      }
+
+      .hero {
+        padding: 25px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .round-button {
+        width: 38px;
+        height: 38px;
+      }
+
+      .rank-row {
+        grid-template-columns:
+          40px
+          1fr
+          80px;
+      }
+
+      .rank-row > :last-child {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!--
-    ==========================================================
-    SKILLRUSH APPLICATION ROOT
-    ==========================================================
-  -->
+<div class="app">
 
-  <div id="app">
+  <!-- =========================
+       SIDEBAR
+  ========================= -->
 
-    <!-- Application loading screen -->
-    <div
-      id="loadingScreen"
-      class="loading-screen"
-    >
+  <aside class="sidebar">
 
-      <div class="loading-logo">
-        ⚡
-        <span>SkillRush</span>
-      </div>
-
-      <div class="loading-spinner"></div>
-
-      <p>
-        Preparing your learning universe...
-      </p>
-
+    <div class="logo">
+      ⚡ Skill<span>Rush</span>
+      <small>Learn • Connect • Grow</small>
     </div>
 
-  </div>
+    <nav class="nav">
+
+      <button class="nav-button active" data-page="home">
+        <span class="nav-icon">🏠</span>
+        Home
+      </button>
+
+      <button class="nav-button" data-page="learn">
+        <span class="nav-icon">📚</span>
+        Learn
+      </button>
+
+      <button class="nav-button" data-page="communication">
+        <span class="nav-icon">🌎</span>
+        Communication
+      </button>
+
+      <button class="nav-button" data-page="messages">
+        <span class="nav-icon">💬</span>
+        Messenger
+      </button>
+
+      <button class="nav-button" data-page="friends">
+        <span class="nav-icon">🤝</span>
+        Friends
+      </button>
+
+      <button class="nav-button" data-page="groups">
+        <span class="nav-icon">👥</span>
+        Groups
+      </button>
+
+      <button class="nav-button" data-page="worlds">
+        <span class="nav-icon">🌍</span>
+        Worlds
+      </button>
+
+      <button class="nav-button" data-page="roadmap">
+        <span class="nav-icon">🗺️</span>
+        Roadmap
+      </button>
+
+      <button class="nav-button" data-page="practice">
+        <span class="nav-icon">🧠</span>
+        Practice
+      </button>
+
+      <button class="nav-button" data-page="battle">
+        <span class="nav-icon">⚔️</span>
+        Battle
+      </button>
+
+      <button class="nav-button" data-page="leaderboard">
+        <span class="nav-icon">🏆</span>
+        Leaderboard
+      </button>
+
+      <button class="nav-button" data-page="ai">
+        <span class="nav-icon">🤖</span>
+        AI Tutor
+      </button>
+
+      <button class="nav-button" data-page="profile">
+        <span class="nav-icon">👤</span>
+        Profile
+      </button>
+
+      <button class="nav-button" data-page="achievements">
+        <span class="nav-icon">🏅</span>
+        Achievements
+      </button>
+
+      <button class="nav-button" data-page="events">
+        <span class="nav-icon">📅</span>
+        Events
+      </button>
+
+      <button class="nav-button" data-page="settings">
+        <span class="nav-icon">⚙️</span>
+        Settings
+      </button>
+
+    </nav>
+
+  </aside>
 
 
-  <!--
-    ==========================================================
-    GLOBAL MODAL
-    ==========================================================
-  -->
+  <!-- =========================
+       MAIN
+  ========================= -->
 
-  <div
-    id="globalModal"
-    class="modal hidden"
-    aria-hidden="true"
-  >
+  <main class="main">
 
-    <div
-      class="modal-overlay"
-      data-modal-close
-    ></div>
+    <header class="topbar">
 
-    <div
-      class="modal-container"
-      role="dialog"
-      aria-modal="true"
-    >
+      <div class="search-box">
 
-      <div class="modal-header">
+        <input
+          id="globalSearch"
+          type="search"
+          placeholder="Search people, lessons, worlds and groups..."
+          oninput="globalSearch()"
+        >
 
-        <h2 id="modalTitle">
-          SkillRush
-        </h2>
+      </div>
+
+      <div class="top-actions">
 
         <button
-          id="modalClose"
-          class="icon-button"
-          aria-label="Close"
+          class="round-button"
+          onclick="openPage('communication')"
+          title="Communication"
         >
-          ×
+          🌎
+        </button>
+
+        <button
+          class="round-button"
+          onclick="openPage('messages')"
+          title="Messenger"
+        >
+          💬
+        </button>
+
+        <button
+          class="round-button"
+          onclick="showNotifications()"
+          title="Notifications"
+        >
+          🔔
         </button>
 
       </div>
 
-      <div
-        id="modalContent"
-        class="modal-content"
-      ></div>
+    </header>
+
+
+    <div class="content">
+
+
+      <!-- =========================
+           HOME
+      ========================= -->
+
+      <section
+        id="home"
+        class="page active"
+      >
+
+        <div class="hero">
+
+          <h1>
+            Welcome to
+            <span>SkillRush</span>
+          </h1>
+
+          <p>
+            Learn, connect, compete and grow inside a global
+            learning universe. Explore Math, English, Arabic,
+            AI learning, communities, friends, groups,
+            battles and an expandable lifetime roadmap.
+          </p>
+
+          <div class="hero-actions">
+
+            <button
+              class="btn"
+              onclick="openPage('learn')"
+            >
+              Start Learning
+            </button>
+
+            <button
+              class="btn secondary"
+              onclick="openPage('communication')"
+            >
+              🌎 Enter Communication
+            </button>
+
+            <button
+              class="btn secondary"
+              onclick="openPage('leaderboard')"
+            >
+              🏆 World Ranking
+            </button>
+
+          </div>
+
+          <div class="stats">
+
+            <div class="stat">
+              <strong>195+</strong>
+              <span>Countries</span>
+            </div>
+
+            <div class="stat">
+              <strong>∞</strong>
+              <span>Roadmap Capacity</span>
+            </div>
+
+            <div class="stat">
+              <strong>12+</strong>
+              <span>Learning Worlds</span>
+            </div>
+
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>AI Tutor</span>
+            </div>
+
+          </div>
+
+          <div class="robot">
+            🤖
+          </div>
+
+        </div>
+
+
+        <div
+          class="world-grid"
+          id="homeWorldGrid"
+        ></div>
+
+
+        <div class="grid">
+
+          <div class="card">
+
+            <h2>
+              🌎 Global Communication
+            </h2>
+
+            <p class="muted">
+              Meet learners from around the world,
+              share ideas and build your learning community.
+            </p>
+
+            <div
+              class="feed"
+              id="homeFeed"
+            ></div>
+
+          </div>
+
+
+          <div class="card">
+
+            <h2>
+              🏆 World Leaderboard
+            </h2>
+
+            <div id="homeRanking"></div>
+
+            <button
+              class="btn"
+              style="margin-top:14px"
+              onclick="openPage('leaderboard')"
+            >
+              View Full Ranking
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           LEARN
+      ========================= -->
+
+      <section
+        id="learn"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            📚 Learning Universe
+          </h1>
+
+          <p class="muted">
+            Start from fundamentals and continue through
+            advanced and A-Level learning.
+          </p>
+
+          <div
+            class="tabs"
+            id="learnTabs"
+          ></div>
+
+        </div>
+
+        <div
+          class="world-grid"
+          id="learnWorldGrid"
+        ></div>
+
+      </section>
+
+
+      <!-- =========================
+           COMMUNICATION
+      ========================= -->
+
+      <section
+        id="communication"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            🌎 Communication World
+          </h1>
+
+          <p class="muted">
+            A dedicated global social world for posts,
+            friends, groups, discussions and learning communities.
+          </p>
+
+          <div class="hero-actions">
+
+            <button
+              class="btn"
+              onclick="createPost()"
+            >
+              ＋ Create Post
+            </button>
+
+            <button
+              class="btn secondary"
+              onclick="openPage('friends')"
+            >
+              🤝 Find Friends
+            </button>
+
+            <button
+              class="btn secondary"
+              onclick="openPage('groups')"
+            >
+              👥 Groups
+            </button>
+
+            <button
+              class="btn secondary"
+              onclick="openPage('messages')"
+            >
+              💬 Messenger
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="grid">
+
+          <div>
+
+            <div class="card">
+
+              <div class="tabs">
+
+                <button
+                  class="tab"
+                  onclick="filterFeed('all')"
+                >
+                  🌎 All World
+                </button>
+
+                <button
+                  class="tab"
+                  onclick="filterFeed('math')"
+                >
+                  📐 Math
+                </button>
+
+                <button
+                  class="tab"
+                  onclick="filterFeed('english')"
+                >
+                  📖 English
+                </button>
+
+                <button
+                  class="tab"
+                  onclick="filterFeed('arabic')"
+                >
+                  ع Arabic
+                </button>
+
+              </div>
+
+            </div>
+
+            <div
+              class="feed"
+              id="mainFeed"
+            ></div>
+
+          </div>
+
+
+          <div>
+
+            <div class="card ai-card">
+
+              <h2>
+                🤖 AI Community Helper
+              </h2>
+
+              <p class="muted">
+                Get learning suggestions and community help.
+              </p>
+
+              <div class="ai-message">
+                Hello! I am the SkillRush robot.
+                What would you like to learn today?
+              </div>
+
+              <button
+                class="btn"
+                style="margin-top:12px"
+                onclick="openPage('ai')"
+              >
+                Open AI Tutor
+              </button>
+
+            </div>
+
+
+            <div
+              class="card"
+              style="margin-top:18px"
+            >
+
+              <h2>
+                🤖 SkillRush Robots
+              </h2>
+
+              <div
+                class="stickers"
+                id="robotStickers"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           MESSENGER
+      ========================= -->
+
+      <section
+        id="messages"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            💬 Messenger
+          </h1>
+
+          <p class="muted">
+            Private conversations and learning chats.
+          </p>
+
+        </div>
+
+        <div
+          class="chat-layout"
+          style="margin-top:18px"
+        >
+
+          <div class="card">
+
+            <h2>
+              Conversations
+            </h2>
+
+            <div
+              class="conversation-list"
+              id="conversationList"
+            ></div>
+
+          </div>
+
+
+          <div class="chat-window">
+
+            <h2 id="chatTitle">
+              Aisha
+            </h2>
+
+            <div
+              class="messages"
+              id="messageList"
+            ></div>
+
+            <div class="compose">
+
+              <input
+                id="messageInput"
+                placeholder="Write a message..."
+                onkeydown="handleMessageKey(event)"
+              >
+
+              <button
+                class="btn"
+                onclick="sendMessage()"
+              >
+                ➤
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           FRIENDS
+      ========================= -->
+
+      <section
+        id="friends"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            🤝 Friends
+          </h1>
+
+          <p class="muted">
+            Discover learners and send friend requests.
+          </p>
+
+        </div>
+
+        <div
+          class="people-grid"
+          id="peopleGrid"
+        ></div>
+
+      </section>
+
+
+      <!-- =========================
+           GROUPS
+      ========================= -->
+
+      <section
+        id="groups"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            👥 Groups
+          </h1>
+
+          <p class="muted">
+            Join public communities or request access
+            to private learning groups.
+          </p>
+
+          <button
+            class="btn"
+            style="margin-top:14px"
+            onclick="createGroup()"
+          >
+            ＋ Create Group
+          </button>
+
+        </div>
+
+        <div
+          class="world-grid"
+          id="groupGrid"
+        ></div>
+
+      </section>
+
+
+      <!-- =========================
+           WORLDS
+      ========================= -->
+
+      <section
+        id="worlds"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            🌍 SkillRush Worlds
+          </h1>
+
+          <p class="muted">
+            Every world can contain its own lessons,
+            community, rankings and progression.
+          </p>
+
+        </div>
+
+        <div
+          class="world-grid"
+          id="allWorldGrid"
+        ></div>
+
+      </section>
+
+
+      <!-- =========================
+           ROADMAP
+      ========================= -->
+
+      <section
+        id="roadmap"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            🗺️ Lifetime Roadmap
+          </h1>
+
+          <p class="muted">
+            The roadmap is designed to expand progressively
+            instead of stopping at a small fixed number of levels.
+          </p>
+
+          <div
+            class="form"
+            style="grid-template-columns:1fr 1fr auto"
+          >
+
+            <select
+              class="select"
+              id="roadmapWorld"
+            ></select>
+
+            <input
+              class="input"
+              id="roadmapLevel"
+              type="number"
+              min="1"
+              value="1"
+            >
+
+            <button
+              class="btn"
+              onclick="renderRoadmap()"
+            >
+              Open
+            </button>
+
+          </div>
+
+        </div>
+
+        <div
+          class="feed"
+          id="levelList"
+        ></div>
+
+      </section>
+
+
+      <!-- =========================
+           PRACTICE
+      ========================= -->
+
+      <section
+        id="practice"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            🧠 Practice
+          </h1>
+
+          <p class="muted">
+            Adaptive practice session.
+          </p>
+
+          <h2
+            id="questionText"
+            style="margin-top:22px"
+          >
+            Loading question...
+          </h2>
+
+          <div
+            class="world-grid"
+            id="answerGrid"
+          ></div>
+
+          <p
+            id="practiceResult"
+            style="margin-top:15px"
+          ></p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           BATTLE
+      ========================= -->
+
+      <section
+        id="battle"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            ⚔️ SkillRush Battle
+          </h1>
+
+          <p class="muted">
+            Challenge friends or compete in ranked modes.
+          </p>
+
+          <div class="hero-actions">
+
+            <button
+              class="btn"
+              onclick="findOpponent()"
+            >
+              Find Opponent
+            </button>
+
+            <button
+              class="btn secondary"
+            >
+              Friend Challenge
+            </button>
+
+            <button
+              class="btn secondary"
+            >
+              Tournament
+            </button>
+
+          </div>
+
+          <h2
+            id="battleStatus"
+            style="margin-top:22px"
+          >
+            Ready for battle.
+          </h2>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           LEADERBOARD
+      ========================= -->
+
+      <section
+        id="leaderboard"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            🏆 World Leaderboard
+          </h1>
+
+          <p class="muted">
+            Global, country, subject and friends rankings.
+          </p>
+
+          <div class="tabs">
+
+            <button class="tab">
+              🌎 World
+            </button>
+
+            <button class="tab">
+              🇧🇩 Country
+            </button>
+
+            <button class="tab">
+              📐 Math
+            </button>
+
+            <button class="tab">
+              📖 English
+            </button>
+
+            <button class="tab">
+              🤝 Friends
+            </button>
+
+          </div>
+
+        </div>
+
+        <div
+          class="card"
+          style="margin-top:18px"
+          id="leaderboardList"
+        ></div>
+
+      </section>
+
+
+      <!-- =========================
+           AI
+      ========================= -->
+
+      <section
+        id="ai"
+        class="page"
+      >
+
+        <div class="card ai-card">
+
+          <h1>
+            🤖 SkillRush AI Tutor
+          </h1>
+
+          <p class="muted">
+            Ask questions, request explanations,
+            generate practice and get study guidance.
+          </p>
+
+          <div
+            id="aiMessages"
+            style="margin-top:18px"
+          >
+
+            <div class="ai-message">
+
+              <strong>
+                🤖 SkillRush AI
+              </strong>
+
+              <br>
+
+              Hello! Ask me anything about your learning.
+
+            </div>
+
+          </div>
+
+          <div
+            class="compose"
+            style="margin-top:14px"
+          >
+
+            <input
+              id="aiInput"
+              placeholder="Ask SkillRush AI..."
+              onkeydown="handleAIKey(event)"
+            >
+
+            <button
+              class="btn"
+              onclick="askAI()"
+            >
+              Ask
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           PROFILE
+      ========================= -->
+
+      <section
+        id="profile"
+        class="page"
+      >
+
+        <div class="grid">
+
+          <div class="card" style="text-align:center">
+
+            <div
+              class="avatar"
+              style="
+                width:150px;
+                height:150px;
+                margin:auto;
+                font-size:80px;
+              "
+            >
+              🤖
+            </div>
+
+            <h1 style="margin-top:15px">
+              Tahsin
+            </h1>
+
+            <p class="muted">
+              🇧🇩 Bangladesh
+            </p>
+
+            <button
+              class="btn"
+              style="margin-top:14px"
+              onclick="customRobot()"
+            >
+              Customize Robot
+            </button>
+
+          </div>
+
+
+          <div class="card">
+
+            <h2>
+              Level 42 • Diamond II
+            </h2>
+
+            <div class="stats">
+
+              <div class="stat">
+                <strong id="profileXP">
+                  12,430
+                </strong>
+                <span>XP</span>
+              </div>
+
+              <div class="stat">
+                <strong>
+                  127
+                </strong>
+                <span>Streak</span>
+              </div>
+
+              <div class="stat">
+                <strong>
+                  379
+                </strong>
+                <span>Battles</span>
+              </div>
+
+              <div class="stat">
+                <strong>
+                  1.2K
+                </strong>
+                <span>Friends</span>
+              </div>
+
+            </div>
+
+            <h3 style="margin-top:20px">
+              Level Progress
+            </h3>
+
+            <div class="progress">
+              <span style="width:78%"></span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           ACHIEVEMENTS
+      ========================= -->
+
+      <section
+        id="achievements"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            🏅 Achievements
+          </h1>
+
+          <p class="muted">
+            Build your learning history and unlock milestones.
+          </p>
+
+        </div>
+
+        <div
+          class="world-grid"
+          id="achievementGrid"
+        ></div>
+
+      </section>
+
+
+      <!-- =========================
+           EVENTS
+      ========================= -->
+
+      <section
+        id="events"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            📅 Global Events
+          </h1>
+
+          <p class="muted">
+            Challenges, community events and learning weeks.
+          </p>
+
+        </div>
+
+        <div
+          class="world-grid"
+          id="eventGrid"
+        ></div>
+
+      </section>
+
+
+      <!-- =========================
+           SETTINGS
+      ========================= -->
+
+      <section
+        id="settings"
+        class="page"
+      >
+
+        <div class="card">
+
+          <h1>
+            ⚙️ Settings
+          </h1>
+
+          <p class="muted">
+            Control your SkillRush experience.
+          </p>
+
+          <div
+            class="hero-actions"
+            style="margin-top:18px"
+          >
+
+            <button
+              class="btn"
+              onclick="toggleTheme()"
+            >
+              🌗 Toggle Theme
+            </button>
+
+            <button
+              class="btn secondary"
+              onclick="showPrivacy()"
+            >
+              🔒 Privacy
+            </button>
+
+            <button
+              class="btn secondary"
+              onclick="showNotifications()"
+            >
+              🔔 Notifications
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <footer>
+        SkillRush • Learn • Connect • Compete • Grow
+      </footer>
 
     </div>
 
-  </div>
+  </main>
+
+</div>
 
 
-  <!--
-    ==========================================================
-    TOAST NOTIFICATION
-    ==========================================================
-  -->
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+  class="modal"
+  id="modal"
+  onclick="closeModalOutside(event)"
+>
 
   <div
-    id="toastContainer"
-    class="toast-container"
-    aria-live="polite"
+    class="modal-box"
+    id="modalBox"
   ></div>
 
-
-  <!--
-    ==========================================================
-    JAVASCRIPT APPLICATION
-    ==========================================================
-  -->
-
-  <script
-    type="module"
-    src="js/app.js"
-  ></script>
-
-</body>
-</html>
-/* ============================================================
-   SKILLRUSH — MAIN DESIGN SYSTEM
-   Version: 3.0
-   ============================================================ */
-
-:root {
-  --bg: #070a13;
-  --bg-soft: #0b101c;
-
-  --surface: #101624;
-  --surface-2: #151d2d;
-  --surface-3: #1b263a;
-
-  --border: #26334c;
-  --border-soft: #1d2940;
-
-  --text: #f7f9ff;
-  --text-soft: #d6dbea;
-  --muted: #8f9bb3;
-
-  --primary: #7652ff;
-  --primary-light: #9b7cff;
-  --primary-dark: #5735d8;
-
-  --cyan: #18d9ff;
-  --green: #2bdc91;
-  --yellow: #ffd15c;
-  --red: #ff5c76;
-  --orange: #ff9e52;
-
-  --radius-xs: 8px;
-  --radius-sm: 11px;
-  --radius-md: 15px;
-  --radius-lg: 20px;
-  --radius-xl: 27px;
-
-  --shadow-sm: 0 5px 20px rgba(0, 0, 0, .18);
-  --shadow-md: 0 15px 40px rgba(0, 0, 0, .25);
-  --shadow-lg: 0 25px 80px rgba(0, 0, 0, .35);
-
-  --sidebar-width: 250px;
-  --topbar-height: 70px;
-
-  --transition-fast: .15s ease;
-  --transition: .25s ease;
-  --transition-slow: .4s ease;
-}
-
-/* ============================================================
-   LIGHT THEME
-   ============================================================ */
-
-body.light {
-  --bg: #f3f6fb;
-  --bg-soft: #edf1f7;
-
-  --surface: #ffffff;
-  --surface-2: #f1f4f9;
-  --surface-3: #e8edf5;
-
-  --border: #d6deeb;
-  --border-soft: #e4e9f1;
-
-  --text: #111827;
-  --text-soft: #344054;
-  --muted: #667085;
-
-  --shadow-sm: 0 5px 20px rgba(20, 30, 50, .08);
-  --shadow-md: 0 15px 40px rgba(20, 30, 50, .10);
-  --shadow-lg: 0 25px 80px rgba(20, 30, 50, .13);
-}
-
-/* ============================================================
-   RESET
-   ============================================================ */
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  min-height: 100vh;
-
-  background:
-    radial-gradient(
-      circle at 10% -10%,
-      rgba(118, 82, 255, .15),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 90% 0%,
-      rgba(24, 217, 255, .08),
-      transparent 28%
-    ),
-    var(--bg);
-
-  color: var(--text);
-
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-
-  line-height: 1.5;
-
-  overflow-x: hidden;
-
-  transition:
-    background var(--transition),
-    color var(--transition);
-}
-
-body,
-button,
-input,
-textarea,
-select {
-  -webkit-font-smoothing: antialiased;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
-
-button {
-  border: 0;
-}
-
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--primary-light);
-  outline-offset: 2px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-ul,
-ol {
-  list-style: none;
-}
-
-/* ============================================================
-   SCROLLBAR
-   ============================================================ */
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--surface-3);
-  border-radius: 999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--border);
-}
-
-/* ============================================================
-   APPLICATION
-   ============================================================ */
-
-#app {
-  min-height: 100vh;
-}
-
-.app-shell {
-  min-height: 100vh;
-  display: flex;
-}
-
-/* ============================================================
-   LOADING SCREEN
-   ============================================================ */
-
-.loading-screen {
-  position: fixed;
-  inset: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(118, 82, 255, .16),
-      transparent 38%
-    ),
-    var(--bg);
-
-  z-index: 9999;
-}
-
-.loading-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  font-size: 34px;
-  font-weight: 950;
-
-  letter-spacing: -1px;
-
-  margin-bottom: 25px;
-}
-
-.loading-logo span {
-  background:
-    linear-gradient(
-      90deg,
-      #ffffff,
-      var(--primary-light),
-      var(--cyan)
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent;
-}
-
-.loading-spinner {
-  width: 38px;
-  height: 38px;
-
-  border: 3px solid var(--surface-3);
-  border-top-color: var(--primary);
-
-  border-radius: 50%;
-
-  animation:
-    skillrush-spin .8s linear infinite;
-}
-
-.loading-screen p {
-  color: var(--muted);
-  margin-top: 15px;
-  font-size: 14px;
-}
-
-@keyframes skillrush-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* ============================================================
-   SIDEBAR
-   ============================================================ */
-
-.sidebar {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-  bottom: 0;
-
-  width: var(--sidebar-width);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(16, 22, 36, .98),
-      rgba(9, 13, 23, .98)
-    );
-
-  border-right: 1px solid var(--border);
-
-  padding: 18px 12px;
-
-  overflow-y: auto;
-
-  z-index: 100;
-
-  backdrop-filter: blur(20px);
-}
-
-body.light .sidebar {
-  background: rgba(255, 255, 255, .94);
-}
-
-/* ============================================================
-   LOGO
-   ============================================================ */
-
-.brand {
-  display: flex;
-  align-items: center;
-
-  gap: 8px;
-
-  padding:
-    8px
-    10px
-    24px;
-
-  font-size: 24px;
-  font-weight: 950;
-
-  letter-spacing: -1px;
-}
-
-.brand-icon {
-  font-size: 26px;
-}
-
-.brand-name span {
-  color: var(--primary-light);
-}
-
-/* ============================================================
-   NAVIGATION
-   ============================================================ */
-
-.sidebar-navigation {
-  display: flex;
-  flex-direction: column;
-
-  gap: 4px;
-}
-
-.nav-section {
-  padding: 18px 10px 7px;
-
-  color: var(--muted);
-
-  font-size: 10px;
-  font-weight: 800;
-
-  text-transform: uppercase;
-
-  letter-spacing: 1px;
-}
-
-.nav-item {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-
-  gap: 11px;
-
-  padding: 11px 12px;
-
-  border-radius: var(--radius-sm);
-
-  background: transparent;
-
-  color: var(--muted);
-
-  font-size: 14px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition:
-    background var(--transition-fast),
-    color var(--transition-fast),
-    transform var(--transition-fast);
-}
-
-.nav-item:hover {
-  color: var(--text);
-
-  background:
-    rgba(118, 82, 255, .10);
-
-  transform: translateX(2px);
-}
-
-.nav-item.active {
-  color: #ffffff;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(118, 82, 255, .26),
-      rgba(118, 82, 255, .07)
-    );
-
-  box-shadow:
-    inset 3px 0 0 var(--primary);
-}
-
-.nav-icon {
-  width: 25px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 18px;
-}
-
-.nav-label {
-  flex: 1;
-
-  text-align: left;
-}
-
-.nav-badge {
-  min-width: 20px;
-  height: 20px;
-
-  padding: 0 6px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 999px;
-
-  background: var(--red);
-
-  color: #fff;
-
-  font-size: 10px;
-  font-weight: 900;
-}
-
-/* ============================================================
-   MAIN AREA
-   ============================================================ */
-
-.main-area {
-  width: calc(100% - var(--sidebar-width));
-
-  margin-left: var(--sidebar-width);
-
-  min-height: 100vh;
-}
-
-/* ============================================================
-   TOPBAR
-   ============================================================ */
-
-.topbar {
-  height: var(--topbar-height);
-
-  position: sticky;
-
-  top: 0;
-
-  z-index: 80;
-
-  display: flex;
-  align-items: center;
-
-  gap: 12px;
-
-  padding:
-    10px
-    22px;
-
-  background:
-    rgba(8, 11, 20, .84);
-
-  border-bottom:
-    1px solid var(--border);
-
-  backdrop-filter: blur(20px);
-}
-
-body.light .topbar {
-  background: rgba(255, 255, 255, .84);
-}
-
-/* ============================================================
-   SEARCH
-   ============================================================ */
-
-.global-search {
-  flex: 1;
-
-  max-width: 700px;
-
-  position: relative;
-}
-
-.global-search-input {
-  width: 100%;
-
-  height: 44px;
-
-  padding:
-    0
-    45px
-    0
-    17px;
-
-  border:
-    1px solid var(--border);
-
-  border-radius: 999px;
-
-  background:
-    var(--surface-2);
-
-  color:
-    var(--text);
-
-  outline: none;
-
-  transition:
-    border var(--transition),
-    box-shadow var(--transition);
-}
-
-.global-search-input::placeholder {
-  color: var(--muted);
-}
-
-.global-search-input:focus {
-  border-color: var(--primary);
-
-  box-shadow:
-    0 0 0 3px rgba(118, 82, 255, .12);
-}
-
-.search-icon {
-  position: absolute;
-
-  right: 16px;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  color: var(--muted);
-
-  pointer-events: none;
-}
-
-/* ============================================================
-   TOPBAR ACTIONS
-   ============================================================ */
-
-.topbar-actions {
-  margin-left: auto;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 8px;
-}
-
-.icon-button {
-  width: 42px;
-  height: 42px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  border:
-    1px solid var(--border);
-
-  border-radius: 50%;
-
-  background:
-    var(--surface-2);
-
-  color:
-    var(--text);
-
-  cursor: pointer;
-
-  transition:
-    background var(--transition-fast),
-    transform var(--transition-fast),
-    border var(--transition-fast);
-}
-
-.icon-button:hover {
-  border-color: var(--primary);
-
-  background:
-    var(--surface-3);
-
-  transform:
-    translateY(-1px);
-}
-
-.notification-button {
-  position: relative;
-}
-
-.notification-dot {
-  position: absolute;
-
-  top: 5px;
-  right: 5px;
-
-  width: 8px;
-  height: 8px;
-
-  background: var(--red);
-
-  border: 2px solid var(--surface-2);
-
-  border-radius: 50%;
-}
-
-/* ============================================================
-   CONTENT
-   ============================================================ */
-
-.content-area {
-  width: 100%;
-
-  max-width: 1600px;
-
-  margin:
-    0
-    auto;
-
-  padding:
-    24px;
-}
-
-.page {
-  display: none;
-
-  animation:
-    page-enter .25s ease;
-}
-
-.page.active {
-  display: block;
-}
-
-@keyframes page-enter {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ============================================================
-   HEADINGS
-   ============================================================ */
-
-.page-title {
-  font-size: clamp(28px, 4vw, 42px);
-
-  line-height: 1.1;
-
-  letter-spacing: -1.4px;
-
-  font-weight: 900;
-}
-
-.page-subtitle {
-  margin-top: 8px;
-
-  color: var(--muted);
-
-  font-size: 14px;
-
-  line-height: 1.7;
-}
-
-.section-title {
-  font-size: 20px;
-
-  font-weight: 850;
-
-  letter-spacing: -.3px;
-}
-
-.section-heading {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 12px;
-
-  margin-bottom: 14px;
-}
-
-/* ============================================================
-   HERO
-   ============================================================ */
-
-.hero {
-  position: relative;
-
-  overflow: hidden;
-
-  min-height: 300px;
-
-  padding: 38px;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    var(--radius-xl);
-
-  background:
-    radial-gradient(
-      circle at 82% 15%,
-      rgba(118, 82, 255, .45),
-      transparent 31%
-    ),
-    radial-gradient(
-      circle at 18% 90%,
-      rgba(24, 217, 255, .20),
-      transparent 30%
-    ),
-    var(--surface);
-
-  box-shadow:
-    var(--shadow-md);
-}
-
-.hero::before {
-  content: "";
-
-  position: absolute;
-
-  width: 280px;
-  height: 280px;
-
-  right: -100px;
-  bottom: -150px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(118, 82, 255, .16);
-
-  filter: blur(10px);
-}
-
-.hero-content {
-  position: relative;
-
-  z-index: 2;
-
-  max-width: 760px;
-}
-
-.hero-title {
-  font-size:
-    clamp(
-      38px,
-      6vw,
-      62px
-    );
-
-  line-height: 1;
-
-  letter-spacing:
-    -2.5px;
-
-  font-weight: 950;
-}
-
-.gradient-text {
-  background:
-    linear-gradient(
-      90deg,
-      #ffffff,
-      var(--primary-light),
-      var(--cyan)
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent;
-}
-
-.hero-description {
-  max-width: 700px;
-
-  margin-top: 17px;
-
-  color: var(--muted);
-
-  line-height: 1.75;
-
-  font-size: 15px;
-}
-
-.hero-actions {
-  display: flex;
-
-  align-items: center;
-
-  gap: 9px;
-
-  flex-wrap: wrap;
-
-  margin-top: 25px;
-}
-
-.hero-orbit {
-  position: absolute;
-
-  right: 7%;
-  bottom: 15px;
-
-  width: 190px;
-  height: 190px;
-
-  border:
-    1px solid rgba(118, 82, 255, .30);
-
-  border-radius: 50%;
-
-  opacity: .6;
-}
-
-.hero-orbit::before,
-.hero-orbit::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 25px;
-
-  border:
-    1px solid rgba(24, 217, 255, .28);
-
-  border-radius: 50%;
-}
-
-.hero-orbit::after {
-  inset: 55px;
-
-  border-color:
-    rgba(255, 255, 255, .15);
-}
-
-/* ============================================================
-   BUTTONS
-   ============================================================ */
-
-.btn {
-  min-height: 42px;
-
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 7px;
-
-  padding:
-    10px
-    17px;
-
-  border: 0;
-
-  border-radius:
-    var(--radius-sm);
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--primary),
-      var(--primary-light)
-    );
-
-  color: #fff;
-
-  font-weight: 800;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 7px 22px rgba(118, 82, 255, .20);
-
-  transition:
-    transform var(--transition-fast),
-    filter var(--transition-fast),
-    box-shadow var(--transition-fast);
-}
-
-.btn:hover {
-  filter: brightness(1.08);
-
-  transform:
-    translateY(-1px);
-
-  box-shadow:
-    0 10px 28px rgba(118, 82, 255, .27);
-}
-
-.btn:active {
-  transform:
-    translateY(0)
-    scale(.98);
-}
-
-.btn.secondary {
-  background:
-    var(--surface-2);
-
-  border:
-    1px solid var(--border);
-
-  color:
-    var(--text);
-
-  box-shadow:
-    none;
-}
-
-.btn.secondary:hover {
-  border-color:
-    var(--primary);
-}
-
-.btn.green {
-  background:
-    var(--green);
-
-  color:
-    #04130c;
-
-  box-shadow:
-    0 7px 22px rgba(43, 220, 145, .15);
-}
-
-.btn.danger {
-  background:
-    var(--red);
-
-  color:
-    #fff;
-}
-
-.btn.small {
-  min-height: 34px;
-
-  padding:
-    7px
-    11px;
-
-  font-size: 12px;
-}
-
-.btn.full {
-  width: 100%;
-}
-
-/* ============================================================
-   CARDS
-   ============================================================ */
-
-.card {
-  background:
-    var(--surface);
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    var(--radius-lg);
-
-  padding:
-    18px;
-
-  box-shadow:
-    var(--shadow-sm);
-
-  transition:
-    border var(--transition),
-    transform var(--transition);
-}
-
-.card.hoverable:hover {
-  border-color:
-    #3c4e70;
-
-  transform:
-    translateY(-2px);
-}
-
-.card-header {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 10px;
-
-  margin-bottom: 14px;
-}
-
-.card-title {
-  font-size: 18px;
-
-  font-weight: 850;
-}
-
-.card-description {
-  color:
-    var(--muted);
-
-  font-size: 13px;
-
-  line-height: 1.65;
-}
-
-/* ============================================================
-   GRID
-   ============================================================ */
-
-.grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(0, 1fr)
-    );
-
-  gap: 14px;
-}
-
-.grid-2 {
-  grid-template-columns:
-    1.5fr
-    1fr;
-}
-
-.grid-3 {
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(0, 1fr)
-    );
-}
-
-.grid-6 {
-  grid-template-columns:
-    repeat(
-      6,
-      minmax(0, 1fr)
-    );
-}
-
-.section {
-  margin-top: 25px;
-}
-
-/* ============================================================
-   WORLD CARD
-   ============================================================ */
-
-.world-card {
-  position: relative;
-
-  min-height: 190px;
-
-  cursor: pointer;
-
-  overflow: hidden;
-}
-
-.world-card::after {
-  content: "";
-
-  position: absolute;
-
-  right: -30px;
-  bottom: -50px;
-
-  width: 130px;
-  height: 130px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(118, 82, 255, .08);
-
-  transition:
-    transform var(--transition);
-}
-
-.world-card:hover::after {
-  transform:
-    scale(1.35);
-}
-
-.world-icon {
-  width: 52px;
-  height: 52px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 14px;
-
-  border-radius:
-    var(--radius-md);
-
-  background:
-    var(--surface-2);
-
-  border:
-    1px solid var(--border);
-
-  font-size: 25px;
-
-  position: relative;
-
-  z-index: 2;
-}
-
-.world-name {
-  font-size: 18px;
-
-  font-weight: 850;
-
-  position: relative;
-
-  z-index: 2;
-}
-
-.world-description {
-  margin-top: 5px;
-
-  color:
-    var(--muted);
-
-  font-size: 13px;
-
-  position: relative;
-
-  z-index: 2;
-}
-
-/* ============================================================
-   PROGRESS
-   ============================================================ */
-
-.progress-wrapper {
-  margin-top: 15px;
-}
-
-.progress-track {
-  width: 100%;
-
-  height: 7px;
-
-  overflow: hidden;
-
-  border-radius: 999px;
-
-  background:
-    var(--surface-3);
-}
-
-.progress-value {
-  height: 100%;
-
-  border-radius: inherit;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--primary),
-      var(--cyan)
-    );
-
-  transition:
-    width .5s ease;
-}
-
-.progress-meta {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  margin-top: 7px;
-
-  color: var(--muted);
-
-  font-size: 11px;
-}
-
-/* ============================================================
-   STATS
-   ============================================================ */
-
-.stats-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(0, 1fr)
-    );
-
-  gap: 11px;
-
-  margin-top: 20px;
-}
-
-.stat-card {
-  padding: 14px;
-
-  background:
-    rgba(255,255,255,.025);
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    var(--radius-md);
-}
-
-.stat-label {
-  color:
-    var(--muted);
-
-  font-size: 11px;
-}
-
-.stat-value {
-  display: block;
-
-  margin-top: 3px;
-
-  font-size: 21px;
-
-  font-weight: 900;
-}
-
-/* ============================================================
-   AVATAR
-   ============================================================ */
-
-.avatar {
-  width: 42px;
-  height: 42px;
-
-  flex: 0 0 auto;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #354566,
-      #141c2e
-    );
-
-  border:
-    1px solid var(--border);
-
-  overflow: hidden;
-
-  user-select: none;
-}
-
-.avatar.large {
-  width: 115px;
-  height: 115px;
-
-  font-size: 55px;
-
-  border:
-    3px solid var(--primary);
-}
-
-.avatar.small {
-  width: 34px;
-  height: 34px;
-
-  font-size: 15px;
-}
-
-/* ============================================================
-   RANKING
-   ============================================================ */
-
-.ranking-list {
-  display: grid;
-
-  gap: 0;
-}
-
-.rank-row {
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  padding:
-    12px
-    0;
-
-  border-bottom:
-    1px solid var(--border);
-}
-
-.rank-row:last-child {
-  border-bottom: 0;
-}
-
-.rank-number {
-  width: 28px;
-
-  color:
-    var(--yellow);
-
-  font-weight: 950;
-
-  text-align: center;
-}
-
-.rank-user {
-  flex: 1;
-
-  min-width: 0;
-}
-
-.rank-name {
-  display: block;
-
-  overflow: hidden;
-
-  white-space: nowrap;
-
-  text-overflow: ellipsis;
-
-  font-weight: 750;
-}
-
-.rank-meta {
-  color:
-    var(--muted);
-
-  font-size: 11px;
-}
-
-.rank-xp {
-  color:
-    var(--primary-light);
-
-  font-size: 12px;
-
-  font-weight: 800;
-}
-
-/* ============================================================
-   CHAT
-   ============================================================ */
-
-.chat-card {
-  height: 500px;
-
-  display: flex;
-
-  flex-direction: column;
-}
-
-.messages {
-  flex: 1;
-
-  min-height: 0;
-
-  overflow-y: auto;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 10px;
-
-  padding-right: 3px;
-}
-
-.message {
-  display: flex;
-
-  align-items: flex-start;
-
-  gap: 9px;
-}
-
-.message-body {
-  max-width: 78%;
-
-  padding:
-    9px
-    12px;
-
-  border-radius:
-    13px;
-
-  background:
-    var(--surface-2);
-
-  font-size: 13px;
-}
-
-.message-name {
-  font-weight: 800;
-}
-
-.message-time {
-  display: block;
-
-  margin-top: 3px;
-
-  color:
-    var(--muted);
-
-  font-size: 10px;
-}
-
-.chat-input {
-  display: flex;
-
-  gap: 8px;
-
-  margin-top: 12px;
-}
-
-.chat-input input {
-  flex: 1;
-
-  min-width: 0;
-
-  height: 43px;
-
-  padding:
-    0
-    13px;
-
-  background:
-    var(--surface-2);
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    var(--radius-sm);
-
-  color:
-    var(--text);
-
-  outline: none;
-}
-
-.chat-input input:focus {
-  border-color:
-    var(--primary);
-}
-
-/* ============================================================
-   FEED
-   ============================================================ */
-
-.feed {
-  display: grid;
-
-  gap: 12px;
-}
-
-.post {
-  padding:
-    16px;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    var(--radius-md);
-
-  background:
-    var(--surface);
-}
-
-.post-header {
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-}
-
-.post-author {
-  font-weight: 800;
-}
-
-.post-time {
-  display: block;
-
-  color:
-    var(--muted);
-
-  font-size: 10px;
-}
-
-.post-content {
-  margin:
-    13px
-    0;
-
-  color:
-    var(--text-soft);
-
-  line-height: 1.7;
-
-  font-size: 14px;
-}
-
-.post-actions {
-  display: flex;
-
-  gap: 7px;
-}
-
-.post-action {
-  flex: 1;
-
-  padding:
-    9px;
-
-  border:
-    0;
-
-  border-radius:
-    9px;
-
-  background:
-    var(--surface-2);
-
-  color:
-    var(--muted);
-
-  cursor: pointer;
-
-  transition:
-    background var(--transition-fast),
-    color var(--transition-fast);
-}
-
-.post-action:hover {
-  color:
-    var(--text);
-
-  background:
-    var(--surface-3);
-}
-
-/* ============================================================
-   ROADMAP
-   ============================================================ */
-
-.roadmap {
-  display: grid;
-
-  gap: 12px;
-}
-
-.roadmap-level {
-  display: flex;
-
-  align-items: center;
-
-  gap: 14px;
-
-  padding:
-    15px;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    var(--radius-lg);
-
-  background:
-    var(--surface);
-}
-
-.roadmap-level.locked {
-  opacity: .48;
-}
-
-.level-number {
-  width: 50px;
-  height: 50px;
-
-  flex: 0 0 auto;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--primary),
-      var(--cyan)
-    );
-
-  color: #fff;
-
-  font-weight: 950;
-}
-
-.level-info {
-  flex: 1;
-
-  min-width: 0;
-}
-
-.level-title {
-  font-weight: 850;
-}
-
-.level-description {
-  margin-top: 3px;
-
-  color:
-    var(--muted);
-
-  font-size: 12px;
-}
-
-/* ============================================================
-   PRACTICE
-   ============================================================ */
-
-.practice-card {
-  max-width: 850px;
-
-  margin:
-    25px
-    auto;
-}
-
-.practice-top {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 10px;
-
-  color:
-    var(--muted);
-
-  font-size: 12px;
-}
-
-.practice-timer {
-  font-size: 18px;
-
-  color:
-    var(--cyan);
-
-  font-weight: 900;
-}
-
-.question-container {
-  padding:
-    35px
-    15px;
-
-  text-align: center;
-}
-
-.question-text {
-  font-size:
-    clamp(
-      25px,
-      5vw,
-      40px
-    );
-
-  font-weight: 950;
-
-  letter-spacing: -.8px;
-}
-
-.answer-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0, 1fr)
-    );
-
-  gap: 11px;
-}
-
-.answer-button {
-  min-height: 65px;
-
-  padding:
-    13px;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    var(--radius-md);
-
-  background:
-    var(--surface-2);
-
-  color:
-    var(--text);
-
-  cursor: pointer;
-
-  font-weight: 850;
-
-  transition:
-    border var(--transition-fast),
-    background var(--transition-fast),
-    transform var(--transition-fast);
-}
-
-.answer-button:hover {
-  border-color:
-    var(--primary);
-
-  background:
-    rgba(118,82,255,.12);
-
-  transform:
-    translateY(-1px);
-}
-
-.answer-button.correct {
-  background:
-    rgba(43,220,145,.15);
-
-  border-color:
-    var(--green);
-
-  color:
-    var(--green);
-}
-
-.answer-button.wrong {
-  background:
-    rgba(255,92,118,.15);
-
-  border-color:
-    var(--red);
-
-  color:
-    var(--red);
-}
-
-/* ============================================================
-   BATTLE
-   ============================================================ */
-
-.battle-card {
-  position: relative;
-
-  overflow: hidden;
-
-  text-align: center;
-
-  min-height: 230px;
-}
-
-.battle-versus {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 30px;
-
-  margin:
-    25px
-    0;
-}
-
-.battle-player {
-  text-align: center;
-}
-
-.battle-player-name {
-  margin-top: 7px;
-
-  font-weight: 850;
-}
-
-.battle-vs {
-  font-size: 25px;
-
-  color:
-    var(--red);
-
-  font-weight: 950;
-}
-
-/* ============================================================
-   PROFILE
-   ============================================================ */
-
-.profile-layout {
-  display: grid;
-
-  grid-template-columns:
-    280px
-    1fr;
-
-  gap: 18px;
-}
-
-.profile-sidebar {
-  text-align: center;
-}
-
-.profile-avatar-wrapper {
-  display: flex;
-
-  justify-content: center;
-
-  margin:
-    5px
-    0
-    17px;
-}
-
-.profile-name {
-  font-size: 23px;
-
-  font-weight: 900;
-}
-
-.profile-country {
-  color:
-    var(--muted);
-
-  margin-top: 4px;
-
-  font-size: 13px;
-}
-
-.profile-main {
-  display: grid;
-
-  gap: 18px;
-}
-
-/* ============================================================
-   FORM
-   ============================================================ */
-
-.form-group {
-  display: grid;
-
-  gap: 6px;
-}
-
-.form-label {
-  color:
-    var(--muted);
-
-  font-size: 12px;
-
-  font-weight: 700;
-}
-
-.form-input,
-.form-select,
-.form-textarea {
-  width: 100%;
-
-  padding:
-    11px
-    13px;
-
-  background:
-    var(--surface-2);
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    var(--radius-sm);
-
-  color:
-    var(--text);
-
-  outline: none;
-}
-
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  border-color:
-    var(--primary);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(118,82,255,.10);
-}
-
-.form-textarea {
-  min-height: 120px;
-
-  resize:
-    vertical;
-}
-
-/* ============================================================
-   AI PANEL
-   ============================================================ */
-
-.ai-panel {
-  background:
-    radial-gradient(
-      circle at 90% 10%,
-      rgba(118,82,255,.20),
-      transparent 35%
-    ),
-    var(--surface);
-
-  border:
-    1px solid
-    rgba(118,82,255,.45);
-}
-
-.ai-header {
-  display: flex;
-
-  align-items: center;
-
-  gap: 11px;
-
-  margin-bottom: 14px;
-}
-
-.ai-icon {
-  width: 45px;
-  height: 45px;
-
-  display: grid;
-
-  place-items: center;
-
-  border-radius:
-    14px;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--primary),
-      var(--cyan)
-    );
-
-  font-size: 23px;
-}
-
-.ai-response {
-  margin-top: 13px;
-
-  padding:
-    14px;
-
-  border-radius:
-    var(--radius-md);
-
-  background:
-    var(--surface-2);
-
-  color:
-    var(--text-soft);
-
-  line-height: 1.7;
-
-  font-size: 13px;
-}
-
-/* ============================================================
-   EMPTY STATE
-   ============================================================ */
-
-.empty-state {
-  padding:
-    45px
-    20px;
-
-  text-align: center;
-
-  color:
-    var(--muted);
-}
-
-.empty-icon {
-  font-size: 45px;
-
-  margin-bottom: 10px;
-}
-
-.empty-title {
-  color:
-    var(--text);
-
-  font-weight: 850;
-
-  margin-bottom: 5px;
-}
-
-/* ============================================================
-   TABS
-   ============================================================ */
-
-.tabs {
-  display: flex;
-
-  gap: 7px;
-
-  flex-wrap: wrap;
-
-  margin:
-    18px
-    0;
-}
-
-.tab {
-  padding:
-    9px
-    14px;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    999px;
-
-  background:
-    var(--surface-2);
-
-  color:
-    var(--muted);
-
-  cursor: pointer;
-
-  font-size: 12px;
-
-  font-weight: 750;
-}
-
-.tab.active {
-  background:
-    rgba(118,82,255,.18);
-
-  border-color:
-    var(--primary);
-
-  color:
-    var(--text);
-}
-
-/* ============================================================
-   BADGES
-   ============================================================ */
-
-.badge {
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-
-  padding:
-    5px
-    9px;
-
-  border-radius:
-    999px;
-
-  font-size: 10px;
-
-  font-weight: 850;
-}
-
-.badge.primary {
-  color:
-    var(--primary-light);
-
-  background:
-    rgba(118,82,255,.12);
-}
-
-.badge.green {
-  color:
-    var(--green);
-
-  background:
-    rgba(43,220,145,.12);
-}
-
-.badge.red {
-  color:
-    var(--red);
-
-  background:
-    rgba(255,92,118,.12);
-}
-
-.badge.yellow {
-  color:
-    var(--yellow);
-
-  background:
-    rgba(255,209,92,.12);
-}
-
-/* ============================================================
-   MODAL
-   ============================================================ */
-
-.modal {
-  position: fixed;
-
-  inset: 0;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  padding: 20px;
-
-  z-index: 500;
-
-  opacity: 1;
-
-  transition:
-    opacity var(--transition);
-}
-
-.modal.hidden {
-  display: none;
-
-  opacity: 0;
-}
-
-.modal-overlay {
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    rgba(0,0,0,.72);
-
-  backdrop-filter:
-    blur(5px);
-}
-
-.modal-container {
-  position: relative;
-
-  z-index: 2;
-
-  width:
-    min(
-      600px,
-      100%
-    );
-
-  max-height:
-    calc(100vh - 40px);
-
-  overflow-y: auto;
-
-  background:
-    var(--surface);
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    var(--radius-xl);
-
-  box-shadow:
-    var(--shadow-lg);
-
-  animation:
-    modal-enter .22s ease;
-}
-
-@keyframes modal-enter {
-  from {
-    opacity: 0;
-    transform:
-      translateY(10px)
-      scale(.98);
-  }
-
-  to {
-    opacity: 1;
-    transform:
-      translateY(0)
-      scale(1);
-  }
-}
-
-.modal-header {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  padding:
-    17px
-    20px;
-
-  border-bottom:
-    1px solid var(--border);
-}
-
-.modal-header h2 {
-  font-size: 18px;
-}
-
-.modal-content {
-  padding:
-    20px;
-}
-
-/* ============================================================
-   TOAST
-   ============================================================ */
-
-.toast-container {
-  position: fixed;
-
-  left: 50%;
-  bottom: 22px;
-
-  transform:
-    translateX(-50%);
-
-  z-index: 1000;
-
-  display: grid;
-
-  gap: 8px;
-
-  pointer-events: none;
-}
-
-.toast {
-  padding:
-    11px
-    16px;
-
-  border:
-    1px solid var(--border);
-
-  border-radius:
-    var(--radius-sm);
-
-  background:
-    #141922;
-
-  color:
-    #fff;
-
-  box-shadow:
-    var(--shadow-md);
-
-  font-size: 13px;
-
-  animation:
-    toast-in .25s ease;
-}
-
-@keyframes toast-in {
-  from {
-    opacity: 0;
-
-    transform:
-      translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-
-    transform:
-      translateY(0);
-  }
-}
-
-/* ============================================================
-   ONLINE STATUS
-   ============================================================ */
-
-.online-dot {
-  width: 8px;
-  height: 8px;
-
-  display: inline-block;
-
-  border-radius: 50%;
-
-  background:
-    var(--green);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(43,220,145,.10);
-}
-
-/* ============================================================
-   DIVIDER
-   ============================================================ */
-
-.divider {
-  width: 100%;
-
-  height: 1px;
-
-  margin:
-    15px
-    0;
-
-  background:
-    var(--border);
-}
-
-/* ============================================================
-   UTILITY
-   ============================================================ */
-
-.hidden {
-  display: none !important;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.text-muted {
-  color: var(--muted);
-}
-
-.text-primary {
-  color: var(--primary-light);
-}
-
-.text-green {
-  color: var(--green);
-}
-
-.text-red {
-  color: var(--red);
-}
-
-.text-yellow {
-  color: var(--yellow);
-}
-
-.text-center {
-  text-align: center;
-}
-
-.fw-bold {
-  font-weight: 800;
-}
-
-.flex {
-  display: flex;
-}
-
-.flex-center {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-}
-
-.flex-between {
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-}
-
-.gap-1 {
-  gap: 5px;
-}
-
-.gap-2 {
-  gap: 10px;
-}
-
-.gap-3 {
-  gap: 15px;
-}
-
-.gap-4 {
-  gap: 20px;
-}
-
-.mt-1 {
-  margin-top: 5px;
-}
-
-.mt-2 {
-  margin-top: 10px;
-}
-
-.mt-3 {
-  margin-top: 15px;
-}
-
-.mt-4 {
-  margin-top: 20px;
-}
-
-.mb-1 {
-  margin-bottom: 5px;
-}
-
-.mb-2 {
-  margin-bottom: 10px;
-}
-
-.mb-3 {
-  margin-bottom: 15px;
-}
-
-.mb-4 {
-  margin-bottom: 20px;
-}
-
-/* ============================================================
-   END MAIN CSS
-   Next:
-   components.css
-   ============================================================ */
-  /* =========================================================
-   SKILLRUSH CORE ENGINE v2
-   ========================================================= */
-
-const SR = {
-
-  version: "2.0.0",
-
-  user: {
-    id: "sr_user_001",
-    name: "Tahsin",
-    country: "BD",
-    xp: 12430,
-    level: 42,
-    streak: 127,
-    lives: 3,
-    gems: 1250,
-    coins: 9840,
-    rating: 1248
-  },
-
-  settings: {
-    sound: true,
-    notifications: true,
-    language: "en",
-    theme: "dark"
-  },
-
-  session: {
-    world: null,
-    subject: null,
-    question: 0,
-    score: 0,
-    correct: 0,
-    wrong: 0,
-    started: false,
-    startTime: null,
-    timeLimit: 5
-  },
-
-  events: {},
-
-  on(event, callback) {
-    if (!this.events[event]) {
-      this.events[event] = [];
+</div>
+
+
+<script>
+
+  /* ==========================================
+     SKILLRUSH CORE DATA
+  ========================================== */
+
+  const SkillRush = {
+
+    user: {
+      name: "Tahsin",
+      country: "🇧🇩",
+      xp: 12430,
+      lives: 3,
+      level: 42
+    },
+
+    currentChat: "Aisha",
+
+    feedFilter: "all",
+
+    questionIndex: 0,
+
+    posts: [
+
+      {
+        name: "Alex",
+        flag: "🇺🇸",
+        subject: "all",
+        text: "Hello everyone! What are you learning today?",
+        likes: 142,
+        comments: 19
+      },
+
+      {
+        name: "Amina",
+        flag: "🇪🇬",
+        subject: "arabic",
+        text: "Let's practice Arabic together.",
+        likes: 98,
+        comments: 11
+      },
+
+      {
+        name: "Rahman",
+        flag: "🇧🇩",
+        subject: "math",
+        text: "Finished another mathematics session!",
+        likes: 231,
+        comments: 32
+      },
+
+      {
+        name: "Yuki",
+        flag: "🇯🇵",
+        subject: "math",
+        text: "Who wants a friendly math challenge?",
+        likes: 76,
+        comments: 9
+      },
+
+      {
+        name: "Sofia",
+        flag: "🇪🇸",
+        subject: "english",
+        text: "English conversation practice today.",
+        likes: 187,
+        comments: 25
+      }
+
+    ],
+
+    people: [
+
+      ["Aisha", "🇧🇩"],
+      ["David", "🇺🇸"],
+      ["Omar", "🇪🇬"],
+      ["Kimiko", "🇯🇵"],
+      ["Liam", "🇬🇧"],
+      ["Sara", "🇩🇪"],
+      ["Maya", "🇮🇳"],
+      ["Noah", "🇨🇦"],
+      ["Sofia", "🇪🇸"],
+      ["Adam", "🇦🇺"],
+      ["Hana", "🇰🇷"],
+      ["Yusuf", "🇹🇷"]
+
+    ],
+
+    groups: [
+
+      {
+        name: "Math Masters",
+        icon: "📐",
+        members: "12.4K",
+        type: "Public"
+      },
+
+      {
+        name: "English Learners",
+        icon: "📖",
+        members: "48.7K",
+        type: "Public"
+      },
+
+      {
+        name: "Arabic Scholars",
+        icon: "ع",
+        members: "21.1K",
+        type: "Public"
+      },
+
+      {
+        name: "A-Level Circle",
+        icon: "🎓",
+        members: "8.8K",
+        type: "Private"
+      },
+
+      {
+        name: "Global Learners",
+        icon: "🌎",
+        members: "91.2K",
+        type: "Public"
+      },
+
+      {
+        name: "Private Study Room",
+        icon: "🔒",
+        members: "Invite only",
+        type: "Private"
+      }
+
+    ],
+
+    worlds: [
+
+      {
+        name: "Math",
+        icon: "📐",
+        description: "Calculation, algebra, geometry and A-Level mathematics."
+      },
+
+      {
+        name: "English",
+        icon: "📖",
+        description: "Vocabulary, grammar, reading, listening and conversation."
+      },
+
+      {
+        name: "Arabic",
+        icon: "ع",
+        description: "Arabic reading, writing, grammar and conversation."
+      },
+
+      {
+        name: "Science",
+        icon: "🔬",
+        description: "Physics, chemistry, biology and scientific thinking."
+      },
+
+      {
+        name: "Coding",
+        icon: "💻",
+        description: "Programming, web development, algorithms and systems."
+      },
+
+      {
+        name: "Life Skills",
+        icon: "🌱",
+        description: "Practical skills for everyday life and personal growth."
+      },
+
+      {
+        name: "History",
+        icon: "🏛️",
+        description: "Explore civilizations, events and world history."
+      },
+
+      {
+        name: "Geography",
+        icon: "🌍",
+        description: "Earth, countries, people, climate and geography."
+      },
+
+      {
+        name: "Logic",
+        icon: "🧩",
+        description: "Reasoning, patterns, puzzles and critical thinking."
+      },
+
+      {
+        name: "Communication",
+        icon: "💬",
+        description: "Global communication and social learning."
+      },
+
+      {
+        name: "Business",
+        icon: "📊",
+        description: "Business, entrepreneurship and financial basics."
+      },
+
+      {
+        name: "Creative",
+        icon: "🎨",
+        description: "Creative thinking, design and expression."
+      }
+
+    ],
+
+    topics: {
+
+      Math: [
+        "Numbers",
+        "Arithmetic",
+        "Fractions",
+        "Ratios",
+        "Percentages",
+        "Algebra",
+        "Equations",
+        "Geometry",
+        "Coordinate Geometry",
+        "Functions",
+        "Trigonometry",
+        "Probability",
+        "Statistics",
+        "Calculus",
+        "Mechanics",
+        "Pure Mathematics",
+        "A-Level Mastery"
+      ],
+
+      English: [
+        "Alphabet",
+        "Vocabulary",
+        "Grammar",
+        "Reading",
+        "Listening",
+        "Speaking",
+        "Writing",
+        "Conversation",
+        "Academic English",
+        "Advanced English"
+      ],
+
+      Arabic: [
+        "Arabic Letters",
+        "Words",
+        "Reading",
+        "Writing",
+        "Grammar",
+        "Conversation",
+        "Classical Arabic",
+        "Advanced Arabic"
+      ],
+
+      Science: [
+        "Observation",
+        "Matter",
+        "Energy",
+        "Biology",
+        "Chemistry",
+        "Physics",
+        "Earth Science"
+      ],
+
+      Coding: [
+        "Logic",
+        "Algorithms",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Programming",
+        "Data",
+        "APIs",
+        "Systems",
+        "Advanced Coding"
+      ]
+
+    },
+
+    rankings: [
+
+      ["Yuki", "🇯🇵", 587421],
+      ["Alex", "🇺🇸", 562130],
+      ["Aisha", "🇧🇩", 548790],
+      ["Omar", "🇪🇬", 531442],
+      ["Tahsin", "🇧🇩", 512430],
+      ["Sofia", "🇪🇸", 503221],
+      ["Maya", "🇮🇳", 498900],
+      ["Noah", "🇨🇦", 487120],
+      ["Liam", "🇬🇧", 476110],
+      ["Hana", "🇰🇷", 461002]
+
+    ],
+
+    messages: {
+
+      Aisha: [
+        "Hey Tahsin! 👋",
+        "Ready for an English challenge?"
+      ],
+
+      David: [
+        "Let's do a math battle!",
+        "Good luck!"
+      ],
+
+      Omar: [
+        "السلام عليكم",
+        "Let's study together."
+      ],
+
+      Kimiko: [
+        "こんにちは!",
+        "Keep going!"
+      ],
+
+      Liam: [
+        "Hello!",
+        "What are you learning today?"
+      ]
+
+    },
+
+    questions: [
+
+      {
+        question: "What is 2x + 6 = 14?",
+        answer: "4",
+        options: ["4", "5", "6", "8"]
+      },
+
+      {
+        question: "What is 15% of 200?",
+        answer: "30",
+        options: ["20", "25", "30", "35"]
+      },
+
+      {
+        question: "What is √81?",
+        answer: "9",
+        options: ["7", "8", "9", "12"]
+      },
+
+      {
+        question: "If y = 3x and x = 4, what is y?",
+        answer: "12",
+        options: ["7", "10", "12", "16"]
+      }
+
+    ]
+
+  };
+
+
+  /* ==========================================
+     PAGE NAVIGATION
+  ========================================== */
+
+  function openPage(pageId) {
+
+    document
+      .querySelectorAll(".page")
+      .forEach(page => {
+        page.classList.remove("active");
+      });
+
+    const target = document.getElementById(pageId);
+
+    if (!target) {
+      return;
     }
 
-    this.events[event].push(callback);
-  },
-
-  emit(event, data) {
-    if (!this.events[event]) return;
-
-    this.events[event].forEach(callback => {
-      try {
-        callback(data);
-      } catch (error) {
-        console.error(error);
-      }
-    });
-  },
-
-  save() {
-    localStorage.setItem(
-      "skillrush_state",
-      JSON.stringify({
-        user: this.user,
-        settings: this.settings
-      })
-    );
-  },
-
-  load() {
-    try {
-      const data = JSON.parse(
-        localStorage.getItem("skillrush_state")
-      );
-
-      if (!data) return;
-
-      if (data.user) {
-        this.user = {
-          ...this.user,
-          ...data.user
-        };
-      }
-
-      if (data.settings) {
-        this.settings = {
-          ...this.settings,
-          ...data.settings
-        };
-      }
-
-    } catch (error) {
-      console.warn(
-        "SkillRush state could not be loaded."
-      );
-    }
-  }
-
-};
-
-
-/* =========================================================
-   TOAST
-   ========================================================= */
-
-function srToast(message, type = "info") {
-
-  let container =
-    document.getElementById("srToastContainer");
-
-  if (!container) {
-
-    container =
-      document.createElement("div");
-
-    container.id =
-      "srToastContainer";
-
-    container.style.position =
-      "fixed";
-
-    container.style.right =
-      "20px";
-
-    container.style.bottom =
-      "20px";
-
-    container.style.zIndex =
-      "9999";
-
-    container.style.display =
-      "flex";
-
-    container.style.flexDirection =
-      "column";
-
-    container.style.gap =
-      "10px";
-
-    document.body.appendChild(
-      container
-    );
-  }
-
-  const toast =
-    document.createElement("div");
-
-  toast.textContent =
-    message;
-
-  toast.style.padding =
-    "14px 18px";
-
-  toast.style.borderRadius =
-    "14px";
-
-  toast.style.background =
-    "var(--panel2)";
-
-  toast.style.border =
-    "1px solid var(--border)";
-
-  toast.style.color =
-    "var(--text)";
-
-  toast.style.boxShadow =
-    "0 10px 30px #0006";
-
-  toast.style.minWidth =
-    "240px";
-
-  toast.style.transition =
-    ".25s";
-
-  container.appendChild(
-    toast
-  );
-
-  setTimeout(() => {
-
-    toast.style.opacity =
-      "0";
-
-    toast.style.transform =
-      "translateX(20px)";
-
-    setTimeout(() => {
-      toast.remove();
-    }, 250);
-
-  }, 3000);
-
-}
-
-
-/* =========================================================
-   XP SYSTEM
-   ========================================================= */
-
-function addXP(amount, reason = "Activity") {
-
-  amount =
-    Math.max(
-      0,
-      Number(amount) || 0
-    );
-
-  SR.user.xp += amount;
-
-  updateLevel();
-
-  srToast(
-    `+${amount} XP • ${reason}`,
-    "success"
-  );
-
-  SR.emit(
-    "xp",
-    {
-      amount,
-      reason,
-      total: SR.user.xp
-    }
-  );
-
-  SR.save();
-
-  updateUserUI();
-
-  AchievementEngine.check();
-
-}
-
-
-/* =========================================================
-   LEVEL SYSTEM
-   ========================================================= */
-
-function calculateLevel(xp) {
-
-  return Math.max(
-    1,
-    Math.floor(
-      Math.sqrt(xp / 50)
-    ) + 1
-  );
-
-}
-
-
-function updateLevel() {
-
-  const oldLevel =
-    SR.user.level;
-
-  const newLevel =
-    calculateLevel(
-      SR.user.xp
-    );
-
-  SR.user.level =
-    newLevel;
-
-  if (
-    newLevel >
-    oldLevel
-  ) {
-
-    srToast(
-      `🎉 Level ${newLevel} unlocked!`,
-      "success"
-    );
-
-    SR.emit(
-      "levelUp",
-      newLevel
-    );
-  }
-
-}
-
-
-/* =========================================================
-   USER UI
-   ========================================================= */
-
-function updateUserUI() {
-
-  updateLevel();
-
-  document
-    .querySelectorAll(
-      "[data-user-xp]"
-    )
-    .forEach(el => {
-      el.textContent =
-        SR.user.xp.toLocaleString();
-    });
-
-  document
-    .querySelectorAll(
-      "[data-user-level]"
-    )
-    .forEach(el => {
-      el.textContent =
-        SR.user.level;
-    });
-
-  document
-    .querySelectorAll(
-      "[data-user-streak]"
-    )
-    .forEach(el => {
-      el.textContent =
-        SR.user.streak;
-    });
-
-}
-
-
-/* =========================================================
-   SEARCH ENGINE
-   ========================================================= */
-
-const SR_SEARCH_DATA = [
-
-  {
-    type: "world",
-    name: "Math World",
-    keywords: [
-      "math",
-      "mathematics",
-      "algebra",
-      "calculus"
-    ],
-    page: "worlds"
-  },
-
-  {
-    type: "world",
-    name: "English World",
-    keywords: [
-      "english",
-      "grammar",
-      "vocabulary"
-    ],
-    page: "worlds"
-  },
-
-  {
-    type: "world",
-    name: "Arabic World",
-    keywords: [
-      "arabic",
-      "عربي"
-    ],
-    page: "worlds"
-  },
-
-  {
-    type: "feature",
-    name: "Leaderboard",
-    keywords: [
-      "rank",
-      "ranking",
-      "leaderboard"
-    ],
-    page: "leaderboard"
-  },
-
-  {
-    type: "feature",
-    name: "Battles",
-    keywords: [
-      "battle",
-      "competition"
-    ],
-    page: "battle"
-  },
-
-  {
-    type: "feature",
-    name: "Messenger",
-    keywords: [
-      "message",
-      "chat",
-      "messenger"
-    ],
-    page: "messages"
-  },
-
-  {
-    type: "feature",
-    name: "Friends",
-    keywords: [
-      "friend",
-      "friends"
-    ],
-    page: "friends"
-  },
-
-  {
-    type: "feature",
-    name: "Roadmap",
-    keywords: [
-      "roadmap",
-      "level",
-      "course"
-    ],
-    page: "roadmap"
-  }
-
-];
-
-
-function skillRushSearch(query) {
-
-  query =
-    String(query)
-      .trim()
-      .toLowerCase();
-
-  if (!query) {
-    return [];
-  }
-
-  return SR_SEARCH_DATA
-    .filter(item => {
-
-      const text =
-        [
-          item.name,
-          ...item.keywords
-        ]
-        .join(" ")
-        .toLowerCase();
-
-      return text.includes(
-        query
-      );
-
-    })
-    .slice(0, 10);
-
-}
-
-
-/* =========================================================
-   SEARCH UI
-   ========================================================= */
-
-function createSearchResults() {
-
-  const input =
-    document.getElementById(
-      "search"
-    );
-
-  if (!input) return;
-
-  let box =
-    document.getElementById(
-      "srSearchResults"
-    );
-
-  if (!box) {
-
-    box =
-      document.createElement(
-        "div"
-      );
-
-    box.id =
-      "srSearchResults";
-
-    box.style.position =
-      "absolute";
-
-    box.style.top =
-      "58px";
-
-    box.style.left =
-      "0";
-
-    box.style.right =
-      "0";
-
-    box.style.background =
-      "var(--panel)";
-
-    box.style.border =
-      "1px solid var(--border)";
-
-    box.style.borderRadius =
-      "16px";
-
-    box.style.padding =
-      "8px";
-
-    box.style.display =
-      "none";
-
-    box.style.zIndex =
-      "999";
-
-    input.parentElement.style.position =
-      "relative";
-
-    input.parentElement.appendChild(
-      box
-    );
-  }
-
-  input.addEventListener(
-    "input",
-    () => {
-
-      const results =
-        skillRushSearch(
-          input.value
-        );
-
-      box.innerHTML = "";
-
-      if (!input.value.trim()) {
-
-        box.style.display =
-          "none";
-
-        return;
-      }
-
-      if (!results.length) {
-
-        box.innerHTML =
-          `<div style="
-             padding:12px;
-             color:var(--muted)">
-             No results found
-           </div>`;
-
-        box.style.display =
-          "block";
-
-        return;
-      }
-
-      results.forEach(result => {
-
-        const item =
-          document.createElement(
-            "button"
-          );
-
-        item.style.width =
-          "100%";
-
-        item.style.padding =
-          "12px";
-
-        item.style.textAlign =
-          "left";
-
-        item.style.background =
-          "transparent";
-
-        item.style.color =
-          "var(--text)";
-
-        item.style.borderRadius =
-          "10px";
-
-        item.textContent =
-          `${result.type === "world"
-            ? "🌍"
-            : "⚡"} ${result.name}`;
-
-        item.onclick = () => {
-
-          page(
-            result.page
-          );
-
-          box.style.display =
-            "none";
-
-          input.value =
-            "";
-
-        };
-
-        box.appendChild(
-          item
+    target.classList.add("active");
+
+    document
+      .querySelectorAll(".nav-button")
+      .forEach(button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.page === pageId
         );
 
       });
 
-      box.style.display =
-        "block";
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   DAILY STREAK
-   ========================================================= */
-
-function updateDailyStreak() {
-
-  const today =
-    new Date()
-      .toISOString()
-      .slice(0, 10);
-
-  const last =
-    localStorage.getItem(
-      "skillrush_last_day"
-    );
-
-  if (!last) {
-
-    localStorage.setItem(
-      "skillrush_last_day",
-      today
-    );
-
-    return;
-  }
-
-  if (last === today) {
-    return;
-  }
-
-  const previous =
-    new Date(last);
-
-  const current =
-    new Date(today);
-
-  const difference =
-    Math.floor(
-      (
-        current -
-        previous
-      ) /
-      86400000
-    );
-
-  if (difference === 1) {
-
-    SR.user.streak++;
-
-    srToast(
-      `🔥 ${SR.user.streak} day streak!`,
-      "success"
-    );
-
-  } else {
-
-    SR.user.streak =
-      1;
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
 
   }
 
-  localStorage.setItem(
-    "skillrush_last_day",
-    today
-  );
 
-  SR.save();
+  document
+    .querySelectorAll(".nav-button")
+    .forEach(button => {
 
-}
-
-
-/* =========================================================
-   LIVES
-   ========================================================= */
-
-function loseLife() {
-
-  if (
-    SR.user.lives <= 0
-  ) {
-
-    srToast(
-      "❤️ No lives remaining."
-    );
-
-    return false;
-  }
-
-  SR.user.lives--;
-
-  srToast(
-    `❤️ Life lost • ${SR.user.lives} remaining`
-  );
-
-  SR.save();
-
-  return true;
-
-}
-
-
-function restoreLife() {
-
-  if (
-    SR.user.lives >= 3
-  ) {
-
-    srToast(
-      "❤️ Lives are already full."
-    );
-
-    return;
-  }
-
-  SR.user.lives++;
-
-  srToast(
-    "❤️ +1 Life restored!",
-    "success"
-  );
-
-  SR.save();
-
-}
-
-
-/* =========================================================
-   MATH QUESTION ENGINE
-   ========================================================= */
-
-const MathQuestionEngine = {
-
-  generate(level = 1) {
-
-    const operations = [
-      "addition",
-      "subtraction",
-      "multiplication"
-    ];
-
-    const operation =
-      operations[
-        Math.floor(
-          Math.random() *
-          operations.length
-        )
-      ];
-
-    const max =
-      Math.min(
-        20 + level * 5,
-        200
+      button.addEventListener(
+        "click",
+        () => openPage(button.dataset.page)
       );
 
-    let a =
-      Math.floor(
-        Math.random() * max
-      ) + 1;
+    });
 
-    let b =
-      Math.floor(
-        Math.random() * max
-      ) + 1;
 
-    let answer;
-    let text;
+  /* ==========================================
+     WORLD CARDS
+  ========================================== */
 
-    if (
-      operation ===
-      "addition"
-    ) {
+  function createWorldCard(world) {
 
-      answer =
-        a + b;
+    return `
 
-      text =
-        `${a} + ${b} = ?`;
+      <div
+        class="world-card"
+        onclick="selectWorld('${escapeHTML(world.name)}')"
+      >
 
-    }
+        <div class="world-icon">
+          ${world.icon}
+        </div>
 
-    if (
-      operation ===
-      "subtraction"
-    ) {
-
-      if (b > a) {
-
-        [
-          a,
-          b
-        ] =
-        [
-          b,
-          a
-        ];
-
-      }
-
-      answer =
-        a - b;
-
-      text =
-        `${a} − ${b} = ?`;
-
-    }
-
-    if (
-      operation ===
-      "multiplication"
-    ) {
-
-      answer =
-        a * b;
-
-      text =
-        `${a} × ${b} = ?`;
-
-    }
-
-    return {
-
-      text,
-
-      answer,
-
-      operation,
-
-      options:
-        this.generateOptions(
-          answer
-        )
-
-    };
-
-  },
-
-
-  generateOptions(answer) {
-
-    const set =
-      new Set([
-        answer
-      ]);
-
-    while (
-      set.size < 4
-    ) {
-
-      const offset =
-        Math.floor(
-          Math.random() * 20
-        ) - 10;
-
-      const option =
-        Math.max(
-          0,
-          answer + offset
-        );
-
-      set.add(
-        option
-      );
-
-    }
-
-    return [
-      ...set
-    ].sort(
-      () =>
-        Math.random() - 0.5
-    );
-
-  }
-
-};
-
-
-/* =========================================================
-   MATH SESSION
-   ========================================================= */
-
-function startMathSession(
-  level = SR.user.level
-) {
-
-  if (
-    SR.user.lives <= 0
-  ) {
-
-    srToast(
-      "❤️ You need a life to start."
-    );
-
-    return;
-  }
-
-  SR.session = {
-
-    world:
-      "Math",
-
-    subject:
-      "Mathematics",
-
-    question:
-      0,
-
-    score:
-      0,
-
-    correct:
-      0,
-
-    wrong:
-      0,
-
-    started:
-      true,
-
-    startTime:
-      Date.now(),
-
-    timeLimit:
-      5,
-
-    level
-
-  };
-
-  page(
-    "practice"
-  );
-
-  renderMathQuestion();
-
-}
-
-
-/* =========================================================
-   RENDER QUESTION
-   ========================================================= */
-
-function renderMathQuestion() {
-
-  const question =
-    MathQuestionEngine.generate(
-      SR.session.level
-    );
-
-  SR.session.current =
-    question;
-
-  const title =
-    document.getElementById(
-      "question"
-    );
-
-  if (!title) return;
-
-  title.textContent =
-    question.text;
-
-  const container =
-    title.parentElement
-      .querySelector(
-        ".world-grid"
-      );
-
-  if (!container) return;
-
-  container.innerHTML =
-    "";
-
-  question.options.forEach(
-    (option, index) => {
-
-      const button =
-        document.createElement(
-          "button"
-        );
-
-      button.className =
-        "btn secondary";
-
-      button.textContent =
-        `${String.fromCharCode(
-          65 + index
-        )}) ${option}`;
-
-      button.onclick =
-        () => {
-
-          submitMathAnswer(
-            option
-          );
-
-        };
-
-      container.appendChild(
-        button
-      );
-
-    }
-  );
-
-  const result =
-    document.getElementById(
-      "answerResult"
-    );
-
-  if (result) {
-
-    result.textContent =
-      `Question ${
-        SR.session.question + 1
-      } / 10`;
-
-  }
-
-}
-
-
-/* =========================================================
-   SUBMIT ANSWER
-   ========================================================= */
-
-function submitMathAnswer(
-  value
-) {
-
-  if (
-    !SR.session.started
-  ) return;
-
-  const current =
-    SR.session.current;
-
-  if (!current) return;
-
-  if (
-    Number(value) ===
-    Number(current.answer)
-  ) {
-
-    SR.session.correct++;
-
-    SR.session.score +=
-      10;
-
-    addXP(
-      10,
-      "Correct answer"
-    );
-
-    srToast(
-      "✅ Correct!",
-      "success"
-    );
-
-  } else {
-
-    SR.session.wrong++;
-
-    loseLife();
-
-    srToast(
-      `❌ Correct answer: ${current.answer}`
-    );
-
-  }
-
-  SR.session.question++;
-
-  if (
-    SR.session.question >= 10
-  ) {
-
-    finishMathSession();
-
-  } else {
-
-    setTimeout(
-      renderMathQuestion,
-      500
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   SESSION RESULT
-   ========================================================= */
-
-function finishMathSession() {
-
-  SR.session.started =
-    false;
-
-  const {
-    correct,
-    wrong,
-    score
-  } =
-    SR.session;
-
-  const percentage =
-    Math.round(
-      (
-        correct / 10
-      ) * 100
-    );
-
-  const result =
-    document.getElementById(
-      "answerResult"
-    );
-
-  if (result) {
-
-    result.innerHTML = `
-
-      <div style="
-        padding:20px;
-        background:var(--panel2);
-        border-radius:16px">
-
-        <h2>
-          🏁 Session Complete
-        </h2>
+        <h3>
+          ${escapeHTML(world.name)}
+        </h3>
 
         <p>
-          Correct: ${correct}
+          ${escapeHTML(world.description)}
         </p>
-
-        <p>
-          Wrong: ${wrong}
-        </p>
-
-        <p>
-          Score: ${score}
-        </p>
-
-        <p>
-          Accuracy: ${percentage}%
-        </p>
-
-        <br>
-
-        <button
-          class="btn"
-          onclick="startMathSession()">
-
-          Play Again
-
-        </button>
 
       </div>
 
@@ -3821,544 +2773,1836 @@ function finishMathSession() {
 
   }
 
-  addXP(
-    score,
-    "Session completed"
-  );
 
-  SR.emit(
-    "sessionComplete",
-    SR.session
-  );
+  function renderWorlds() {
 
-  SR.save();
-
-}
-
-
-/* =========================================================
-   NOTIFICATION SYSTEM
-   ========================================================= */
-
-const SRNotifications = {
-
-  items: [],
-
-  add(
-    title,
-    message,
-    type = "info"
-  ) {
-
-    this.items.unshift({
-
-      id:
-        Date.now(),
-
-      title,
-
-      message,
-
-      type,
-
-      read:
-        false,
-
-      time:
-        new Date()
-          .toISOString()
-
-    });
-
-  },
-
-  markAllRead() {
-
-    this.items.forEach(
-      item => {
-        item.read =
-          true;
-      }
+    const home = document.getElementById(
+      "homeWorldGrid"
     );
 
-  },
+    const learn = document.getElementById(
+      "learnWorldGrid"
+    );
 
-  unreadCount() {
+    const all = document.getElementById(
+      "allWorldGrid"
+    );
 
-    return this.items.filter(
-      item =>
-        !item.read
-    ).length;
+    const roadmap = document.getElementById(
+      "roadmapWorld"
+    );
+
+
+    const html = SkillRush.worlds
+      .map(createWorldCard)
+      .join("");
+
+
+    home.innerHTML =
+      SkillRush.worlds
+        .slice(0, 8)
+        .map(createWorldCard)
+        .join("");
+
+
+    learn.innerHTML = html;
+
+    all.innerHTML = html;
+
+
+    roadmap.innerHTML =
+      SkillRush.worlds
+        .map(world => `
+          <option value="${escapeHTML(world.name)}">
+            ${escapeHTML(world.name)}
+          </option>
+        `)
+        .join("");
 
   }
 
-};
 
+  function selectWorld(worldName) {
 
-/* =========================================================
-   FRIEND SYSTEM
-   ========================================================= */
-
-const FriendSystem = {
-
-  friends: [],
-
-  requests: [],
-
-  sendRequest(user) {
-
-    if (!user) return;
-
-    this.requests.push({
-
-      ...user,
-
-      status:
-        "pending"
-
-    });
-
-    srToast(
-      `🤝 Friend request sent to ${user.name}`
-    );
-
-  },
-
-  acceptRequest(index) {
-
-    const request =
-      this.requests[index];
-
-    if (!request) return;
-
-    this.friends.push(
-      request
-    );
-
-    this.requests.splice(
-      index,
-      1
-    );
-
-    srToast(
-      `🎉 ${request.name} is now your friend!`
-    );
-
-  },
-
-  removeFriend(name) {
-
-    this.friends =
-      this.friends.filter(
-        friend =>
-          friend.name !== name
+    const roadmapWorld =
+      document.getElementById(
+        "roadmapWorld"
       );
 
-    srToast(
-      `${name} removed from friends.`
-    );
+    if (roadmapWorld) {
+      roadmapWorld.value = worldName;
+    }
+
+    renderRoadmap();
+
+    openPage("roadmap");
 
   }
 
-};
+
+  /* ==========================================
+     LEARNING TABS
+  ========================================== */
+
+  function renderLearningTabs() {
+
+    const tabs =
+      document.getElementById(
+        "learnTabs"
+      );
+
+    const available =
+      Object.keys(
+        SkillRush.topics
+      );
+
+    tabs.innerHTML =
+      available
+        .map(world => `
+
+          <button
+            class="tab"
+            onclick="selectWorld('${escapeHTML(world)}')"
+          >
+            ${world}
+          </button>
+
+        `)
+        .join("");
+
+  }
 
 
-/* =========================================================
-   ACHIEVEMENTS
-   ========================================================= */
+  /* ==========================================
+     FEED
+  ========================================== */
 
-const AchievementEngine = {
+  function renderFeed() {
 
-  achievements: [
-
-    {
-      id:
-        "first_answer",
-
-      title:
-        "First Step",
-
-      icon:
-        "🎯",
-
-      description:
-        "Answer your first question.",
-
-      condition:
-        () =>
-          SR.user.xp >= 10
-    },
-
-    {
-      id:
-        "xp_1000",
-
-      title:
-        "Rising Star",
-
-      icon:
-        "⭐",
-
-      description:
-        "Reach 1,000 XP.",
-
-      condition:
-        () =>
-          SR.user.xp >= 1000
-    },
-
-    {
-      id:
-        "xp_10000",
-
-      title:
-        "Skill Master",
-
-      icon:
-        "🏆",
-
-      description:
-        "Reach 10,000 XP.",
-
-      condition:
-        () =>
-          SR.user.xp >= 10000
-    },
-
-    {
-      id:
-        "streak_7",
-
-      title:
-        "Week Warrior",
-
-      icon:
-        "🔥",
-
-      description:
-        "Reach a 7-day streak.",
-
-      condition:
-        () =>
-          SR.user.streak >= 7
-    },
-
-    {
-      id:
-        "streak_100",
-
-      title:
-        "Century",
-
-      icon:
-        "💯",
-
-      description:
-        "Reach a 100-day streak.",
-
-      condition:
-        () =>
-          SR.user.streak >= 100
-    }
-
-  ],
-
-  unlocked:
-    new Set(),
-
-  check() {
-
-    this.achievements.forEach(
-      achievement => {
+    const filtered =
+      SkillRush.posts.filter(post => {
 
         if (
-          this.unlocked.has(
-            achievement.id
-          )
-        ) return;
-
-        if (
-          achievement.condition()
+          SkillRush.feedFilter ===
+          "all"
         ) {
-
-          this.unlocked.add(
-            achievement.id
-          );
-
-          srToast(
-            `${achievement.icon} ${achievement.title} unlocked!`,
-            "success"
-          );
-
-          SRNotifications.add(
-            "Achievement unlocked",
-            achievement.title,
-            "achievement"
-          );
-
+          return true;
         }
 
-      }
-    );
-
-  }
-
-};
-
-
-/* =========================================================
-   WORLD SYSTEM
-   ========================================================= */
-
-const WorldSystem = {
-
-  worlds: [
-
-    {
-      id:
-        "math",
-
-      name:
-        "Math World",
-
-      icon:
-        "📐",
-
-      status:
-        "active"
-    },
-
-    {
-      id:
-        "english",
-
-      name:
-        "English World",
-
-      icon:
-        "📚",
-
-      status:
-        "active"
-    },
-
-    {
-      id:
-        "arabic",
-
-      name:
-        "Arabic World",
-
-      icon:
-        "ع",
-
-      status:
-        "active"
-    },
-
-    {
-      id:
-        "science",
-
-      name:
-        "Science World",
-
-      icon:
-        "🔬",
-
-      status:
-        "coming"
-    },
-
-    {
-      id:
-        "coding",
-
-      name:
-        "Coding World",
-
-      icon:
-        "💻",
-
-      status:
-        "coming"
-    },
-
-    {
-      id:
-        "life",
-
-      name:
-        "Life Skills",
-
-      icon:
-        "🌱",
-
-      status:
-        "coming"
-    }
-
-  ],
-
-  get(id) {
-
-    return this.worlds.find(
-      world =>
-        world.id === id
-    );
-
-  },
-
-  open(id) {
-
-    const world =
-      this.get(id);
-
-    if (!world) {
-
-      srToast(
-        "World not found."
-      );
-
-      return;
-
-    }
-
-    if (
-      world.status ===
-      "coming"
-    ) {
-
-      srToast(
-        `${world.name} is coming soon.`
-      );
-
-      return;
-
-    }
-
-    SR.session.world =
-      world.name;
-
-    srToast(
-      `🌍 ${world.name} opened`
-    );
-
-  }
-
-};
-
-
-/* =========================================================
-   ONLINE STATUS
-   ========================================================= */
-
-function setOnlineStatus(
-  status = "online"
-) {
-
-  document
-    .querySelectorAll(
-      "[data-online-status]"
-    )
-    .forEach(
-      el => {
-
-        el.textContent =
-          status === "online"
-            ? "🟢 Online"
-            : "⚫ Offline";
-
-      }
-    );
-
-}
-
-
-/* =========================================================
-   KEYBOARD SHORTCUTS
-   ========================================================= */
-
-document.addEventListener(
-  "keydown",
-  event => {
-
-    if (
-      event.ctrlKey &&
-      event.key.toLowerCase() ===
-      "k"
-    ) {
-
-      event.preventDefault();
-
-      const search =
-        document.getElementById(
-          "search"
+        return (
+          post.subject ===
+          SkillRush.feedFilter
         );
 
-      if (search) {
-        search.focus();
-      }
+      });
+
+
+    const html =
+      filtered
+        .map((post, index) => `
+
+          <article class="post">
+
+            <div class="post-header">
+
+              <div class="avatar">
+                🤖
+              </div>
+
+              <div>
+
+                <strong>
+                  ${escapeHTML(post.name)}
+                  ${post.flag}
+                </strong>
+
+                <div class="muted">
+                  Global • just now
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="post-text">
+              ${escapeHTML(post.text)}
+            </div>
+
+            <div class="post-actions">
+
+              <button
+                class="btn secondary"
+                onclick="likePost(${index})"
+              >
+                ❤️ ${post.likes}
+              </button>
+
+              <button
+                class="btn secondary"
+                onclick="commentPost()"
+              >
+                💬 ${post.comments}
+              </button>
+
+              <button
+                class="btn secondary"
+                onclick="sharePost()"
+              >
+                ↗ Share
+              </button>
+
+            </div>
+
+          </article>
+
+        `)
+        .join("");
+
+
+    document.getElementById(
+      "mainFeed"
+    ).innerHTML = html;
+
+
+    document.getElementById(
+      "homeFeed"
+    ).innerHTML =
+      filtered
+        .slice(0, 4)
+        .map(post => `
+
+          <article class="post">
+
+            <div class="post-header">
+
+              <div class="avatar">
+                🤖
+              </div>
+
+              <strong>
+                ${escapeHTML(post.name)}
+                ${post.flag}
+              </strong>
+
+            </div>
+
+            <div class="post-text">
+              ${escapeHTML(post.text)}
+            </div>
+
+          </article>
+
+        `)
+        .join("");
+
+  }
+
+
+  function filterFeed(filter) {
+
+    SkillRush.feedFilter =
+      filter;
+
+    renderFeed();
+
+  }
+
+
+  function likePost(index) {
+
+    if (
+      SkillRush.posts[index]
+    ) {
+
+      SkillRush.posts[index].likes++;
+
+      renderFeed();
 
     }
+
+  }
+
+
+  function commentPost() {
+
+    openModal(`
+
+      <h2>
+        💬 Comments
+      </h2>
+
+      <p
+        class="muted"
+        style="margin-top:10px"
+      >
+        The comment interface is ready.
+        Persistent comments will be connected
+        to the Worker + D1 backend.
+      </p>
+
+      <button
+        class="btn"
+        style="margin-top:16px"
+        onclick="closeModal()"
+      >
+        Close
+      </button>
+
+    `);
+
+  }
+
+
+  function sharePost() {
+
+    showToast(
+      "Share flow opened."
+    );
+
+  }
+
+
+  /* ==========================================
+     CREATE POST
+  ========================================== */
+
+  function createPost() {
+
+    openModal(`
+
+      <h2>
+        Create a Global Post
+      </h2>
+
+      <div class="form">
+
+        <textarea
+          class="textarea"
+          id="newPostText"
+          placeholder="Share something with the world..."
+        ></textarea>
+
+        <button
+          class="btn"
+          onclick="publishPost()"
+        >
+          Publish
+        </button>
+
+      </div>
+
+    `);
+
+  }
+
+
+  function publishPost() {
+
+    const input =
+      document.getElementById(
+        "newPostText"
+      );
+
+    const text =
+      input.value.trim();
+
+
+    if (!text) {
+
+      showToast(
+        "Write something first."
+      );
+
+      return;
+
+    }
+
+
+    SkillRush.posts.unshift({
+
+      name:
+        SkillRush.user.name,
+
+      flag:
+        SkillRush.user.country,
+
+      subject:
+        "all",
+
+      text,
+
+      likes: 0,
+
+      comments: 0
+
+    });
+
+
+    closeModal();
+
+    renderFeed();
+
+    showToast(
+      "Post published."
+    );
+
+  }
+
+
+  /* ==========================================
+     PEOPLE / FRIENDS
+  ========================================== */
+
+  function renderPeople() {
+
+    const grid =
+      document.getElementById(
+        "peopleGrid"
+      );
+
+
+    grid.innerHTML =
+      SkillRush.people
+        .map((person, index) => `
+
+          <div class="person">
+
+            <div class="avatar">
+              🤖
+            </div>
+
+            <strong>
+              ${escapeHTML(person[0])}
+            </strong>
+
+            <p class="muted">
+              ${person[1]} • Online
+            </p>
+
+            <div class="person-actions">
+
+              <button
+                class="btn"
+                onclick="sendFriendRequest(${index})"
+              >
+                Add
+              </button>
+
+              <button
+                class="btn secondary"
+                onclick="openChat('${escapeHTML(person[0])}')"
+              >
+                Message
+              </button>
+
+            </div>
+
+          </div>
+
+        `)
+        .join("");
+
+  }
+
+
+  function sendFriendRequest(index) {
+
+    const person =
+      SkillRush.people[index];
+
+    if (!person) {
+      return;
+    }
+
+    showToast(
+      "Friend request sent to " +
+      person[0]
+    );
+
+  }
+
+
+  /* ==========================================
+     GROUPS
+  ========================================== */
+
+  function renderGroups() {
+
+    const grid =
+      document.getElementById(
+        "groupGrid"
+      );
+
+
+    grid.innerHTML =
+      SkillRush.groups
+        .map((group, index) => `
+
+          <div class="world-card">
+
+            <div class="world-icon">
+              ${group.icon}
+            </div>
+
+            <h3>
+              ${escapeHTML(group.name)}
+            </h3>
+
+            <p>
+              ${escapeHTML(group.members)}
+              members
+              •
+              ${escapeHTML(group.type)}
+            </p>
+
+            <button
+              class="btn"
+              style="margin-top:14px"
+              onclick="joinGroup(${index})"
+            >
+              ${
+                group.type === "Private"
+                ? "Request Access"
+                : "Join Group"
+              }
+            </button>
+
+          </div>
+
+        `)
+        .join("");
+
+  }
+
+
+  function joinGroup(index) {
+
+    const group =
+      SkillRush.groups[index];
+
+    if (!group) {
+      return;
+    }
+
+    showToast(
+      group.type === "Private"
+        ? "Access request sent."
+        : "Group joined."
+    );
+
+  }
+
+
+  function createGroup() {
+
+    openModal(`
+
+      <h2>
+        Create Group
+      </h2>
+
+      <div class="form">
+
+        <input
+          class="input"
+          id="groupName"
+          placeholder="Group name"
+        >
+
+        <select
+          class="select"
+          id="groupType"
+        >
+
+          <option>
+            Public
+          </option>
+
+          <option>
+            Private
+          </option>
+
+        </select>
+
+        <button
+          class="btn"
+          onclick="saveGroup()"
+        >
+          Create Group
+        </button>
+
+      </div>
+
+    `);
+
+  }
+
+
+  function saveGroup() {
+
+    const name =
+      document.getElementById(
+        "groupName"
+      ).value.trim();
+
+    const type =
+      document.getElementById(
+        "groupType"
+      ).value;
+
+
+    if (!name) {
+
+      showToast(
+        "Enter a group name."
+      );
+
+      return;
+
+    }
+
+
+    SkillRush.groups.unshift({
+
+      name,
+
+      icon: "👥",
+
+      members: "1",
+
+      type
+
+    });
+
+
+    closeModal();
+
+    renderGroups();
+
+    showToast(
+      "Group created."
+    );
+
+  }
+
+
+  /* ==========================================
+     MESSENGER
+  ========================================== */
+
+  function renderConversations() {
+
+    const list =
+      document.getElementById(
+        "conversationList"
+      );
+
+
+    list.innerHTML =
+      Object.keys(
+        SkillRush.messages
+      )
+      .map(name => `
+
+        <div
+          class="conversation"
+          onclick="openChat('${escapeHTML(name)}')"
+        >
+
+          <div class="avatar">
+            🤖
+          </div>
+
+          <div>
+
+            <strong>
+              ${escapeHTML(name)}
+            </strong>
+
+            <div class="muted">
+              Online
+            </div>
+
+          </div>
+
+        </div>
+
+      `)
+      .join("");
+
+  }
+
+
+  function openChat(name) {
+
+    SkillRush.currentChat =
+      name;
+
+
+    if (
+      !SkillRush.messages[name]
+    ) {
+
+      SkillRush.messages[name] =
+        [];
+
+    }
+
+
+    document.getElementById(
+      "chatTitle"
+    ).textContent =
+      name + " 💬";
+
+
+    renderMessages();
+
+    openPage("messages");
+
+  }
+
+
+  function renderMessages() {
+
+    const box =
+      document.getElementById(
+        "messageList"
+      );
+
+
+    const messages =
+      SkillRush.messages[
+        SkillRush.currentChat
+      ] || [];
+
+
+    box.innerHTML =
+      messages
+        .map(
+          (message, index) => `
+
+            <div
+              class="
+                message
+                ${
+                  index %
+                  2
+                  ? "mine"
+                  : ""
+                }
+              "
+            >
+              ${escapeHTML(message)}
+            </div>
+
+          `
+        )
+        .join("");
+
+    box.scrollTop =
+      box.scrollHeight;
+
+  }
+
+
+  function handleMessageKey(event) {
 
     if (
       event.key ===
-      "Escape"
+      "Enter"
     ) {
 
-      document
-        .querySelectorAll(
-          ".modal.show"
-        )
-        .forEach(
-          modal =>
-            modal.classList.remove(
-              "show"
-            )
-        );
+      sendMessage();
 
     }
 
   }
-);
 
 
-/* =========================================================
-   SKILLRUSH BOOT
-   ========================================================= */
+  function sendMessage() {
 
-function SkillRushBoot() {
+    const input =
+      document.getElementById(
+        "messageInput"
+      );
 
-  SR.load();
-
-  updateDailyStreak();
-
-  createSearchResults();
-
-  updateUserUI();
-
-  AchievementEngine.check();
-
-  setOnlineStatus(
-    "online"
-  );
-
-  SRNotifications.add(
-    "Welcome back!",
-    `Welcome to SkillRush, ${SR.user.name}.`,
-    "system"
-  );
-
-  console.log(
-    "SkillRush Engine v2 started."
-  );
-
-}
+    const text =
+      input.value.trim();
 
 
-/* =========================================================
-   START
-   ========================================================= */
+    if (!text) {
+      return;
+    }
 
-SkillRushBoot(); 
+
+    if (
+      !SkillRush.messages[
+        SkillRush.currentChat
+      ]
+    ) {
+
+      SkillRush.messages[
+        SkillRush.currentChat
+      ] = [];
+
+    }
+
+
+    SkillRush.messages[
+      SkillRush.currentChat
+    ].push(text);
+
+
+    input.value = "";
+
+    renderMessages();
+
+  }
+
+
+  /* ==========================================
+     ROADMAP
+  ========================================== */
+
+  function renderRoadmap() {
+
+    const world =
+      document.getElementById(
+        "roadmapWorld"
+      ).value;
+
+    const level =
+      Math.max(
+        1,
+        parseInt(
+          document.getElementById(
+            "roadmapLevel"
+          ).value || 1
+        )
+      );
+
+
+    const topics =
+      SkillRush.topics[
+        world
+      ] ||
+      SkillRush.topics.Math;
+
+
+    const container =
+      document.getElementById(
+        "levelList"
+      );
+
+
+    let html = "";
+
+
+    for (
+      let i = 0;
+      i < 25;
+      i++
+    ) {
+
+      const current =
+        level + i;
+
+      const topic =
+        topics[
+          (current - 1) %
+          topics.length
+        ];
+
+
+      const tier =
+        Math.floor(
+          (current - 1) / 100
+        ) + 1;
+
+
+      const unit =
+        Math.floor(
+          (current - 1) / 10
+        ) + 1;
+
+
+      const progress =
+        Math.min(
+          98,
+          25 +
+          Math.log10(
+            current
+          ) * 18
+        );
+
+
+      html += `
+
+        <div class="level-row">
+
+          <div class="level-number">
+            ${current}
+          </div>
+
+          <div class="level-info">
+
+            <h3>
+              ${escapeHTML(topic)}
+              —
+              Level
+              ${current.toLocaleString()}
+            </h3>
+
+            <p class="muted">
+              Tier ${tier}
+              •
+              Unit ${unit}
+              •
+              Adaptive learning
+            </p>
+
+            <div class="progress">
+              <span
+                style="width:${progress}%"
+              ></span>
+            </div>
+
+          </div>
+
+          <button
+            class="btn"
+            onclick="startLevel(${current}, '${escapeHTML(world)}')"
+          >
+            Start
+          </button>
+
+        </div>
+
+      `;
+
+    }
+
+
+    container.innerHTML =
+      html;
+
+  }
+
+
+  function startLevel(
+    level,
+    world
+  ) {
+
+    openPage(
+      "practice"
+    );
+
+
+    document.getElementById(
+      "questionText"
+    ).textContent =
+      world +
+      " • Level " +
+      level +
+      ": " +
+      SkillRush.questions[
+        SkillRush.questionIndex %
+        SkillRush.questions.length
+      ].question;
+
+
+    renderQuestion();
+
+  }
+
+
+  /* ==========================================
+     PRACTICE
+  ========================================== */
+
+  function renderQuestion() {
+
+    const question =
+      SkillRush.questions[
+        SkillRush.questionIndex %
+        SkillRush.questions.length
+      ];
+
+
+    document.getElementById(
+      "questionText"
+    ).textContent =
+      question.question;
+
+
+    document.getElementById(
+      "answerGrid"
+    ).innerHTML =
+      question.options
+        .map(option => `
+
+          <button
+            class="btn secondary"
+            onclick="
+              answerQuestion(
+                '${escapeHTML(option)}',
+                '${escapeHTML(question.answer)}'
+              )
+            "
+          >
+            ${escapeHTML(option)}
+          </button>
+
+        `)
+        .join("");
+
+  }
+
+
+  function answerQuestion(
+    answer,
+    correct
+  ) {
+
+    const result =
+      document.getElementById(
+        "practiceResult"
+      );
+
+
+    if (
+      answer === correct
+    ) {
+
+      SkillRush.user.xp += 10;
+
+      result.textContent =
+        "✅ Correct! +10 XP";
+
+      updateProfileXP();
+
+    } else {
+
+      SkillRush.user.lives =
+        Math.max(
+          0,
+          SkillRush.user.lives - 1
+        );
+
+      result.textContent =
+        "❌ Incorrect • " +
+        SkillRush.user.lives +
+        " lives left";
+
+    }
+
+
+    SkillRush.questionIndex++;
+
+
+    setTimeout(
+      renderQuestion,
+      600
+    );
+
+  }
+
+
+  function updateProfileXP() {
+
+    const element =
+      document.getElementById(
+        "profileXP"
+      );
+
+    if (element) {
+
+      element.textContent =
+        SkillRush.user.xp
+          .toLocaleString();
+
+    }
+
+  }
+
+
+  /* ==========================================
+     LEADERBOARD
+  ========================================== */
+
+  function renderLeaderboard() {
+
+    const html =
+      SkillRush.rankings
+        .map(
+          (row, index) => `
+
+            <div class="rank-row">
+
+              <div class="rank-number">
+                #${index + 1}
+              </div>
+
+              <div>
+                <strong>
+                  ${escapeHTML(row[0])}
+                </strong>
+                ${row[1]}
+              </div>
+
+              <div>
+                ${row[2].toLocaleString()}
+                XP
+              </div>
+
+              <div>
+                ${
+                  index < 3
+                    ? "🏅"
+                    : "⭐"
+                }
+              </div>
+
+            </div>
+
+          `
+        )
+        .join("");
+
+
+    document.getElementById(
+      "leaderboardList"
+    ).innerHTML =
+      html;
+
+
+    document.getElementById(
+      "homeRanking"
+    ).innerHTML =
+      SkillRush.rankings
+        .slice(0, 5)
+        .map(
+          (row, index) => `
+
+            <div class="rank-row">
+
+              <div class="rank-number">
+                #${index + 1}
+              </div>
+
+              <div>
+                ${escapeHTML(row[0])}
+                ${row[1]}
+              </div>
+
+              <div>
+                ${row[2].toLocaleString()}
+              </div>
+
+              <div>
+                ⭐
+              </div>
+
+            </div>
+
+          `
+        )
+        .join("");
+
+  }
+
+
+  /* ==========================================
+     BATTLE
+  ========================================== */
+
+  function findOpponent() {
+
+    const status =
+      document.getElementById(
+        "battleStatus"
+      );
+
+
+    status.textContent =
+      "🔎 Searching the global player pool...";
+
+
+    setTimeout(
+      () => {
+
+        status.textContent =
+          "⚔️ Opponent found — match ready!";
+
+      },
+      1400
+    );
+
+  }
+
+
+  /* ==========================================
+     AI
+  ========================================== */
+
+  function handleAIKey(event) {
+
+    if (
+      event.key ===
+      "Enter"
+    ) {
+
+      askAI();
+
+    }
+
+  }
+
+
+  function askAI() {
+
+    const input =
+      document.getElementById(
+        "aiInput"
+      );
+
+    const text =
+      input.value.trim();
+
+
+    if (!text) {
+      return;
+    }
+
+
+    const box =
+      document.getElementById(
+        "aiMessages"
+      );
+
+
+    box.innerHTML += `
+
+      <div class="ai-message">
+
+        <strong>
+          You
+        </strong>
+
+        <br>
+
+        ${escapeHTML(text)}
+
+      </div>
+
+      <div class="ai-message">
+
+        <strong>
+          🤖 SkillRush AI
+        </strong>
+
+        <br>
+
+        I understand your question.
+        The SkillRush AI interface is ready.
+        The production Worker can connect this
+        interface to the AI API securely.
+
+      </div>
+
+    `;
+
+
+    input.value = "";
+
+  }
+
+
+  /* ==========================================
+     ROBOT STICKERS
+  ========================================== */
+
+  function renderRobotStickers() {
+
+    const stickers = [
+      "🤖",
+      "🤖👋",
+      "🤖❤️",
+      "🤖👍",
+      "🤖✨",
+      "🤖📚",
+      "🤖🎯",
+      "🤖🔥",
+      "🤖😄",
+      "🤖💡",
+      "🤖🏆",
+      "🤖👏"
+    ];
+
+
+    document.getElementById(
+      "robotStickers"
+    ).innerHTML =
+      stickers
+        .map(
+          sticker => `
+
+            <button
+              class="sticker"
+              onclick="
+                useSticker(
+                  '${escapeHTML(sticker)}'
+                )
+              "
+            >
+              ${sticker}
+            </button>
+
+          `
+        )
+        .join("");
+
+  }
+
+
+  function useSticker(
+    sticker
+  ) {
+
+    openPage(
+      "messages"
+    );
+
+
+    const input =
+      document.getElementById(
+        "messageInput"
+      );
+
+
+    input.value +=
+      sticker;
+
+    input.focus();
+
+  }
+
+
+  /* ==========================================
+     ACHIEVEMENTS
+  ========================================== */
+
+  function renderAchievements() {
+
+    const achievements = [
+
+      ["🔥", "100 Day Streak"],
+      ["📐", "Math Explorer"],
+      ["📖", "English Builder"],
+      ["ع", "Arabic Explorer"],
+      ["🌎", "Global Learner"],
+      ["🤝", "Friend Maker"],
+      ["👥", "Community Builder"],
+      ["⚔️", "Battle Champion"],
+      ["🎓", "A-Level Challenger"],
+      ["🤖", "AI Learner"],
+      ["🌍", "World Traveler"],
+      ["🏆", "Knowledge Keeper"]
+
+    ];
+
+
+    document.getElementById(
+      "achievementGrid"
+    ).innerHTML =
+      achievements
+        .map(
+          item => `
+
+            <div class="world-card">
+
+              <div class="world-icon">
+                ${item[0]}
+              </div>
+
+              <h3>
+                ${escapeHTML(item[1])}
+              </h3>
+
+              <p>
+                SkillRush milestone
+              </p>
+
+            </div>
+
+          `
+        )
+        .join("");
+
+  }
+
+
+  /* ==========================================
+     EVENTS
+  ========================================== */
+
+  function renderEvents() {
+
+    const events = [
+
+      ["🏆", "Weekly Math Challenge"],
+      ["📖", "Global English Event"],
+      ["ع", "Arabic Study Circle"],
+      ["⚔️", "World Battle"],
+      ["🎓", "A-Level Mastery Week"],
+      ["🌎", "Global Community Day"]
+
+    ];
+
+
+    document.getElementById(
+      "eventGrid"
+    ).innerHTML =
+      events
+        .map(
+          item => `
+
+            <div class="world-card">
+
+              <div class="world-icon">
+                ${item[0]}
+              </div>
+
+              <h3>
+                ${escapeHTML(item[1])}
+              </h3>
+
+              <p>
+                Global SkillRush event
+              </p>
+
+            </div>
+
+          `
+        )
+        .join("");
+
+  }
+
+
+  /* ==========================================
+     ROBOT CUSTOMIZATION
+  ========================================== */
+
+  function customRobot() {
+
+    const robots = [
+      "🤖",
+      "🤖👋",
+      "🤖📚",
+      "🤖✨",
+      "🤖💡",
+      "🤖🏆"
+    ];
+
+
+    openModal(`
+
+      <h2>
+        🤖 Choose Your Robot
+      </h2>
+
+      <p
+        class="muted"
+        style="margin-top:7px"
+      >
+        SkillRush uses original friendly robot avatars.
+      </p>
+
+      <div
+        class="world-grid"
+        style="margin-top:18px"
+      >
+
+        ${robots.map(
+          robot => `
+
+            <div
+              class="world-card"
+              onclick="closeModal()"
+              style="cursor:pointer;text-align:center"
+            >
+
+              <div class="world-icon">
+                ${robot}
+              </div>
+
+              <strong>
+                Use Robot
+              </strong>
+
+            </div>
+
+          `
+        ).join("")}
+
+      </div>
+
+    `);
+
+  }
+
+
+  /* ==========================================
+     GLOBAL SEARCH
+  ========================================== */
+
+  function globalSearch() {
+
+    const input =
+      document.getElementById(
+        "globalSearch"
+      );
+
+
+    const query =
+      input.value
+        .trim()
+        .toLowerCase();
+
+
+    if (!query) {
+      return;
+    }
+
+
+    const person =
+      SkillRush.people.find(
+        person =>
+          person[0]
+            .toLowerCase()
+            .includes(query)
+      );
+
+
+    if (person) {
+
+      openPage(
+        "friends"
+      );
+
+      return;
+
+    }
+
+
+    const world =
+      SkillRush.worlds.find(
+        world =>
+          world.name
+            .toLowerCase()
+            .includes(query)
+      );
+
+
+    if (world) {
+
+      selectWorld(
+        world.name
+      );
+
+    }
+
+  }
+
+
+  /* ==========================================
+     NOTIFICATIONS
+  ========================================== */
+
+  function showNotifications() {
+
+    openModal(`
+
+      <h2>
+        🔔 Notifications
+      </h2>
+
+      <div
+        class="feed"
+        style="margin-top:15px"
+      >
+
+        <div class="post">
+          🤝 Aisha sent a friend request.
+        </div>
+
+        <div class="post">
+          ⭐ You earned 10 XP.
+        </div>
+
+        <div class="post">
+          📐 New Math challenge available.
+        </div>
+
+        <div class="post">
+          🌎 Global community is active.
+        </div>
+
+      </div>
+
+      <button
+        class="btn"
+        style="margin-top:15px"
+        onclick="closeModal()"
+      >
+        Close
+      </button>
+
+    `);
+
+  }
+
+
+  /* ==========================================
+     PRIVACY
+  ========================================== */
+
+  function showPrivacy() {
+
+    openModal(`
+
+      <h2>
+        🔒 Privacy
+      </h2>
+
+      <p
+        class="muted"
+        style="margin-top:12px;line-height:1.7"
+      >
+        SkillRush privacy controls will be enforced
+        by the server-side authentication and database
+        layer. Browser JavaScript must never be treated
+        as the security boundary.
+      </p>
+
+      <button
+        class="btn"
+        style="margin-top:16px"
+        onclick="closeModal()"
+      >
+        Close
+      </button>
+
+    `);
+
+  }
+
+
+  /* ==========================================
+     THEME
+  ========================================== */
+
+  function toggleTheme() {
+
+    document.body.classList.toggle(
+      "light-preview"
+    );
+
+    showToast(
+      "Theme preference updated."
+    );
+
+  }
+
+
+  /* ==========================================
+     MODAL
+  ========================================== */
+
+  function openModal(
+    html
+  ) {
+
+    document.getElementById(
+      "modalBox"
+    ).innerHTML =
+      html;
+
+
+    document.getElementById(
+      "modal"
+    ).classList.add(
+      "show"
+    );
+
+  }
+
+
+  function closeModal() {
+
+    document.getElementById(
+      "modal"
+    ).classList.remove(
+      "show"
+    );
+
+  }
+
+
+  function closeModalOutside(
+    event
+  ) {
+
+    if (
+      event.target.id ===
+      "modal"
+    ) {
+
+      closeModal();
+
+    }
+
+  }
+
+
+  /* ==========================================
+     TOAST
+  ========================================== */
+
+  function showToast(
+    message
+  ) {
+
+    const toast =
+      document.createElement(
+        "div"
+      );
+
+
+    toast.textContent =
+      message;
+
+
+    toast.style.position =
+      "fixed";
+
+    toast.style.right =
+      "20px";
+
+    toast.style.bottom =
+      "20px";
+
+    toast.style.zIndex =
+      "2000";
+
+    toast.style.padding =
+      "13px 17px";
+
+    toast.style.borderRadius =
+      "13px";
+
+    toast.style.background =
+      "#151e34";
+
+    toast.style.border =
+      "1px solid #334363";
+
+    toast.style.color =
+      "white";
+
+    toast.style.boxShadow =
+      "0 15px 40px rgba(0,0,0,.35)";
+
+
+    document.body.appendChild(
+      toast
+    );
+
+
+    setTimeout(
+      () => toast.remove(),
+      2200
+    );
+
+  }
+
+
+  /* ==========================================
+     HTML ESCAPE
+  ========================================== */
+
+  function escapeHTML(
+    value
+  ) {
+
+    return String(
+      value
+    ).replace(
+      /[&<>"']/g,
+      character => {
+
+        const map = {
+
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;"
+
+        };
+
+        return map[
+          character
+        ];
+
+      }
+    );
+
+  }
+
+
+  /* ==========================================
+     INITIALIZE
+  ========================================== */
+
+  function initializeSkillRush() {
+
+    renderWorlds();
+
+    renderLearningTabs();
+
+    renderFeed();
+
+    renderPeople();
+
+    renderGroups();
+
+    renderConversations();
+
+    renderMessages();
+
+    renderRoadmap();
+
+    renderQuestion();
+
+    renderLeaderboard();
+
+    renderRobotStickers();
+
+    renderAchievements();
+
+    renderEvents();
+
+    updateProfileXP();
+
+  }
+
+
+  initializeSkillRush();
+
+</script>
+
+</body>
+</html>
