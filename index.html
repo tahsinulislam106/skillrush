@@ -17,23 +17,13 @@
       --green-neon: #00dfa2;
       --gold-neon: #ffb703;
 
-      --rank-bronze: linear-gradient(135deg, #a77044, #ffb88c);
-      --rank-silver: linear-gradient(135deg, #757f9a, #d7dde8);
-      --rank-gold: linear-gradient(135deg, #f7971e, #ffd200);
-      --rank-platinum: linear-gradient(135deg, #00c6ff, #0072ff);
       --rank-diamond: linear-gradient(135deg, #b92b27, #1565c0, #00f2fe);
-
       --text-primary: #f8fafc;
       --text-secondary: #94a3b8;
       --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-family);
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
 
     body {
       background-color: var(--bg-dark);
@@ -72,11 +62,7 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .user-stats {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+    .user-stats { display: flex; align-items: center; gap: 20px; }
 
     .stat-badge {
       display: flex;
@@ -103,7 +89,7 @@
       cursor: pointer;
     }
 
-    /* MAIN APP LAYOUT */
+    /* LAYOUT */
     .app-body {
       flex: 1;
       display: grid;
@@ -111,16 +97,17 @@
       overflow: hidden;
     }
 
-    /* LEFT SIDEBAR: DUOLINGO PATH */
-    .left-panel {
+    .left-panel, .right-panel {
       background: var(--bg-panel);
-      border-right: 1px solid var(--border-glow);
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      padding: 20px;
       gap: 20px;
       overflow-y: auto;
     }
+
+    .left-panel { border-right: 1px solid var(--border-glow); }
+    .right-panel { border-left: 1px solid var(--border-glow); }
 
     .section-title {
       font-size: 11px;
@@ -152,14 +139,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 35px;
+      gap: 25px;
       margin-top: 10px;
-      position: relative;
     }
 
     .node-step {
-      width: 65px;
-      height: 65px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background: #141729;
       border: 3px solid var(--green-neon);
@@ -171,12 +157,8 @@
       transition: all 0.3s;
     }
 
-    .node-step:hover {
-      transform: scale(1.12);
-      box-shadow: 0 0 25px var(--green-neon);
-    }
+    .node-step:hover { transform: scale(1.1); box-shadow: 0 0 25px var(--green-neon); }
 
-    /* CENTER FEED PANEL */
     .feed-panel {
       padding: 25px;
       overflow-y: auto;
@@ -196,11 +178,7 @@
       backdrop-filter: blur(10px);
     }
 
-    .post-input-group {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
+    .post-input-group { display: flex; gap: 12px; }
 
     .post-input {
       flex: 1;
@@ -220,43 +198,8 @@
       color: #fff;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s;
     }
 
-    .btn-submit:hover { opacity: 0.9; transform: scale(1.02); }
-
-    .post-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
-
-    .post-actions {
-      display: flex;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 12px;
-      gap: 10px;
-    }
-
-    .action-btn {
-      flex: 1;
-      height: 38px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .action-btn:hover { background: rgba(0, 242, 254, 0.1); color: var(--cyan-neon); }
-
-    /* QUIZ INTERFACE (DUOLINGO LEARNING) */
     .quiz-option {
       width: 100%;
       padding: 14px;
@@ -275,35 +218,12 @@
       border-color: var(--cyan-neon);
     }
 
-    /* RIGHT PANEL: RANK SYSTEM */
-    .right-panel {
-      background: var(--bg-panel);
-      border-left: 1px solid var(--border-glow);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-      overflow-y: auto;
-    }
-
     .rank-tier-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 16px;
       padding: 20px;
       text-align: center;
-    }
-
-    .rank-badge {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 12px auto;
-      border-radius: 50%;
-      background: var(--rank-diamond);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
     }
 
     .progress-bar {
@@ -316,35 +236,32 @@
     }
 
     .progress-fill {
-      width: 40%;
+      width: 45%;
       height: 100%;
       background: linear-gradient(90deg, var(--cyan-neon), var(--purple-neon));
       transition: width 0.5s ease;
     }
 
-    /* MESSENGER WIDGET */
     .messenger-widget {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 330px;
-      height: 420px;
+      width: 320px;
+      height: 400px;
       background: var(--bg-panel);
       border: 1px solid var(--cyan-neon);
-      border-radius: 16px 16px 0 0;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+      border-radius: 16px;
       display: flex;
       flex-direction: column;
       z-index: 1000;
     }
 
     .messenger-header {
-      padding: 12px 15px;
+      padding: 12px;
       background: rgba(0, 242, 254, 0.1);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      font-weight: 700;
+      color: var(--cyan-neon);
     }
 
     .messenger-body {
@@ -364,19 +281,9 @@
       background: rgba(255, 255, 255, 0.06);
     }
 
-    .chat-bubble.me {
-      align-self: flex-end;
-      background: var(--purple-neon);
-      color: #fff;
-    }
+    .chat-bubble.me { align-self: flex-end; background: var(--purple-neon); color: #fff; }
 
-    .messenger-footer {
-      padding: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      display: flex;
-      gap: 8px;
-    }
-
+    .messenger-footer { padding: 10px; display: flex; gap: 8px; }
     .messenger-footer input {
       flex: 1;
       padding: 8px 12px;
@@ -403,7 +310,7 @@
         <span id="userXp">1,450 XP</span>
       </div>
 
-      <div class="robot-avatar" title="White Robot Cyber Avatar">
+      <div class="robot-avatar">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2">
           <rect x="5" y="8" width="14" height="10" rx="2" />
           <circle cx="9" cy="12" r="1" fill="#00f2fe" />
@@ -418,109 +325,75 @@
   <!-- APP BODY -->
   <div class="app-body">
 
-    <!-- LEFT SIDEBAR: DUOLINGO PATH -->
+    <!-- LEFT PANEL: DUOLINGO PATHS -->
     <aside class="left-panel">
-      <div class="section-title">Learning Worlds</div>
+      <div class="section-title">Learning Matrix</div>
 
-      <button class="world-select-btn active">
+      <button class="world-select-btn active" id="btnEnglish" onclick="switchLanguage('english')">
         <h4 style="color: var(--cyan-neon);">English Cyber Matrix</h4>
-        <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Node Level 42 • Grammar & Fluency</p>
+        <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Grammar & Vocabulary</p>
       </button>
 
-      <button class="world-select-btn">
+      <button class="world-select-btn" id="btnArabic" onclick="switchLanguage('arabic')">
         <h4 style="color: var(--gold-neon);">Arabic Cyber Matrix</h4>
-        <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Node Level 12 • Modern Standard</p>
+        <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Modern Standard & Basics</p>
       </button>
 
       <div class="section-title" style="margin-top: 15px;">Duolingo Path Nodes</div>
       
-      <div class="tree-path">
-        <div class="node-step" onclick="startQuiz('Stage 1: Basic Sentences')">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="#00dfa2"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        </div>
-
-        <div class="node-step" style="border-color: var(--cyan-neon); box-shadow: 0 0 20px var(--cyan-neon);" onclick="startQuiz('Stage 2: Advanced Grammar Matrix')">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="#00f2fe"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99z"/></svg>
-        </div>
-
-        <div class="node-step" style="border-color: var(--text-secondary); opacity: 0.5;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="#94a3b8"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2z"/></svg>
-        </div>
+      <div class="tree-path" id="nodeTree">
+        <!-- Dynamic Nodes loaded by JS -->
       </div>
     </aside>
 
-    <!-- CENTER PANEL: FEED & QUIZ MODES -->
-    <main class="feed-panel" id="mainFeed">
+    <!-- CENTER PANEL: FEED & QUIZ -->
+    <main class="feed-panel">
 
-      <!-- CREATE POST CARD -->
+      <!-- CREATE POST -->
       <div class="create-post-card">
         <div class="post-input-group">
-          <div class="robot-avatar">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2"><rect x="5" y="8" width="14" height="10" rx="2"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>
-          </div>
-          <input type="text" id="postText" class="post-input" placeholder="Share your learning milestones...">
+          <input type="text" id="postText" class="post-input" placeholder="Share your milestone...">
           <button class="btn-submit" onclick="addPost()">Post</button>
         </div>
       </div>
 
-      <!-- INTERACTIVE QUIZ CARD -->
+      <!-- DYNAMIC QUIZ CARD -->
       <div class="quiz-card" id="quizContainer">
-        <h3 style="color: var(--cyan-neon); margin-bottom: 8px;" id="quizTitle">Stage 2: Advanced Grammar Matrix</h3>
-        <p style="font-size: 14px; color: var(--text-secondary);">Select the correct Cyber English translation:</p>
-        <h2 style="margin: 15px 0; font-size: 18px;">"I will unlock the Diamond Rank within this system."</h2>
+        <h3 style="color: var(--cyan-neon); margin-bottom: 8px;" id="quizTitle">Stage 1: Basic Sentences</h3>
+        <p style="font-size: 13px; color: var(--text-secondary);" id="quizProgress">Question 1 of 3</p>
+        <h2 style="margin: 15px 0; font-size: 18px;" id="quizQuestion">Loading...</h2>
 
-        <button class="quiz-option" onclick="handleQuizAnswer(true)">A) I will unlock the Diamond Rank within this system.</button>
-        <button class="quiz-option" onclick="handleQuizAnswer(false)">B) I unlock Diamond Rank in past time.</button>
+        <div id="quizOptions"></div>
       </div>
 
-      <!-- FEED POST ITEM -->
-      <div class="post-card" id="postFeedList">
-        <div class="post-header">
-          <div class="robot-avatar" style="border-color: var(--purple-neon);">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7928ca" stroke-width="2"><rect x="5" y="8" width="14" height="10" rx="2"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>
+      <!-- FEED POSTS -->
+      <div style="width: 100%; max-width: 640px;" id="postFeedList">
+        <div class="post-card">
+          <div style="display: flex; gap: 12px; margin-bottom: 10px;">
+            <div class="robot-avatar" style="border-color: var(--purple-neon);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7928ca" stroke-width="2"><rect x="5" y="8" width="14" height="10" rx="2"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size: 14px;">Cyber_Learner_01</h4>
+              <p style="font-size: 11px; color: var(--text-secondary);">10 mins ago</p>
+            </div>
           </div>
-          <div>
-            <h4 style="font-size: 14px;">Cyber_Learner_01</h4>
-            <p style="font-size: 11px; color: var(--text-secondary);">10 mins ago • Level 42 Completed</p>
-          </div>
-        </div>
-        <div style="font-size: 14px; line-height: 1.6; color: #cbd5e1; margin-bottom: 12px;">
-          Just cleared Stage 2 with 100% accuracy! Multi-level Duolingo path is super smooth.
-        </div>
-        <div class="post-actions">
-          <button class="action-btn" onclick="likePost(this)">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            <span class="like-count">42 Likes</span>
-          </button>
+          <p style="font-size: 14px; color: #cbd5e1;">Just cleared Stage 1 of the Arabic Cyber Matrix!</p>
         </div>
       </div>
 
     </main>
 
-    <!-- RIGHT PANEL: 80-YEAR TIER SYSTEM -->
+    <!-- RIGHT PANEL: RANK & BADGES -->
     <aside class="right-panel">
       <div class="section-title">Lifetime Global Rank</div>
 
       <div class="rank-tier-card">
-        <div class="rank-badge" id="rankBadge">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="#fff"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
         <h3 id="rankTitle" style="background: var(--rank-diamond); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">DIAMOND TIER</h3>
-        <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Tier 5 / 8 (Takes ~80 Years to Reach Max Level)</p>
+        <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Tier 5 / 8</p>
 
         <div class="progress-bar">
-          <div class="progress-fill" id="progressBar" style="width: 45%;"></div>
-        </div>
-      </div>
-
-      <div class="section-title">Unlocked Award Badges</div>
-      
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-        <div class="robot-avatar" style="width: 100%; height: 60px; border-radius: 12px; border-color: var(--gold-neon);" title="Gold Master">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffb703"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <div class="robot-avatar" style="width: 100%; height: 60px; border-radius: 12px; border-color: var(--cyan-neon);" title="Cyber Cyber Legend">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="#00f2fe"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-5.45 9-12V5l-9-4z"/></svg>
+          <div class="progress-fill" id="progressBar"></div>
         </div>
       </div>
     </aside>
@@ -529,106 +402,176 @@
 
   <!-- MESSENGER WIDGET -->
   <div class="messenger-widget">
-    <div class="messenger-header">
-      <span style="font-size: 13px; font-weight: 700; color: var(--cyan-neon);">SkillMessenger AI</span>
-    </div>
+    <div class="messenger-header">SkillMessenger AI</div>
     <div class="messenger-body" id="chatBody">
-      <div class="chat-bubble">Welcome to SkillRush Cyber Messenger! Ask anything about your course.</div>
+      <div class="chat-bubble">Welcome to SkillRush Cyber Messenger! Ask anything about lessons.</div>
     </div>
     <div class="messenger-footer">
       <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleChatKey(event)">
     </div>
   </div>
 
-  <!-- INTERACTIVE JAVASCRIPT ENGINE -->
   <script>
     let xpPoints = 1450;
-    let rankLevel = 45;
+    let currentLang = 'english';
+    let currentQuizIndex = 0;
+    let currentStageIndex = 0;
 
-    // 1. DUOLINGO QUIZ SYSTEM
-    function startQuiz(stageName) {
-      document.getElementById('quizTitle').innerText = stageName;
-      document.getElementById('quizContainer').style.boxShadow = "0 0 25px rgba(0,242,254,0.4)";
+    const quizData = {
+      english: [
+        {
+          stage: "Stage 1: Basics",
+          questions: [
+            { q: 'Translate: "I am learning English."', opts: ["I am learning English.", "I learns English.", "I learn English now."], ans: 0 },
+            { q: 'Choose correct form: "She ___ to school every day."', opts: ["go", "goes", "going"], ans: 1 },
+            { q: 'Translate: "Knowledge is power."', opts: ["Power is knowledge.", "Knowledge is power.", "Skill is future."], ans: 1 }
+          ]
+        },
+        {
+          stage: "Stage 2: Advanced Cyber Grammar",
+          questions: [
+            { q: 'Select the complex sentence:', opts: ["I code daily.", "Although it was late, he continued coding.", "Run fast."], ans: 1 },
+            { q: 'Meaning of "Automation":', opts: ["Manual work", "Self-operating process", "Physical labor"], ans: 1 }
+          ]
+        }
+      ],
+      arabic: [
+        {
+          stage: "Stage 1: Arabic Alphabets & Words",
+          questions: [
+            { q: 'What is the translation of "مرحبا" (Marhaban)?', opts: ["Goodbye", "Hello / Welcome", "Thank you"], ans: 1 },
+            { q: 'Translate "كتاب" (Kitab):', opts: ["Pen", "Book", "Desk"], ans: 1 },
+            { q: 'Which word means "Teacher"?', opts: ["معلم (Mu'allim)", "طالب (Talib)", "مدرسة (Madrasah)"], ans: 0 }
+          ]
+        },
+        {
+          stage: "Stage 2: Arabic Sentences",
+          questions: [
+            { q: 'Translate "أنا أتعلم اللغة العربية":', opts: ["I love languages.", "I am learning the Arabic language.", "Arabic is easy."], ans: 1 },
+            { q: 'Translate "العلم نور":', opts: ["Knowledge is light.", "Light is bright.", "Study hard."], ans: 0 }
+          ]
+        }
+      ]
+    };
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+      currentStageIndex = 0;
+      currentQuizIndex = 0;
+
+      document.getElementById('btnEnglish').classList.toggle('active', lang === 'english');
+      document.getElementById('btnArabic').classList.toggle('active', lang === 'arabic');
+
+      renderNodes();
+      loadQuiz();
     }
 
-    function handleQuizAnswer(isCorrect) {
-      if(isCorrect) {
-        xpPoints += 100;
-        rankLevel += 2;
-        alert("Correct Answer! +100 XP Earned.");
+    function renderNodes() {
+      const tree = document.getElementById('nodeTree');
+      tree.innerHTML = '';
+
+      quizData[currentLang].forEach((stg, idx) => {
+        const node = document.createElement('div');
+        node.className = 'node-step';
+        node.style.borderColor = idx === currentStageIndex ? 'var(--cyan-neon)' : 'var(--green-neon)';
+        node.innerHTML = `<span style="font-weight: bold;">${idx + 1}</span>`;
+        node.onclick = () => {
+          currentStageIndex = idx;
+          currentQuizIndex = 0;
+          loadQuiz();
+        };
+        tree.appendChild(node);
+      });
+    }
+
+    function loadQuiz() {
+      const stageObj = quizData[currentLang][currentStageIndex];
+      const qObj = stageObj.questions[currentQuizIndex];
+
+      document.getElementById('quizTitle').innerText = stageObj.stage;
+      document.getElementById('quizProgress').innerText = `Question ${currentQuizIndex + 1} of ${stageObj.questions.length}`;
+      document.getElementById('quizQuestion').innerText = qObj.q;
+
+      const optsContainer = document.getElementById('quizOptions');
+      optsContainer.innerHTML = '';
+
+      qObj.opts.forEach((optText, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-option';
+        btn.innerText = optText;
+        btn.onclick = () => checkAnswer(i);
+        optsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedIdx) {
+      const stageObj = quizData[currentLang][currentStageIndex];
+      const qObj = stageObj.questions[currentQuizIndex];
+
+      if (selectedIdx === qObj.ans) {
+        xpPoints += 50;
+        alert("Correct Answer! +50 XP");
       } else {
-        alert("Incorrect Answer. Try again!");
+        alert("Incorrect answer. Try again!");
       }
+
+      if (currentQuizIndex + 1 < stageObj.questions.length) {
+        currentQuizIndex++;
+      } else {
+        alert("Congratulations! You completed this node.");
+        currentQuizIndex = 0;
+      }
+
       updateUI();
+      loadQuiz();
     }
 
-    // 2. SOCIAL FEED SYSTEM
     function addPost() {
-      const input = document.getElementById('postText');
-      if (!input.value.trim()) return;
+      const txt = document.getElementById('postText');
+      if (!txt.value.trim()) return;
 
-      const postList = document.getElementById('mainFeed');
-      const newPost = document.createElement('div');
-      newPost.className = 'post-card';
-      newPost.innerHTML = `
-        <div class="post-header">
-          <div class="robot-avatar">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2"><rect x="5" y="8" width="14" height="10" rx="2"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>
-          </div>
-          <div>
-            <h4 style="font-size: 14px;">User (You)</h4>
-            <p style="font-size: 11px; color: var(--text-secondary);">Just Now</p>
-          </div>
-        </div>
-        <div style="font-size: 14px; line-height: 1.6; color: #cbd5e1; margin-bottom: 12px;">${input.value}</div>
-        <div class="post-actions">
-          <button class="action-btn" onclick="likePost(this)">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            <span class="like-count">0 Likes</span>
-          </button>
-        </div>
-      `;
-      postList.appendChild(newPost);
-      input.value = '';
+      const postList = document.getElementById('postFeedList');
+      const div = document.createElement('div');
+      div.className = 'post-card';
+      div.style.marginTop = '15px';
+      div.innerHTML = `<p style="font-size: 14px; color: #cbd5e1;">${txt.value}</p>`;
+      postList.prepend(div);
+      txt.value = '';
     }
 
-    function likePost(btn) {
-      const span = btn.querySelector('.like-count');
-      let count = parseInt(span.innerText);
-      span.innerText = (count + 1) + " Likes";
-      btn.style.color = "var(--cyan-neon)";
-    }
-
-    // 3. MESSENGER CHAT ENGINE
     function handleChatKey(e) {
       if (e.key === 'Enter') {
         const input = document.getElementById('chatInput');
         if (!input.value.trim()) return;
 
         const body = document.getElementById('chatBody');
-        const userBubble = document.createElement('div');
-        userBubble.className = 'chat-bubble me';
-        userBubble.innerText = input.value;
-        body.appendChild(userBubble);
+        const userMsg = document.createElement('div');
+        userMsg.className = 'chat-bubble me';
+        userMsg.innerText = input.value;
+        body.appendChild(userMsg);
 
         setTimeout(() => {
-          const aiBubble = document.createElement('div');
-          aiBubble.className = 'chat-bubble';
-          aiBubble.innerText = "Cyber AI: Keep pushing! Your progress toward Diamond Tier is ongoing.";
-          body.appendChild(aiBubble);
+          const aiMsg = document.createElement('div');
+          aiMsg.className = 'chat-bubble';
+          aiMsg.innerText = "SkillAI: Excellent progress! Keep solving nodes to gain more XP.";
+          body.appendChild(aiMsg);
           body.scrollTop = body.scrollHeight;
-        }, 800);
+        }, 600);
 
         input.value = '';
         body.scrollTop = body.scrollHeight;
       }
     }
 
-    // 4. REAL-TIME STATS UPDATER
     function updateUI() {
       document.getElementById('userXp').innerText = xpPoints + " XP";
-      document.getElementById('progressBar').style.width = Math.min(rankLevel, 100) + "%";
+      document.getElementById('progressBar').style.width = Math.min((xpPoints / 3000) * 100, 100) + "%";
     }
+
+    // Init
+    renderNodes();
+    loadQuiz();
+    updateUI();
   </script>
 </body>
 </html>
