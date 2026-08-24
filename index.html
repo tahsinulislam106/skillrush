@@ -1,772 +1,225 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="bn" data-theme="neon">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillRush - Ultimate Cyber Skills & Learning Platform</title>
+  <title>SkillRush v2.0 - Ultimate Learning Arena</title>
   <style>
-    :root {
-      --bg-dark: #05070f;
-      --bg-panel: rgba(13, 17, 30, 0.85);
-      --bg-card: rgba(21, 28, 48, 0.7);
-      --bg-card-hover: rgba(30, 41, 69, 0.85);
-      
-      --border-glow: rgba(0, 242, 254, 0.18);
-      --border-active: rgba(0, 242, 254, 0.6);
-
-      --cyan-neon: #00f2fe;
-      --purple-neon: #7928ca;
-      --pink-neon: #ff0080;
-      --green-neon: #00dfa2;
-      --gold-neon: #ffb703;
-
-      --rank-diamond: linear-gradient(135deg, #00c6ff 0%, #0072ff 50%, #7928ca 100%);
-      --gradient-accent: linear-gradient(135deg, var(--cyan-neon), var(--purple-neon));
-      
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    :root[data-theme="neon"] {
+      --bg-main: #060913;
+      --bg-panel: rgba(15, 23, 42, 0.85);
+      --bg-card: rgba(30, 41, 59, 0.65);
+      --accent-primary: #00f2fe;
+      --accent-secondary: #9d4edd;
+      --accent-success: #10b981;
+      --accent-danger: #ef4444;
+      --accent-warning: #f59e0b;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --card-border: rgba(0, 242, 254, 0.2);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: var(--font-family);
+    :root[data-theme="obsidian"] {
+      --bg-main: #000000;
+      --bg-panel: rgba(18, 18, 18, 0.9);
+      --bg-card: rgba(30, 30, 30, 0.8);
+      --accent-primary: #ff0055;
+      --accent-secondary: #7000ff;
+      --accent-success: #00ff66;
+      --accent-danger: #ff3333;
+      --accent-warning: #ffcc00;
+      --text-main: #ffffff;
+      --text-sub: #a0a0a0;
+      --card-border: rgba(255, 0, 85, 0.25);
     }
 
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-primary);
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(121, 40, 202, 0.2) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(0, 242, 254, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(255, 0, 128, 0.08) 0%, transparent 60%);
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; }
+    body { background-color: var(--bg-main); color: var(--text-main); height: 100vh; display: flex; flex-direction: column; overflow: hidden; transition: all 0.4s ease; }
 
-    /* CUSTOM SCROLLBAR */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
-    ::-webkit-scrollbar-thumb { background: rgba(0, 242, 254, 0.3); border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--cyan-neon); }
-
-    /* TOP NAVBAR */
-    .navbar {
-      height: 65px;
-      background: rgba(10, 14, 26, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-glow);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 25px;
+    /* NAVBAR */
+    .top-nav {
+      height: 70px;
+      background: var(--bg-panel);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--card-border);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 30px;
       z-index: 100;
     }
+    .brand-title { font-size: 24px; font-weight: 900; letter-spacing: 1px; color: var(--accent-primary); display: flex; align-items: center; gap: 10px; }
+    
+    .stats-bar { display: flex; gap: 20px; align-items: center; }
+    .stat-pill { background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 20px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; }
 
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 900;
-      font-size: 26px;
-      letter-spacing: 1.5px;
-      background: var(--gradient-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      cursor: pointer;
+    .theme-toggle-btn {
+      padding: 8px 16px; background: var(--accent-secondary); border: none; border-radius: 12px; color: #fff; font-weight: bold; cursor: pointer; transition: 0.3s;
     }
+    .theme-toggle-btn:hover { opacity: 0.9; transform: scale(1.05); }
 
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    /* MAIN CONTAINER */
+    .main-grid { flex: 1; display: grid; grid-template-columns: 340px 1fr 360px; overflow: hidden; }
+
+    /* LEFT PATH TREE */
+    .path-sidebar { background: var(--bg-panel); border-right: 1px solid var(--card-border); padding: 25px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+    .track-card { padding: 15px; border-radius: 14px; background: var(--bg-card); border: 1px solid var(--card-border); cursor: pointer; transition: 0.3s; display: flex; gap: 12px; align-items: center; }
+    .track-card.active { border-color: var(--accent-primary); box-shadow: 0 0 15px var(--card-border); }
+
+    .node-path-container { display: flex; flex-direction: column; align-items: center; margin-top: 20px; gap: 35px; position: relative; }
+    .path-line { position: absolute; width: 4px; height: 100%; background: rgba(255,255,255,0.1); top: 0; z-index: 1; }
+    .path-node {
+      width: 70px; height: 70px; border-radius: 50%; background: var(--bg-card); border: 4px solid var(--accent-primary);
+      z-index: 2; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; transition: 0.3s;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
+    .path-node:hover { transform: scale(1.15); box-shadow: 0 0 25px var(--accent-primary); }
+    .path-node.locked { border-color: #475569; color: #475569; cursor: not-allowed; opacity: 0.6; }
 
-    .nav-item {
-      padding: 8px 16px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      color: var(--text-secondary);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
+    /* CENTER QUIZ & FEED */
+    .center-workspace { padding: 30px; overflow-y: auto; display: flex; flex-direction: column; align-items: center; gap: 25px; }
+    .quiz-card { width: 100%; max-width: 700px; background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 20px; padding: 25px; position: relative; }
 
-    .nav-item:hover, .nav-item.active {
-      background: rgba(0, 242, 254, 0.1);
-      border-color: var(--cyan-neon);
-      color: #fff;
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
-    }
+    .timer-bar-bg { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+    .timer-bar-fill { height: 100%; width: 100%; background: var(--accent-primary); transition: width 1s linear; }
 
-    .user-stats {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
+    .option-btn { width: 100%; padding: 16px 20px; margin-top: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); border-radius: 14px; color: #fff; text-align: left; font-size: 15px; cursor: pointer; transition: 0.3s; }
+    .option-btn:hover { background: rgba(255,255,255,0.1); border-color: var(--accent-primary); transform: translateX(5px); }
 
-    .stat-badge {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 6px 14px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .robot-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #121629;
-      border: 2px solid var(--cyan-neon);
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .robot-avatar:hover { transform: scale(1.08) rotate(5deg); }
-
-    /* LAYOUT ENGINE */
-    .app-body {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 320px 1fr 350px;
-      overflow: hidden;
-    }
-
-    /* LEFT SIDEBAR - DUOLINGO PATH & WORLDS */
-    .left-panel {
-      background: var(--bg-panel);
-      backdrop-filter: blur(15px);
-      border-right: 1px solid var(--border-glow);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      overflow-y: auto;
-    }
-
-    .section-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--text-secondary);
-      font-weight: 800;
-    }
-
-    .world-select-btn {
-      width: 100%;
-      padding: 14px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      color: var(--text-primary);
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .world-select-btn.active {
-      background: linear-gradient(135deg, rgba(121, 40, 202, 0.3), rgba(0, 242, 254, 0.15));
-      border-color: var(--cyan-neon);
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
-    }
-
-    .tree-path {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 25px;
-      margin-top: 10px;
-      position: relative;
-    }
-
-    .node-step {
-      width: 65px;
-      height: 65px;
-      border-radius: 50%;
-      background: #0f1426;
-      border: 3px solid var(--green-neon);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 0 15px rgba(0, 223, 162, 0.3);
-      transition: all 0.3s;
-      position: relative;
-    }
-
-    .node-step:hover {
-      transform: scale(1.12);
-      box-shadow: 0 0 25px var(--green-neon);
-    }
-
-    .node-step.active-node {
-      border-color: var(--cyan-neon);
-      box-shadow: 0 0 25px var(--cyan-neon);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.6); }
-      70% { box-shadow: 0 0 0 15px rgba(0, 242, 254, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 242, 254, 0); }
-    }
-
-    /* CENTER MAIN FEED & LEARNING ENGINE */
-    .feed-panel {
-      padding: 25px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 22px;
-    }
-
-    .card-box {
-      width: 100%;
-      max-width: 680px;
-      background: var(--bg-card);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
-      padding: 22px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      transition: border-color 0.3s;
-    }
-
-    .card-box:hover {
-      border-color: rgba(0, 242, 254, 0.3);
-    }
-
-    .post-input-group {
-      display: flex;
-      gap: 12px;
-    }
-
-    .post-input {
-      flex: 1;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 12px 20px;
-      color: #fff;
-      outline: none;
-      transition: all 0.3s;
-    }
-
-    .post-input:focus {
-      border-color: var(--cyan-neon);
-      box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
-    }
-
-    .btn-submit {
-      padding: 10px 24px;
-      background: var(--gradient-accent);
-      border: none;
-      border-radius: 20px;
-      color: #fff;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .btn-submit:hover { opacity: 0.9; transform: translateY(-2px); }
-
-    .quiz-option {
-      width: 100%;
-      padding: 15px 18px;
-      margin-top: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      color: #fff;
-      text-align: left;
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.25s ease;
-    }
-
-    .quiz-option:hover {
-      background: rgba(0, 242, 254, 0.15);
-      border-color: var(--cyan-neon);
-      transform: translateX(5px);
-    }
-
-    /* RIGHT PANEL - RANK & SOCIAL LEADERBOARD */
-    .right-panel {
-      background: var(--bg-panel);
-      backdrop-filter: blur(15px);
-      border-left: 1px solid var(--border-glow);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      overflow-y: auto;
-    }
-
-    .rank-tier-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 18px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .rank-badge-icon {
-      width: 75px;
-      height: 75px;
-      margin: 0 auto 12px auto;
-      border-radius: 50%;
-      background: var(--rank-diamond);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 10px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      margin-top: 15px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      width: 48%;
-      height: 100%;
-      background: var(--gradient-accent);
-      transition: width 0.6s ease;
-    }
-
-    /* MESSENGER WIDGET */
-    .messenger-widget {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 340px;
-      height: 440px;
-      background: rgba(13, 17, 30, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--cyan-neon);
-      border-radius: 18px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-      display: flex;
-      flex-direction: column;
-      z-index: 1000;
-    }
-
-    .messenger-header {
-      padding: 14px 18px;
-      background: rgba(0, 242, 254, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-weight: 700;
-      color: var(--cyan-neon);
-    }
-
-    .messenger-body {
-      flex: 1;
-      padding: 14px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      font-size: 13px;
-    }
-
-    .chat-bubble {
-      max-width: 82%;
-      padding: 10px 14px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.06);
-      line-height: 1.4;
-    }
-
-    .chat-bubble.me {
-      align-self: flex-end;
-      background: var(--purple-neon);
-      color: #fff;
-    }
-
-    .messenger-footer {
-      padding: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      gap: 10px;
-    }
-
-    .messenger-footer input {
-      flex: 1;
-      padding: 10px 14px;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      color: #fff;
-      outline: none;
-    }
+    /* RIGHT SIDEBAR - LEADERBOARD & CHAT */
+    .right-sidebar { background: var(--bg-panel); border-left: 1px solid var(--card-border); padding: 25px; display: flex; flex-direction: column; gap: 20px; }
+    .leader-row { display: flex; align-items: center; justify-content: space-between; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 12px; margin-top: 8px; }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-brand">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-      SkillRush
-    </div>
+  <!-- TOP BAR -->
+  <nav class="top-nav">
+    <div class="brand-title">⚡ SkillRush 2.0</div>
 
-    <div class="nav-menu">
-      <div class="nav-item active">Learning Path</div>
-      <div class="nav-item">Social Feed</div>
-      <div class="nav-item">Leaderboard</div>
-    </div>
-
-    <div class="user-stats">
-      <div class="stat-badge" style="color: var(--gold-neon);">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffb703"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <span id="userXp">1,450 XP</span>
-      </div>
-
-      <div class="robot-avatar" title="Cyber Robot Avatar">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2">
-          <rect x="5" y="8" width="14" height="10" rx="2" />
-          <circle cx="9" cy="12" r="1" fill="#00f2fe" />
-          <circle cx="15" cy="12" r="1" fill="#00f2fe" />
-          <path d="M10 15h4" />
-          <path d="M12 5v3" />
-        </svg>
-      </div>
+    <div class="stats-bar">
+      <div class="stat-pill" style="color: var(--accent-danger);">❤️ <span id="lifeCount">5</span></div>
+      <div class="stat-pill" style="color: var(--accent-warning);">🔥 <span id="streakCount">3 Days</span></div>
+      <div class="stat-pill" style="color: var(--accent-primary);">⭐ <span id="xpCount">1,850 XP</span></div>
+      <button class="theme-toggle-btn" onclick="toggleTheme()">Theme Switcher</button>
     </div>
   </nav>
 
-  <!-- MAIN APP BODY -->
-  <div class="app-body">
+  <!-- MAIN ENGINE -->
+  <div class="main-grid">
 
-    <!-- LEFT SIDEBAR -->
-    <aside class="left-panel">
-      <div class="section-title">Skill Learning Tracks</div>
+    <!-- LEFT TRACK & PATH TREE -->
+    <aside class="path-sidebar">
+      <h3>Select Course</h3>
+      <div class="track-card active" onclick="setTrack('english')">
+        <div><strong>English Mastery</strong><br><small style="color: var(--text-sub);">Advanced Grammar & Vocabulary</small></div>
+      </div>
+      <div class="track-card" onclick="setTrack('arabic')">
+        <div><strong>Arabic Standard</strong><br><small style="color: var(--text-sub);">Conversational Arabic</small></div>
+      </div>
+      <div class="track-card" onclick="setTrack('webdev')">
+        <div><strong>Fullstack Web Dev</strong><br><small style="color: var(--text-sub);">HTML, CSS, Modern JS</small></div>
+      </div>
 
-      <button class="world-select-btn active" id="btnEnglish" onclick="switchWorld('english')">
-        <div class="robot-avatar" style="width:36px; height:36px; border-color:var(--cyan-neon);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
-        </div>
-        <div>
-          <h4 style="color: var(--cyan-neon); font-size:14px;">English Cyber Matrix</h4>
-          <p style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">Grammar & Fluency</p>
-        </div>
-      </button>
-
-      <button class="world-select-btn" id="btnArabic" onclick="switchWorld('arabic')">
-        <div class="robot-avatar" style="width:36px; height:36px; border-color:var(--gold-neon);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffb703" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <div>
-          <h4 style="color: var(--gold-neon); font-size:14px;">Arabic Cyber Track</h4>
-          <p style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">Modern Standard Arabic</p>
-        </div>
-      </button>
-
-      <button class="world-select-btn" id="btnWebDev" onclick="switchWorld('webdev')">
-        <div class="robot-avatar" style="width:36px; height:36px; border-color:var(--green-neon);">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00dfa2" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <div>
-          <h4 style="color: var(--green-neon); font-size:14px;">Web Development</h4>
-          <p style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">HTML/CSS & JavaScript</p>
-        </div>
-      </button>
-
-      <div class="section-title" style="margin-top: 15px;">Duolingo Path Nodes</div>
-      
-      <div class="tree-path" id="nodeTree">
-        <!-- Dynamic Nodes loaded by JS -->
+      <h3 style="margin-top: 15px;">Learning Path</h3>
+      <div class="node-path-container">
+        <div class="path-line"></div>
+        <div class="path-node" onclick="selectNode(0)">N-1</div>
+        <div class="path-node" onclick="selectNode(1)">N-2</div>
+        <div class="path-node locked">N-3</div>
       </div>
     </aside>
 
-    <!-- CENTER PANEL -->
-    <main class="feed-panel">
+    <!-- CENTER QUIZ ARENA -->
+    <main class="center-workspace">
+      <div class="quiz-card">
+        <div class="timer-bar-bg"><div class="timer-bar-fill" id="timerBar"></div></div>
+        
+        <h4 style="color: var(--accent-primary);" id="quizStageText">Stage 1: Fundamentals</h4>
+        <h2 style="margin: 15px 0;" id="quizQuestionText">Question Loading...</h2>
 
-      <!-- CREATE POST BOX -->
-      <div class="card-box">
-        <div class="post-input-group">
-          <input type="text" id="postText" class="post-input" placeholder="Share your learning milestones...">
-          <button class="btn-submit" onclick="addPost()">Post</button>
-        </div>
+        <div id="quizOptionsBox"></div>
       </div>
-
-      <!-- DYNAMIC QUIZ CARD -->
-      <div class="card-box" id="quizContainer">
-        <h3 style="color: var(--cyan-neon); margin-bottom: 6px;" id="quizTitle">Stage 1: Basic Sentences</h3>
-        <p style="font-size: 13px; color: var(--text-secondary);" id="quizProgress">Question 1 of 3</p>
-        <h2 style="margin: 16px 0; font-size: 18px;" id="quizQuestion">Loading...</h2>
-
-        <div id="quizOptions"></div>
-      </div>
-
-      <!-- POSTS FEED -->
-      <div style="width: 100%; max-width: 680px;" id="postFeedList">
-        <div class="card-box" style="margin-bottom: 15px;">
-          <div style="display: flex; gap: 12px; margin-bottom: 12px;">
-            <div class="robot-avatar" style="border-color: var(--purple-neon);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7928ca" stroke-width="2"><rect x="5" y="8" width="14" height="10" rx="2"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>
-            </div>
-            <div>
-              <h4 style="font-size: 14px;">Cyber_Learner_01</h4>
-              <p style="font-size: 11px; color: var(--text-secondary);">12 mins ago • Level Completed</p>
-            </div>
-          </div>
-          <p style="font-size: 14px; line-height: 1.6; color: #cbd5e1;">SkillRush node mechanics with live XP counter are incredible!</p>
-        </div>
-      </div>
-
     </main>
 
-    <!-- RIGHT PANEL -->
-    <aside class="right-panel">
-      <div class="section-title">Lifetime Global Rank</div>
-
-      <div class="rank-tier-card">
-        <div class="rank-badge-icon">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="#fff"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
-        <h3 id="rankTitle" style="background: var(--rank-diamond); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">DIAMOND TIER</h3>
-        <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Tier 5 / 8 (Continuous Progression)</p>
-
-        <div class="progress-bar">
-          <div class="progress-fill" id="progressBar"></div>
-        </div>
+    <!-- RIGHT LEADERBOARD -->
+    <aside class="right-sidebar">
+      <h3>Global Leaderboard</h3>
+      <div class="leader-row">
+        <span>🥇 1. Cyber_Knight</span>
+        <strong style="color: var(--accent-primary);">4,500 XP</strong>
       </div>
-
-      <div class="section-title">Cyber Mastery Badges</div>
-      
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
-        <div class="robot-avatar" style="width: 100%; height: 65px; border-radius: 14px; border-color: var(--gold-neon);" title="Gold Master">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="#ffb703"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <div class="robot-avatar" style="width: 100%; height: 65px; border-radius: 14px; border-color: var(--cyan-neon);" title="Cyber Cyber Legend">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="#00f2fe"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-5.45 9-12V5l-9-4z"/></svg>
-        </div>
+      <div class="leader-row">
+        <span>🥈 2. You (Learner)</span>
+        <strong style="color: var(--accent-warning);" id="userXpSide">1,850 XP</strong>
+      </div>
+      <div class="leader-row">
+        <span>🥉 3. Code_Master</span>
+        <strong style="color: var(--text-sub);">1,200 XP</strong>
       </div>
     </aside>
 
-  </div>
-
-  <!-- MESSENGER WIDGET -->
-  <div class="messenger-widget">
-    <div class="messenger-header">
-      <span>SkillRush AI Assistant</span>
-    </div>
-    <div class="messenger-body" id="chatBody">
-      <div class="chat-bubble">Hello! Welcome to SkillRush. Select a node to start learning and earning XP!</div>
-    </div>
-    <div class="messenger-footer">
-      <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleChatKey(event)">
-    </div>
   </div>
 
   <script>
-    let xpPoints = 1450;
-    let currentWorld = 'english';
-    let currentStageIndex = 0;
-    let currentQuizIndex = 0;
+    let currentXp = 1850;
+    let lives = 5;
+    let timerVal = 30;
+    let timerInterval;
 
-    const quizEngineData = {
-      english: [
-        {
-          stage: "Stage 1: Essential English Sentences",
-          questions: [
-            { q: 'Translate: "I am learning English."', opts: ["I am learning English.", "I learns English.", "I learn English now."], ans: 0 },
-            { q: 'Choose correct form: "She ___ to school every day."', opts: ["go", "goes", "going"], ans: 1 },
-            { q: 'Translate: "Knowledge is power."', opts: ["Power is knowledge.", "Knowledge is power.", "Skill is future."], ans: 1 }
-          ]
-        },
-        {
-          stage: "Stage 2: Advanced Cyber Grammar",
-          questions: [
-            { q: 'Select the complex sentence:', opts: ["I code daily.", "Although it was late, he continued coding.", "Run fast."], ans: 1 },
-            { q: 'Meaning of "Automation":', opts: ["Manual work", "Self-operating process", "Physical labor"], ans: 1 }
-          ]
-        }
-      ],
-      arabic: [
-        {
-          stage: "Stage 1: Arabic Basics",
-          questions: [
-            { q: 'What is the translation of "مرحبا" (Marhaban)?', opts: ["Goodbye", "Hello / Welcome", "Thank you"], ans: 1 },
-            { q: 'Translate "كتاب" (Kitab):', opts: ["Pen", "Book", "Desk"], ans: 1 },
-            { q: 'Which word means "Teacher"?', opts: ["معلم (Mu'allim)", "طالب (Talib)", "مدرسة (Madrasah)"], ans: 0 }
-          ]
-        },
-        {
-          stage: "Stage 2: Modern Arabic Grammar",
-          questions: [
-            { q: 'Translate "أنا أتعلم اللغة العربية":', opts: ["I love languages.", "I am learning the Arabic language.", "Arabic is easy."], ans: 1 },
-            { q: 'Translate "العلم نور":', opts: ["Knowledge is light.", "Light is bright.", "Study hard."], ans: 0 }
-          ]
-        }
-      ],
-      webdev: [
-        {
-          stage: "Stage 1: HTML & CSS Fundamentals",
-          questions: [
-            { q: 'Which HTML element defines a high-level heading?', opts: ["<h6>", "<h1>", "<heading>"], ans: 1 },
-            { q: 'What does CSS stand for?', opts: ["Cascading Style Sheets", "Creative Style System", "Computer Style Sheet"], ans: 0 }
-          ]
-        }
-      ]
-    };
-
-    function switchWorld(worldKey) {
-      currentWorld = worldKey;
-      currentStageIndex = 0;
-      currentQuizIndex = 0;
-
-      document.getElementById('btnEnglish').classList.toggle('active', worldKey === 'english');
-      document.getElementById('btnArabic').classList.toggle('active', worldKey === 'arabic');
-      document.getElementById('btnWebDev').classList.toggle('active', worldKey === 'webdev');
-
-      renderNodes();
-      loadQuiz();
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', currentTheme === 'neon' ? 'obsidian' : 'neon');
     }
 
-    function renderNodes() {
-      const tree = document.getElementById('nodeTree');
-      tree.innerHTML = '';
+    function startTimer() {
+      clearInterval(timerInterval);
+      timerVal = 30;
+      const bar = document.getElementById('timerBar');
+      bar.style.width = '100%';
 
-      quizEngineData[currentWorld].forEach((stg, idx) => {
-        const node = document.createElement('div');
-        node.className = `node-step ${idx === currentStageIndex ? 'active-node' : ''}`;
-        node.innerHTML = `<span style="font-weight: bold; color: #fff;">${idx + 1}</span>`;
-        node.onclick = () => {
-          currentStageIndex = idx;
-          currentQuizIndex = 0;
-          renderNodes();
-          loadQuiz();
-        };
-        tree.appendChild(node);
-      });
+      timerInterval = setInterval(() => {
+        timerVal--;
+        bar.style.width = (timerVal / 30 * 100) + '%';
+        if (timerVal <= 0) {
+          clearInterval(timerInterval);
+          alert("Time's Up! Moving to next stage.");
+        }
+      }, 1000);
     }
 
-    function loadQuiz() {
-      const stageObj = quizEngineData[currentWorld][currentStageIndex];
-      const qObj = stageObj.questions[currentQuizIndex];
+    const quizData = [
+      { q: "What is the primary function of JavaScript?", opts: ["Styling Web Pages", "Adding Interactivity", "Managing Databases"], ans: 1 },
+      { q: "Which CSS property changes text color?", opts: ["color", "font-style", "background"], ans: 0 }
+    ];
 
-      document.getElementById('quizTitle').innerText = stageObj.stage;
-      document.getElementById('quizProgress').innerText = `Question ${currentQuizIndex + 1} of ${stageObj.questions.length}`;
-      document.getElementById('quizQuestion').innerText = qObj.q;
+    function loadQuiz(index) {
+      const item = quizData[index];
+      document.getElementById('quizQuestionText').innerText = item.q;
+      const box = document.getElementById('quizOptionsBox');
+      box.innerHTML = '';
 
-      const optsContainer = document.getElementById('quizOptions');
-      optsContainer.innerHTML = '';
-
-      qObj.opts.forEach((optText, i) => {
+      item.opts.forEach((opt, i) => {
         const btn = document.createElement('button');
-        btn.className = 'quiz-option';
-        btn.innerText = optText;
-        btn.onclick = () => checkAnswer(i);
-        optsContainer.appendChild(btn);
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        btn.onclick = () => handleAnswer(i === item.ans);
+        box.appendChild(btn);
       });
+      startTimer();
     }
 
-    function checkAnswer(selectedIdx) {
-      const stageObj = quizEngineData[currentWorld][currentStageIndex];
-      const qObj = stageObj.questions[currentQuizIndex];
-
-      if (selectedIdx === qObj.ans) {
-        xpPoints += 50;
-        alert("Correct Answer! +50 XP");
+    function handleAnswer(isCorrect) {
+      if (isCorrect) {
+        currentXp += 100;
+        alert("🎉 Correct Answer! +100 XP");
       } else {
-        alert("Incorrect answer. Try again!");
+        lives--;
+        alert("❌ Wrong Answer! Hearts decreased.");
       }
-
-      if (currentQuizIndex + 1 < stageObj.questions.length) {
-        currentQuizIndex++;
-      } else {
-        alert("Congratulations! You completed this level.");
-        currentQuizIndex = 0;
-      }
-
-      updateUI();
-      loadQuiz();
+      document.getElementById('xpCount').innerText = currentXp + " XP";
+      document.getElementById('userXpSide').innerText = currentXp + " XP";
+      document.getElementById('lifeCount').innerText = lives;
     }
 
-    function addPost() {
-      const txt = document.getElementById('postText');
-      if (!txt.value.trim()) return;
-
-      const postList = document.getElementById('postFeedList');
-      const div = document.createElement('div');
-      div.className = 'card-box';
-      div.style.marginBottom = '15px';
-      div.innerHTML = `
-        <div style="display: flex; gap: 12px; margin-bottom: 12px;">
-          <div class="robot-avatar">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2"><rect x="5" y="8" width="14" height="10" rx="2"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/></svg>
-          </div>
-          <div>
-            <h4 style="font-size: 14px;">User (You)</h4>
-            <p style="font-size: 11px; color: var(--text-secondary);">Just now</p>
-          </div>
-        </div>
-        <p style="font-size: 14px; line-height: 1.6; color: #cbd5e1;">${txt.value}</p>
-      `;
-      postList.prepend(div);
-      txt.value = '';
-    }
-
-    function handleChatKey(e) {
-      if (e.key === 'Enter') {
-        const input = document.getElementById('chatInput');
-        if (!input.value.trim()) return;
-
-        const body = document.getElementById('chatBody');
-        const userMsg = document.createElement('div');
-        userMsg.className = 'chat-bubble me';
-        userMsg.innerText = input.value;
-        body.appendChild(userMsg);
-
-        setTimeout(() => {
-          const aiMsg = document.createElement('div');
-          aiMsg.className = 'chat-bubble';
-          aiMsg.innerText = "SkillRush AI: Fantastic progress! Complete more nodes to climb the Diamond Rank.";
-          body.appendChild(aiMsg);
-          body.scrollTop = body.scrollHeight;
-        }, 600);
-
-        input.value = '';
-        body.scrollTop = body.scrollHeight;
-      }
-    }
-
-    function updateUI() {
-      document.getElementById('userXp').innerText = xpPoints + " XP";
-      document.getElementById('progressBar').style.width = Math.min((xpPoints / 3000) * 100, 100) + "%";
-    }
-
-    // Initialize Engine
-    renderNodes();
-    loadQuiz();
-    updateUI();
+    loadQuiz(0);
   </script>
 </body>
 </html>
